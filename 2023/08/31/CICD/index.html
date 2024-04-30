@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/zhoujie-lovemusic/img/fluid.png">
-  <link rel="icon" href="/zhoujie-lovemusic/img/avatar2.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/avatar2.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -23,21 +23,21 @@
 <meta property="og:site_name" content="Zhou Jie">
 <meta property="og:description" content="什么是CICD？指持续集成和持续部署的软件开发实践方法，可以提前在yaml档进行配置，之后可以自动化执行这个脚本，其中包括对代码的 构建、代码检查、release、dockerize等 怎么使用GitLab CI？ 在项目下面创建一个.gitlab-ci.yml文件，里面包含了  集成、测试 的一些配置，到时候一旦 本地仓库push到gitlab上面之后，会通过 GitLab-Runner 自动执">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://github.com/zhoujie-lovemusic/2023/08/31/CICD/%E4%B8%8B%E8%BD%BD%E8%AF%81%E4%B9%A6%E9%A1%B5.png">
-<meta property="og:image" content="https://github.com/zhoujie-lovemusic/2023/08/31/CICD/gitlab%E8%AE%BE%E7%BD%AE.png">
-<meta property="og:image" content="https://github.com/zhoujie-lovemusic/2023/08/31/CICD/%E6%A0%B9%E6%8D%AE%E6%8F%90%E7%A4%BA%E8%BE%93%E5%85%A5url%E5%92%8Ctoken.png">
-<meta property="og:image" content="https://github.com/zhoujie-lovemusic/2023/08/31/CICD/%E9%80%89%E6%8B%A9docker.png">
-<meta property="og:image" content="https://github.com/zhoujie-lovemusic/2023/08/31/CICD/%E5%8D%B8%E8%BD%BD.png">
-<meta property="og:image" content="https://github.com/zhoujie-lovemusic/2023/08/31/CICD/script1.png">
-<meta property="og:image" content="https://github.com/zhoujie-lovemusic/2023/08/31/CICD/script2.png">
-<meta property="og:image" content="https://github.com/zhoujie-lovemusic/2023/08/31/CICD/script3.png">
-<meta property="og:image" content="https://github.com/zhoujie-lovemusic/2023/08/31/CICD/script4.png">
+<meta property="og:image" content="https://github.com/2023/08/31/CICD/%E4%B8%8B%E8%BD%BD%E8%AF%81%E4%B9%A6%E9%A1%B5.png">
+<meta property="og:image" content="https://github.com/2023/08/31/CICD/gitlab%E8%AE%BE%E7%BD%AE.png">
+<meta property="og:image" content="https://github.com/2023/08/31/CICD/%E6%A0%B9%E6%8D%AE%E6%8F%90%E7%A4%BA%E8%BE%93%E5%85%A5url%E5%92%8Ctoken.png">
+<meta property="og:image" content="https://github.com/2023/08/31/CICD/%E9%80%89%E6%8B%A9docker.png">
+<meta property="og:image" content="https://github.com/2023/08/31/CICD/%E5%8D%B8%E8%BD%BD.png">
+<meta property="og:image" content="https://github.com/2023/08/31/CICD/script1.png">
+<meta property="og:image" content="https://github.com/2023/08/31/CICD/script2.png">
+<meta property="og:image" content="https://github.com/2023/08/31/CICD/script3.png">
+<meta property="og:image" content="https://github.com/2023/08/31/CICD/script4.png">
 <meta property="article:published_time" content="2023-08-31T03:06:38.000Z">
 <meta property="article:modified_time" content="2024-04-01T03:41:22.001Z">
 <meta property="article:author" content="Zhou Jie">
 <meta property="article:tag" content="自动化流程">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://github.com/zhoujie-lovemusic/2023/08/31/CICD/%E4%B8%8B%E8%BD%BD%E8%AF%81%E4%B9%A6%E9%A1%B5.png">
+<meta name="twitter:image" content="https://github.com/2023/08/31/CICD/%E4%B8%8B%E8%BD%BD%E8%AF%81%E4%B9%A6%E9%A1%B5.png">
   
   
   
@@ -65,12 +65,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/zhoujie-lovemusic/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/zhoujie-lovemusic/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/zhoujie-lovemusic/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -79,15 +79,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"github.com","root":"/zhoujie-lovemusic/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/zhoujie-lovemusic/local-search.xml"};
+    var CONFIG = {"hostname":"github.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/zhoujie-lovemusic/js/utils.js" ></script>
-  <script  src="/zhoujie-lovemusic/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
 
 
@@ -104,7 +104,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/zhoujie-lovemusic/">
+    <a class="navbar-brand" href="/">
       <strong>Indispensible</strong>
     </a>
 
@@ -123,7 +123,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/zhoujie-lovemusic/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -135,7 +135,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/zhoujie-lovemusic/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -147,7 +147,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/zhoujie-lovemusic/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -159,7 +159,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/zhoujie-lovemusic/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -171,7 +171,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/zhoujie-lovemusic/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
               </a>
@@ -201,7 +201,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/zhoujie-lovemusic/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -291,19 +291,19 @@
 <ul>
 <li><h4 id="怎么注册并安装、启动一个GitLab-Running？"><a href="#怎么注册并安装、启动一个GitLab-Running？" class="headerlink" title="怎么注册并安装、启动一个GitLab-Running？"></a>怎么注册并安装、启动一个GitLab-Running？</h4><p>1）<a target="_blank" rel="noopener" href="http://10.37.37.139/packages/">Index of /packages/</a> ——– 下载 gitlab-runner程序，用来当作命令行命令使用</p>
 <p>2）下载 wistron-root.crt ——– 证书，用于给gitlab注册runner使用</p>
-<p><img src="/zhoujie-lovemusic/2023/08/31/CICD/%E4%B8%8B%E8%BD%BD%E8%AF%81%E4%B9%A6%E9%A1%B5.png" srcset="/zhoujie-lovemusic/img/loading.gif" lazyload alt="下载证书页"></p>
+<p><img src="/2023/08/31/CICD/%E4%B8%8B%E8%BD%BD%E8%AF%81%E4%B9%A6%E9%A1%B5.png" srcset="/img/loading.gif" lazyload alt="下载证书页"></p>
 <p>2）进入刚刚下载的git-runner程序的文件夹，将此程序 命名为gitlab-runner.exe，因为命令的名字就是 gitlab-runner，打开cmd，输入指令注册runner：</p>
 <figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs delphi">gitlab-runner <span class="hljs-keyword">register</span> --tls-ca-<span class="hljs-keyword">file</span> wistron-root.crt的路径<br></code></pre></td></tr></table></figure></li>
 </ul>
 <p>​        3）打开gitlab进入自己的主页，新建一个项目，进入如图页面</p>
-<p><img src="/zhoujie-lovemusic/2023/08/31/CICD/gitlab%E8%AE%BE%E7%BD%AE.png" srcset="/zhoujie-lovemusic/img/loading.gif" lazyload alt="gitlab设置"></p>
+<p><img src="/2023/08/31/CICD/gitlab%E8%AE%BE%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt="gitlab设置"></p>
 <p>​          4）根据提示输入url和token</p>
-<p><img src="/zhoujie-lovemusic/2023/08/31/CICD/%E6%A0%B9%E6%8D%AE%E6%8F%90%E7%A4%BA%E8%BE%93%E5%85%A5url%E5%92%8Ctoken.png" srcset="/zhoujie-lovemusic/img/loading.gif" lazyload alt="根据提示输入url和token"></p>
+<p><img src="/2023/08/31/CICD/%E6%A0%B9%E6%8D%AE%E6%8F%90%E7%A4%BA%E8%BE%93%E5%85%A5url%E5%92%8Ctoken.png" srcset="/img/loading.gif" lazyload alt="根据提示输入url和token"></p>
 <p>​          5）输入runner的描述和tags</p>
 <p>​          6）选择docker为执行者，再输入如下作为docker image（镜像）：</p>
 <figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">alpine:</span>latest<br></code></pre></td></tr></table></figure>
 
-<p><img src="/zhoujie-lovemusic/2023/08/31/CICD/%E9%80%89%E6%8B%A9docker.png" srcset="/zhoujie-lovemusic/img/loading.gif" lazyload alt="选择docker"></p>
+<p><img src="/2023/08/31/CICD/%E9%80%89%E6%8B%A9docker.png" srcset="/img/loading.gif" lazyload alt="选择docker"></p>
 <p>​          7）安装到自己的项目下（刚刚只完成了注册操作，注册就相当于下载，还需要安装才能使用），执行：</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">gitlab-runner <span class="hljs-keyword">install</span> --working-<span class="hljs-keyword">file</span>=gitlab-runner<br></code></pre></td></tr></table></figure>
 
@@ -311,7 +311,7 @@
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">FATAL：Failed to <span class="hljs-keyword">install</span> gitlab-runner：service gitlab-runner already <span class="hljs-keyword">exists</span><br></code></pre></td></tr></table></figure>
 
 <p>则先卸载再安装和启动，这时不需要指定指定的–working-file</p>
-<p><img src="/zhoujie-lovemusic/2023/08/31/CICD/%E5%8D%B8%E8%BD%BD.png" srcset="/zhoujie-lovemusic/img/loading.gif" lazyload alt="卸载"></p>
+<p><img src="/2023/08/31/CICD/%E5%8D%B8%E8%BD%BD.png" srcset="/img/loading.gif" lazyload alt="卸载"></p>
 <p><strong>——这是在之前的cicd的runner页面就可以看到自己刚刚创建的running已经启动了（绿色）</strong></p>
 <hr>
 <p>以上可以不用看，直接 选用公司的runner就行，其中tags为：</p>
@@ -320,7 +320,7 @@
 <h3 id="什么是Git-Running-excutor？"><a href="#什么是Git-Running-excutor？" class="headerlink" title="什么是Git-Running excutor？"></a>什么是Git-Running excutor？</h3><p>它是帮助GitLab-Running执行的，也就是GitLab-Running的工具</p>
 <h3 id="GitLab-CI语法"><a href="#GitLab-CI语法" class="headerlink" title="GitLab-CI语法"></a>GitLab-CI语法</h3><p><strong>格式：</strong>yml</p>
 <p><strong>例子：</strong>job就相当于一个个 脚本，stages包含各阶段的名称，一个job执行一个stage，script为job的脚本名称</p>
-<p><img src="/zhoujie-lovemusic/2023/08/31/CICD/script1.png" srcset="/zhoujie-lovemusic/img/loading.gif" lazyload alt="script1"></p>
+<p><img src="/2023/08/31/CICD/script1.png" srcset="/img/loading.gif" lazyload alt="script1"></p>
 <p><strong>注意：保留字不能作为job name，相当于编程中的保留字不能做变量名</strong></p>
 <p><strong>基础指令：</strong></p>
 <p> 1）image &amp; services ——– 指定镜像以及附加服务</p>
@@ -329,15 +329,15 @@
 <p>2）stages &amp; job</p>
 <figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">stages</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">build</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">test</span><br><span class="hljs-attribute">job</span><span class="hljs-punctuation">:</span><br>  stage:build<br></code></pre></td></tr></table></figure>
 
-<p>3）before_script &amp; after_script：用来定义 job 开始前 和 开始后 的脚本，既可以放在job之前，也可以放在job内部<img src="/zhoujie-lovemusic/2023/08/31/CICD/script2.png" srcset="/zhoujie-lovemusic/img/loading.gif" lazyload alt="script2"></p>
+<p>3）before_script &amp; after_script：用来定义 job 开始前 和 开始后 的脚本，既可以放在job之前，也可以放在job内部<img src="/2023/08/31/CICD/script2.png" srcset="/img/loading.gif" lazyload alt="script2"></p>
 <p>4）only &amp; except：限制执行的branch，不会执行develop这个分支</p>
 <p>​      tags：设定执行的runner</p>
-<p><img src="/zhoujie-lovemusic/2023/08/31/CICD/script3.png" srcset="/zhoujie-lovemusic/img/loading.gif" lazyload alt="script3"></p>
+<p><img src="/2023/08/31/CICD/script3.png" srcset="/img/loading.gif" lazyload alt="script3"></p>
 <p>5）artifacts：添加特定档案或者目录在job上</p>
 <p>​      artfacts:paths：将指定路径的档案或目录放到job</p>
 <p>​      artfacts:when：什么时候存放，on_success、on_failure、always</p>
 <p>​      artfacts:expire_in：档案或目录存放的时间，通常不要设置太大，否则存放的文档太多</p>
-<p><img src="/zhoujie-lovemusic/2023/08/31/CICD/script4.png" srcset="/zhoujie-lovemusic/img/loading.gif" lazyload alt="script4"></p>
+<p><img src="/2023/08/31/CICD/script4.png" srcset="/img/loading.gif" lazyload alt="script4"></p>
 <p><strong>需要注意格式问题：关键字冒号后面的内容一定要加空格</strong></p>
 <figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">image</span><span class="hljs-punctuation">:</span> <span class="hljs-string">docker:stable            -------image冒号后面要加空格，docker不是关键字，只是和stable一起                                        成为image的内容</span><br><span class="hljs-attribute">stages</span><span class="hljs-punctuation">:</span><br> <span class="hljs-bullet">-</span> <span class="hljs-string">Build image</span><br><span class="hljs-attribute">build</span><span class="hljs-punctuation">:</span><br> <span class="hljs-attribute">stage</span><span class="hljs-punctuation">:</span> <span class="hljs-string">Build image             -------stage冒号后面要加空格</span><br> <span class="hljs-attribute">tags</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">runner01</span><br> <span class="hljs-attribute">script</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">docker info</span><br></code></pre></td></tr></table></figure>
 
@@ -371,7 +371,7 @@
     
       <span class="category-chain">
         
-  <a href="/zhoujie-lovemusic/categories/%E6%9E%84%E5%BB%BA%E4%B8%8E%E9%83%A8%E7%BD%B2/" class="category-chain-item">构建与部署</a>
+  <a href="/categories/%E6%9E%84%E5%BB%BA%E4%B8%8E%E9%83%A8%E7%BD%B2/" class="category-chain-item">构建与部署</a>
   
   
 
@@ -386,7 +386,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/zhoujie-lovemusic/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%81%E7%A8%8B/">#自动化流程</a>
+        <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%81%E7%A8%8B/">#自动化流程</a>
       
     </div>
   
@@ -443,7 +443,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/zhoujie-lovemusic/2023/08/31/%E5%88%A9%E7%94%A8CICD%E4%BB%8Egitlab%E5%88%B0%E9%83%A8%E7%BD%B2%E7%9A%84%E6%B5%81%E7%A8%8B/" title="利用CICD从gitlab到部署的流程">
+                      <a href="/2023/08/31/%E5%88%A9%E7%94%A8CICD%E4%BB%8Egitlab%E5%88%B0%E9%83%A8%E7%BD%B2%E7%9A%84%E6%B5%81%E7%A8%8B/" title="利用CICD从gitlab到部署的流程">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">利用CICD从gitlab到部署的流程</span>
                         <span class="visible-mobile">上一篇</span>
@@ -453,7 +453,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/zhoujie-lovemusic/2023/08/31/gitlab%E7%9A%84sshkey%E8%BF%87%E6%9C%9F%E9%97%AE%E9%A2%98/" title="gitlab的sshkey过期问题">
+                      <a href="/2023/08/31/gitlab%E7%9A%84sshkey%E8%BF%87%E6%9C%9F%E9%97%AE%E9%A2%98/" title="gitlab的sshkey过期问题">
                         <span class="hidden-mobile">gitlab的sshkey过期问题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -475,7 +475,7 @@
       <script type="text/javascript">
         var disqus_config = function() {
           this.page.url = 'https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2023/08/31/CICD/';
-          this.page.identifier = '/zhoujie-lovemusic/2023/08/31/CICD/';
+          this.page.identifier = '/2023/08/31/CICD/';
         };
         Fluid.utils.loadComments('#disqus_thread', function() {
           var d = document, s = d.createElement('script');
@@ -611,8 +611,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/zhoujie-lovemusic/js/events.js" ></script>
-<script  src="/zhoujie-lovemusic/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -634,7 +634,7 @@
 
 
   
-    <script  src="/zhoujie-lovemusic/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -733,7 +733,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/zhoujie-lovemusic/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -741,7 +741,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/zhoujie-lovemusic/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   
