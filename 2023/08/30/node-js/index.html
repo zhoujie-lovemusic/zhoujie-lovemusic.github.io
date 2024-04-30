@@ -1,0 +1,855 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/avatar2.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Zhou Jie">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1.为什么javascript代码可以在浏览器中被执行？因为浏览器有js解析引擎，可以对js代码进行解析。这个js解析引擎每个浏览器都不同，只要知道其中谷歌浏览器的V8引擎是性能最好的，这也是前端程序员喜欢用谷歌浏览器的原因。  2.为什么javascript可以操作DOM、BOM因为每个浏览器都内置了DOM、BOM这样的内置对象，这样js就可以在浏览器里操作它们。  什么是DOM、BOM DOM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js知识点">
+<meta property="og:url" content="https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2023/08/30/node-js/index.html">
+<meta property="og:site_name" content="Zhou Jie">
+<meta property="og:description" content="1.为什么javascript代码可以在浏览器中被执行？因为浏览器有js解析引擎，可以对js代码进行解析。这个js解析引擎每个浏览器都不同，只要知道其中谷歌浏览器的V8引擎是性能最好的，这也是前端程序员喜欢用谷歌浏览器的原因。  2.为什么javascript可以操作DOM、BOM因为每个浏览器都内置了DOM、BOM这样的内置对象，这样js就可以在浏览器里操作它们。  什么是DOM、BOM DOM">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/blog/2023/08/30/node-js/js%E8%A7%A3%E6%9E%90%E5%BC%95%E6%93%8E.png">
+<meta property="og:image" content="https://github.com/blog/2023/08/30/node-js/js%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83.png">
+<meta property="og:image" content="https://github.com/blog/2023/08/30/node-js/%E4%B8%AD%E9%97%B4%E4%BB%B6%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B.png">
+<meta property="og:image" content="https://github.com/blog/2023/08/30/node-js/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%A0%BC%E5%BC%8F.png">
+<meta property="article:published_time" content="2023-08-30T08:14:01.000Z">
+<meta property="article:modified_time" content="2024-04-01T03:41:22.062Z">
+<meta property="article:author" content="Zhou Jie">
+<meta property="article:tag" content="知识点">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://github.com/blog/2023/08/30/node-js/js%E8%A7%A3%E6%9E%90%E5%BC%95%E6%93%8E.png">
+  
+  
+  
+  <title>Node.js知识点 - Zhou Jie</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"github.com","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Indispensible</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Node.js知识点"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-30 16:14" pubdate>
+          2023年8月30日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          36 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Node.js知识点</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="1-为什么javascript代码可以在浏览器中被执行？"><a href="#1-为什么javascript代码可以在浏览器中被执行？" class="headerlink" title="1.为什么javascript代码可以在浏览器中被执行？"></a>1.为什么javascript代码可以在浏览器中被执行？</h3><p>因为浏览器有js解析引擎，可以对js代码进行解析。这个js解析引擎每个浏览器都不同，只要知道其中谷歌浏览器的V8引擎是性能最好的，这也是前端程序员喜欢用谷歌浏览器的原因。</p>
+<p><img src="/blog/2023/08/30/node-js/js%E8%A7%A3%E6%9E%90%E5%BC%95%E6%93%8E.png" srcset="/blog/img/loading.gif" lazyload alt="js解析引擎"></p>
+<h3 id="2-为什么javascript可以操作DOM、BOM"><a href="#2-为什么javascript可以操作DOM、BOM" class="headerlink" title="2.为什么javascript可以操作DOM、BOM"></a>2.为什么javascript可以操作DOM、BOM</h3><p>因为每个浏览器都内置了DOM、BOM这样的内置对象，这样js就可以在浏览器里操作它们。</p>
+<ul>
+<li><p>什么是DOM、BOM</p>
+<p>DOM文本对象模型，包含处理页面的许多API</p>
+<p>BOM浏览器对象模型，包含了与浏览器交互的API</p>
+</li>
+</ul>
+<h3 id="3-javascript的运行环境包括什么？"><a href="#3-javascript的运行环境包括什么？" class="headerlink" title="3.javascript的运行环境包括什么？"></a>3.javascript的运行环境包括什么？</h3><p>即代码所需要的运行环境，包括 js解析引擎 和 内置API，其实就是上面两点所说的</p>
+<p><u>关系：</u>应该是先经过解析引擎解析然后调用内置API就可以操作 BOM、DOM了</p>
+<p><img src="/blog/2023/08/30/node-js/js%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83.png" srcset="/blog/img/loading.gif" lazyload alt="js运行环境"></p>
+<h3 id="4-javascript是如何做后端开发的？"><a href="#4-javascript是如何做后端开发的？" class="headerlink" title="4.javascript是如何做后端开发的？"></a>4.javascript是如何做后端开发的？</h3><p>javascript放在浏览器的环境里就是做前端的，放在node.js环境里就是做后端的。</p>
+<ul>
+<li>注意：在node.js环境中不能调用DOM、BOM、ajax对象，因为它里面只提供后端的API，这些浏览器的内置API它无关。</li>
+</ul>
+<h4 id="5-什么是node-js？"><a href="#5-什么是node-js？" class="headerlink" title="5.什么是node.js？"></a>5.什么是node.js？</h4><p>node.js是基于V8引擎的javascript运行环境。注意是这里也是V8引擎，是因为谷歌V8引擎性能好。</p>
+<h3 id="6-node-js可以干什么以及学习路径？"><a href="#6-node-js可以干什么以及学习路径？" class="headerlink" title="6.node.js可以干什么以及学习路径？"></a>6.node.js可以干什么以及学习路径？</h3><p>可以做所有后端可以做的事情</p>
+<p>学习路径：js基础语法-&gt;内置API（fs、path、http）-&gt;第三方API模块（express、mysql）</p>
+<h3 id="7-powershell是什么？如何打开？"><a href="#7-powershell是什么？如何打开？" class="headerlink" title="7.powershell是什么？如何打开？"></a>7.powershell是什么？如何打开？</h3><p>它是cmd的升级版，以后尽量使用powershell，在当前文件夹按住shift右键便可打开</p>
+<h3 id="8-终端中的快捷键"><a href="#8-终端中的快捷键" class="headerlink" title="8.终端中的快捷键"></a>8.终端中的快捷键</h3><p>方向↑键：获取上一条命令</p>
+<p>esc：清空当前命令</p>
+<p>tab：在当前文件夹中，输入某个文件的前几个字符，按tab可以直接补全，这个一般用于 文件名太长的场景下。</p>
+<p>cls：清空所有命令</p>
+<h2 id="fs文件系统模块"><a href="#fs文件系统模块" class="headerlink" title="fs文件系统模块"></a>fs文件系统模块</h2><h3 id="1-How-to-import"><a href="#1-How-to-import" class="headerlink" title="1.How to import?"></a>1.How to import?</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-什么是utf-8？"><a href="#2-什么是utf-8？" class="headerlink" title="2.什么是utf-8？"></a>2.什么是utf-8？</h3><p>它是一种基于unicode的一种编码方式，可以表示unicode的任意一种字符</p>
+<h2 id="path模块"><a href="#path模块" class="headerlink" title="path模块"></a>path模块</h2><h3 id="1-什么是path模块？"><a href="#1-什么是path模块？" class="headerlink" title="1.什么是path模块？"></a>1.什么是path模块？</h3><p>可以对路径进行各种处理，包括join()可将多个路径片段拼接成一个字符串、basename()获取路径中的文件名</p>
+<h2 id="HTTP模块"><a href="#HTTP模块" class="headerlink" title="HTTP模块"></a>HTTP模块</h2><h3 id="1-127-0-0-1就是localhost"><a href="#1-127-0-0-1就是localhost" class="headerlink" title="1.127.0.0.1就是localhost"></a>1.127.0.0.1就是localhost</h3><h3 id="2-80端口的服务80端口是可以省略的"><a href="#2-80端口的服务80端口是可以省略的" class="headerlink" title="2.80端口的服务80端口是可以省略的"></a>2.80端口的服务80端口是可以省略的</h3><p>npm与包</p>
+<h3 id="1-安装package-json的命令：npm-init-y"><a href="#1-安装package-json的命令：npm-init-y" class="headerlink" title="1.安装package.json的命令：npm init -y"></a>1.安装package.json的命令：npm init -y</h3><p>这里的-y是指当选择确认或者取消的时候自动选择y(yes)，好像可以不写-y</p>
+<p>注意：</p>
+<ul>
+<li>使用这个命令的时候，路径不能为中文且名字不能有空格</li>
+<li>一定要初始化之后，安装第三方包才会生效，才会安装到此项目中，否则都不知道安装到哪去了</li>
+</ul>
+<h3 id="2-dependences"><a href="#2-dependences" class="headerlink" title="2.dependences"></a>2.dependences</h3><p>在package.json里面，专门记录安装了哪些包，因此有时候也说依赖包，在依赖下的包</p>
+<p>在安装多个包的时候，可以用空格来分隔 npm i jquery art-template</p>
+<h3 id="3-devDependence"><a href="#3-devDependence" class="headerlink" title="3.devDependence"></a>3.devDependence</h3><p>只在开发阶段使用的包放在这里，怎么看是否要安装到dev环境？</p>
+<p>到官网npmjs.com去查找使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">npm i 包名 -D<br></code></pre></td></tr></table></figure>
+
+<p>这里的-D就是–save -dev的简写，不写-D默认安装在dependences里面</p>
+<h3 id="4-包下载慢的问题"><a href="#4-包下载慢的问题" class="headerlink" title="4.包下载慢的问题"></a>4.包下载慢的问题</h3><p><strong>原因：</strong></p>
+<p>使用npm通常是直接从国外服务器下载过来的，其中需要经过海底光缆，需要一定时间</p>
+<p>而 国内淘宝镜像服务器 它可以每隔一段时间把国外服务器上的数据同步过来，然后提供给国内用户下载，这样国内用户就可以在镜像上下载，而且还很快</p>
+<p><strong>称为镜像的原因：</strong></p>
+<p>就像镜子中的人像一样，就相当于你的副本</p>
+<p><strong>如何切换为国内淘宝镜像源：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">1</span>、先查看当前镜像源地址<br>npm config get registry<br><span class="hljs-number">2</span>、配置<br>npm config set registry=<span class="hljs-attr">https</span>:<span class="hljs-comment">//registry.npm.taobao.org/</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>如何更方便的切换：使用nrm（node registry management）</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">1</span>、安装<br>npm i nrm -g<br><span class="hljs-number">2</span>、查看所有镜像源地址<br>nrm ls<br><span class="hljs-number">3</span>、使用淘宝镜像<br>nrm use taobao <br></code></pre></td></tr></table></figure>
+
+<h3 id="4-包的分类"><a href="#4-包的分类" class="headerlink" title="4.包的分类"></a>4.包的分类</h3><ul>
+<li><p>项目包（从项目开发的角度）</p>
+<p>又开发依赖包（devDependence）和核心包（dependence）</p>
+</li>
+<li><p>全局包</p>
+<p>默认安装位置：C:\Users\K22070055\AppData\Roaming\npm\node_modules</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">npm i 包名 -g<br>npm uninstall 包名 -g<br></code></pre></td></tr></table></figure>
+
+<p>什么时候需要加-g？</p>
+<p>1.加-g的最好是工具包，就是可以提供一些命令使用的，这样就可以任意地方使用</p>
+<p>2.是在不清楚可以去npmjs.com官网查看是否需要加，人家都有写在上面</p>
+<p><u>PS：好用的全局包</u>：</p>
+<p>npm i -g i5ting_toc ————– 可以将md文件转换为html文件</p>
+<p>使用方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">i5ting_toc -f md文件地址 -o<br></code></pre></td></tr></table></figure>
+
+<p>表示把文件（file）地址为…的文件从md转换为html并打开（open）</p>
+<p>注意文件地址，如果是相对路径一定要和当前目录拼接对应上</p>
+</li>
+</ul>
+<h3 id="5-规范的包结构"><a href="#5-规范的包结构" class="headerlink" title="5.规范的包结构"></a>5.规范的包结构</h3><ul>
+<li>包必须以单独的目录存在（node_modules）</li>
+<li>每个包的顶级目录（当前包刚点进去）必有一个package.json文件</li>
+<li>每个package.json文件必须包含name（包名）、version（版本号）、main（包的入口），这个入口就是提供被别人使用require来引入的</li>
+</ul>
+<h3 id="6-开发属于自己的包"><a href="#6-开发属于自己的包" class="headerlink" title="6.开发属于自己的包"></a>6.开发属于自己的包</h3><p>1.新建一个文件夹itheima-tools，作为包的根目录</p>
+<p>2.在itheima-tools文件夹中新建如下三个文件：</p>
+<ul>
+<li>package.json（包管理配置文件）</li>
+<li>index.js（包的入口文件）</li>
+<li>README.md（包的说明文档）</li>
+<li>在当前包根目录下 npm publish即可发布，名字不能是大写而且改完后还要改package.json文件里的name</li>
+</ul>
+<p>注意：尽量不要在npm上面发布无意义的包，此时就需要删除自己发布的包，用命令 npm unpublish 包名 –force</p>
+<h3 id="7-模块的加载机制"><a href="#7-模块的加载机制" class="headerlink" title="7.模块的加载机制"></a>7.模块的加载机制</h3><p><u>优先从缓存中加载</u>，即如果一个包已经加载过一次，那么就会在本地缓存一份，那么下次再加载就会优先从缓存中加载，不会再从头到尾重新执行一遍代码，提高了加载效率</p>
+<ul>
+<li><p>内置模块的加载机制，如果出现同名模块，则优先加载内置模块的那个</p>
+</li>
+<li><p>自定义模块的加载机制，在加载时一定要以./、../开头，因为不加这些node会默认把它当作是内置模块或者是第三方模块，加了就是为了告诉node我写的模块在哪</p>
+<p>同时，如果自定义模块在加载时 拓展名 忘记写了，则Node会默认按照一下顺序进行不全，补全.js进行加载-&gt;补全.json进行加载-&gt;补全.node进行加载-&gt;加载失败，终端报错</p>
+</li>
+<li><p>将某目录作为模块，则会 </p>
+<p>找当前目录的package.json文件，然后找到main属性所指向的地址-&gt;如果没有package.json文件或者main不存在或者地址无法解析，则会加载当前目录的index.js-&gt;如果前两部都失败了，则会报错：Error:Can’t find the module xxx</p>
+</li>
+</ul>
+<h2 id="Express"><a href="#Express" class="headerlink" title="Express"></a>Express</h2><h3 id="1-简单介绍"><a href="#1-简单介绍" class="headerlink" title="1.简单介绍"></a>1.简单介绍</h3><ul>
+<li><p>它是基于node.js的极简的web框架的第三方模块</p>
+</li>
+<li><p>没有express可以创建web服务器吗？</p>
+<p>可以，使用Http模块就可以</p>
+</li>
+<li><p>既然有了Http模块，为什么还要express？</p>
+<p>因为Http模块太过繁琐，开发效率低，而express是从Http模块进一步封装来的，开发效率高</p>
+</li>
+</ul>
+<h3 id="2-Express能做什么？"><a href="#2-Express能做什么？" class="headerlink" title="2.Express能做什么？"></a>2.Express能做什么？</h3><p>对于前端程序员有两种服务器：</p>
+<ul>
+<li><p>网站服务器</p>
+<p>专门对外提供网站资源的服务器</p>
+</li>
+<li><p>API接口服务器</p>
+<p>专门对外提供API接口的服务器</p>
+</li>
+</ul>
+<p>Express能够很方便的<u>创建网站服务器</u>或<u>API接口服务器</u></p>
+<h3 id="3-Express中间件"><a href="#3-Express中间件" class="headerlink" title="3.Express中间件"></a>3.Express中间件</h3><p><strong>1.概念</strong></p>
+<p>类似于处理污水的中间处理环节</p>
+<p><strong>2.中间件的处理流程</strong></p>
+<p>当一个请求到达express服务器的时候，会连续调用多个中间件，进而对请求进行预处理，也就是说中间件的作用就是对请求进行预处理</p>
+<p><img src="/blog/2023/08/30/node-js/%E4%B8%AD%E9%97%B4%E4%BB%B6%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B.png" srcset="/blog/img/loading.gif" lazyload alt="中间件调用流程"></p>
+<p><strong>3.中间件的格式</strong></p>
+<p>中间件本质上是个处理函数，在参数上比路由多一个next参数，且这个next参数是个函数</p>
+<p><img src="/blog/2023/08/30/node-js/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%A0%BC%E5%BC%8F.png" srcset="/blog/img/loading.gif" lazyload alt="中间件格式"></p>
+<p><strong>4.next函数的作用</strong></p>
+<p>它是中间件连续调用的关键，调用了next函数后就可以转接给下一个中间件或路由</p>
+<p><strong>5.中间件的作用</strong></p>
+<p>由于中间件之间可以共享req res，因此上层中间件可以定义一些自定义属性和方法给下层使用</p>
+<p><strong>6.中间件的分类</strong></p>
+<ul>
+<li><p>应用级别</p>
+<p>像app.get、app.post这种挂载在app上的中间件</p>
+</li>
+<li><p>路由级别</p>
+<p>像router.get、router.post这种由express.Router()挂载的中间件</p>
+</li>
+<li><p>错误级别</p>
+<p>函数参数前面还需要err的中间件</p>
+</li>
+<li><p>内置</p>
+<p>express.static、express.json（负责解析json格式数据）、express.urlencoded（负责解析URL-encoded格式数据），后两个必须要在4.16.0以后才能使用</p>
+</li>
+<li><p>第三方</p>
+</li>
+</ul>
+<h2 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a><strong>跨域问题</strong></h2><p><strong>1.前言</strong></p>
+<p>在不同域数据时请求时，由于浏览器的同源策略，会阻止服务器返回来的资源进入浏览器</p>
+<p><strong>2.用cors解决跨域</strong></p>
+<p>它会有一些响应头相当于vip让浏览器可以允许通过 </p>
+<p><strong>3.cors的三个请求头</strong></p>
+<p>Access-Control-Allow-Origin：可具体设置允许哪个 url，或者*所有url 通过</p>
+<p>Access-Control-Allow-Header：内置一些允许的头部，如果请求的头部不在里面，则需另外加</p>
+<p>Access-Control-Allow-Methods：针对一些方法来设置是否允许请求，比如DELETE、PUT</p>
+<p><strong>4.cors请求的分类</strong></p>
+<ul>
+<li><p>简单请求</p>
+<p>①请求方式：GET、POST、HEAD三者之一</p>
+<p>②头部信息不超过内置的所有种类</p>
+</li>
+<li><p>预检请求</p>
+<p>在浏览器与服务器正式通信之前，浏览器会先发送OPTION请求进行<u>预检</u>，来确认服务器是否允许这次请求</p>
+<p>①请求方式为除了GET、POST、HEAD之外的Method类型</p>
+<p>②请求头中包含自定义字段</p>
+<p>③向服务器发送了application/json格式的数据</p>
+</li>
+</ul>
+<p><strong>5.jsonp来解决跨域</strong></p>
+<p><u>概念</u>：浏览器通过<script>标签的src属性向服务器请求数据，服务器返回一个函数的调用，这种方式就叫做JSONP</p>
+<p><u>特点</u>：</p>
+<p>①JSONP不属于Ajax请求，因为它没有使用XMLHttpRequest这个对象</p>
+<p>②JSONP仅支持GET请求，不支持PUT、DELETE、POST等请求</p>
+<h3 id="JWT（Json-Web-Token）身份认证"><a href="#JWT（Json-Web-Token）身份认证" class="headerlink" title="JWT（Json Web Token）身份认证"></a>JWT（Json Web Token）身份认证</h3><p><strong>1.组成部分</strong></p>
+<p>Payload：这才是真正的用户信息，它是由用户信息经过加密后字符串</p>
+<p>Header、Signature：只是为了保证Token的安全 </p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/blog/categories/Node-js/" class="category-chain-item">Node.js</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/blog/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/">#知识点</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Node.js知识点</div>
+      <div>https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2023/08/30/node-js/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Zhou Jie</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月30日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2023/08/30/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/" title="前端面试题(持续更新)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">前端面试题(持续更新)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2023/08/30/Vue3%E7%9B%B8%E5%AF%B9%E4%BA%8EVue2%E7%9A%84%E4%B8%8D%E5%90%8C%E7%94%A8%E6%B3%95/" title="Vue3相对于Vue2的不同用法">
+                        <span class="hidden-mobile">Vue3相对于Vue2的不同用法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script type="text/javascript">
+        var disqus_config = function() {
+          this.page.url = 'https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2023/08/30/node-js/';
+          this.page.identifier = '/blog/2023/08/30/node-js/';
+        };
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//' + 'fluid' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', new Date());
+          (d.head || d.body).appendChild(s);
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

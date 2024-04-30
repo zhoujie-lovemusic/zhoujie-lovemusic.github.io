@@ -1,0 +1,811 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/avatar2.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Zhou Jie">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="CSS盒子快速居中的方法（字节）123456789101112131415161718192021222324252627&#x2F;&#x2F;  方法太多，但是找个最快的方法，只需两步！！！&lt;head&gt;  &lt;style&gt;     .con&amp;#123;       width: 500px;       height: 200px;       background-color: aquam">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端高频面试题(进阶)">
+<meta property="og:url" content="https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/02/15/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E8%BF%9B%E9%98%B6/index.html">
+<meta property="og:site_name" content="Zhou Jie">
+<meta property="og:description" content="CSS盒子快速居中的方法（字节）123456789101112131415161718192021222324252627&#x2F;&#x2F;  方法太多，但是找个最快的方法，只需两步！！！&lt;head&gt;  &lt;style&gt;     .con&amp;#123;       width: 500px;       height: 200px;       background-color: aquam">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/blog/2024/02/15/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E8%BF%9B%E9%98%B6/%E6%89%8B%E5%86%99promise%E7%BB%93%E6%9E%9C.png">
+<meta property="og:image" content="https://github.com/blog/2024/02/15/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E8%BF%9B%E9%98%B6/%E6%80%A7%E8%83%BD%E4%BD%93%E7%B3%BB.png">
+<meta property="og:image" content="https://github.com/blog/2024/02/15/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E8%BF%9B%E9%98%B6/%E6%8A%80%E6%9C%AF%E6%96%B9%E6%A1%88.png">
+<meta property="og:image" content="https://github.com/blog/2024/02/15/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E8%BF%9B%E9%98%B6/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E4%B9%8B%E8%B7%AF.png">
+<meta property="og:image" content="https://github.com/blog/2024/02/15/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E8%BF%9B%E9%98%B6/%E5%A4%A7%E5%89%8D%E7%AB%AF%E6%97%B6%E4%BB%A3%E7%9A%84%E6%8A%80%E6%9C%AF%E5%9B%BE%E8%B0%B1.png">
+<meta property="og:image" content="https://github.com/blog/2024/02/15/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E8%BF%9B%E9%98%B6/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%89%8D%E6%B2%BF%E5%9C%B0%E8%96%AA%E8%B5%84.png">
+<meta property="article:published_time" content="2024-02-15T01:26:04.000Z">
+<meta property="article:modified_time" content="2024-04-01T03:41:22.081Z">
+<meta property="article:author" content="Zhou Jie">
+<meta property="article:tag" content="前端综合">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://github.com/blog/2024/02/15/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E8%BF%9B%E9%98%B6/%E6%89%8B%E5%86%99promise%E7%BB%93%E6%9E%9C.png">
+  
+  
+  
+  <title>前端高频面试题(进阶) - Zhou Jie</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"github.com","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Indispensible</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="前端高频面试题(进阶)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-02-15 09:26" pubdate>
+          2024年2月15日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          16k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          132 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">前端高频面试题(进阶)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h3 id="盒子快速居中的方法（字节）"><a href="#盒子快速居中的方法（字节）" class="headerlink" title="盒子快速居中的方法（字节）"></a>盒子快速居中的方法（字节）</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//  方法太多，但是找个最快的方法，只需两步！！！</span><br>&lt;head&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="language-css"><span class="language-xml">     <span class="hljs-selector-class">.con</span>&#123;</span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-attribute">width</span>: <span class="hljs-number">500px</span>;</span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;</span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-attribute">background-color</span>: aquamarine;</span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-attribute">margin</span>: auto;----------- 第二步</span></span><br><span class="language-css"><span class="language-xml">     &#125;</span></span><br><span class="language-css"><span class="language-xml">     <span class="hljs-comment">/* (1) 父元素要有长和宽，子元素才有空间水平和垂直居中，否则会自适应为子元素的长和宽，也是为了节省空间</span></span></span><br><span class="hljs-comment"><span class="language-css"><span class="language-xml">        (2) 浏览器屏幕不知道多大，只能用100%的写法</span></span></span><br><span class="hljs-comment"><span class="language-css"><span class="language-xml">        </span></span></span><br><span class="hljs-comment"><span class="language-css"><span class="language-xml">        (3) 在有空间并且在flex布局下，直接写margin:auto可以直接水平、垂直居中</span></span></span><br><span class="hljs-comment"><span class="language-css"><span class="language-xml">     */</span></span></span><br><span class="language-css"><span class="language-xml">     <span class="hljs-selector-tag">body</span>,<span class="hljs-selector-tag">html</span>&#123;</span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;</span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-attribute">display</span>: flex;-------------- 第一步</span></span><br><span class="language-css"><span class="language-xml">     &#125;</span></span><br><span class="language-css"><span class="language-xml">  </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br>&lt;/head&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;con&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>快速居中定位<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br>&lt;/html&gt;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>不推荐，父元素设置宽高100%都不行，必须要html、body同时设置，而且还要保证被居中的元素的父元素要和body一样大、或者没有父元素</p>
+</blockquote>
+<h3 id="padding和margin的区别（深信服、字节）"><a href="#padding和margin的区别（深信服、字节）" class="headerlink" title="padding和margin的区别（深信服、字节）"></a>padding和margin的区别（深信服、字节）</h3><p>在于作用的对象不同，前者作用域自身，后者作用于外部对象（为什么答这一点？找到最容易混淆的、面试官最想听到的，不要说定义这种废话）</p>
+<h3 id="vm和百分比的区别（字节）"><a href="#vm和百分比的区别（字节）" class="headerlink" title="vm和百分比的区别（字节）"></a>vm和百分比的区别（字节）</h3><p>前者有继承关系（针对父元素），后者只和设备的屏幕有关系</p>
+<h3 id="行内和块级元素（字节）"><a href="#行内和块级元素（字节）" class="headerlink" title="行内和块级元素（字节）"></a>行内和块级元素（字节）</h3><p>前者 大小（宽和高） 由 内容 决定，后者 宽度（因为是块级，管不到高度） 有继承关系（不设置看父元素，就是往外撑大）</p>
+<h3 id="如何让谷歌浏览器支持小字体（字节）"><a href="#如何让谷歌浏览器支持小字体（字节）" class="headerlink" title="如何让谷歌浏览器支持小字体（字节）"></a>如何让谷歌浏览器支持小字体（字节）</h3><p>由于谷歌浏览器字体默认最小12px，想要更小，就要使用缩放</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css">// 为了兼容所有浏览器，都要设置一遍，上面是 WebKit 内核浏览器，下面是现代所有浏览器的，弥补下其他浏览器<br>-web-<span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scale</span>(<span class="hljs-number">0.5</span>)<br>transform: <span class="hljs-built_in">scale</span>(<span class="hljs-number">0.5</span>)<br></code></pre></td></tr></table></figure>
+
+<h1 id="Js"><a href="#Js" class="headerlink" title="Js"></a>Js</h1><h3 id="var和let（字节）"><a href="#var和let（字节）" class="headerlink" title="var和let（字节）"></a>var和let（字节）</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 1. var有声明提升---先上车后补票</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a) <span class="hljs-comment">// undefined</span><br><span class="hljs-keyword">var</span> a = <span class="hljs-string">&#x27;Jace Zhou&#x27;</span><br><br><span class="hljs-comment">// 2.var有声明覆盖---套牌车</span><br><span class="hljs-keyword">var</span> name2 = <span class="hljs-string">&#x27;2&#x27;</span><br><span class="hljs-keyword">var</span> name2 = <span class="hljs-string">&#x27;3&#x27;</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(name2) <span class="hljs-comment">// 3</span><br><br><span class="hljs-comment">// 3.var没有局部作用域---红杏出墙</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">fun2</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) &#123;<br>    <br>  &#125;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i) <span class="hljs-comment">// 5</span><br>&#125;<br>----------------------------以后都要用<span class="hljs-keyword">let</span>，<span class="hljs-keyword">let</span>可以解决上面所有的问题<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>思路：全局-&gt;局部，都是有关声明</p>
+</blockquote>
+<h3 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 基本数据类型，只有赋值，严格上；来说没有拷贝概念，要说也是 深拷贝(互不打扰)</span><br><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span><br><span class="hljs-keyword">let</span> b = a<br>b = <span class="hljs-number">2</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a,b)<span class="hljs-comment">// 1,2</span><br><br><span class="hljs-comment">// 数组和对象都是浅拷贝(藕断丝连)</span><br><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br><span class="hljs-keyword">let</span> arrNew = arr<br>arrNew.<span class="hljs-title function_">push</span>(<span class="hljs-number">4</span>)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr,arrNew)<span class="hljs-comment">// 都是[1,2,3,4]</span><br><br><span class="hljs-comment">// 配合解构赋值，解构赋值是一维的深拷贝，多维就是浅拷贝---因为多维内层地址是一样的</span><br><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br><span class="hljs-keyword">let</span> arrNew = [...arr]<br>arrNew[<span class="hljs-number">0</span>].<span class="hljs-title function_">push</span>(<span class="hljs-number">4</span>)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr,arrNew)<span class="hljs-comment">// 123; 1234</span><br><br><span class="hljs-keyword">let</span> arr = [[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>],[<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>]]<br><span class="hljs-keyword">let</span> arrNew = [...arr]<br>arrNew[<span class="hljs-number">0</span>].<span class="hljs-title function_">push</span>(<span class="hljs-number">7</span>)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr,arrNew)<span class="hljs-comment">// 都是 1,2,3,4,5,6,7</span><br><br><span class="hljs-comment">// 引用类型的深拷贝如何使用？</span><br><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br><span class="hljs-keyword">let</span> arrNew = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(arr)) <span class="hljs-comment">// 能解决80%的深拷贝，而且JSON方法还有这个好处：原来是什么结构(这里是数组)，转换后还是什么结构,这也是为什么叫拷贝了</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arrNew);<br><br>  <span class="hljs-comment">// 剩下20%指的是 函数类型 无法拷贝，因为JSON只能处理纯数据的，包含逻辑的无法处理</span><br>  <span class="hljs-comment">// 如何手写深拷贝数据 ----------- 针对引用数据类型</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">deepClone</span>(<span class="hljs-params">source</span>)&#123;<br>  <span class="hljs-keyword">const</span> targetObject = source.<span class="hljs-property">constructor</span> === <span class="hljs-title class_">Array</span> ? [] : &#123;&#125;<br>  <span class="hljs-comment">// in 可以搞数组也可以搞对象</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> keys <span class="hljs-keyword">in</span> source) &#123;<br>    <span class="hljs-comment">// 这里还要判断是不是自己的属性是因为只要拷贝自身属性,而不要原型上的</span><br>    <span class="hljs-keyword">if</span> (source.<span class="hljs-title function_">hasOwnProperty</span>(keys)) &#123;<br>      <span class="hljs-comment">// source[keys] 不管是对象还是数组都是可以通过[key]获取值的</span><br>      <span class="hljs-keyword">if</span> (source[keys] &amp;&amp; <span class="hljs-keyword">typeof</span> source[keys] === <span class="hljs-string">&#x27;object&#x27;</span>) &#123; <br>          targetObject[keys] = <span class="hljs-title function_">deepClone</span>(source[keys])<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>          targetObject[keys] = source[keys]<br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> targetObject<br>&#125;<br><br><span class="hljs-comment">// 阿里三层代码文化：</span><br><span class="hljs-number">1.</span>运行代码 -- 能用就行<br><span class="hljs-number">2.</span>容错代码 -- 有健壮性<br><span class="hljs-number">3.</span>维护型代码 -- 方便维护<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>最不缺的就是Vue工程师，如何增加竞争力？React、node、数据结构与算法、工程化、浏览器</p>
+</blockquote>
+<h3 id="this指向"><a href="#this指向" class="headerlink" title="this指向"></a>this指向</h3><blockquote>
+<p>复习+查漏补缺</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// (1)普通this，指向上一层的调用者，可以结合看当前的在哪个作用域</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">fun</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>) <br>&#125;<br><span class="hljs-title function_">fun</span>()-------------- <span class="hljs-variable language_">window</span>，因为<span class="hljs-title function_">fun</span>()=&gt;<span class="hljs-variable language_">window</span>.<span class="hljs-title function_">fun</span>()<br><br><span class="hljs-keyword">let</span> obj = &#123;<br>    <span class="hljs-attr">a</span>:<span class="hljs-number">1</span>,<br>    <span class="hljs-attr">b</span>:&#123;<br>        <span class="hljs-attr">fun</span>:<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>)<br>        &#125;<br>    &#125;<br>&#125;<br>obj.<span class="hljs-property">b</span>.<span class="hljs-title function_">fun</span>()-----------------b，永远指向上一层的调用者，可以结合看当前的在哪个作用域<br><br><span class="hljs-comment">// (2)箭头函数，没有当前箭头函数的作用域和this，始终指向 函数声明时 所在作用于下的this的值，即忽略本该有的作用域和this，往外去找！  -------这里 函数声明时 所在作用于下的this的值会往外去找：window</span><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">fun</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">()=&gt;</span>&#123;<br>       <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">a</span>)<br>    &#125;,<span class="hljs-number">500</span>)<br>&#125;<br><span class="hljs-title function_">fun</span>(&#123;<span class="hljs-attr">a</span>:<span class="hljs-number">2</span>&#125;) ------------------ <span class="hljs-number">1</span>，不看当前箭头函数的作用域，往外一层看<br><span class="hljs-comment">// (3)注意！外面要用var定义，不能用let定义！因为let定义的是块级作用域，只供它后面代码直接使用，而全局作用域只能是var定义的，往外找的也是全局作用域的值！------------ 不太对，暂时还是默认let和var是一样的全局作用域，虽然不知为什么用let定义是打印undefined</span><br><br><span class="hljs-comment">// (4)如何改变this指向？call、apply、bind</span><br>fun.<span class="hljs-title function_">call</span>(&#123;<span class="hljs-attr">a</span>:<span class="hljs-number">2</span>&#125;)<span class="hljs-comment">// -------2 将fun交给&#123;a:2&#125;这个对象</span><br><br><span class="hljs-comment">// (5)call、apply、bind的区别？</span><br>call---&gt;参数是对象，apply---&gt;参数是数组<br>call、apply改变<span class="hljs-variable language_">this</span>指向之后还会调用一次函数，而bind只会改变<span class="hljs-variable language_">this</span>指向不会调用函数<br></code></pre></td></tr></table></figure>
+
+<h3 id="new关键字"><a href="#new关键字" class="headerlink" title="new关键字"></a>new关键字</h3><p><strong>new的一瞬间做了什么？let person = new Person()</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// (1)创建一个空对象（初始化备用对象）</span><br><span class="hljs-keyword">let</span> obj = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>()<br><span class="hljs-comment">// (2)设置原型（有通道拿到你所有的数据）</span><br>obj.<span class="hljs-property">_proto_</span> = <span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span><br><span class="hljs-comment">// (3)更改this指向（供别人调用）</span><br><span class="hljs-keyword">let</span> result = <span class="hljs-title class_">Person</span>.<span class="hljs-title function_">call</span>(obj)————————<span class="hljs-title class_">Person</span>在改变指向之后会执行函数，又因为是构造函数，会返回一个新创建的对象（和obj类似，obj是备用的）<br><span class="hljs-comment">// (4)判断返回值类型</span><br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> (result) == <span class="hljs-string">&#x27;object&#x27;</span>)&#123;<br>      person = result <br>&#125;<span class="hljs-keyword">else</span>&#123;<br>      person = obj<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>补充知识点：只有用new关键字的函数名，这时这个函数才是一个构造函数</p>
+</blockquote>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p><strong>let obj1 = Object.create(null)和let obj2 = {}有什么区别？</strong></p>
+<blockquote>
+<p>结果都是一个空对象，只是前者没有原形链，后者有。</p>
+<p>如何区分使用场景？如果不需要用到原形链上的数据，就第一种，比如在for循环中 第二种还会遍历原型上的数据，效率会低下</p>
+</blockquote>
+<h3 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h3><p><strong>如何实现一个事件委托？</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;ul id=<span class="hljs-string">&quot;ul&quot;</span>&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>4<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>5<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br>&lt;/ul&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>点击添加li<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-comment">//  将li委托到ul上，由于ul是包含li的，因为点击li就等于点击ul，就能触发事件</span></span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-keyword">let</span> ul = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;ul&#x27;</span>)</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-comment">// event是当前事件的对象</span></span></span><br><span class="language-javascript"><span class="language-xml">  ul.<span class="hljs-property">onclick</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>)&#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">// 此event就是可以获取ul上的属性</span></span></span><br><span class="language-javascript"><span class="language-xml">    event = event || <span class="hljs-variable language_">window</span>.<span class="hljs-property">event</span> <span class="hljs-comment">// 旧版浏览器是window.event，为了兼容</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">let</span> target = event.<span class="hljs-property">target</span> <span class="hljs-comment">// target为目标节点</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">// nodeName就是目标节点的节点类型，这里是li，默认必须要是大写</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">if</span>(target.<span class="hljs-property">nodeName</span> == <span class="hljs-string">&#x27;LI&#x27;</span>)&#123;</span></span><br><span class="language-javascript"><span class="language-xml">       <span class="hljs-title function_">alert</span>(target.<span class="hljs-property">innerHTML</span>)</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-comment">// 按钮动态添加li，还能够触发</span></span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-keyword">let</span> btn = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;btn&#x27;</span>)</span></span><br><span class="language-javascript"><span class="language-xml">  btn.<span class="hljs-property">onclick</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;</span></span><br><span class="language-javascript"><span class="language-xml">     <span class="hljs-keyword">let</span> li = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;li&#x27;</span>)</span></span><br><span class="language-javascript"><span class="language-xml">     li.<span class="hljs-property">textContent</span> = ul.<span class="hljs-property">children</span>.<span class="hljs-property">length</span></span></span><br><span class="language-javascript"><span class="language-xml">     ul.<span class="hljs-title function_">appendChild</span>(li)</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p><strong>事件委托的好处（为什么要用事件委托）？</strong></p>
+<ul>
+<li>减少绑定次数，提高了性能</li>
+<li>可处理动态元素（添加和删除），方便管理和维护</li>
+</ul>
+<h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h3><p><strong>概念+用法</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 以送女朋友礼物为例</span><br>      <span class="hljs-keyword">let</span> isRemember = <span class="hljs-literal">true</span><br>      <span class="hljs-keyword">let</span> birthGift = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>)=&gt;</span>&#123; <span class="hljs-comment">// 一开始new Promise就是提供resolve,reject处理异步问题</span><br>        <span class="hljs-keyword">if</span>(isRemember)&#123;<br>             <span class="hljs-keyword">let</span> lvBag = &#123;<br>                <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;gold&#x27;</span>,<br>                <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;$999&#x27;</span><br>             &#125;<br>             <span class="hljs-title function_">resolve</span>(lvBag)<br>          &#125;<span class="hljs-keyword">else</span>&#123;<br>             <span class="hljs-keyword">let</span> err = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;加班去了，忘了！&#x27;</span>)<br>             <span class="hljs-title function_">reject</span>(err)<br>          &#125;<br>      &#125;)<br>      <span class="hljs-comment">// 普通调用</span><br>      <span class="hljs-comment">// function fn() &#123;</span><br>      <span class="hljs-comment">//   birthGift</span><br>      <span class="hljs-comment">//   .then((fullfilled)=&gt;&#123;</span><br>      <span class="hljs-comment">//      console.log(fullfilled);</span><br>      <span class="hljs-comment">//   &#125;)</span><br>      <span class="hljs-comment">//   .catch((rejected)=&gt;&#123;</span><br>      <span class="hljs-comment">//      console.log(rejected);</span><br>      <span class="hljs-comment">//   &#125;)</span><br>      <span class="hljs-comment">// &#125;</span><br>      <span class="hljs-comment">// fn()</span><br><br>      <span class="hljs-comment">// 链式调用,如果原本then的回调返回的也是promise，那么可以继续then，承上启下</span><br>      <span class="hljs-keyword">let</span> <span class="hljs-title function_">supplyGift</span> = (<span class="hljs-params">lv</span>) =&gt; &#123;<br>          <span class="hljs-keyword">let</span> lip = &#123;<br>             <span class="hljs-attr">color</span>:<span class="hljs-string">&#x27;red&#x27;</span>,<br>             <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;$888&#x27;</span><br>          &#125;<br>          <span class="hljs-comment">// 整合作为最后的数据给他人使用</span><br>          <span class="hljs-keyword">let</span> msg = &#123;<br>             lv,<br>             lip,<br>             <span class="hljs-attr">msg</span>:<span class="hljs-string">`将收到包包颜色: <span class="hljs-subst">$&#123;lv.color&#125;</span>, 口红颜色: <span class="hljs-subst">$&#123;lip.color&#125;</span>`</span><br>          &#125;<br>          <span class="hljs-comment">// resolve是promise的静态方法，不需要new</span><br>          <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>(msg)<br>      &#125;<br>      <span class="hljs-keyword">function</span> <span class="hljs-title function_">fn</span>(<span class="hljs-params"></span>) &#123;<br>        birthGift<br>        .<span class="hljs-title function_">then</span>(supplyGift)<br>        .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">fullfilled</span>)=&gt;</span>&#123;<br>           <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(fullfilled);<br>        &#125;)<br>        .<span class="hljs-title function_">catch</span>(<span class="hljs-function">(<span class="hljs-params">rejected</span>)=&gt;</span>&#123;<br>           <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(rejected.<span class="hljs-property">message</span>);<br>        &#125;)<br>      &#125;<br>      <span class="hljs-title function_">fn</span>()<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>下面是关于promise的一些自己的思考：</p>
+<p>（1）到底什么是异步？</p>
+<p>简单来说就是 不会因为要执行当前的任务 而暂时阻塞影响到下面任务的执行</p>
+<p>（2）异步是怎么实现的？</p>
+<p>通过事件循环机制：碰到异步操作先放入队列中，先继续执行主线程代码，主线程代码执行完毕之后，再从队列中拿异步操作出来执行，所以说异步并不是说和主线程代码同步执行，而是先执行同步代码，再执行异步代码。</p>
+<p>（3）事件循环机制处理的对象包括哪些，它们的顺序是什么？</p>
+<p>包括 宏任务和微任务。</p>
+<p>宏任务：定时器、IO操作（后端特有）、网络请求、setImmediate(后端特有）、requestAnimationFrame（用于浏览器执行下一帧动画的函数） ————– 耗时的操作</p>
+<p>微任务：promise().then、process.nextTick（后端特有） ————–紧急的操作</p>
+<p>执行顺序：第一个宏任务（主线程）-&gt;微任务-&gt;宏任务</p>
+<p>（4）可以说说setImmediate于setTimeout的区别吗？</p>
+<p>setImmediate中的Immediate是立刻的意思，但是并不是说setImmediate比定时器限制性，相反定时器是在事件循环的第一个阶段：timers阶段，而setImmediate是在事件循环的最后阶段：check阶段，一般来说是 定时器（时间设置为0的话）比setImmediate先执行，但是 可能在timers阶段用来处理定时器的线程不够了，定时器未能及时执行，此时就可以 使用setImmediate在后面的check帮它执行</p>
+<p>（5）宏任务和微任务是前端和后端都有的概念吗？为什么你这里标注了有些是后端特有的？</p>
+<p>因为，前端浏览器的事件循环机制和Nodejs事件循环机制是不同的，不是一个东西，但是概念类似，也都有宏任务和微任务的概念，只是处理的任务不同，浏览器的事件循环机制是一般处理网络请求等，而后端处理io操作等；</p>
+<p>（6）回到promise，从基本使用来看，promise其实也就是在做一个数据传递的工作，那为什么还要用promise？</p>
+<p>因为异步操作的数据返回的时间是不定的，而promise它是解决异步操作的优雅的解决方案。哪里体现优雅了？最优雅的是 写法上不用像以前的回调地狱那样代码冗长、可读性差；相反，promise的then方法易于理解、可读性强。</p>
+<p>（7）为什么then方法里面的参数是一个函数，而不直接通过then的返回值获取数据？</p>
+<p>既然要获取返回的数据，那肯定是要对数据进行处理的，而不是简单返回，如果设计成let result = then()，还要在外面写数据处理的逻辑，那直接在then函数的参数里面 1）接收数据 2）对数据进行处理 3）数据来了，函数还能自动执行，那不是一举三得？这个也是回调函数的优点。</p>
+<p>（8）在底层then方法的回调函数是什么时候添加的，又是什么时候调用的？是调用then方法的时候调用的吗？</p>
+<p>不是，看似是调用then方法时调用的，其实是在 then方法实现中 添加，而在resolve/reject方法中 调用的，为什么？我们的需求是 要在状态改变（pending-&gt;fullfiled、pending-&gt;rejected）时，调用回调函数，最源头来看，什么时候状态改变？就是调用resolve/reject时；为什么 在 then方法实现中 添加？因为then方法在调用时 回调函数的声明才传进来，这里是最先接触到回调函数的，一传进来就立马缓存下来。</p>
+<p><u>思路:</u> 异步概念-&gt;如何实现异步，涉及到事件循环机制-&gt;事件循环机制有什么，如何运作-&gt;回到promise</p>
+</blockquote>
+<p><strong>手写一个promise（美团、字节）</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">myPromise</span>(<span class="hljs-params">excutor</span>) &#123;<br>          <span class="hljs-comment">// 1.Promise构造函数的基本结构(变量和函数)</span><br>          <span class="hljs-keyword">let</span> self = <span class="hljs-variable language_">this</span> <span class="hljs-comment">// self便于理解</span><br>          self.<span class="hljs-property">status</span> = <span class="hljs-string">&#x27;pending&#x27;</span><br>          <span class="hljs-comment">// resolve,reject函数传递数据后的缓存</span><br>          self.<span class="hljs-property">value</span> = <span class="hljs-string">&#x27;&#x27;</span><br>          self.<span class="hljs-property">reason</span> = <span class="hljs-string">&#x27;&#x27;</span><br>          <span class="hljs-comment">// 添加缓存数组</span><br>          self.<span class="hljs-property">fullfilledCallbacks</span> = []<br>          self.<span class="hljs-property">rejectedCallbacks</span> = []<br><br>          <span class="hljs-comment">// 4.开始处理resolve、reject，需要这两函数传值</span><br>          <span class="hljs-keyword">function</span> <span class="hljs-title function_">resolve</span>(<span class="hljs-params">value</span>)&#123;<br>              <span class="hljs-comment">// 需要判断是pendning，因为操作是不可逆的，只能从pending-&gt;fullfilled</span><br>              <span class="hljs-keyword">if</span>(self.<span class="hljs-property">status</span> == <span class="hljs-string">&#x27;pending&#x27;</span>)&#123;<br>                <span class="hljs-comment">// 缓存值(后面会用到)，更改状态</span><br>                 self.<span class="hljs-property">value</span> = value<br>                 self.<span class="hljs-property">status</span> = <span class="hljs-string">&#x27;fullfilled&#x27;</span><br><br>                <span class="hljs-comment">// 7.状态改变时调用回调(仅调用，这时还没有链式串起来)</span><br>                self.<span class="hljs-property">fullfilledCallbacks</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">callback</span>) =&gt;</span> <span class="hljs-title function_">callback</span>(value))<br>              &#125;<br>          &#125;<br><br>          <span class="hljs-keyword">function</span> <span class="hljs-title function_">reject</span>(<span class="hljs-params">reason</span>) &#123;<br>            <span class="hljs-keyword">if</span>(self.<span class="hljs-property">status</span> == <span class="hljs-string">&#x27;pending&#x27;</span>)&#123;<br>                <span class="hljs-comment">// 缓存值，更改状态</span><br>                 self.<span class="hljs-property">reason</span> = reason<br>                 self.<span class="hljs-property">status</span> = <span class="hljs-string">&#x27;rejected&#x27;</span><br><br>                 self.<span class="hljs-property">rejectedCallbacks</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">callback</span>) =&gt;</span> <span class="hljs-title function_">callback</span>(reason))<br>              &#125;<br>          &#125;<br><br>          self.<span class="hljs-property">resolve</span> = resolve<br>          self.<span class="hljs-property">reject</span> = reject<br><br>          <span class="hljs-comment">// excutor是一个函数，它有两个函数参数resolve,reject，用于控制状态</span><br>          <span class="hljs-comment">// 在这里要立即执行，以便执行传入Promise的回调</span><br>          <span class="hljs-keyword">try</span> &#123;<br>              <span class="hljs-title function_">excutor</span>(resolve,reject)<br>          &#125; <span class="hljs-keyword">catch</span> (error) &#123;<br>            <span class="hljs-comment">// 有错误刚好利用自带的处理错误的函数，返回给回调函数</span><br>              <span class="hljs-title function_">reject</span>(error)<br>          &#125;<br>      &#125;<br><br>      <span class="hljs-comment">// 2.不管什么状态，都可以通过then方法来获取结果，即then方法是所有promise实例必须有的，可以放入原型中</span><br>      myPromise.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">then</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">onFullFilled,onRejected</span>) &#123;<br>        <span class="hljs-keyword">let</span> self = <span class="hljs-variable language_">this</span><br>        <span class="hljs-comment">// 5.要处理传过来的resolve、reject，是就用，不是就继续resolve、reject给下一次执行回调</span><br>         onFullFilled = <span class="hljs-keyword">typeof</span> onFullFilled === <span class="hljs-string">&#x27;function&#x27;</span> ?<br>        <span class="hljs-comment">//  5.1 不是函数的情况写的有点粗糙，运行有点问题:undefined，但是这不是重点，重点是知道会传给下一次就行了</span><br>         onFullFilled : <span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)&#123; self.<span class="hljs-title function_">resolve</span>(data) &#125;<br>         onRejected = <span class="hljs-keyword">typeof</span> onRejected === <span class="hljs-string">&#x27;function&#x27;</span> ?<br>         onRejected : <span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)&#123; self.<span class="hljs-title function_">reject</span>(data) &#125;<br><br>        <span class="hljs-comment">// 6.将回调缓存 1.0版本，不能支持链式调用，因为没有返回Promise对象，因为只有返回Promise对象才能调用then</span><br>        <span class="hljs-comment">//  let self = this</span><br>        <span class="hljs-comment">//  if(self.status == &#x27;pending&#x27;)&#123;</span><br>        <span class="hljs-comment">//     self.fullfilledCallbacks.push(onFullFilled)</span><br>        <span class="hljs-comment">//     self.rejectedCallbacks.push(onRejected)</span><br>        <span class="hljs-comment">//  &#125;</span><br>        <span class="hljs-comment">// 9.下面是2.0版本，加了链式调用判断，若不需链式调用，直接resolve(x)执行函数</span><br>        <span class="hljs-comment">// 为什么又要重新定义self?上面的用不了?</span><br>        <span class="hljs-keyword">if</span>(self.<span class="hljs-property">status</span> === <span class="hljs-string">&#x27;fullfilled&#x27;</span>)&#123;<br>          <span class="hljs-comment">// 9.1返回Promise是为了链式调用</span><br>          <span class="hljs-comment">// 9.2为什么是返回new myPromise而不是Promise?</span><br>          <span class="hljs-comment">// 现在都是自己手写Promise源码，你这调用现成的还算什么手写promise</span><br>           <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title function_">myPromise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>)=&gt;</span>&#123;<br>               <span class="hljs-keyword">try</span> &#123;<br>                  <span class="hljs-keyword">let</span> x = <span class="hljs-title function_">onFullFilled</span>(self.<span class="hljs-property">value</span>)<br>                  x <span class="hljs-keyword">instanceof</span> myPromise ? x.<span class="hljs-title function_">then</span>(resolve,reject) : <span class="hljs-title function_">resolve</span>(x)<span class="hljs-comment">// 注意传的是x，而不是self.value</span><br>               &#125; <span class="hljs-keyword">catch</span> (error) &#123;<br>                  <span class="hljs-title function_">reject</span>(error)<br>               &#125;<br><br>           &#125;)<br>        &#125;<br><br>        <span class="hljs-keyword">if</span>(self.<span class="hljs-property">status</span> === <span class="hljs-string">&#x27;rejected&#x27;</span>)&#123;<br>           <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title function_">myPromise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>)=&gt;</span>&#123;<br>              <span class="hljs-keyword">try</span> &#123;<br>                <span class="hljs-keyword">let</span> x = <span class="hljs-title function_">onRejected</span>(self.<span class="hljs-property">reason</span>)<br>                x <span class="hljs-keyword">instanceof</span> myPromise ? x.<span class="hljs-title function_">then</span>(resolve,reject) : <span class="hljs-title function_">resolve</span>(x)<br>              &#125; <span class="hljs-keyword">catch</span> (error) &#123;<br>                <span class="hljs-title function_">reject</span>(error)<br>              &#125;<br>           &#125;)<br>        &#125;<br><br>        <span class="hljs-keyword">if</span>(self.<span class="hljs-property">status</span> === <span class="hljs-string">&#x27;pending&#x27;</span>)&#123;<br>          <span class="hljs-comment">// 9.3为什么pending还要加Promise?因为可能是第一次调用这时状态没有变化，但是后续可能会链式调用</span><br>           <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title function_">myPromise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>)=&gt;</span>&#123;<br>              <span class="hljs-comment">// 9.4为什么这里push里面不是直接传onFullFilled?</span><br>              <span class="hljs-comment">// 因为要根据判断是否链式调用，直接传onFullFilled就是直接执行，没有链式调用的</span><br>               self.<span class="hljs-property">fullfilledCallbacks</span>.<span class="hljs-title function_">push</span>(<span class="hljs-function">()=&gt;</span>&#123;<br>                  <span class="hljs-keyword">let</span> x = <span class="hljs-title function_">onFullFilled</span>(self.<span class="hljs-property">value</span>)<br>                  x <span class="hljs-keyword">instanceof</span> myPromise ? x.<span class="hljs-title function_">then</span>(resolve,reject) : <span class="hljs-title function_">resolve</span>(x)<br>               &#125;)<br><br>               self.<span class="hljs-property">rejectedCallbacks</span>.<span class="hljs-title function_">push</span>(<span class="hljs-function">()=&gt;</span>&#123;<br>                  <span class="hljs-keyword">let</span> x = <span class="hljs-title function_">onRejected</span>(self.<span class="hljs-property">reason</span>)<br>                  x <span class="hljs-keyword">instanceof</span> myPromise ? x.<span class="hljs-title function_">then</span>(resolve,reject) : <span class="hljs-title function_">reject</span>(x)<br>               &#125;)<br>           &#125;)<br>        &#125;<br><br>        <span class="hljs-comment">/**</span><br><span class="hljs-comment">         * 为什么三种状态都要进行判断?</span><br><span class="hljs-comment">         * 因为无论是第一次还是后续链式调用传过来的函数可能返回Promise可能不反回，这个说不准</span><br><span class="hljs-comment">         * 因此每次都要判断是否继续链式调用</span><br><span class="hljs-comment">         * */</span>  <br><br>      &#125;<br><br>      myPromise.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">catch</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">fn</span>)&#123;<br>        <span class="hljs-comment">// 10.直接用then方法，因为then里面有对rejected状态的处理</span><br>        <span class="hljs-comment">// 10.1 就这么记忆:原型上的函数的this是可以追踪到构造函数的</span><br>         <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">then</span>(<span class="hljs-literal">null</span>,fn)<br>      &#125;<br><br>      <span class="hljs-comment">// 3.无法执行?在构造函数添加excutor来立即执行</span><br>      <span class="hljs-keyword">let</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-title function_">myPromise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>)=&gt;</span>&#123;<br>         <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;测试数据&#x27;</span>);<br><br>          <span class="hljs-comment">//  8.验证: 处理异步操作</span><br>          <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">()=&gt;</span>&#123;<br>              <span class="hljs-title function_">resolve</span>(<span class="hljs-number">99</span>)<br>          &#125;,<span class="hljs-number">2000</span>)<br>      &#125;)<br>      <span class="hljs-comment">// p1.then((data)=&gt;&#123;console.log(data);&#125;)</span><br>      p1.<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">data1</span>)=&gt;</span>&#123;  <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>(&#123;<span class="hljs-attr">data1</span>:data1,<span class="hljs-attr">data2</span>:<span class="hljs-string">&#x27;链式数据&#x27;</span>&#125;)&#125;).<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">dataTotal</span>)=&gt;</span>&#123;<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(dataTotal);&#125;)<br></code></pre></td></tr></table></figure>
+
+<p><img src="/blog/2024/02/15/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E8%BF%9B%E9%98%B6/%E6%89%8B%E5%86%99promise%E7%BB%93%E6%9E%9C.png" srcset="/blog/img/loading.gif" lazyload alt="结果"></p>
+<h1 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h1><h3 id="从哪方面可以性能优化？"><a href="#从哪方面可以性能优化？" class="headerlink" title="从哪方面可以性能优化？"></a>从哪方面可以性能优化？</h3><ul>
+<li>加载<ol>
+<li>使用CDN加载静态资源（CDN会将资源缓存在各个服务器中，获取资源时会寻找最近的服务器节点）</li>
+<li>减小文件大小（webpack等工具进行压缩，比如去除空格换行）</li>
+<li>减少http请求（精灵图的图片合并、文件合并等）</li>
+<li>SSR服务端渲染</li>
+<li>懒加载</li>
+</ol>
+</li>
+<li>减少DOM操作，减少回流和重绘、文档碎片（一个临时文档，可以把所有文档操作添加入文档碎片，最后合并到文档中，只会有一次回流和重绘）</li>
+</ul>
+<p><img src="/blog/2024/02/15/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E8%BF%9B%E9%98%B6/%E6%80%A7%E8%83%BD%E4%BD%93%E7%B3%BB.png" srcset="/blog/img/loading.gif" lazyload alt="性能体系"></p>
+<p><img src="/blog/2024/02/15/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E8%BF%9B%E9%98%B6/%E6%8A%80%E6%9C%AF%E6%96%B9%E6%A1%88.png" srcset="/blog/img/loading.gif" lazyload alt="技术方案"></p>
+<h3 id="懒加载原理"><a href="#懒加载原理" class="headerlink" title="懒加载原理"></a>懒加载原理</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;style&gt;<br>    <span class="hljs-comment">/* 图片一定要设置宽和高，否则图片会变形、布局会混乱，导致一些意外的问题 */</span><br>     img&#123;<br>       <span class="hljs-attr">width</span>: 400px;<br>       <span class="hljs-attr">height</span>: 400px;<br>       <span class="hljs-attr">display</span>: block;<br>       margin-<span class="hljs-attr">bottom</span>: 50px;<br>     &#125;<br>  &lt;/style&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>   &lt;img src=&quot;./images/loading.gif&quot; data-src=&quot;./images/perf.png&quot;&gt;<br>   &lt;img src=&quot;./images/loading.gif&quot; data-src=&quot;./images/tech.png&quot;&gt;<br>   &lt;img src=&quot;./images/loading.gif&quot; data-src=&quot;./images/jechen.png&quot;&gt;<br>   &lt;img src=&quot;./images/loading.gif&quot; data-src=&quot;./images/web Worker.png&quot;&gt;<br><br>   &lt;script&gt;<br>      let num = document.getElementsByTagName(&quot;img&quot;).length // 4<br>      let img = document.getElementsByTagName(&quot;img&quot;) // 4个节点<br>      let n = 0 // 用于防止下次加载再次重新加载<br> <br>      lazyLoad()<br>      window.onscroll = lazyLoad<br><br>      function lazyLoad()&#123;<br>         let seeHeight = document.documentElement.clientHeight // 可视高度(屏幕高度)<br>         let scrollTop = document.documentElement.scrollTop || document.body.scrollTop // 滚动条上面空隙高度(为了加载下面的图片)<br>         for(let i = n;i&lt;num;i++)&#123;<br>           if(img[i].offsetTop &lt; (seeHeight + scrollTop))&#123;<br>              if(img[i].getAttribute(&quot;src&quot;) == &quot;./images/loading.gif&quot;)&#123;<br>                 img[i].src = img[i].getAttribute(&quot;data-src&quot;)<br>              &#125;<br>              n = i+1; // 防止下次重复加载<br>           &#125;<br>         &#125;<br>      &#125;<br>   &lt;/script&gt; <br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>下面贴一张前端工程师的发展之路：</p>
+<p><img src="/blog/2024/02/15/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E8%BF%9B%E9%98%B6/%E5%89%8D%E7%AB%AF%E5%8F%91%E5%B1%95%E4%B9%8B%E8%B7%AF.png" srcset="/blog/img/loading.gif" lazyload alt="前端发展之路"></p>
+<p>第一年：10k，第二年15k，第三年18k，第五年20k </p>
+<p>（工作年限是参考，关键还得看你的技术，进门容易，进阶难）</p>
+<p><img src="/blog/2024/02/15/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E8%BF%9B%E9%98%B6/%E5%A4%A7%E5%89%8D%E7%AB%AF%E6%97%B6%E4%BB%A3%E7%9A%84%E6%8A%80%E6%9C%AF%E5%9B%BE%E8%B0%B1.png" srcset="/blog/img/loading.gif" lazyload alt="大前端时代的技术图谱"></p>
+<p>其中，5、6是加分项，大厂必备。若果能把这6项都搞懂了，至少20k以上</p>
+<p><img src="/blog/2024/02/15/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E8%BF%9B%E9%98%B6/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%89%8D%E6%B2%BF%E5%9C%B0%E8%96%AA%E8%B5%84.png" srcset="/blog/img/loading.gif" lazyload alt="程序员前言阵地"></p>
+<p>大佬对于跳槽的看法：如果 跳槽后在试用期的工资 = 前一家公司的全薪，再跳，否则划不来（涨一两千）</p>
+</blockquote>
+<h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><h3 id="Vue底层原理"><a href="#Vue底层原理" class="headerlink" title="Vue底层原理"></a>Vue底层原理</h3><p><strong>前后端分离的根本原因是什么？</strong></p>
+<p>因为MVVM模式中的VM（viewmodel），即视图模型，它相当于MVC模式的C-controller，可以临时存放数据了，不完全依赖后端了（数据只能传给后端），这时才有了前后端分离。</p>
+<p><strong>Vue的历史？</strong></p>
+<blockquote>
+<p>Vue1.0版本：</p>
+<p>此时没有虚拟DOM，每个数据都有一个watcher</p>
+<p>优点：一对一更新，效率高，不需要中间步骤</p>
+<p>缺点：更新节点太多时，会大量操作DOM，违背数据驱动初心</p>
+<p>Vue2.0版本：</p>
+<p>引入了虚拟DOM的概念</p>
+</blockquote>
+<p><strong>v-model的实现原理？</strong></p>
+<p>事件绑定+数据劫持</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;input type=<span class="hljs-string">&quot;text&quot;</span> id=<span class="hljs-string">&quot;input&quot;</span>&gt;<br>&lt;br&gt;<br>内容: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;span&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-keyword">let</span> obj = &#123;&#125;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-comment">// 数据劫持</span></span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(obj,<span class="hljs-string">&#x27;username&#x27;</span>,&#123;</span></span><br><span class="language-javascript"><span class="language-xml">     <span class="hljs-title function_">get</span>(<span class="hljs-params"></span>)&#123;</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;取值&#x27;</span>);<span class="hljs-comment">// 正常来说，是需要一个另外在Js定义的中间变量来返回出去,然后在set里面修改这个变量的</span></span></span><br><span class="language-javascript"><span class="language-xml">     &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">     <span class="hljs-title function_">set</span>(<span class="hljs-params">val</span>)&#123;</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;span&#x27;</span>).<span class="hljs-property">innerText</span> = val</span></span><br><span class="language-javascript"><span class="language-xml">     &#125;</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;)</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-comment">// 绑定事件</span></span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;input&#x27;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;keyup&#x27;</span>,<span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      obj.<span class="hljs-property">username</span> = event.<span class="hljs-property">target</span>.<span class="hljs-property">value</span></span></span><br><span class="language-javascript"><span class="language-xml">  &#125;)</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p><strong>Vue2.0的响应式原理？</strong></p>
+<blockquote>
+<p>简单来说：数据劫持（劫持数据）+发布订阅模式（将劫持的数据应用到模板）</p>
+<p>js代码实现如下：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 订阅器模型</span><br><span class="hljs-keyword">let</span> dep = &#123;<br>  <span class="hljs-comment">// 订阅者</span><br>  <span class="hljs-attr">clientList</span>: &#123;&#125;,<br>  <span class="hljs-comment">// 添加订阅者,key为用户唯一id,fn是这个用户的某个订阅内容的回调----fn相当于wacher主动添加到Dep中</span><br>  <span class="hljs-attr">listen</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">key, fn</span>) &#123;<br>     (<span class="hljs-variable language_">this</span>.<span class="hljs-property">clientList</span>[key] || (<span class="hljs-variable language_">this</span>.<span class="hljs-property">clientList</span>[key] = [])).<span class="hljs-title function_">push</span>(fn)<br>  &#125;,<br>  <span class="hljs-comment">// 推送方法：针对某个用户的订阅内容，循环执行订阅内容的回调以添加(填充)消息</span><br>  <span class="hljs-comment">// 调用时相当于Dep通知wacher更新数据(调用fn)</span><br>  <span class="hljs-attr">trigger</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">// 从arguments中获取函数传递过来的参数，有下面可知第一个参数是指哪个用户，于是用shift</span><br>    <span class="hljs-keyword">let</span> key = <span class="hljs-title class_">Array</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">shift</span>.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">arguments</span>),<br>      fns = <span class="hljs-variable language_">this</span>.<span class="hljs-property">clientList</span>[key]<br>    <br>    <span class="hljs-comment">// 若该用户没有订阅内容，则不推送</span><br>    <span class="hljs-keyword">if</span> (!fns || fns.<span class="hljs-property">length</span> == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>    <br>    <span class="hljs-comment">// 否则循环填充用户对应的各个订阅内容，这个改变this指向是因为在填充内容是要用到当前上下文的数据</span><br>    <span class="hljs-comment">// arguments是订阅内容回调执行的所需参数</span><br>    <span class="hljs-comment">// 这个循环等于如下写法：</span><br>    <span class="hljs-comment">// for (let i = 0; i &lt; fns.length; i++)&#123;</span><br>    <span class="hljs-comment">//   let fn = fns[i];</span><br>    <span class="hljs-comment">//   fn.apply(this,arguments)</span><br>    <span class="hljs-comment">// &#125;</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>, fn; fn = fns[i++];)&#123;<br>       <span class="hljs-comment">// arguments就相当于下面的text参数，注意用apply而不是call，这里arguments是类数组</span><br>       fn.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>,<span class="hljs-variable language_">arguments</span>)<br>    &#125;<br>  &#125;<br>&#125;<br><span class="hljs-comment">// 数据劫持</span><br><span class="hljs-keyword">let</span> dataHijack = <span class="hljs-keyword">function</span> (<span class="hljs-params">&#123; data, dataTarget, targetView, selector &#125;</span>) &#123;<br>  <span class="hljs-keyword">let</span> value = <span class="hljs-string">&#x27;&#x27;</span>,<span class="hljs-comment">// 数据劫持的临时变量</span><br>    el = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(selector) <span class="hljs-comment">// 获取选择器</span><br>  <br>    <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(data,dataTarget,&#123;<br>      <span class="hljs-title function_">get</span>(<span class="hljs-params"></span>)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;取值&#x27;</span>);<br>        <span class="hljs-keyword">return</span> value<br>      &#125;,<br>      <span class="hljs-title function_">set</span>(<span class="hljs-params">val</span>) &#123;<br>        value = val<br>        <span class="hljs-comment">// 推送消息，通知订阅者，给targetView这个用户推送消息val</span><br>        dep.<span class="hljs-title function_">trigger</span>(targetView,val)<br>      &#125;<br>    &#125;)<br>  <br>  <span class="hljs-comment">// 添加订阅者,targetView看作是订阅者id,它订阅的内容就是更新text</span><br>  dep.<span class="hljs-title function_">listen</span>(targetView, <span class="hljs-keyword">function</span> (<span class="hljs-params">text</span>) &#123;<br>      el.<span class="hljs-property">innerHTML</span> = text<br>    &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>引入上述js并使用如下</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 引入js并使用</span><br>  订阅者<span class="hljs-number">1</span>的视图: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;span-view1&quot;</span>&gt;</span>111<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br>  订阅者<span class="hljs-number">2</span>的视图: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;span-view2&quot;</span>&gt;</span>222<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./index.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">       <span class="hljs-comment">// 用于拦截的对象，也是用于更新视图的中间对象</span></span></span><br><span class="language-javascript"><span class="language-xml">       <span class="hljs-keyword">let</span> obj = &#123;&#125;</span></span><br><span class="language-javascript"><span class="language-xml">       </span></span><br><span class="language-javascript"><span class="language-xml">       <span class="hljs-title function_">dataHijack</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">         <span class="hljs-attr">data</span>: obj,</span></span><br><span class="language-javascript"><span class="language-xml">         <span class="hljs-attr">dataTarget</span>: <span class="hljs-string">&#x27;one&#x27;</span>,<span class="hljs-comment">//订阅者需要的属性</span></span></span><br><span class="language-javascript"><span class="language-xml">         <span class="hljs-attr">targetView</span>: <span class="hljs-string">&#x27;userTest1&#x27;</span>,<span class="hljs-comment">//订阅者名字1</span></span></span><br><span class="language-javascript"><span class="language-xml">         <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;.span-view1&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">       &#125;)</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">       <span class="hljs-title function_">dataHijack</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">         <span class="hljs-attr">data</span>: obj,</span></span><br><span class="language-javascript"><span class="language-xml">         <span class="hljs-attr">dataTarget</span>: <span class="hljs-string">&#x27;two&#x27;</span>,<span class="hljs-comment">//临时添加的属性</span></span></span><br><span class="language-javascript"><span class="language-xml">         <span class="hljs-attr">targetView</span>: <span class="hljs-string">&#x27;userTest2&#x27;</span>,<span class="hljs-comment">//订阅者名字2</span></span></span><br><span class="language-javascript"><span class="language-xml">         <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;.span-view2&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">       &#125;)</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">       <span class="hljs-comment">// 如下操作以及在浏览器手动更改值 会自动修改到模板上</span></span></span><br><span class="language-javascript"><span class="language-xml">       obj.<span class="hljs-property">one</span> = <span class="hljs-string">&#x27;测试值1&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">       obj.<span class="hljs-property">two</span> = <span class="hljs-string">&#x27;测试值2&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Vue3的响应式原理：见———————-&gt;Vue2和Vue3响应式数据的处理的不同</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/blog/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" class="category-chain-item">面试题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/blog/tags/%E5%89%8D%E7%AB%AF%E7%BB%BC%E5%90%88/">#前端综合</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>前端高频面试题(进阶)</div>
+      <div>https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/02/15/前端高频面试题-进阶/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Zhou Jie</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年2月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2024/04/07/ElementuUI/" title="ElementuUI">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ElementuUI</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2024/01/03/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9F%BA%E7%A1%80/" title="前端高频面试题-基础">
+                        <span class="hidden-mobile">前端高频面试题-基础</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script type="text/javascript">
+        var disqus_config = function() {
+          this.page.url = 'https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/02/15/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E8%BF%9B%E9%98%B6/';
+          this.page.identifier = '/blog/2024/02/15/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E8%BF%9B%E9%98%B6/';
+        };
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//' + 'fluid' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', new Date());
+          (d.head || d.body).appendChild(s);
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

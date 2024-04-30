@@ -1,0 +1,753 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/avatar2.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Zhou Jie">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="什么是CICD？指持续集成和持续部署的软件开发实践方法，可以提前在yaml档进行配置，之后可以自动化执行这个脚本，其中包括对代码的 构建、代码检查、release、dockerize等 怎么使用GitLab CI？ 在项目下面创建一个.gitlab-ci.yml文件，里面包含了  集成、测试 的一些配置，到时候一旦 本地仓库push到gitlab上面之后，会通过 GitLab-Runner 自动执">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CICD">
+<meta property="og:url" content="https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2023/08/31/CICD/index.html">
+<meta property="og:site_name" content="Zhou Jie">
+<meta property="og:description" content="什么是CICD？指持续集成和持续部署的软件开发实践方法，可以提前在yaml档进行配置，之后可以自动化执行这个脚本，其中包括对代码的 构建、代码检查、release、dockerize等 怎么使用GitLab CI？ 在项目下面创建一个.gitlab-ci.yml文件，里面包含了  集成、测试 的一些配置，到时候一旦 本地仓库push到gitlab上面之后，会通过 GitLab-Runner 自动执">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/blog/2023/08/31/CICD/%E4%B8%8B%E8%BD%BD%E8%AF%81%E4%B9%A6%E9%A1%B5.png">
+<meta property="og:image" content="https://github.com/blog/2023/08/31/CICD/gitlab%E8%AE%BE%E7%BD%AE.png">
+<meta property="og:image" content="https://github.com/blog/2023/08/31/CICD/%E6%A0%B9%E6%8D%AE%E6%8F%90%E7%A4%BA%E8%BE%93%E5%85%A5url%E5%92%8Ctoken.png">
+<meta property="og:image" content="https://github.com/blog/2023/08/31/CICD/%E9%80%89%E6%8B%A9docker.png">
+<meta property="og:image" content="https://github.com/blog/2023/08/31/CICD/%E5%8D%B8%E8%BD%BD.png">
+<meta property="og:image" content="https://github.com/blog/2023/08/31/CICD/script1.png">
+<meta property="og:image" content="https://github.com/blog/2023/08/31/CICD/script2.png">
+<meta property="og:image" content="https://github.com/blog/2023/08/31/CICD/script3.png">
+<meta property="og:image" content="https://github.com/blog/2023/08/31/CICD/script4.png">
+<meta property="article:published_time" content="2023-08-31T03:06:38.000Z">
+<meta property="article:modified_time" content="2024-04-01T03:41:22.001Z">
+<meta property="article:author" content="Zhou Jie">
+<meta property="article:tag" content="自动化流程">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://github.com/blog/2023/08/31/CICD/%E4%B8%8B%E8%BD%BD%E8%AF%81%E4%B9%A6%E9%A1%B5.png">
+  
+  
+  
+  <title>CICD - Zhou Jie</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"github.com","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Indispensible</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="CICD"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-31 11:06" pubdate>
+          2023年8月31日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          19 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CICD</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="什么是CICD？"><a href="#什么是CICD？" class="headerlink" title="什么是CICD？"></a>什么是CICD？</h3><p>指持续集成和持续部署的软件开发实践方法，可以提前在yaml档进行配置，之后可以自动化执行这个脚本，其中包括对代码的 构建、代码检查、release、dockerize等</p>
+<h3 id="怎么使用GitLab-CI？"><a href="#怎么使用GitLab-CI？" class="headerlink" title="怎么使用GitLab CI？"></a>怎么使用GitLab CI？</h3><p> 在项目下面创建一个.gitlab-ci.yml文件，里面包含了  集成、测试 的一些配置，到时候一旦 本地仓库push到gitlab上面之后，会通过 GitLab-Runner 自动执行配置好的一些行为</p>
+<h3 id="什么是GitLab-Running"><a href="#什么是GitLab-Running" class="headerlink" title="什么是GitLab-Running?"></a>什么是GitLab-Running?</h3><p>GitLab-Running可能不止一个，因此GitLab CI需要找到提前注册好的GitLab-Running来帮他执行脚本</p>
+<p>每种GitLab-Running能做的行为都不同</p>
+<ul>
+<li><h4 id="怎么注册并安装、启动一个GitLab-Running？"><a href="#怎么注册并安装、启动一个GitLab-Running？" class="headerlink" title="怎么注册并安装、启动一个GitLab-Running？"></a>怎么注册并安装、启动一个GitLab-Running？</h4><p>1）<a target="_blank" rel="noopener" href="http://10.37.37.139/packages/">Index of /packages/</a> ——– 下载 gitlab-runner程序，用来当作命令行命令使用</p>
+<p>2）下载 wistron-root.crt ——– 证书，用于给gitlab注册runner使用</p>
+<p><img src="/blog/2023/08/31/CICD/%E4%B8%8B%E8%BD%BD%E8%AF%81%E4%B9%A6%E9%A1%B5.png" srcset="/blog/img/loading.gif" lazyload alt="下载证书页"></p>
+<p>2）进入刚刚下载的git-runner程序的文件夹，将此程序 命名为gitlab-runner.exe，因为命令的名字就是 gitlab-runner，打开cmd，输入指令注册runner：</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs delphi">gitlab-runner <span class="hljs-keyword">register</span> --tls-ca-<span class="hljs-keyword">file</span> wistron-root.crt的路径<br></code></pre></td></tr></table></figure></li>
+</ul>
+<p>​        3）打开gitlab进入自己的主页，新建一个项目，进入如图页面</p>
+<p><img src="/blog/2023/08/31/CICD/gitlab%E8%AE%BE%E7%BD%AE.png" srcset="/blog/img/loading.gif" lazyload alt="gitlab设置"></p>
+<p>​          4）根据提示输入url和token</p>
+<p><img src="/blog/2023/08/31/CICD/%E6%A0%B9%E6%8D%AE%E6%8F%90%E7%A4%BA%E8%BE%93%E5%85%A5url%E5%92%8Ctoken.png" srcset="/blog/img/loading.gif" lazyload alt="根据提示输入url和token"></p>
+<p>​          5）输入runner的描述和tags</p>
+<p>​          6）选择docker为执行者，再输入如下作为docker image（镜像）：</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">alpine:</span>latest<br></code></pre></td></tr></table></figure>
+
+<p><img src="/blog/2023/08/31/CICD/%E9%80%89%E6%8B%A9docker.png" srcset="/blog/img/loading.gif" lazyload alt="选择docker"></p>
+<p>​          7）安装到自己的项目下（刚刚只完成了注册操作，注册就相当于下载，还需要安装才能使用），执行：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">gitlab-runner <span class="hljs-keyword">install</span> --working-<span class="hljs-keyword">file</span>=gitlab-runner<br></code></pre></td></tr></table></figure>
+
+<p><strong>如果出现</strong>： </p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">FATAL：Failed to <span class="hljs-keyword">install</span> gitlab-runner：service gitlab-runner already <span class="hljs-keyword">exists</span><br></code></pre></td></tr></table></figure>
+
+<p>则先卸载再安装和启动，这时不需要指定指定的–working-file</p>
+<p><img src="/blog/2023/08/31/CICD/%E5%8D%B8%E8%BD%BD.png" srcset="/blog/img/loading.gif" lazyload alt="卸载"></p>
+<p><strong>——这是在之前的cicd的runner页面就可以看到自己刚刚创建的running已经启动了（绿色）</strong></p>
+<hr>
+<p>以上可以不用看，直接 选用公司的runner就行，其中tags为：</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs subunit"><span class="hljs-keyword">tags:</span><br>   - k8s-runners<br></code></pre></td></tr></table></figure>
+
+<h3 id="什么是Git-Running-excutor？"><a href="#什么是Git-Running-excutor？" class="headerlink" title="什么是Git-Running excutor？"></a>什么是Git-Running excutor？</h3><p>它是帮助GitLab-Running执行的，也就是GitLab-Running的工具</p>
+<h3 id="GitLab-CI语法"><a href="#GitLab-CI语法" class="headerlink" title="GitLab-CI语法"></a>GitLab-CI语法</h3><p><strong>格式：</strong>yml</p>
+<p><strong>例子：</strong>job就相当于一个个 脚本，stages包含各阶段的名称，一个job执行一个stage，script为job的脚本名称</p>
+<p><img src="/blog/2023/08/31/CICD/script1.png" srcset="/blog/img/loading.gif" lazyload alt="script1"></p>
+<p><strong>注意：保留字不能作为job name，相当于编程中的保留字不能做变量名</strong></p>
+<p><strong>基础指令：</strong></p>
+<p> 1）image &amp; services ——– 指定镜像以及附加服务</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">image:</span><br><span class="hljs-symbol">  docker:</span>stable<br><span class="hljs-symbol"></span><br><span class="hljs-symbol">services:</span><br>  - name:docker:dind<br>    entrypointL[]<br><span class="hljs-symbol">    command:</span>[<span class="hljs-string">&quot;--security-register=harbor-k8s.wistron.com&quot;</span>]<br></code></pre></td></tr></table></figure>
+
+<p>2）stages &amp; job</p>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">stages</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">build</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">test</span><br><span class="hljs-attribute">job</span><span class="hljs-punctuation">:</span><br>  stage:build<br></code></pre></td></tr></table></figure>
+
+<p>3）before_script &amp; after_script：用来定义 job 开始前 和 开始后 的脚本，既可以放在job之前，也可以放在job内部<img src="/blog/2023/08/31/CICD/script2.png" srcset="/blog/img/loading.gif" lazyload alt="script2"></p>
+<p>4）only &amp; except：限制执行的branch，不会执行develop这个分支</p>
+<p>​      tags：设定执行的runner</p>
+<p><img src="/blog/2023/08/31/CICD/script3.png" srcset="/blog/img/loading.gif" lazyload alt="script3"></p>
+<p>5）artifacts：添加特定档案或者目录在job上</p>
+<p>​      artfacts:paths：将指定路径的档案或目录放到job</p>
+<p>​      artfacts:when：什么时候存放，on_success、on_failure、always</p>
+<p>​      artfacts:expire_in：档案或目录存放的时间，通常不要设置太大，否则存放的文档太多</p>
+<p><img src="/blog/2023/08/31/CICD/script4.png" srcset="/blog/img/loading.gif" lazyload alt="script4"></p>
+<p><strong>需要注意格式问题：关键字冒号后面的内容一定要加空格</strong></p>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs nestedtext"><span class="hljs-attribute">image</span><span class="hljs-punctuation">:</span> <span class="hljs-string">docker:stable            -------image冒号后面要加空格，docker不是关键字，只是和stable一起                                        成为image的内容</span><br><span class="hljs-attribute">stages</span><span class="hljs-punctuation">:</span><br> <span class="hljs-bullet">-</span> <span class="hljs-string">Build image</span><br><span class="hljs-attribute">build</span><span class="hljs-punctuation">:</span><br> <span class="hljs-attribute">stage</span><span class="hljs-punctuation">:</span> <span class="hljs-string">Build image             -------stage冒号后面要加空格</span><br> <span class="hljs-attribute">tags</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">runner01</span><br> <span class="hljs-attribute">script</span><span class="hljs-punctuation">:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">docker info</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="docker和harbor的区别？"><a href="#docker和harbor的区别？" class="headerlink" title="docker和harbor的区别？"></a>docker和harbor的区别？</h3><p>harbor是存放镜像源的，而docker是运行镜像源的</p>
+<hr>
+<h3 id="如何使用gitlab-tool下载cicd的一些必须文件并使用？"><a href="#如何使用gitlab-tool下载cicd的一些必须文件并使用？" class="headerlink" title="如何使用gitlab tool下载cicd的一些必须文件并使用？"></a>如何使用gitlab tool下载cicd的一些必须文件并使用？</h3><p>1.网址：<a target="_blank" rel="noopener" href="http://gittemplate-ui-dev.k8s-dev.k8s.wistron.com/ciscript">UI (wistron.com)</a></p>
+<p>​           把angular的所有文件都下下来，除了old版本的文件</p>
+<p>2.只要改一个文件.gitlab-ci.yml，而且改的内容也不多，只要改革 runner的tags</p>
+<p>用公司的k8s-runners就行</p>
+<p>3.打开 <a target="_blank" rel="noopener" href="http://gittemplate-ui-dev.k8s-dev.k8s.wistron.com/pjtmp">UI (wistron.com)</a> ——– 输入项目相关信息，生成cicd的一些参数模板</p>
+<p>4.在setting中的cicd的配置中的variable参数中，找到GITLAB-KEY，输入 setting 中的access tokens</p>
+<p>​                                                                                           HARBOR-USER、HARBOR-PASSWORD，分别输入</p>
+<p>k8si40和W#g5xT#y2d</p>
+<p>​                                                                                           VERSION-FILE，在本地项目加一个文件version.txt</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/blog/categories/%E6%9E%84%E5%BB%BA%E4%B8%8E%E9%83%A8%E7%BD%B2/" class="category-chain-item">构建与部署</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/blog/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%81%E7%A8%8B/">#自动化流程</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>CICD</div>
+      <div>https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2023/08/31/CICD/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Zhou Jie</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月31日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2023/08/31/%E5%88%A9%E7%94%A8CICD%E4%BB%8Egitlab%E5%88%B0%E9%83%A8%E7%BD%B2%E7%9A%84%E6%B5%81%E7%A8%8B/" title="利用CICD从gitlab到部署的流程">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">利用CICD从gitlab到部署的流程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2023/08/31/gitlab%E7%9A%84sshkey%E8%BF%87%E6%9C%9F%E9%97%AE%E9%A2%98/" title="gitlab的sshkey过期问题">
+                        <span class="hidden-mobile">gitlab的sshkey过期问题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script type="text/javascript">
+        var disqus_config = function() {
+          this.page.url = 'https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2023/08/31/CICD/';
+          this.page.identifier = '/blog/2023/08/31/CICD/';
+        };
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//' + 'fluid' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', new Date());
+          (d.head || d.body).appendChild(s);
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

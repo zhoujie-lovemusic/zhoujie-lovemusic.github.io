@@ -1,0 +1,919 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
+  <link rel="icon" href="/blog/img/avatar2.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Zhou Jie">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1px物理像素的实现12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364&lt;title&gt;1px物理像素的实现&lt;&#x2F;title&gt;  &lt;style&gt;      *&amp;#123;Lcroun">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端面试题(持续更新)">
+<meta property="og:url" content="https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2023/08/30/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/index.html">
+<meta property="og:site_name" content="Zhou Jie">
+<meta property="og:description" content="1px物理像素的实现12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364&lt;title&gt;1px物理像素的实现&lt;&#x2F;title&gt;  &lt;style&gt;      *&amp;#123;Lcroun">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/blog/2023/08/30/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BC%A0%E9%80%92.png">
+<meta property="og:image" content="https://github.com/blog/2023/08/30/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/new%E5%92%8C.%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7.png">
+<meta property="og:image" content="https://github.com/blog/2023/08/30/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/nodejs%E8%BD%AE%E8%AF%A2%E6%9C%BA%E5%88%B6(1).png">
+<meta property="og:image" content="https://github.com/blog/2023/08/30/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/nodejs%E8%BD%AE%E8%AF%A2%E6%9C%BA%E5%88%B6(2).png">
+<meta property="article:published_time" content="2023-08-30T08:17:05.000Z">
+<meta property="article:modified_time" content="2024-04-01T03:41:22.073Z">
+<meta property="article:author" content="Zhou Jie">
+<meta property="article:tag" content="前端综合">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://github.com/blog/2023/08/30/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BC%A0%E9%80%92.png">
+  
+  
+  
+  <title>前端面试题(持续更新) - Zhou Jie</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"github.com","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Indispensible</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/blog/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="前端面试题(持续更新)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-30 16:17" pubdate>
+          2023年8月30日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          14k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          116 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">前端面试题(持续更新)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="1px物理像素的实现"><a href="#1px物理像素的实现" class="headerlink" title="1px物理像素的实现"></a>1px物理像素的实现</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;title&gt;1px物理像素的实现&lt;/title&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="language-css"><span class="language-xml">      *&#123;Lcrouny Si/WKS/Wistron</span></span><br><span class="language-css"><span class="language-xml">        <span class="hljs-attribute">margin</span>:<span class="hljs-number">0</span>;</span></span><br><span class="language-css"><span class="language-xml">        <span class="hljs-attribute">padding</span>:<span class="hljs-number">0</span>;</span></span><br><span class="language-css"><span class="language-xml">      &#125;</span></span><br><span class="language-css"><span class="language-xml">      <span class="hljs-selector-id">#box</span>&#123;</span></span><br><span class="language-css"><span class="language-xml">        <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span></span><br><span class="language-css"><span class="language-xml">        <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;</span></span><br><span class="language-css"><span class="language-xml">        <span class="hljs-attribute">position</span>: relative;</span></span><br><span class="language-css"><span class="language-xml">        <span class="hljs-comment">/* 方案一 ：用border厚度1px来区分1px物理像素 */</span></span></span><br><span class="language-css"><span class="language-xml">        <span class="hljs-comment">/* border-bottom: 1px solid #000; */</span></span></span><br><span class="language-css"><span class="language-xml">      &#125;</span></span><br><span class="language-css"><span class="language-xml">      <span class="hljs-comment">/* 方案二： @media screen 只针对#box:before进行反向变回来*/</span></span></span><br><span class="language-css"><span class="language-xml">      <span class="hljs-selector-id">#box</span><span class="hljs-selector-pseudo">:before</span>&#123;</span></span><br><span class="language-css"><span class="language-xml">        <span class="hljs-attribute">content</span>: <span class="hljs-string">&#x27;&#x27;</span>;</span></span><br><span class="language-css"><span class="language-xml">        <span class="hljs-attribute">position</span>: absolute;</span></span><br><span class="language-css"><span class="language-xml">        <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;</span></span><br><span class="language-css"><span class="language-xml">        <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;</span></span><br><span class="language-css"><span class="language-xml">        <span class="hljs-comment">/* 用box前面放一个高为1的元素来验证 */</span></span></span><br><span class="language-css"><span class="language-xml">        <span class="hljs-attribute">height</span>: <span class="hljs-number">1px</span>;</span></span><br><span class="language-css"><span class="language-xml">        <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span></span><br><span class="language-css"><span class="language-xml">        <span class="hljs-attribute">background-color</span>: black;</span></span><br><span class="language-css"><span class="language-xml">      &#125;</span></span><br><span class="language-css"><span class="language-xml">      <span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-webkit-min-device-pixel-ratio</span>:<span class="hljs-number">1.5</span>)&#123;</span></span><br><span class="language-css"><span class="language-xml">        <span class="hljs-selector-id">#box</span><span class="hljs-selector-pseudo">:before</span>&#123;</span></span><br><span class="language-css"><span class="language-xml">          <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scaleY</span>(<span class="hljs-number">0.67</span>);</span></span><br><span class="language-css"><span class="language-xml">        &#125;</span></span><br><span class="language-css"><span class="language-xml">      &#125;</span></span><br><span class="language-css"><span class="language-xml">  </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br>&lt;/head&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;box&quot;</span>&gt;</span></span><br><span class="language-xml">        312</span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;text/javascript&#x27;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">   <span class="hljs-variable language_">window</span>.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">params</span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">       </span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// 以下是方案一</span></span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// 1. 物理像素/CSS像素 = 像素比 </span></span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">var</span> dpr = <span class="hljs-variable language_">window</span>.<span class="hljs-property">devicePixelRatio</span>;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(dpr);<span class="hljs-comment">//1.5</span></span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// 2.initial-scale在meta标签中指的是CSS像素的缩放比</span></span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">var</span> scale = <span class="hljs-number">1</span>/dpr;</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// 屏幕区的宽</span></span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">var</span> width = <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">width</span></span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// 3.由物理像素1px反推initial-scale的缩放比并重新设置</span></span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">var</span> metaNode = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;meta[name=&quot;viewport&quot;]&#x27;</span>)</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(metaNode);</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">      metaNode.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&#x27;content&#x27;</span>,<span class="hljs-string">&quot;width=device-width, initial-scale=&quot;</span>+scale)</span></span><br><span class="language-javascript"><span class="language-xml">       </span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">var</span> htmlNode = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;html&#x27;</span>)</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// 4.但是整体initial-scale变了，盒子长宽也变了需要再反向乘回来</span></span></span><br><span class="language-javascript"><span class="language-xml">      htmlNode.<span class="hljs-property">style</span>.<span class="hljs-property">fontSize</span> = width * scale + <span class="hljs-string">&#x27;px&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">   &#125;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h3 id="纯CSS创建一个三角形"><a href="#纯CSS创建一个三角形" class="headerlink" title="纯CSS创建一个三角形"></a>纯CSS创建一个三角形</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;style&gt;<br>     #box&#123;<br>       <span class="hljs-attr">width</span>: 0px;<br>       <span class="hljs-attr">height</span>: 0px;<br>      <span class="hljs-comment">/* 原理：四个角border足够大，互不相让，就形成了三角形</span><br><span class="hljs-comment">               但是似乎border无法做到足够大，那么就把盒子宽高设置为0(相当于宽高是种达到三角形的束缚)</span><br><span class="hljs-comment">               其他不要的三角形就设置透明色</span><br><span class="hljs-comment">      */</span><br>       <span class="hljs-attr">border</span>: 100px solid;<br><br>       border-top-<span class="hljs-attr">color</span>: blue;<br>       border-bottom-<span class="hljs-attr">color</span>: transparent;<br>       border-left-<span class="hljs-attr">color</span>: transparent;<br>       border-right-<span class="hljs-attr">color</span>: transparent;<br>     &#125;<br>  &lt;/style&gt;<br>&lt;/head&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;box&quot;</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h3 id="求背景图片左边到-box盒子左边框外侧的距离"><a href="#求背景图片左边到-box盒子左边框外侧的距离" class="headerlink" title="求背景图片左边到#box盒子左边框外侧的距离"></a>求背景图片左边到#box盒子左边框外侧的距离</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;style&gt;<br>     *&#123;<br>        <span class="hljs-attr">margin</span>:<span class="hljs-number">0</span>;<br>        <span class="hljs-attr">padding</span>:<span class="hljs-number">0</span>;<br>     &#125;<br>     <span class="hljs-comment">/* 题目的意思就是按照给出的box位置，计算一下 背景图片左边到box左边框的距离</span><br><span class="hljs-comment">        其实就是考的 border-box、padding-box、content-box的关系</span><br><span class="hljs-comment">     */</span><br>     #box&#123;<br>        <span class="hljs-attr">width</span>: 100px;<br>        <span class="hljs-attr">height</span>: 200px;<br>        background-<span class="hljs-attr">color</span>: pink;<br>        <span class="hljs-attr">padding</span>: 100px;<br>        <span class="hljs-attr">border</span>: 80px solid blue;<br>        background-<span class="hljs-attr">image</span>: <span class="hljs-title function_">url</span>(<span class="hljs-string">&quot;./images/作用域和引用类型的传递.png&quot;</span>); <br>        background-<span class="hljs-attr">size</span>: contain;<br>        <span class="hljs-comment">/* 背景图片起始源的位置 */</span><br>        background-<span class="hljs-attr">origin</span>: content-box;<br>        background-<span class="hljs-attr">repeat</span>: no-repeat;<br>        <span class="hljs-comment">/* 在content-box的-50px ,于是答案为 (100+80)-50=130px*/</span><br>        background-<span class="hljs-attr">position</span>: -50px <span class="hljs-number">0</span>;<br>     &#125;<br>  &lt;/style&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="language-xml">   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;box&quot;</span>&gt;</span></span><br><span class="language-xml">   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h3 id="如何实现移动端rem适配"><a href="#如何实现移动端rem适配" class="headerlink" title="如何实现移动端rem适配"></a>如何实现移动端rem适配</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;!-- em是针对父元素的适配单位，而rem是只针对<span class="hljs-title function_">html</span>(root即根部)的适配单位<br>       比如html的fontSize为50px，然后body的字体设置为<span class="hljs-number">50</span>%，那么这个1em/1rem就为25px<br>  --&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="language-css"><span class="language-xml">     <span class="hljs-selector-id">#box</span>&#123;</span></span><br><span class="language-css"><span class="language-xml">        <span class="hljs-attribute">width</span>: <span class="hljs-number">0.5rem</span>;</span></span><br><span class="language-css"><span class="language-xml">        <span class="hljs-attribute">height</span>: <span class="hljs-number">0.5rem</span>;</span></span><br><span class="language-css"><span class="language-xml">        <span class="hljs-attribute">background-color</span>: red;</span></span><br><span class="language-css"><span class="language-xml">     &#125;</span></span><br><span class="language-css"><span class="language-xml">  </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br>&lt;/head&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-comment">&lt;!-- 方法就是 html根元素的字体大小 = 屏幕区的宽</span></span><br><span class="hljs-comment"><span class="language-xml">       目的是想把 1rem设置成整个屏幕的宽，那下次某个盒子想要设置成占整个屏幕多大比例，那直接 1rem/x</span></span><br><span class="hljs-comment"><span class="language-xml">       比如 某个盒子想要占屏幕的一半，那设置完之后就可以设置宽高为0.5rem-&gt;特指整个屏幕的一半，这样不管是什么分辨率都可以设置 </span></span><br><span class="hljs-comment"><span class="language-xml">       Ps：这里的字体大小默认是 指的是rem或em的单位</span></span><br><span class="hljs-comment"><span class="language-xml">      --&gt;</span></span><br><span class="language-xml">   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;box&quot;</span>&gt;</span></span><br><span class="language-xml">       </span><br><span class="language-xml">   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;text/javascript&#x27;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-variable language_">window</span>.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">// 整个屏幕的宽</span></span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-keyword">var</span> width = <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">clientWidth</span></span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-keyword">var</span> htmlNode = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;html&#x27;</span>)</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">        htmlNode.<span class="hljs-property">style</span>.<span class="hljs-property">fontSize</span> = width + <span class="hljs-string">&#x27;px&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">// 以上三个步骤是为了当前屏幕单位 都为1rem</span></span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">    &#125;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h3 id="使用flex实现水平居中"><a href="#使用flex实现水平居中" class="headerlink" title="使用flex实现水平居中"></a>使用flex实现水平居中</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;!-- 顺便先复习下之前的两种水平居中方式：绝对定位 --&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="language-css"><span class="language-xml">     <span class="hljs-selector-id">#wrap</span>&#123;</span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-attribute">width</span>: <span class="hljs-number">500px</span>;</span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-attribute">height</span>: <span class="hljs-number">500px</span>;</span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-comment">/* position: relative; */</span></span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid black;</span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-comment">/* 方案三: 靠flex,直接在父元素对子元素自动调整----------应该是最方便的了★ */</span></span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-attribute">display</span>: flex;</span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-comment">/* 主轴(水平)设置在居中位置 */</span></span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-attribute">justify-content</span>: center;</span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-comment">/* 侧轴(垂直)设置在居中位置 */</span></span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-attribute">align-items</span>: center;</span></span><br><span class="language-css"><span class="language-xml"></span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-comment">/* flex对应的老版本 */</span></span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-comment">/* display: -webkit-box;</span></span></span><br><span class="hljs-comment"><span class="language-css"><span class="language-xml">       -webkit-box-pack: center;</span></span></span><br><span class="hljs-comment"><span class="language-css"><span class="language-xml">       -webkit-box-align: center; */</span></span></span><br><span class="language-css"><span class="language-xml">      &#125;</span></span><br><span class="language-css"><span class="language-xml">     <span class="hljs-selector-id">#wrap</span> <span class="hljs-selector-class">.box</span>&#123;</span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;</span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-attribute">position</span>: absolute;</span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-comment">/* 方案一：靠margin  都为0目的是去除对margin控制盒子的影响 */</span></span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-comment">/* top: 0;</span></span></span><br><span class="hljs-comment"><span class="language-css"><span class="language-xml">       bottom: 0;</span></span></span><br><span class="hljs-comment"><span class="language-css"><span class="language-xml">       left: 0;</span></span></span><br><span class="hljs-comment"><span class="language-css"><span class="language-xml">       right: 0;</span></span></span><br><span class="hljs-comment"><span class="language-css"><span class="language-xml">       margin: auto; */</span></span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-comment">/* 方案二: 只靠定位 */</span></span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-comment">/* left: 50%;</span></span></span><br><span class="hljs-comment"><span class="language-css"><span class="language-xml">       top: 50%;</span></span></span><br><span class="hljs-comment"><span class="language-css"><span class="language-xml">       transform: translate(-50%,-50%); */</span></span></span><br><span class="language-css"><span class="language-xml"></span></span><br><span class="language-css"><span class="language-xml">       <span class="hljs-attribute">background-color</span>: pink;</span></span><br><span class="language-css"><span class="language-xml">     &#125;</span></span><br><span class="language-css"><span class="language-xml">  </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br>&lt;/head&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="language-xml">   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;wrap&quot;</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box&quot;</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h3 id="字符串驼峰的转换"><a href="#字符串驼峰的转换" class="headerlink" title="字符串驼峰的转换"></a>字符串驼峰的转换</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">toString</span>(<span class="hljs-params">foo</span>) &#123;<br>  <span class="hljs-keyword">var</span> arr = foo.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot;-&quot;</span>);<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index = <span class="hljs-number">1</span>; index &lt; arr.<span class="hljs-property">length</span>; index++) &#123;<br>    arr[index] =<br>      arr[index].<span class="hljs-title function_">charAt</span>(<span class="hljs-number">0</span>).<span class="hljs-title function_">toUpperCase</span>() +<br>      arr[index].<span class="hljs-title function_">substring</span>(<span class="hljs-number">1</span>, arr[index].<span class="hljs-property">length</span>);<br>  &#125;<br>  <span class="hljs-keyword">return</span> arr.<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="作用域和值类型和引用类型的传递"><a href="#作用域和值类型和引用类型的传递" class="headerlink" title="作用域和值类型和引用类型的传递"></a><strong>作用域和值类型和引用类型的传递</strong></h3><blockquote>
+<p>1.作用域在JS高级里面叫 “执行上下文”，”上下文”很容易理解，对应”域”，那”执行”就对应”作用”了</p>
+<p>2.分为全局执行上下文和函数执行上下文，这两个上下文都会提前将变量以及函数放入上下文</p>
+<p>3.注意下 xxx is not defined、undefined、null的区别</p>
+<p>xxx is not defined：没有定义</p>
+<p>undefined：定义了为赋值</p>
+<p>null：定义了，值为null</p>
+<p>层层递进，情况越来越好</p>
+</blockquote>
+<hr>
+<p><img src="/blog/2023/08/30/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BC%A0%E9%80%92.png" srcset="/blog/img/loading.gif" lazyload alt="作用域和引用类型的传递"></p>
+<blockquote>
+<p>这题我错在哪里？</p>
+<p>错在了 我忘了函数 参数的传递是一个赋值过程，我忽略了这个过程，看来在 引用类型这种特殊的类型尤其要注意细节赋值</p>
+<p>重新解题：第一个空忽略，第二个空：在栈处重新加一个变量person并赋值p的地址，一开始指向p的地址，后来指向new的地址，但是它问的是传进去p的name</p>
+</blockquote>
+<p><strong>错误总结：</strong>看到引用类型传值，就考的是引用类型地址指向的问题，这种就需要注意它输出的是 哪个引用类型变量的属性</p>
+<h3 id="封装函数进行字符串驼峰命名转换（主要复习string的方法）"><a href="#封装函数进行字符串驼峰命名转换（主要复习string的方法）" class="headerlink" title="封装函数进行字符串驼峰命名转换（主要复习string的方法）"></a><strong>封装函数进行字符串驼峰命名转换（主要复习string的方法）</strong></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">toString</span>(<span class="hljs-params">foo</span>) &#123;<br>  <span class="hljs-comment">// 根据符号-分开并组成数组</span><br>  <span class="hljs-keyword">var</span> arr = foo.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;-&#x27;</span>)<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index = <span class="hljs-number">1</span>; index &lt; arr.<span class="hljs-property">length</span>; index++) &#123;<br>      <span class="hljs-comment">//注意substring是左闭右开</span><br>      arr[index] = arr[index].<span class="hljs-title function_">charAt</span>(<span class="hljs-number">0</span>).<span class="hljs-title function_">toUpperCase</span>()+arr[index].<span class="hljs-title function_">substring</span>(<span class="hljs-number">1</span>,arr[index].<span class="hljs-property">length</span>)<br>  &#125;<br>  <span class="hljs-comment">// 根据符号再将数组个元素连成字符串</span><br>  <span class="hljs-keyword">return</span> arr.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;&#x27;</span>)<br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">toString</span>(<span class="hljs-string">&#x27;get-element-by-id&#x27;</span>));<br></code></pre></td></tr></table></figure>
+
+<p>Ps：split这个方法就是专门针对某个字符进行分割，以后看到字符串里多次出现某个字符，就很可能要用这个</p>
+<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a><strong>冒泡排序</strong></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> array = [<span class="hljs-number">5</span>, <span class="hljs-number">3</span>, <span class="hljs-number">6</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">8</span>];<br><span class="hljs-comment">// 轮数</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; array.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>; i++) &#123;<br>  <span class="hljs-comment">// 交换次数，插入排序才是j=i，轮数越往后交换次数越少因此肯定和i有关</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; array.<span class="hljs-property">length</span> - i - <span class="hljs-number">1</span>; j++) &#123;<br>    <span class="hljs-keyword">if</span> (array[j] &gt; array[j + <span class="hljs-number">1</span>]) &#123;<br>      <span class="hljs-keyword">let</span> temp = array[j];<br>      array[j] = array[j + <span class="hljs-number">1</span>];<br>      array[j + <span class="hljs-number">1</span>] = temp;<br>    &#125;<br>  &#125;<br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(array);<br></code></pre></td></tr></table></figure>
+
+<h3 id="Js综合"><a href="#Js综合" class="headerlink" title="Js综合"></a><strong>Js综合</strong></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Foo</span>(<span class="hljs-params"></span>) &#123;<br>    getName = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-title function_">alert</span>(<span class="hljs-number">1</span>)<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span><br><br><span class="hljs-title class_">Foo</span>.<span class="hljs-property">getName</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title function_">alert</span>(<span class="hljs-number">2</span>)<br>&#125;<br><br><span class="hljs-title class_">Foo</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">getName</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title function_">alert</span>(<span class="hljs-number">3</span>)<br>&#125;<br><br><span class="hljs-keyword">var</span> getName = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title function_">alert</span>(<span class="hljs-number">4</span>)<br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">getName</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title function_">alert</span>(<span class="hljs-number">5</span>)<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * (1)注意 function Foo 内的getName不是这个函数的，因为没有用var定义，因此会默认往全局作用于去找-------变量的寻找，靠作用域</span><br><span class="hljs-comment"> * */</span> <br><span class="hljs-title class_">Foo</span>.<span class="hljs-title function_">getName</span>()<span class="hljs-comment">//2</span><br><br><span class="hljs-comment">/*------------------------变量和函数提升之后---------------*/</span><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">Foo</span>(<span class="hljs-params"></span>) &#123;<br>        getName = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-title function_">alert</span>(<span class="hljs-number">1</span>)<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span><br>    &#125;<br>    <span class="hljs-comment">// var getName;</span><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">getName</span>(<span class="hljs-params"></span>) &#123; <span class="hljs-title function_">alert</span>(<span class="hljs-number">5</span>) &#125;;<br>    <br>    <span class="hljs-title class_">Foo</span>.<span class="hljs-property">getName</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-title function_">alert</span>(<span class="hljs-number">2</span>)<br>    &#125;<br>    <span class="hljs-title class_">Foo</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">getName</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-title function_">alert</span>(<span class="hljs-number">3</span>)<br>    &#125;<br>    getName = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-title function_">alert</span>(<span class="hljs-number">4</span>)<br>    &#125;<br><br><span class="hljs-comment">/*-------------------------------------------------------*/</span><br><br><span class="hljs-title function_">getName</span>()<span class="hljs-comment">//4      变量提升，详细见下一题</span><br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 先把 Foo() 化简了，算出来再去调用</span><br><span class="hljs-comment"> * (2)Foo返回的是this，但是这个this指的是window，因为看的是调用者，(window).Foo()-------this的指向</span><br><span class="hljs-comment"> * 全局作用域上有两个一个是var getName一个是函数，在加载数据时，会变量和函数提升：见上面</span><br><span class="hljs-comment"> * 又因为变量和函数同名时会忽略变量，优先看函数的(Jsz中函数相当于类很重要)，alert此时为5 -------变量和函数提升</span><br><span class="hljs-comment"> * 到最后时getName被赋值为alert(4)</span><br><span class="hljs-comment"> * 但是在Foo调用之后getName又被重新赋值为alert(1)，因此过程为5-&gt;4-&gt;1</span><br><span class="hljs-comment"> * */</span> <br><span class="hljs-title class_">Foo</span>().<span class="hljs-title function_">getName</span>()<span class="hljs-comment">//1</span><br><br><span class="hljs-title function_">getName</span>() <span class="hljs-comment">//1  具体见上一题：最后被赋值为alert(1)</span><br><br><span class="hljs-comment">/*下面两题用到了优先级的大小，具体如下图</span><br><span class="hljs-comment">  new 不带参和new ( fun())带参</span><br><span class="hljs-comment">  可以这么理解：前者后面没有参数也就是把后面当作一个整体，算好了再new</span><br><span class="hljs-comment">               后者直接算算不出来，需要先配合new一起算，然后再.调用</span><br><span class="hljs-comment">  这就是对于new来说，new带参比new不带参优先级高的原因</span><br><span class="hljs-comment">*/</span> <br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * .的优先级比new高，因此先看Foo.getName，又刚好可以替换成 function () &#123;alert(2)&#125;</span><br><span class="hljs-comment"> * 因此直接变成 new (function () &#123;alert(2)&#125;)()-&gt;当前函数的实例()--&gt;2</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">new</span> <span class="hljs-title class_">Foo</span>.<span class="hljs-title function_">getName</span>()<span class="hljs-comment">//2</span><br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * (new Foo()).getName()-&gt;(new this).getName()-&gt;foo.getName()从原型链上找-&gt;alert(3)----原型链</span><br><span class="hljs-comment"> * */</span> <br><span class="hljs-keyword">new</span> <span class="hljs-title class_">Foo</span>().<span class="hljs-title function_">getName</span>()<span class="hljs-comment">//3</span><br><br><span class="hljs-comment">// 根据上面两题分析：new (new Foo()).getName()-&gt;new foo.getName()-&gt;alert(3)再实例（实例不对结果有影响）</span><br><span class="hljs-keyword">new</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Foo</span>().<span class="hljs-title function_">getName</span>()<span class="hljs-comment">//3</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/blog/2023/08/30/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/new%E5%92%8C.%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7.png" srcset="/blog/img/loading.gif" lazyload alt="new和.运算符的优先级"></p>
+<blockquote>
+<p>这个题很牛：考到了知识点有 找变量按照作用域链、变量和函数声明的提升、运算符优先级、原型链</p>
+</blockquote>
+<h3 id="防抖与节流"><a href="#防抖与节流" class="headerlink" title="防抖与节流"></a><strong>防抖与节流</strong></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// -------------------------------防抖与节流-------------------------------------------</span><br><span class="hljs-comment">//  节流：为了节省资源，减少事件触发的频率</span><br><span class="hljs-comment">//  就可以通过 一个周期减少函数执行的次数来实现，即设置多长时间执行一次（也可以用定时器），提高了性能</span><br><span class="hljs-comment">//  (第一次生效，后面不生效)</span><br><span class="hljs-comment">//  参数：delay时间执行一次fn</span><br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">throttle</span>(<span class="hljs-params">fn, delay</span>) &#123;<br>    <span class="hljs-comment">// 利用闭包，每次的lastTime不会变，相当于小的全局变量</span><br>    <span class="hljs-keyword">var</span> lastTime = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">var</span> nowTime = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>()<br>        <br>        <span class="hljs-comment">// 到达一定时间再执行</span><br>        <span class="hljs-keyword">if</span> (nowTime - lastTime &gt; delay) &#123;<br>            <span class="hljs-comment">// 使用call是为了让this指向和里层function一致(因为闭包使用的是外部函数的变量和参数因此this也是外部函数的this)</span><br>            <span class="hljs-title function_">fn</span>()<br><br>            <span class="hljs-comment">// 更新时间</span><br>            lastTime = nowTime<br>        &#125;<br>    &#125;<br>&#125;<br><br>documnt.<span class="hljs-property">onscroll</span> = <span class="hljs-title function_">throttle</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;onscroll事件被触发了&#x27;</span>)&#125;,<span class="hljs-number">1000</span>)<br><br><span class="hljs-comment">// 防抖：防止比必要的操作(抖动)来节省资源，在真正需要的时机(最后一次操作延迟一段时间)再触发</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">debounce</span>(<span class="hljs-params">fn,delay</span>)&#123;<br>    <span class="hljs-keyword">var</span> time = <span class="hljs-literal">null</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">funtion</span>(<span class="hljs-params"></span>)&#123;<br>       <span class="hljs-comment">// 只要在时间之内就给你结束掉(如果到达了时间并且成功执行完毕后也会自行关闭)</span><br>       <span class="hljs-built_in">clearTimeout</span>(time)<br>        time = <span class="hljs-title function_">setTimeOut</span>(<span class="hljs-function">()=&gt;</span>&#123;<br>        <span class="hljs-title function_">fn</span>()<br>        &#125;,delay)<br>    &#125;<br>    <br>&#125;<br><br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;#btn&#x27;</span>).<span class="hljs-property">onclick</span> = <span class="hljs-title function_">debounce</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;btn事件被触发了&#x27;</span>)&#125;,<span class="hljs-number">1000</span>)<br><br><span class="hljs-comment">// 化繁为简：最大的区别，防抖是要等待操作停止下来达到delay时间后再执行，而节流是不管你什么操作，只按照我的时间周期来执行</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h3><p><strong>面试题：什么是跨域？跨域的解决办法是什么？</strong></p>
+<p>浏览器安全的一种策略（类似权限的设置），需要保证 协议、域名、端口号一致</p>
+<p>解决办法：</p>
+<p>jsonp（需前后端都配置）、cors（只需后端配置）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// jsonp：利用script标签的不受跨域限制的特点，将需要执行的回调函数作为参数传递过去，那么请求结束回调函数自动会执行</span><br><br><span class="hljs-keyword">var</span> script = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;script&#x27;</span>)<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">getData</span>(<span class="hljs-params">data</span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data)<br>&#125;<br><br>script.<span class="hljs-property">src</span> = <span class="hljs-string">&#x27;http://localhost:3000?callback=&#x27;</span>+getData<br><br><span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(script)<br></code></pre></td></tr></table></figure>
+
+<h3 id="nodejs事件轮询机制"><a href="#nodejs事件轮询机制" class="headerlink" title="nodejs事件轮询机制"></a>nodejs事件轮询机制</h3><p><strong>面试题：下面三个函数执行顺序是什么？</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;setTimeout&#x27;</span>)<br>&#125;)<br><br><span class="hljs-title function_">setImmediately</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;setImmediately&#x27;</span>)<br>&#125;)<br><br>process.<span class="hljs-title function_">nextTick</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;process.nextTick&#x27;</span>)<br>&#125;)<br><br><span class="hljs-comment">// 不论执行的顺序先后如何，最后的打印结果都会如下：</span><br><span class="hljs-comment">// process.nextTick(在任何阶段都可以优先执行)</span><br><span class="hljs-comment">// setTimeout</span><br><span class="hljs-comment">// setImmediately</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/blog/2023/08/30/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/nodejs%E8%BD%AE%E8%AF%A2%E6%9C%BA%E5%88%B6(1).png" srcset="/blog/img/loading.gif" lazyload alt="事件循环机制的六个阶段(1)"></p>
+<p><img src="/blog/2023/08/30/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/nodejs%E8%BD%AE%E8%AF%A2%E6%9C%BA%E5%88%B6(2).png" srcset="/blog/img/loading.gif" lazyload alt="事件循环机制的六个阶段(2)"></p>
+<p>**化繁为简一句话总结：优先级为 process.nextTick &gt;  定时器 &gt; poll阶段的回调函数 &gt; setImmediately **</p>
+<h3 id="从URL输入网址"><a href="#从URL输入网址" class="headerlink" title="从URL输入网址"></a>从URL输入网址</h3><p><strong>面试题：从url输入网址到最终页面渲染完成，发生了什么？</strong></p>
+<blockquote>
+<p>补充：<a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a></p>
+<p>www：万维网</p>
+<p>URL：统一资源定位符</p>
+<p>一共会有6个步骤，如下：</p>
+<ol>
+<li><p>DNS解析：将域名解析成ip地址，会按照以下顺序寻找映射表</p>
+<ul>
+<li>从浏览器缓存</li>
+<li>从当前系统</li>
+<li>从路由表</li>
+<li>从网络运营商</li>
+<li>递归搜索，从顶级域名服务器往下寻找，例如要找的是<a target="_blank" rel="noopener" href="http://www.example.com这个地址/">www.example.com这个地址</a><ul>
+<li>从.com域名寻找</li>
+<li>从.example域名寻找</li>
+<li>从www域名寻找</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>TCP连接：三次握手</p>
+<ol>
+<li><p>第一次握手，由浏览器发起，通知服务器准备发送数据了</p>
+</li>
+<li><p>第二次握手，由服务器发起，告诉浏览器确认收到通知了</p>
+</li>
+<li><p>第三次握手，由浏览器发起，告诉服务器收到确认消息了，我要开始发了，你准备好了</p>
+<p><strong>面试题：为什么第三次还要再握手一次？</strong></p>
+<p>因为前两次握手只能让客户端知道服务器能正常收到自己发送的数据，但是服务器不能保证客户端能正常收到自己发送的数据（可能半路数据丢失了，于是服务器自己就会超时重传），三次握手就是保证双方发送和接受都是正常的</p>
+</li>
+</ol>
+</li>
+<li><p>发送报文</p>
+</li>
+<li><p>响应报文</p>
+</li>
+<li><p>渲染页面：</p>
+<ul>
+<li>遇见HTML标签，浏览器用HTML解析器生成Token标记并构建成DOM树</li>
+<li>遇见Style/Link标签，浏览器用CSS解析器构建CSSOM树</li>
+<li>遇见script标签，浏览器用javascript解析器处理javascript代码（绑定事件，修改DOM树、CSSDOM树）</li>
+<li>将DOM树、CSSOM树合并成渲染树</li>
+<li>根据渲染树来计算布局，包括元素几何信息、大小等（布局）——— 回流（重排）</li>
+<li>给元素绘制颜色（颜色） ————重绘</li>
+</ul>
+<p>由于各个内容可能经常变动，这些步骤会经常执行，并且顺序不固定</p>
+</li>
+<li><p>关闭TCP连接，四次挥手</p>
+<ol>
+<li>第一次挥手，浏览器告知服务器，即将关闭传输数据的通道，你准备准备</li>
+<li>第二次挥手，服务器确认收到浏览器的关闭通知，表示还需要把剩余的数据传完再说</li>
+<li>第三次挥手，服务器告知浏览器，我数据传递完毕了，我要关闭了</li>
+<li>第四次挥手，浏览器确认服务器的关闭通知，你关闭吧，我过一段时间也关闭</li>
+</ol>
+<p><strong>面试题：为什么第四次挥手要等一段时间才关闭？</strong></p>
+<p>确保服务器能收到自己的确认消息，让服务器放心【在发送路途中考虑到特殊情况（延迟、重传、乱序等问题），确保服务器其能收到自己发的消息】—和第三次握手目的是一样的</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p><strong>什么是闭包？</strong></p>
+<p>它是一个对象（Closure），数据结构为key-value形式</p>
+<p><strong>闭包形成的条件？</strong></p>
+<ol>
+<li>嵌套函数</li>
+<li>内层函数对外层函数变的引用</li>
+<li>**<u>外部函数调用时</u>**（重要），此时产生Closure对象</li>
+</ol>
+<p><strong>闭包优缺点以及注意点？</strong></p>
+<p>优点：延长外层函数变量的生命周期</p>
+<p>缺点：使用不当容易造成内存泄露</p>
+<p>注意点：要及时销毁</p>
+<p><strong>如何销毁？</strong></p>
+<p>没有被使用 或者 被使用了之后成为了垃圾对象（没有指向新的对象或设置为null）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">fn1</span>(<span class="hljs-params"></span>)&#123;<br>    -------------------------------------此时就已经产生了闭包(变量提升)<br>    <span class="hljs-keyword">var</span> a = <span class="hljs-number">2</span><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">fn2</span>(<span class="hljs-params"></span>)&#123;<br>        a++  <span class="hljs-comment">//引用函数外部变量，产生闭包</span><br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a)<br>    &#125;------------------------------------这里整个fn2就会被释放，因为没有被使用(<span class="hljs-number">1</span>)<br>     <span class="hljs-keyword">function</span> <span class="hljs-title function_">fn3</span>(<span class="hljs-params"></span>)&#123;<br>        a++  <span class="hljs-comment">//引用函数外部变量，产生闭包</span><br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a)<br>    &#125;<br>    <span class="hljs-keyword">return</span> fn3<br>&#125;<br><span class="hljs-comment">//fn1()----------------------------------这里fn1调用结束后，如果没有变量指向fn3(返回值)，那fn3就会成为垃圾对象，准备被销毁，那闭包中的变量也没了(2)</span><br><span class="hljs-keyword">var</span> f = <span class="hljs-title function_">fn1</span>()<br><span class="hljs-title function_">f</span>()<br>f = <span class="hljs-literal">null</span> <span class="hljs-comment">// (2)设置为null也成为了垃圾对象</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>闭包的使用场景？</strong></p>
+<p>函数的防抖与节流、第三方库的封装（数据私有化）</p>
+<blockquote>
+<p>下面举个第三方库的封装的例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> counter = (<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-comment">// 私有变量</span><br>  <span class="hljs-keyword">var</span> count = <span class="hljs-number">0</span>;<br>  <br>  <span class="hljs-comment">// 私有函数</span><br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">increment</span>(<span class="hljs-params"></span>) &#123;<br>    count++;<br>  &#125;<br>  <br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">decrement</span>(<span class="hljs-params"></span>) &#123;<br>    count--;<br>  &#125;<br>  <br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">getCount</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> count;<br>  &#125;<br>  <br>  <span class="hljs-comment">// 返回接口</span><br>  <span class="hljs-keyword">return</span> &#123;<br>    <span class="hljs-attr">increment</span>: increment,<br>    <span class="hljs-attr">decrement</span>: decrement,<br>    <span class="hljs-attr">getCount</span>: getCount<br>  &#125;;<br>&#125;)();<br><br>可以通过<span class="hljs-string">`counter.increment()`</span>和<span class="hljs-string">`counter.getCount()`</span>等接口来操作和获取计数器的状态，而无需关心内部的实现细节。<br></code></pre></td></tr></table></figure>
+</blockquote>
+<p><strong>闭包面试题</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">fun</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a)<br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> fun2 = <span class="hljs-title function_">fun</span>()<br><span class="hljs-title function_">fun2</span>()<span class="hljs-comment">//1</span><br><span class="hljs-title function_">fun2</span>()<span class="hljs-comment">//1 ---------- 这两次一直在使用闭包中的变量</span><br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">fun</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>        a++<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a)<br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> fun2 = <span class="hljs-title function_">fun</span>() <br><span class="hljs-title function_">fun2</span>()<span class="hljs-comment">//2</span><br><span class="hljs-title function_">fun2</span>()<span class="hljs-comment">//3 ---------- 同上</span><br><br><span class="hljs-comment">// 下面是闭包终极面试题 ----- 懂了就没啥问题了</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">fun</span>(<span class="hljs-params">n,o</span>)&#123;<br>    <span class="hljs-comment">// var n,o</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(o)<br>    <span class="hljs-keyword">return</span> &#123;<br>        <span class="hljs-attr">fun</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">m</span>)&#123;<br>            <span class="hljs-comment">// var m</span><br>            <span class="hljs-title function_">fun</span>(m,n)<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">var</span> a = <span class="hljs-title function_">fun</span>(<span class="hljs-number">0</span>)<br>a.<span class="hljs-title function_">fun</span>(<span class="hljs-number">1</span>)<br>a.<span class="hljs-title function_">fun</span>(<span class="hljs-number">2</span>)<br>a.<span class="hljs-title function_">fun</span>(<span class="hljs-number">3</span>) <span class="hljs-comment">// undefined,0,0,0</span><br><br><span class="hljs-keyword">var</span> b = <span class="hljs-title function_">fun</span>(<span class="hljs-number">0</span>).<span class="hljs-title function_">fun</span>(<span class="hljs-number">1</span>).<span class="hljs-title function_">fun</span>(<span class="hljs-number">2</span>).<span class="hljs-title function_">fun</span>(<span class="hljs-number">3</span>) <span class="hljs-comment">// undefined,0,1,2</span><br><br><span class="hljs-keyword">var</span> c = <span class="hljs-title function_">fun</span>(<span class="hljs-number">0</span>).<span class="hljs-title function_">fun</span>(<span class="hljs-number">1</span>)<br>c.<span class="hljs-title function_">fun</span>(<span class="hljs-number">2</span>)<br>c.<span class="hljs-title function_">fun</span>(<span class="hljs-number">3</span>) <span class="hljs-comment">// undefined,1,1,1</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>总结技巧：</strong></p>
+<ul>
+<li>对于链式 ———– 返回上一个对象里面闭包的值</li>
+<li>对于非链式———要清除该对象内闭包值是多少，只要不是新的对象，闭包值不变</li>
+</ul>
+<h3 id="变量提升-amp-执行上下文-amp-作用域链"><a href="#变量提升-amp-执行上下文-amp-作用域链" class="headerlink" title="变量提升&amp;执行上下文&amp;作用域链"></a>变量提升&amp;执行上下文&amp;作用域链</h3><blockquote>
+<ol>
+<li><p>变量提升（预处理）   ————— 提前保存</p>
+<p>1）收集 变量</p>
+<p>2）收集 函数的声明以及函数的参数</p>
+<p>3）将 收集的 东西 放入 <strong>变量对象</strong> 中</p>
+<p>其中，变量对象 分为 全局和局部</p>
+<p>全局 -&gt; window</p>
+<p>局部 -&gt; 抽象的</p>
+</li>
+<li><p>确认this的指向 ——————–方便给程序员统一用this访问数据</p>
+<p>1）全局：this-&gt;window   ———（有上面可知，全局变量对象也-&gt;window，即this = 变量对象 = winodw）</p>
+<p>2）局部：this-&gt;调用它的对象 </p>
+</li>
+<li><p>创建作用域链 —————— 如果找不到数据-&gt;找上找</p>
+<p>它的值 = 父级作用域链 + 当前变量对象</p>
+</li>
+</ol>
+<p><strong>总结：以上所有数据保存在执行上下文对象（execute obj）中</strong></p>
+<p>ECObj = {</p>
+<p>​      变量对象：{变量，函数的声明，函数的参数}，</p>
+<p>​      this：{window || 调用它的对象 }，</p>
+<p>​      作用域链（scopeChain）：父级作用域链 + 当前变量对象</p>
+<p>}</p>
+<p>流程：按照作用域链，先从当前执行上下文的变量对象去找，找不到再往外</p>
+<p>this就是指当前执行上下文，只不过默认就是直接跳过变量对象去访问变量</p>
+</blockquote>
+<h3 id="宏任务与微任务"><a href="#宏任务与微任务" class="headerlink" title="宏任务与微任务"></a>宏任务与微任务</h3><p><strong>宏任务、微任务和nodejs事件循环机制的关系</strong></p>
+<blockquote>
+<p>宏任务、微任务都是nodejs事件循环机制处理的对象</p>
+</blockquote>
+<p><strong>宏任务</strong></p>
+<blockquote>
+<p>分类：定时器（<u>setTimeout、setInterval</u>）、requestAnimationFrame（请求动画的回调）</p>
+<p>特点：耗时</p>
+</blockquote>
+<p><strong>宏任务队列</strong></p>
+<blockquote>
+<p>可以用来存放宏任务的，可以有多个，但是第一个是给 主线程 用的，后面的存放宏任务</p>
+</blockquote>
+<p><strong>微任务</strong></p>
+<blockquote>
+<p>分类：new promise(回调).then()、process.nextTick()</p>
+<p>特点：紧急性高</p>
+</blockquote>
+<p><strong>微任务对队列</strong></p>
+<blockquote>
+<p>用来存放微任务，有且只有一个</p>
+</blockquote>
+<p><strong>宏任务和微任务执行顺序？</strong></p>
+<blockquote>
+<p>-&gt;执行第一个宏任务队列（主线程）</p>
+<p>-&gt; 如果存在微任务队列</p>
+<p>​     -&gt; 执行微任务队列</p>
+<p>​    否则</p>
+<p>​    -&gt;执行宏任务队列</p>
+</blockquote>
+<p><strong>宏任务、微任务以及nodejs事件循环检查阶段的执行顺序？</strong></p>
+<blockquote>
+<p>nodejs事件循环检查阶段———————–见上面：事件循环机制的六个阶段</p>
+<p>nodejs事件循环检查阶段主要是针对宏任务的，只是在每个检查阶段结束后都会检查微队列中是否有微队列要执行，有的话先执行微队列，说明了微任务的紧急性。</p>
+</blockquote>
+<p><strong>面试题</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;---------------------start-------------------------&#x27;</span>)<br><br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;setTimeout&#x27;</span>)<br>&#125;, <span class="hljs-number">0</span>)<br><br><span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i)<br>  &#125;<br>  <span class="hljs-title function_">resolve</span>()<br>&#125;).<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Promise实例成功执行&#x27;</span>)<br>&#125;)<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;---------------------end-------------------------&#x27;</span>)<br><br><span class="hljs-comment">//以下是执行结果</span><br>---------------------start-------------------------<br><span class="hljs-number">0</span><br><span class="hljs-number">1</span><br><span class="hljs-number">2</span><br><span class="hljs-number">3</span><br><span class="hljs-number">4</span><br>---------------------end-------------------------<br><span class="hljs-title class_">Promise</span>实例成功执行<br><span class="hljs-built_in">setTimeout</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="比较React和Vue"><a href="#比较React和Vue" class="headerlink" title="比较React和Vue"></a>比较React和Vue</h3><p><strong>相同点</strong></p>
+<ol>
+<li>都支持props进行父子组件间通信</li>
+<li>都支持数据驱动视图，即 数据改变自动更新视图，不需手动更新</li>
+<li>都支持服务端渲染</li>
+<li>都支持虚拟DOM（React偏向于全部重新渲染）</li>
+<li>都支持组件化开发</li>
+</ol>
+<p><strong>不同点</strong></p>
+<ol>
+<li>Vue是双向数据流，而React是单向的</li>
+<li>Vue在修改仓库的数据可以直接this.xxx修改，而React必须调用封装的setState函数</li>
+<li>Vue使用的是webback+vue-loader将js、html、css打包成的组件文件，而React使用的是JSX文件，将html、css全放入js中</li>
+</ol>
+<blockquote>
+<p>如何记忆？js-&gt;模板视图渲染-&gt;组件</p>
+<p>​                   js-&gt;仓库数据-&gt;组件</p>
+<p>分类-&gt;时间顺序-&gt;规模由小到大</p>
+</blockquote>
+<h3 id="Vuex状态管理的机制"><a href="#Vuex状态管理的机制" class="headerlink" title="Vuex状态管理的机制"></a>Vuex状态管理的机制</h3><p><strong>是什么</strong></p>
+<p>是一个专门用于Vue状态管理的插件</p>
+<p><strong>作用</strong></p>
+<p>可集中式处理多个组件的状态和处理后台数据</p>
+<p><strong>原理</strong></p>
+<p>state用来存储状态，getters是对于state计算后的结果，这两者都可以通过$store.state/getters或mapState、mapGetters给组件使用；actions里面的函数可以通过$store.dispatch或mapActions触发，触发后本质上是通过commit调用mutations里面的函数，mutions会直接修改state的值，当然，刚刚这个是actions获取数据，还可以actions里面也可以去修改后台数据。</p>
+<blockquote>
+<p>不难，但是要能说出来</p>
+<p>思路：管理状态和处理后台数据</p>
+<p>管理状态：state-&gt;actions-&gt;mutations-&gt;state-&gt;actions</p>
+<p>处理后台数据：actions</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/blog/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" class="category-chain-item">面试题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/blog/tags/%E5%89%8D%E7%AB%AF%E7%BB%BC%E5%90%88/">#前端综合</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>前端面试题(持续更新)</div>
+      <div>https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2023/08/30/前端面试题-持续更新/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Zhou Jie</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月30日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/2023/08/30/Angular/" title="Angular知识点">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Angular知识点</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/2023/08/30/node-js/" title="Node.js知识点">
+                        <span class="hidden-mobile">Node.js知识点</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script type="text/javascript">
+        var disqus_config = function() {
+          this.page.url = 'https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2023/08/30/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/';
+          this.page.identifier = '/blog/2023/08/30/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/';
+        };
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//' + 'fluid' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', new Date());
+          (d.head || d.body).appendChild(s);
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
