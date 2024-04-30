@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
-  <link rel="icon" href="/blog/img/avatar2.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/avatar2.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -23,16 +23,16 @@
 <meta property="og:site_name" content="Zhou Jie">
 <meta property="og:description" content="1.为什么javascript代码可以在浏览器中被执行？因为浏览器有js解析引擎，可以对js代码进行解析。这个js解析引擎每个浏览器都不同，只要知道其中谷歌浏览器的V8引擎是性能最好的，这也是前端程序员喜欢用谷歌浏览器的原因。  2.为什么javascript可以操作DOM、BOM因为每个浏览器都内置了DOM、BOM这样的内置对象，这样js就可以在浏览器里操作它们。  什么是DOM、BOM DOM">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://github.com/blog/2023/08/30/node-js/js%E8%A7%A3%E6%9E%90%E5%BC%95%E6%93%8E.png">
-<meta property="og:image" content="https://github.com/blog/2023/08/30/node-js/js%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83.png">
-<meta property="og:image" content="https://github.com/blog/2023/08/30/node-js/%E4%B8%AD%E9%97%B4%E4%BB%B6%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B.png">
-<meta property="og:image" content="https://github.com/blog/2023/08/30/node-js/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%A0%BC%E5%BC%8F.png">
+<meta property="og:image" content="https://github.com/2023/08/30/node-js/js%E8%A7%A3%E6%9E%90%E5%BC%95%E6%93%8E.png">
+<meta property="og:image" content="https://github.com/2023/08/30/node-js/js%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83.png">
+<meta property="og:image" content="https://github.com/2023/08/30/node-js/%E4%B8%AD%E9%97%B4%E4%BB%B6%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B.png">
+<meta property="og:image" content="https://github.com/2023/08/30/node-js/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%A0%BC%E5%BC%8F.png">
 <meta property="article:published_time" content="2023-08-30T08:14:01.000Z">
 <meta property="article:modified_time" content="2024-04-01T03:41:22.062Z">
 <meta property="article:author" content="Zhou Jie">
 <meta property="article:tag" content="知识点">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://github.com/blog/2023/08/30/node-js/js%E8%A7%A3%E6%9E%90%E5%BC%95%E6%93%8E.png">
+<meta name="twitter:image" content="https://github.com/2023/08/30/node-js/js%E8%A7%A3%E6%9E%90%E5%BC%95%E6%93%8E.png">
   
   
   
@@ -60,12 +60,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/blog/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -74,15 +74,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"github.com","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+    var CONFIG = {"hostname":"github.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/blog/js/utils.js" ></script>
-  <script  src="/blog/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
 
 
@@ -99,7 +99,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/blog/">
+    <a class="navbar-brand" href="/">
       <strong>Indispensible</strong>
     </a>
 
@@ -118,7 +118,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -130,7 +130,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -142,7 +142,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -154,7 +154,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -166,7 +166,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
               </a>
@@ -196,7 +196,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/blog/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -280,7 +280,7 @@
               <div class="markdown-body">
                 
                 <h3 id="1-为什么javascript代码可以在浏览器中被执行？"><a href="#1-为什么javascript代码可以在浏览器中被执行？" class="headerlink" title="1.为什么javascript代码可以在浏览器中被执行？"></a>1.为什么javascript代码可以在浏览器中被执行？</h3><p>因为浏览器有js解析引擎，可以对js代码进行解析。这个js解析引擎每个浏览器都不同，只要知道其中谷歌浏览器的V8引擎是性能最好的，这也是前端程序员喜欢用谷歌浏览器的原因。</p>
-<p><img src="/blog/2023/08/30/node-js/js%E8%A7%A3%E6%9E%90%E5%BC%95%E6%93%8E.png" srcset="/blog/img/loading.gif" lazyload alt="js解析引擎"></p>
+<p><img src="/2023/08/30/node-js/js%E8%A7%A3%E6%9E%90%E5%BC%95%E6%93%8E.png" srcset="/img/loading.gif" lazyload alt="js解析引擎"></p>
 <h3 id="2-为什么javascript可以操作DOM、BOM"><a href="#2-为什么javascript可以操作DOM、BOM" class="headerlink" title="2.为什么javascript可以操作DOM、BOM"></a>2.为什么javascript可以操作DOM、BOM</h3><p>因为每个浏览器都内置了DOM、BOM这样的内置对象，这样js就可以在浏览器里操作它们。</p>
 <ul>
 <li><p>什么是DOM、BOM</p>
@@ -290,7 +290,7 @@
 </ul>
 <h3 id="3-javascript的运行环境包括什么？"><a href="#3-javascript的运行环境包括什么？" class="headerlink" title="3.javascript的运行环境包括什么？"></a>3.javascript的运行环境包括什么？</h3><p>即代码所需要的运行环境，包括 js解析引擎 和 内置API，其实就是上面两点所说的</p>
 <p><u>关系：</u>应该是先经过解析引擎解析然后调用内置API就可以操作 BOM、DOM了</p>
-<p><img src="/blog/2023/08/30/node-js/js%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83.png" srcset="/blog/img/loading.gif" lazyload alt="js运行环境"></p>
+<p><img src="/2023/08/30/node-js/js%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83.png" srcset="/img/loading.gif" lazyload alt="js运行环境"></p>
 <h3 id="4-javascript是如何做后端开发的？"><a href="#4-javascript是如何做后端开发的？" class="headerlink" title="4.javascript是如何做后端开发的？"></a>4.javascript是如何做后端开发的？</h3><p>javascript放在浏览器的环境里就是做前端的，放在node.js环境里就是做后端的。</p>
 <ul>
 <li>注意：在node.js环境中不能调用DOM、BOM、ajax对象，因为它里面只提供后端的API，这些浏览器的内置API它无关。</li>
@@ -401,10 +401,10 @@
 <p>类似于处理污水的中间处理环节</p>
 <p><strong>2.中间件的处理流程</strong></p>
 <p>当一个请求到达express服务器的时候，会连续调用多个中间件，进而对请求进行预处理，也就是说中间件的作用就是对请求进行预处理</p>
-<p><img src="/blog/2023/08/30/node-js/%E4%B8%AD%E9%97%B4%E4%BB%B6%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B.png" srcset="/blog/img/loading.gif" lazyload alt="中间件调用流程"></p>
+<p><img src="/2023/08/30/node-js/%E4%B8%AD%E9%97%B4%E4%BB%B6%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B.png" srcset="/img/loading.gif" lazyload alt="中间件调用流程"></p>
 <p><strong>3.中间件的格式</strong></p>
 <p>中间件本质上是个处理函数，在参数上比路由多一个next参数，且这个next参数是个函数</p>
-<p><img src="/blog/2023/08/30/node-js/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%A0%BC%E5%BC%8F.png" srcset="/blog/img/loading.gif" lazyload alt="中间件格式"></p>
+<p><img src="/2023/08/30/node-js/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%A0%BC%E5%BC%8F.png" srcset="/img/loading.gif" lazyload alt="中间件格式"></p>
 <p><strong>4.next函数的作用</strong></p>
 <p>它是中间件连续调用的关键，调用了next函数后就可以转接给下一个中间件或路由</p>
 <p><strong>5.中间件的作用</strong></p>
@@ -473,7 +473,7 @@
     
       <span class="category-chain">
         
-  <a href="/blog/categories/Node-js/" class="category-chain-item">Node.js</a>
+  <a href="/categories/Node-js/" class="category-chain-item">Node.js</a>
   
   
 
@@ -488,7 +488,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/blog/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/">#知识点</a>
+        <a href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/">#知识点</a>
       
     </div>
   
@@ -545,7 +545,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/blog/2023/08/30/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/" title="前端面试题(持续更新)">
+                      <a href="/2023/08/30/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/" title="前端面试题(持续更新)">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">前端面试题(持续更新)</span>
                         <span class="visible-mobile">上一篇</span>
@@ -555,7 +555,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/blog/2023/08/30/Vue3%E7%9B%B8%E5%AF%B9%E4%BA%8EVue2%E7%9A%84%E4%B8%8D%E5%90%8C%E7%94%A8%E6%B3%95/" title="Vue3相对于Vue2的不同用法">
+                      <a href="/2023/08/30/Vue3%E7%9B%B8%E5%AF%B9%E4%BA%8EVue2%E7%9A%84%E4%B8%8D%E5%90%8C%E7%94%A8%E6%B3%95/" title="Vue3相对于Vue2的不同用法">
                         <span class="hidden-mobile">Vue3相对于Vue2的不同用法</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -577,7 +577,7 @@
       <script type="text/javascript">
         var disqus_config = function() {
           this.page.url = 'https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2023/08/30/node-js/';
-          this.page.identifier = '/blog/2023/08/30/node-js/';
+          this.page.identifier = '/2023/08/30/node-js/';
         };
         Fluid.utils.loadComments('#disqus_thread', function() {
           var d = document, s = d.createElement('script');
@@ -713,8 +713,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/blog/js/events.js" ></script>
-<script  src="/blog/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -736,7 +736,7 @@
 
 
   
-    <script  src="/blog/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -835,7 +835,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/blog/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -843,7 +843,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/blog/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

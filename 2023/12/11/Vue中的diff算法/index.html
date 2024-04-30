@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
-  <link rel="icon" href="/blog/img/avatar2.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/avatar2.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -23,13 +23,13 @@
 <meta property="og:site_name" content="Zhou Jie">
 <meta property="og:description" content="什么是diff算法？1、先说下diff算法它的简介以及作用： 它是通过比较新旧DOM树的差异来减少更新的次数，最终提高渲染的性能的一种算法。 2、它的实现遵循两个原则：  在比较差异时肯定要遍历旧DOM树，它用的是深度优先遍历，为什么？因为可以更快地把当前节点树给遍历完，不需要像广度优先遍历那样在同层来回切换节点，节省了时间和空间（内存） 使用双端比较策略来减少遍历的次数  3、下面说说双端策略的">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://github.com/blog/2023/12/11/Vue%E4%B8%AD%E7%9A%84diff%E7%AE%97%E6%B3%95/diff.png">
+<meta property="og:image" content="https://github.com/2023/12/11/Vue%E4%B8%AD%E7%9A%84diff%E7%AE%97%E6%B3%95/diff.png">
 <meta property="article:published_time" content="2023-12-11T01:35:23.000Z">
 <meta property="article:modified_time" content="2024-04-01T03:41:22.041Z">
 <meta property="article:author" content="Zhou Jie">
 <meta property="article:tag" content="Vue2">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://github.com/blog/2023/12/11/Vue%E4%B8%AD%E7%9A%84diff%E7%AE%97%E6%B3%95/diff.png">
+<meta name="twitter:image" content="https://github.com/2023/12/11/Vue%E4%B8%AD%E7%9A%84diff%E7%AE%97%E6%B3%95/diff.png">
   
   
   
@@ -57,12 +57,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/blog/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -71,15 +71,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"github.com","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+    var CONFIG = {"hostname":"github.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/blog/js/utils.js" ></script>
-  <script  src="/blog/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
 
 
@@ -96,7 +96,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/blog/">
+    <a class="navbar-brand" href="/">
       <strong>Indispensible</strong>
     </a>
 
@@ -115,7 +115,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -127,7 +127,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -139,7 +139,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -151,7 +151,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -163,7 +163,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
               </a>
@@ -193,7 +193,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/blog/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -296,7 +296,7 @@
 <p>如果四种比较策略未找到相同节点，则会在旧节点数组头尾指针的区间内遍历，能找到便还是和刚刚一样移动，唯一的不同就是要把遍历到的节点给置空，为什么？后面会讲。</p>
 <p>如果遍历后也没找到，那么就把这个节点根据新节点数组相应位置插入到真实DOM中，这个是插入操作；</p>
 <p>当新节点数组的头指针大于尾指针时，比较结束，此时会在旧节点树的头尾指针区间遍历一下 看看是否有新节点数组不要的节点，即新节点树没有的节点，没有的就删除真实DOM中相应的节点，这是删除操作。前面有找到的节点置空也是为了减少这个环节遍历的比较次数，提高了性能，这样一来，最终保证了真实DOM和新节点数组的内容一致。</p>
-<p><img src="/blog/2023/12/11/Vue%E4%B8%AD%E7%9A%84diff%E7%AE%97%E6%B3%95/diff.png" srcset="/blog/img/loading.gif" lazyload alt="双端策略"></p>
+<p><img src="/2023/12/11/Vue%E4%B8%AD%E7%9A%84diff%E7%AE%97%E6%B3%95/diff.png" srcset="/img/loading.gif" lazyload alt="双端策略"></p>
 <p><strong>有位大佬把这个过程做成了一个动画，可帮助理解：<a target="_blank" rel="noopener" href="https://wanglin2.github.io/VNode_visualization_demo/">https://wanglin2.github.io/VNode_visualization_demo/</a></strong></p>
 <p>有一个问题：如何判断是同一个节点？</p>
 <p>判断当前节点的标签tag和key是否一致，并且这个key要保证唯一性，否则在比较子节点时才会发现不是一个节点，又要重绘和重排（也叫回流），性能低下。</p>
@@ -334,7 +334,7 @@
     
       <span class="category-chain">
         
-  <a href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
   
   
 
@@ -349,7 +349,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/blog/tags/Vue2/">#Vue2</a>
+        <a href="/tags/Vue2/">#Vue2</a>
       
     </div>
   
@@ -406,7 +406,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/blog/2023/12/15/Vue%E4%B8%AD%E6%95%B4%E4%B8%AA%E5%88%9D%E5%A7%8B%E5%8C%96%E8%BF%87%E7%A8%8B%E5%9C%A8%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%88%E8%A7%A3%E6%9E%90%E3%80%81%E7%BC%96%E8%AF%91%E3%80%81%E6%B8%B2%E6%9F%93%E6%A8%A1%E6%9D%BF%EF%BC%89/" title="Vue中整个初始化过程在做什么（解析、编译、渲染模板）">
+                      <a href="/2023/12/15/Vue%E4%B8%AD%E6%95%B4%E4%B8%AA%E5%88%9D%E5%A7%8B%E5%8C%96%E8%BF%87%E7%A8%8B%E5%9C%A8%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%88%E8%A7%A3%E6%9E%90%E3%80%81%E7%BC%96%E8%AF%91%E3%80%81%E6%B8%B2%E6%9F%93%E6%A8%A1%E6%9D%BF%EF%BC%89/" title="Vue中整个初始化过程在做什么（解析、编译、渲染模板）">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Vue中整个初始化过程在做什么（解析、编译、渲染模板）</span>
                         <span class="visible-mobile">上一篇</span>
@@ -416,7 +416,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/blog/2023/12/09/Vue%E4%B8%AD%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%92%8C%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84%E5%85%B3%E7%B3%BB/" title="Vue中双向绑定和响应式的关系">
+                      <a href="/2023/12/09/Vue%E4%B8%AD%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%92%8C%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84%E5%85%B3%E7%B3%BB/" title="Vue中双向绑定和响应式的关系">
                         <span class="hidden-mobile">Vue中双向绑定和响应式的关系</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -438,7 +438,7 @@
       <script type="text/javascript">
         var disqus_config = function() {
           this.page.url = 'https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2023/12/11/Vue%E4%B8%AD%E7%9A%84diff%E7%AE%97%E6%B3%95/';
-          this.page.identifier = '/blog/2023/12/11/Vue%E4%B8%AD%E7%9A%84diff%E7%AE%97%E6%B3%95/';
+          this.page.identifier = '/2023/12/11/Vue%E4%B8%AD%E7%9A%84diff%E7%AE%97%E6%B3%95/';
         };
         Fluid.utils.loadComments('#disqus_thread', function() {
           var d = document, s = d.createElement('script');
@@ -574,8 +574,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/blog/js/events.js" ></script>
-<script  src="/blog/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -597,7 +597,7 @@
 
 
   
-    <script  src="/blog/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -696,7 +696,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/blog/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -704,7 +704,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/blog/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

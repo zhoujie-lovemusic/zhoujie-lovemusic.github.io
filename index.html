@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
-  <link rel="icon" href="/blog/img/avatar2.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/avatar2.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -44,12 +44,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/blog/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -58,15 +58,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"github.com","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+    var CONFIG = {"hostname":"github.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/blog/js/utils.js" ></script>
-  <script  src="/blog/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
 
 
@@ -83,7 +83,7 @@
 <div class="header-inner" style="height: 100vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/blog/">
+    <a class="navbar-brand" href="/">
       <strong>Indispensible</strong>
     </a>
 
@@ -102,7 +102,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -114,7 +114,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -126,7 +126,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -138,7 +138,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -150,7 +150,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
               </a>
@@ -180,7 +180,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/blog/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -224,13 +224,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/blog/2024/04/11/React%E5%AD%A6%E4%B9%A0/" target="_self">
+        <a href="/2024/04/11/React%E5%AD%A6%E4%B9%A0/" target="_self">
           
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/blog/2024/04/11/React%E5%AD%A6%E4%B9%A0/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/11/React%E5%AD%A6%E4%B9%A0/" target="_self">
         <div>
           
         </div>
@@ -257,13 +257,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/blog/2024/04/07/ElementuUI/" target="_self">
+        <a href="/2024/04/07/ElementuUI/" target="_self">
           ElementuUI
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/blog/2024/04/07/ElementuUI/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/07/ElementuUI/" target="_self">
         <div>
           表单验证  验证项 只能作用于 :model 中的数据  验证项的 命名以及类型 需要 === 表单v-model绑定的变量（类型默认string，整数的话 表单项需要用v-model.number来和验证项的 type=’integer’进行比较）  触发时机：change事件要注意 一定得是 v-model值发生变化才会触发 所以 change事件 一般用于 select选项框（随便选一个值都
         </div>
@@ -289,7 +289,7 @@
     
       <span class="category-chain">
         
-  <a href="/blog/categories/UI%E6%A1%86%E6%9E%B6/" class="category-chain-item">UI框架</a>
+  <a href="/categories/UI%E6%A1%86%E6%9E%B6/" class="category-chain-item">UI框架</a>
   
   
 
@@ -304,7 +304,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/blog/tags/ElementuUI/">#ElementuUI</a>
+              <a href="/tags/ElementuUI/">#ElementuUI</a>
             
           </div>
         
@@ -318,13 +318,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/blog/2024/02/15/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E8%BF%9B%E9%98%B6/" target="_self">
+        <a href="/2024/02/15/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E8%BF%9B%E9%98%B6/" target="_self">
           前端高频面试题(进阶)
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/blog/2024/02/15/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E8%BF%9B%E9%98%B6/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/15/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E8%BF%9B%E9%98%B6/" target="_self">
         <div>
           CSS盒子快速居中的方法（字节）123456789101112131415161718192021222324252627//  方法太多，但是找个最快的方法，只需两步！！！&lt;head&gt;  &lt;style&gt;     .con&#123;       width: 500px;       height: 200px;       background-color: aquam
         </div>
@@ -350,7 +350,7 @@
     
       <span class="category-chain">
         
-  <a href="/blog/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" class="category-chain-item">面试题</a>
+  <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" class="category-chain-item">面试题</a>
   
   
 
@@ -365,7 +365,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/blog/tags/%E5%89%8D%E7%AB%AF%E7%BB%BC%E5%90%88/">#前端综合</a>
+              <a href="/tags/%E5%89%8D%E7%AB%AF%E7%BB%BC%E5%90%88/">#前端综合</a>
             
           </div>
         
@@ -379,13 +379,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/blog/2024/01/03/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9F%BA%E7%A1%80/" target="_self">
+        <a href="/2024/01/03/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9F%BA%E7%A1%80/" target="_self">
           前端高频面试题-基础
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/blog/2024/01/03/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9F%BA%E7%A1%80/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/03/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9F%BA%E7%A1%80/" target="_self">
         <div>
           CSS1.说一下CSS盒模型 是什么：在HTML上任何一个元素都可以看成一个CSS盒模型 有什么：对于标准盒模型来说，包含四个属性：margin、border、padding、content ​               但是对于IE盒模型来说，只有两个属性：margin、content（已包含border、padding） 对于有什么如何区分：通过属性box-sizing来设置两种模型:con
         </div>
@@ -411,7 +411,7 @@
     
       <span class="category-chain">
         
-  <a href="/blog/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" class="category-chain-item">面试题</a>
+  <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" class="category-chain-item">面试题</a>
   
   
 
@@ -426,7 +426,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/blog/tags/%E5%89%8D%E7%AB%AF%E7%BB%BC%E5%90%88/">#前端综合</a>
+              <a href="/tags/%E5%89%8D%E7%AB%AF%E7%BB%BC%E5%90%88/">#前端综合</a>
             
           </div>
         
@@ -440,13 +440,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/blog/2023/12/18/Vue%E4%B8%AD%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" target="_self">
+        <a href="/2023/12/18/Vue%E4%B8%AD%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" target="_self">
           Vue中的性能优化
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/blog/2023/12/18/Vue%E4%B8%AD%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/18/Vue%E4%B8%AD%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" target="_self">
         <div>
           组件实例  按需第三方插件，比如加载UI组件模块  静态资源使用CDN加载（CDN会把静态资源缓存在各个服务器中，查找时会寻找最近的服务器寻找），例如用CDN加载图标库  不要把太多的数据放在data中，减少过多的数据劫持添加getter、setter 为什么？ 因为 在实例化时，Vue会对data中的属性用object.defineproperty进行数据劫持使里面的数据都具有响应式的能力，如
         </div>
@@ -472,7 +472,7 @@
     
       <span class="category-chain">
         
-  <a href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
   
   
 
@@ -487,7 +487,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/blog/tags/Vue2/">#Vue2</a>
+              <a href="/tags/Vue2/">#Vue2</a>
             
           </div>
         
@@ -501,13 +501,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/blog/2023/12/15/Vue%E4%B8%AD%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0/" target="_self">
+        <a href="/2023/12/15/Vue%E4%B8%AD%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0/" target="_self">
           Vue中路由钩子函数
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/blog/2023/12/15/Vue%E4%B8%AD%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/15/Vue%E4%B8%AD%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0/" target="_self">
         <div>
           分类 先说下所有的钩子函数：全局守卫、路由独享路由、组件守卫。 完整的导航解析流程  导航被触发，比如router.push()、router.replace() 调用失活组件的beforeRouteLeave守卫 调用全局前置守卫beforeEach，在这可以添加一些登录验证，这是验证是全局的，也就是它针对所有路由 调用重用组件的beforeRouteUpdate守卫，这个守卫专门在路由 的组件
         </div>
@@ -533,7 +533,7 @@
     
       <span class="category-chain">
         
-  <a href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
   
   
 
@@ -548,7 +548,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/blog/tags/Vue2/">#Vue2</a>
+              <a href="/tags/Vue2/">#Vue2</a>
             
           </div>
         
@@ -562,13 +562,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/blog/2023/12/15/Vue%E4%B8%AD%E6%95%B4%E4%B8%AA%E5%88%9D%E5%A7%8B%E5%8C%96%E8%BF%87%E7%A8%8B%E5%9C%A8%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%88%E8%A7%A3%E6%9E%90%E3%80%81%E7%BC%96%E8%AF%91%E3%80%81%E6%B8%B2%E6%9F%93%E6%A8%A1%E6%9D%BF%EF%BC%89/" target="_self">
+        <a href="/2023/12/15/Vue%E4%B8%AD%E6%95%B4%E4%B8%AA%E5%88%9D%E5%A7%8B%E5%8C%96%E8%BF%87%E7%A8%8B%E5%9C%A8%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%88%E8%A7%A3%E6%9E%90%E3%80%81%E7%BC%96%E8%AF%91%E3%80%81%E6%B8%B2%E6%9F%93%E6%A8%A1%E6%9D%BF%EF%BC%89/" target="_self">
           Vue中整个初始化过程在做什么（解析、编译、渲染模板）
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/blog/2023/12/15/Vue%E4%B8%AD%E6%95%B4%E4%B8%AA%E5%88%9D%E5%A7%8B%E5%8C%96%E8%BF%87%E7%A8%8B%E5%9C%A8%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%88%E8%A7%A3%E6%9E%90%E3%80%81%E7%BC%96%E8%AF%91%E3%80%81%E6%B8%B2%E6%9F%93%E6%A8%A1%E6%9D%BF%EF%BC%89/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/15/Vue%E4%B8%AD%E6%95%B4%E4%B8%AA%E5%88%9D%E5%A7%8B%E5%8C%96%E8%BF%87%E7%A8%8B%E5%9C%A8%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%88%E8%A7%A3%E6%9E%90%E3%80%81%E7%BC%96%E8%AF%91%E3%80%81%E6%B8%B2%E6%9F%93%E6%A8%A1%E6%9D%BF%EF%BC%89/" target="_self">
         <div>
           什么是Vue的初始化？初始化可以算是从Vue实例化到页面初次渲染后的过程，大致可以分为解析-&gt;编译-&gt;渲染模板这三个过程。 解析阶段Vue解析器开始去解析模板字符串，比如插值语法、指令等内容。接着，将解析后的内容生成抽象语法树（abstract syntax tree-AST），这是一个方便分析和处理数据的数据结构，它描述了各个元素节点的属性以及它们之间的关系。同时，在生成AST的同时
         </div>
@@ -594,7 +594,7 @@
     
       <span class="category-chain">
         
-  <a href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
   
   
 
@@ -609,7 +609,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/blog/tags/Vue2/">#Vue2</a>
+              <a href="/tags/Vue2/">#Vue2</a>
             
           </div>
         
@@ -623,13 +623,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/blog/2023/12/11/Vue%E4%B8%AD%E7%9A%84diff%E7%AE%97%E6%B3%95/" target="_self">
+        <a href="/2023/12/11/Vue%E4%B8%AD%E7%9A%84diff%E7%AE%97%E6%B3%95/" target="_self">
           Vue中的diff算法以及虚拟DOM优缺点
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/blog/2023/12/11/Vue%E4%B8%AD%E7%9A%84diff%E7%AE%97%E6%B3%95/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/11/Vue%E4%B8%AD%E7%9A%84diff%E7%AE%97%E6%B3%95/" target="_self">
         <div>
           什么是diff算法？1、先说下diff算法它的简介以及作用： 它是通过比较新旧DOM树的差异来减少更新的次数，最终提高渲染的性能的一种算法。 2、它的实现遵循两个原则：  在比较差异时肯定要遍历旧DOM树，它用的是深度优先遍历，为什么？因为可以更快地把当前节点树给遍历完，不需要像广度优先遍历那样在同层来回切换节点，节省了时间和空间（内存） 使用双端比较策略来减少遍历的次数  3、下面说说双端策略的
         </div>
@@ -655,7 +655,7 @@
     
       <span class="category-chain">
         
-  <a href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
   
   
 
@@ -670,7 +670,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/blog/tags/Vue2/">#Vue2</a>
+              <a href="/tags/Vue2/">#Vue2</a>
             
           </div>
         
@@ -684,13 +684,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/blog/2023/12/09/Vue%E4%B8%AD%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%92%8C%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84%E5%85%B3%E7%B3%BB/" target="_self">
+        <a href="/2023/12/09/Vue%E4%B8%AD%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%92%8C%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84%E5%85%B3%E7%B3%BB/" target="_self">
           Vue中双向绑定和响应式的关系
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/blog/2023/12/09/Vue%E4%B8%AD%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%92%8C%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84%E5%85%B3%E7%B3%BB/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/09/Vue%E4%B8%AD%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%92%8C%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84%E5%85%B3%E7%B3%BB/" target="_self">
         <div>
           什么是双向绑定？当我们用javascript更改model数据时，view会更新，然后用户更新view时，model也会更新。 双向绑定的原理？1、先说一下双向绑定的组成部分： 它包含view、model、view model三个部分，其中最重要的就是view model，使它实现的view和model的关联，双向绑定的原理最主要的就是view model的原理。 那view model它又包含两
         </div>
@@ -716,7 +716,7 @@
     
       <span class="category-chain">
         
-  <a href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
   
   
 
@@ -731,7 +731,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/blog/tags/Vue2/">#Vue2</a>
+              <a href="/tags/Vue2/">#Vue2</a>
             
           </div>
         
@@ -745,13 +745,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/blog/2023/11/22/Ionic%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%90%88%E9%9B%86/" target="_self">
+        <a href="/2023/11/22/Ionic%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%90%88%E9%9B%86/" target="_self">
           Ionic项目中碰到的问题合集
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/blog/2023/11/22/Ionic%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%90%88%E9%9B%86/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/22/Ionic%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%A2%B0%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%90%88%E9%9B%86/" target="_self">
         <div>
           打包指令npm i cordova（坑：不安装导致一直打包失败） ionic cordova platform add android@版本号  添加安卓平台 ionic cordova platform remove android  移除安卓平台 ionic cordova build android    打包指令 ionic cordova build android –prod –rel
         </div>
@@ -777,7 +777,7 @@
     
       <span class="category-chain">
         
-  <a href="/blog/categories/Ionic/" class="category-chain-item">Ionic</a>
+  <a href="/categories/Ionic/" class="category-chain-item">Ionic</a>
   
   
 
@@ -792,7 +792,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/blog/tags/%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/">#开发问题</a>
+              <a href="/tags/%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98/">#开发问题</a>
             
           </div>
         
@@ -804,7 +804,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/#board">2</a><a class="page-number" href="/blog/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/6/#board">6</a><a class="extend next" rel="next" href="/blog/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#board">6</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
@@ -880,8 +880,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/blog/js/events.js" ></script>
-<script  src="/blog/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -903,13 +903,13 @@
 
 
   
-    <script  src="/blog/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
 
 
-  <script  src="/blog/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -917,7 +917,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/blog/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/fluid.png">
-  <link rel="icon" href="/blog/img/avatar2.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/avatar2.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -23,13 +23,13 @@
 <meta property="og:site_name" content="Zhou Jie">
 <meta property="og:description" content="ES6新特性1.ECMA（European Computer Manufacture Assocition） 1）欧洲计算机制造商协会 2）ECMAScript 是脚本程序设计语言,js便是ECMA的一种实现，ES6即ECMA Script 6  2.let  1）不能重复声明，防止变量被污染，这样每个变量的用途都是唯一的  ​       不像以前var可以重复声明（后面的会把前面的覆盖掉），很">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://github.com/blog/2023/03/04/ES%E6%96%B0%E7%89%B9%E6%80%A7/this%E7%9A%84%E6%8C%87%E5%90%91.png">
+<meta property="og:image" content="https://github.com/2023/03/04/ES%E6%96%B0%E7%89%B9%E6%80%A7/this%E7%9A%84%E6%8C%87%E5%90%91.png">
 <meta property="article:published_time" content="2023-03-04T02:21:19.000Z">
 <meta property="article:modified_time" content="2024-04-01T03:41:22.008Z">
 <meta property="article:author" content="Zhou Jie">
 <meta property="article:tag" content="知识点">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://github.com/blog/2023/03/04/ES%E6%96%B0%E7%89%B9%E6%80%A7/this%E7%9A%84%E6%8C%87%E5%90%91.png">
+<meta name="twitter:image" content="https://github.com/2023/03/04/ES%E6%96%B0%E7%89%B9%E6%80%A7/this%E7%9A%84%E6%8C%87%E5%90%91.png">
   
   
   
@@ -57,12 +57,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/blog/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/blog/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/blog/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -71,15 +71,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"github.com","root":"/blog/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/blog/local-search.xml"};
+    var CONFIG = {"hostname":"github.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/blog/js/utils.js" ></script>
-  <script  src="/blog/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
 
 
@@ -96,7 +96,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/blog/">
+    <a class="navbar-brand" href="/">
       <strong>Indispensible</strong>
     </a>
 
@@ -115,7 +115,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -127,7 +127,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -139,7 +139,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -151,7 +151,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -163,7 +163,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
               </a>
@@ -193,7 +193,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/blog/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -362,7 +362,7 @@
 <h4 id="8-知识点补充"><a href="#8-知识点补充" class="headerlink" title="8.知识点补充"></a>8.知识点补充</h4><p><strong>this指向的补充</strong></p>
 <blockquote>
 <p><strong>在不使用箭头函数</strong>和call、apply、bind的情况下，这些this的指向，当我们调用函数的时候是确定的。调用函数的不同决定了this指向的不同。</p>
-<p><img src="/blog/2023/03/04/ES%E6%96%B0%E7%89%B9%E6%80%A7/this%E7%9A%84%E6%8C%87%E5%90%91.png" srcset="/blog/img/loading.gif" lazyload alt="this的指向"><br>总结：也就是除了指明对象和事件的，其他都是window</p>
+<p><img src="/2023/03/04/ES%E6%96%B0%E7%89%B9%E6%80%A7/this%E7%9A%84%E6%8C%87%E5%90%91.png" srcset="/img/loading.gif" lazyload alt="this的指向"><br>总结：也就是除了指明对象和事件的，其他都是window</p>
 </blockquote>
 <h4 id="9-函数参数的默认设置"><a href="#9-函数参数的默认设置" class="headerlink" title="9.函数参数的默认设置"></a>9.函数参数的默认设置</h4><blockquote>
 <p>1）允许给函数参数赋缺省值，形参初始值一般放最后面，和c++一样</p>
@@ -697,7 +697,7 @@
     
       <span class="category-chain">
         
-  <a href="/blog/categories/ES/" class="category-chain-item">ES</a>
+  <a href="/categories/ES/" class="category-chain-item">ES</a>
   
   
 
@@ -712,7 +712,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/blog/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/">#知识点</a>
+        <a href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/">#知识点</a>
       
     </div>
   
@@ -769,7 +769,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/blog/2023/03/09/$nextClick%E4%B8%8Ewatch%E7%9A%84%E5%A6%99%E7%94%A8/" title="Vue2:$nextClick和watch的妙用">
+                      <a href="/2023/03/09/$nextClick%E4%B8%8Ewatch%E7%9A%84%E5%A6%99%E7%94%A8/" title="Vue2:$nextClick和watch的妙用">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Vue2:$nextClick和watch的妙用</span>
                         <span class="visible-mobile">上一篇</span>
@@ -779,7 +779,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/blog/2023/03/04/JS%E9%AB%98%E7%BA%A7/" title="JS高级">
+                      <a href="/2023/03/04/JS%E9%AB%98%E7%BA%A7/" title="JS高级">
                         <span class="hidden-mobile">JS高级</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -801,7 +801,7 @@
       <script type="text/javascript">
         var disqus_config = function() {
           this.page.url = 'https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2023/03/04/ES%E6%96%B0%E7%89%B9%E6%80%A7/';
-          this.page.identifier = '/blog/2023/03/04/ES%E6%96%B0%E7%89%B9%E6%80%A7/';
+          this.page.identifier = '/2023/03/04/ES%E6%96%B0%E7%89%B9%E6%80%A7/';
         };
         Fluid.utils.loadComments('#disqus_thread', function() {
           var d = document, s = d.createElement('script');
@@ -937,8 +937,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/blog/js/events.js" ></script>
-<script  src="/blog/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -960,7 +960,7 @@
 
 
   
-    <script  src="/blog/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -1059,7 +1059,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/blog/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -1067,7 +1067,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/blog/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   
