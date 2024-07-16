@@ -24,7 +24,7 @@
 <meta property="og:description" content="表单验证 验证项 只能作用于 :model 中的数据  验证项的 命名以及类型 需要 &#x3D;&#x3D;&#x3D; 表单v-model绑定的变量（类型默认string，整数的话 表单项需要用v-model.number来和验证项的 type&#x3D;’integer’进行比较）  触发时机：change事件要注意 一定得是 v-model值发生变化才会触发 所以 change事件 一般用于 select选项框（随便选一个值都会">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-07T09:26:58.000Z">
-<meta property="article:modified_time" content="2024-05-08T08:58:41.415Z">
+<meta property="article:modified_time" content="2024-07-15T10:09:30.575Z">
 <meta property="article:author" content="Zhou Jie">
 <meta property="article:tag" content="ElementuUI">
 <meta name="twitter:card" content="summary_large_image">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.8k 字
+          5.1k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          40 分钟
+          43 分钟
         
       </span>
     
@@ -309,7 +309,7 @@
 
 <h3 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h3><ul>
 <li><p>调整内置样式：需要加     ::v-deep</p>
-<p>将el-form-item的label加粗</p>
+<p>将el-form-item的label加粗（只有写一个::v-deep即可，更深层的内部样式不需要再加了）</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css">  ::v-deep .el-form-item__label &#123;<br>          <span class="hljs-attribute">font-weight</span>:bold<br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="label内容换行"><a href="#label内容换行" class="headerlink" title="label内容换行"></a><strong>label内容换行</strong></h3><ul>
@@ -329,7 +329,7 @@
 <h3 id="校验密码格式"><a href="#校验密码格式" class="headerlink" title="校验密码格式"></a>校验密码格式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs js"> <span class="hljs-attr">rulesForPasswordEdit</span>: &#123;<br>  <span class="hljs-attr">new</span>: [<br>    &#123; <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;请输入新密码&#x27;</span>, <span class="hljs-attr">trigger</span>: <span class="hljs-string">&#x27;blur&#x27;</span> &#125;,<br>    &#123; <span class="hljs-attr">validator</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">validatePassword</span>, <span class="hljs-attr">trigger</span>: <span class="hljs-string">&#x27;blur&#x27;</span> &#125;<br>  ],<br>  <span class="hljs-attr">newRepeat</span>: [<br>    &#123; <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;请再次1输入新密码&#x27;</span>, <span class="hljs-attr">trigger</span>: <span class="hljs-string">&#x27;blur&#x27;</span> &#125;,<br>    &#123; <span class="hljs-attr">validator</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">validateConfirmPassword</span>, <span class="hljs-attr">trigger</span>: <span class="hljs-string">&#x27;blur&#x27;</span> &#125;<br>  ]<br>&#125;<br> <span class="hljs-title function_">validatePassword</span>(<span class="hljs-params">rule, value, callback</span>) &#123;<br>  <span class="hljs-comment">// 密码必须包含数字和大小写字母任意两种组合，长度6-16位</span><br>  <span class="hljs-keyword">const</span> regExp = <span class="hljs-regexp">/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]&#123;6,16&#125;$/</span>;<br>  <span class="hljs-keyword">if</span> (!regExp.<span class="hljs-title function_">test</span>(value)) &#123;<br>    <span class="hljs-title function_">callback</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;密码格式不正确&#x27;</span>));<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-title function_">callback</span>();<br>  &#125;<br>&#125;,<br><span class="hljs-title function_">validateConfirmPassword</span>(<span class="hljs-params">rule, value, callback</span>) &#123;<br>  <span class="hljs-keyword">if</span> (value !== <span class="hljs-variable language_">this</span>.<span class="hljs-property">formData</span>.<span class="hljs-property">password</span>) &#123;<br>    <span class="hljs-title function_">callback</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;两次密码输入不一致&#x27;</span>));<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-title function_">callback</span>();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><h3 id="属性列宽度"><a href="#属性列宽度" class="headerlink" title="属性列宽度"></a><strong>属性列宽度</strong></h3><ul>
-<li><p>直接在el-table-column上的width=”纯数字”加即可，改一个其他会列会自适应缩小</p>
+<li><p>直接在el-table-column上的**width=”纯数字”**加即可，改一个其他会列会自适应缩小</p>
 </li>
 <li><p>不要在el-table-column上来加布局，就算是行内样式也不一定能生效，因为它内置可能有优先级更高的布局，解决办法：里面重新设置一个div来设置布局</p>
 </li>
@@ -350,6 +350,16 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">el-row</span>&gt;</span><br>// 各12，等于平分 <br><span class="hljs-tag">&lt;<span class="hljs-name">el-col</span> <span class="hljs-attr">:span</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span><br>1<br><span class="hljs-tag">&lt;/<span class="hljs-name">el-col</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">el-col</span> <span class="hljs-attr">:span</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span><br>1<br><span class="hljs-tag">&lt;/<span class="hljs-name">el-col</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">el-row</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
 <p><strong>文字的布局直接使用text-align，盒子的布局才用flex那些</strong></p>
+<h1 id="弹框"><a href="#弹框" class="headerlink" title="弹框"></a>弹框</h1><p><strong>点击弹框被模态框覆盖怎么办？</strong>（被遮罩层覆盖）</p>
+<p>直接在el-dialog上设置属性：:modal-append-to-body=’false’</p>
+<ul>
+<li><p>如何内部有消息确认框confirm，此时确认框点击结束后此时又会唤起遮罩层，如何解决？</p>
+<p>dialog上面加上:modal=”false”，是最好的解决方法，直接关闭dialog的遮罩层（网上有个加append-to-body属性的，但是这样会导致内部自己设置的样式被覆盖，因为这个属性是直接将dialog追加在body后面的，此时已经设置过样式了，但是晚了）</p>
+</li>
+</ul>
+<p><strong>如何在标题和内容内容之间加一个分割线？</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">::v-deep .<span class="hljs-property">el</span>-dialog__body &#123;<br>  border-<span class="hljs-attr">top</span>: 1px solid #ccc;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
