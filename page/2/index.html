@@ -224,6 +224,67 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2023/12/11/Vue%E4%B8%AD%E7%9A%84diff%E7%AE%97%E6%B3%95/" target="_self">
+          Vue中的diff算法以及虚拟DOM优缺点
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/11/Vue%E4%B8%AD%E7%9A%84diff%E7%AE%97%E6%B3%95/" target="_self">
+        <div>
+          什么是diff算法？1、先说下diff算法它的简介以及作用： 它是通过比较新旧DOM树的差异来减少更新的次数，最终提高渲染的性能的一种算法。 2、它的实现遵循两个原则：  在比较差异时肯定要遍历旧DOM树，它用的是深度优先遍历，为什么？因为可以更快地把当前节点树给遍历完，不需要像广度优先遍历那样在同层来回切换节点，节省了时间和空间（内存） 使用双端比较策略来减少遍历的次数  3、下面说说双端策略的
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-11 09:35" pubdate>
+              2023-12-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Vue2/">#Vue2</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2023/12/09/Vue%E4%B8%AD%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%92%8C%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84%E5%85%B3%E7%B3%BB/" target="_self">
           Vue中双向绑定和响应式的关系
         </a>
@@ -760,67 +821,6 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/Vue2/">#Vue2</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/09/07/Reactive%E5%AF%B9%E6%AF%94Ref/" target="_self">
-          Reactive对比Ref
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/07/Reactive%E5%AF%B9%E6%AF%94Ref/" target="_self">
-        <div>
-          从定义数据的角度： ref用来定义：基本数据类型 reactive用来定义：引用数据类型（包括数组） ref也可以定义引用数据类型，只是它的内部使用的就是reactive的proxy   从实现原理的角度 ref通过Object.defineproperty的get和set实现响应式 reactive通过proxy实现响应式，通过reflect操作原对象的数据   从使用的角度 ref定义过的数
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-09-07 09:32" pubdate>
-              2023-09-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Vue3/">#Vue3</a>
             
           </div>
         
