@@ -224,6 +224,67 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2023/12/15/Vue%E4%B8%AD%E6%95%B4%E4%B8%AA%E5%88%9D%E5%A7%8B%E5%8C%96%E8%BF%87%E7%A8%8B%E5%9C%A8%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%88%E8%A7%A3%E6%9E%90%E3%80%81%E7%BC%96%E8%AF%91%E3%80%81%E6%B8%B2%E6%9F%93%E6%A8%A1%E6%9D%BF%EF%BC%89/" target="_self">
+          Vue中整个初始化过程在做什么（解析、编译、渲染模板）
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/15/Vue%E4%B8%AD%E6%95%B4%E4%B8%AA%E5%88%9D%E5%A7%8B%E5%8C%96%E8%BF%87%E7%A8%8B%E5%9C%A8%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%88%E8%A7%A3%E6%9E%90%E3%80%81%E7%BC%96%E8%AF%91%E3%80%81%E6%B8%B2%E6%9F%93%E6%A8%A1%E6%9D%BF%EF%BC%89/" target="_self">
+        <div>
+          什么是Vue的初始化？初始化可以算是从Vue实例化到页面初次渲染后的过程，大致可以分为解析-&gt;编译-&gt;渲染模板这三个过程。 解析阶段Vue解析器开始去解析模板字符串，比如插值语法、指令等内容。接着，将解析后的内容生成抽象语法树（abstract syntax tree-AST），这是一个方便分析和处理数据的数据结构，它描述了各个元素节点的属性以及它们之间的关系。同时，在生成AST的同时
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-15 11:29" pubdate>
+              2023-12-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Vue2/">#Vue2</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2023/12/11/Vue%E4%B8%AD%E7%9A%84diff%E7%AE%97%E6%B3%95/" target="_self">
           Vue中的diff算法以及虚拟DOM优缺点
         </a>
@@ -729,67 +790,6 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
             <time datetime="2023-09-07 11:11" pubdate>
-              2023-09-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Vue2/">#Vue2</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/09/07/Vue2%E4%B8%AD%E7%88%B6%E5%AD%90%E4%BC%A0%E5%80%BC%E7%9A%84%E5%86%85%E9%83%A8%E8%BF%87%E7%A8%8B/" target="_self">
-          Vue2中父子传值的内部过程
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/07/Vue2%E4%B8%AD%E7%88%B6%E5%AD%90%E4%BC%A0%E5%80%BC%E7%9A%84%E5%86%85%E9%83%A8%E8%BF%87%E7%A8%8B/" target="_self">
-        <div>
-          前言 在学习Vue3中的Setup注意点，有专门提到父子传值，内容打破了我固有观念，有必要记录一下。 广义上来看 父组件的数据-&gt;子组件用props接受-&gt;props将数据交给vm的data-&gt;子组件到模板中使用 从狭义上来看 我们默认子组件是用props接受的，那万一子组件不用props接受呢？真的就用不了吗？ 不，如果没有用props接受，那么会先存在vm.$attrs中，一
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-09-07 10:54" pubdate>
               2023-09-07
             </time>
           </div>
