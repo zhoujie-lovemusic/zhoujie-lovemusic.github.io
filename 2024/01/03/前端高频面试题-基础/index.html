@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://github.com/2024/01/03/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9F%BA%E7%A1%80/%E5%8E%9F%E5%9E%8B%E9%93%BE.png">
 <meta property="og:image" content="https://github.com/2024/01/03/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9F%BA%E7%A1%80/%E7%BB%84%E4%BB%B6%E5%AE%9E%E4%BE%8B%E4%B8%8EVue%E5%AE%9E%E4%BE%8B%E5%85%B3%E7%B3%BB.png">
 <meta property="article:published_time" content="2024-01-03T06:21:01.000Z">
-<meta property="article:modified_time" content="2024-04-01T03:41:22.078Z">
+<meta property="article:modified_time" content="2024-08-13T06:50:45.207Z">
 <meta property="article:author" content="Zhou Jie">
 <meta property="article:tag" content="前端综合">
 <meta name="twitter:card" content="summary_large_image">
@@ -410,7 +410,7 @@
 <p>解决方法：使用transform先放大一倍，再缩小一倍。这边看似什么也没做，但里面涉及到了字体渲染时会用到的技术：抗锯齿化技术，在字体渲染到页面上之后字体的边缘是会呈现锯齿状的，因此在每次字体渲染时会使用抗锯齿化技术使得字体边缘变得平滑，这里先放大再缩小等于 重新抗锯齿化 一次。</p>
 </li>
 <li><p>IOS在input框设置disabled之后字体显示异常（比较灰暗）</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css">  <span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=button]</span>&#123;<br>    <span class="hljs-attribute">opacity</span>:<span class="hljs-number">1</span>// 把字体显示正常:不透明度=&gt;<span class="hljs-number">1</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=button]</span>&#123;<br>  <span class="hljs-attribute">opacity</span>:<span class="hljs-number">1</span>// 把字体显示正常:不透明度=&gt;<span class="hljs-number">1</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
 <li><p>IOS在设置 overflow:auto/scroll 添加滚动条滑动时，会卡顿，就是 屏幕跟不上手动滑动的频率。</p>
 <p>-webkit-overflow-scrolling: touch —————— 内置滚动改为触摸事件</p>
 </li>
@@ -1202,13 +1202,21 @@
 <h3 id="10-Vue中修饰符有哪些？"><a href="#10-Vue中修饰符有哪些？" class="headerlink" title="10.Vue中修饰符有哪些？"></a>10.Vue中修饰符有哪些？</h3><blockquote>
 <ol>
 <li>事件修饰符<ul>
-<li>.capture：事件捕获模式，先触发当前事件再触发内部事件</li>
-<li>.self：只会触发当前事件，不会被事件传播而影响被触发</li>
-<li>.stop：阻止事件冒泡</li>
-<li>.once：有且仅触发一次</li>
-<li>.passive（消极-任由继续往后找）：不阻止/触发默认行为</li>
-<li>.prevent：阻止默认行为</li>
-<li>.native：仅触发原生事件，这些事件Vue没有，因为不常用</li>
+<li><p>.capture：事件捕获模式，先触发当前事件再触发内部事件</p>
+</li>
+<li><p>.self：只会触发当前事件，不会被事件传播而影响被触发</p>
+</li>
+<li><p>.stop：阻止事件冒泡</p>
+</li>
+<li><p>.once：有且仅触发一次</p>
+</li>
+<li><p>.passive（消极-任由继续往后找）：不阻止/触发默认行为</p>
+</li>
+<li><p>.prevent：阻止默认行为</p>
+</li>
+<li><p>.native：仅触发原生事件，这些事件Vue没有，因为不常用</p>
+<p>使用场景：由于自定义组件只能触发自定义事件，想要触发原生js事件就要加上.native</p>
+</li>
 </ul>
 </li>
 <li>v-model修饰符<ul>
