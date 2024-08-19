@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>js:字符串与数字0比较要注意</title>
+    <link href="/2024/08/19/js-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%AD%970%E6%AF%94%E8%BE%83%E8%A6%81%E6%B3%A8%E6%84%8F/"/>
+    <url>/2024/08/19/js-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%AD%970%E6%AF%94%E8%BE%83%E8%A6%81%E6%B3%A8%E6%84%8F/</url>
+    
+    <content type="html"><![CDATA[<p><strong>前言</strong></p><p>本来以为 == 会因为隐式转换可以 将 “0”==0 结果为true，结果却不一样</p><p><strong>结论</strong></p><h4 id="字母开头的字符串-与-数字0-用-模糊比较总是true"><a href="#字母开头的字符串-与-数字0-用-模糊比较总是true" class="headerlink" title="字母开头的字符串 与 数字0 用 == 模糊比较总是true"></a><code>字母开头的字符串 与 数字0 用 == 模糊比较总是true</code></h4><p>因此以后要注意不要用 == 偷懒 隐式转换来比较，要用===类型相同的数据来比</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>不同数据类型比较</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>uniapp学习</title>
     <link href="/2024/07/30/uniapp%E5%AD%A6%E4%B9%A0/"/>
     <url>/2024/07/30/uniapp%E5%AD%A6%E4%B9%A0/</url>
