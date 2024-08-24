@@ -16,22 +16,22 @@
   <meta name="author" content="Zhou Jie">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言 本来以为 &#x3D;&#x3D; 会因为隐式转换可以 将 “0”&#x3D;&#x3D;0 结果为true，结果却不一样 结论 字母开头的字符串 与 数字0 用 &#x3D;&#x3D; 模糊比较总是true因此以后要注意不要用 &#x3D;&#x3D; 偷懒 隐式转换来比较，要用&#x3D;&#x3D;&#x3D;类型相同的数据来比">
+    <meta name="description" content="前言 有这样一个场景：用户User1从第三方页面A设置某状态status为1，然后自动跳转到我的页面B时，第一次进入若status为1，则提示“成功”，但是后面都不再提示（也就是说只有从第三方页面第一次跳回到自己的页面若查到status为1才提示，后面就不提示） 分析 也就是要满足两个条件  第一次提示后，后面都不提示 ————-  &gt;用localStorage+当前用户据的flag为tru">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js:字符串与数字0比较要注意">
-<meta property="og:url" content="https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/08/19/js-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%AD%970%E6%AF%94%E8%BE%83%E8%A6%81%E6%B3%A8%E6%84%8F/index.html">
+<meta property="og:title" content="js:如何根据返回的状态只提示成功一次？">
+<meta property="og:url" content="https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/08/21/js-%E5%A6%82%E4%BD%95%E6%A0%B9%E6%8D%AE%E8%BF%94%E5%9B%9E%E7%9A%84%E7%8A%B6%E6%80%81%E5%8F%AA%E6%8F%90%E7%A4%BA%E6%88%90%E5%8A%9F%E4%B8%80%E6%AC%A1%EF%BC%9F/index.html">
 <meta property="og:site_name" content="Zhou Jie">
-<meta property="og:description" content="前言 本来以为 &#x3D;&#x3D; 会因为隐式转换可以 将 “0”&#x3D;&#x3D;0 结果为true，结果却不一样 结论 字母开头的字符串 与 数字0 用 &#x3D;&#x3D; 模糊比较总是true因此以后要注意不要用 &#x3D;&#x3D; 偷懒 隐式转换来比较，要用&#x3D;&#x3D;&#x3D;类型相同的数据来比">
+<meta property="og:description" content="前言 有这样一个场景：用户User1从第三方页面A设置某状态status为1，然后自动跳转到我的页面B时，第一次进入若status为1，则提示“成功”，但是后面都不再提示（也就是说只有从第三方页面第一次跳回到自己的页面若查到status为1才提示，后面就不提示） 分析 也就是要满足两个条件  第一次提示后，后面都不提示 ————-  &gt;用localStorage+当前用户据的flag为tru">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-08-19T08:59:23.000Z">
-<meta property="article:modified_time" content="2024-08-19T09:01:54.092Z">
+<meta property="article:published_time" content="2024-08-21T06:51:51.000Z">
+<meta property="article:modified_time" content="2024-08-24T10:16:52.098Z">
 <meta property="article:author" content="Zhou Jie">
-<meta property="article:tag" content="不同数据类型比较">
+<meta property="article:tag" content="业务">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>js:字符串与数字0比较要注意 - Zhou Jie</title>
+  <title>js:如何根据返回的状态只提示成功一次？ - Zhou Jie</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="js:字符串与数字0比较要注意"></span>
+            <span id="subtitle" data-typed-text="js:如何根据返回的状态只提示成功一次？"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-08-19 16:59" pubdate>
-          2024年8月19日 下午
+        <time datetime="2024-08-21 14:51" pubdate>
+          2024年8月21日 下午
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          101 字
+          236 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          1 分钟
+          2 分钟
         
       </span>
     
@@ -269,15 +269,19 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">js:字符串与数字0比较要注意</h1>
+            <h1 style="display: none">js:如何根据返回的状态只提示成功一次？</h1>
             
             
               <div class="markdown-body">
                 
                 <p><strong>前言</strong></p>
-<p>本来以为 == 会因为隐式转换可以 将 “0”==0 结果为true，结果却不一样</p>
-<p><strong>结论</strong></p>
-<h4 id="字母开头的字符串-与-数字0-用-模糊比较总是true"><a href="#字母开头的字符串-与-数字0-用-模糊比较总是true" class="headerlink" title="字母开头的字符串 与 数字0 用 == 模糊比较总是true"></a><code>字母开头的字符串 与 数字0 用 == 模糊比较总是true</code></h4><p>因此以后要注意不要用 == 偷懒 隐式转换来比较，要用===类型相同的数据来比</p>
+<p>有这样一个场景：用户User1从第三方页面A设置某状态status为1，然后自动跳转到我的页面B时，第一次进入若status为1，则提示“成功”，但是后面都不再提示（也就是说只有从第三方页面第一次跳回到自己的页面若查到status为1才提示，后面就不提示）</p>
+<p><strong>分析</strong></p>
+<p>也就是要满足两个条件</p>
+<ul>
+<li>第一次提示后，后面都不提示 ————-  &gt;用localStorage+当前用户据的flag为true再提示</li>
+<li>要根据具体的用户来 —————————-&gt;存的键名需要带上用户id，保证唯一</li>
+</ul>
 
                 
               </div>
@@ -311,7 +315,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E4%B8%8D%E5%90%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83/">#不同数据类型比较</a>
+        <a href="/tags/%E4%B8%9A%E5%8A%A1/">#业务</a>
       
     </div>
   
@@ -323,8 +327,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>js:字符串与数字0比较要注意</div>
-      <div>https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/08/19/js-字符串与数字0比较要注意/</div>
+      <div>js:如何根据返回的状态只提示成功一次？</div>
+      <div>https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/08/21/js-如何根据返回的状态只提示成功一次？/</div>
     </div>
     <div class="license-meta">
       
@@ -336,7 +340,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年8月19日</div>
+          <div>2024年8月21日</div>
         </div>
       
       
@@ -368,18 +372,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/08/21/js-%E5%A6%82%E4%BD%95%E6%A0%B9%E6%8D%AE%E8%BF%94%E5%9B%9E%E7%9A%84%E7%8A%B6%E6%80%81%E5%8F%AA%E6%8F%90%E7%A4%BA%E6%88%90%E5%8A%9F%E4%B8%80%E6%AC%A1%EF%BC%9F/" title="js:如何根据返回的状态只提示成功一次？">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">js:如何根据返回的状态只提示成功一次？</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/07/30/uniapp%E5%AD%A6%E4%B9%A0/" title="uniapp学习">
-                        <span class="hidden-mobile">uniapp学习</span>
+                      <a href="/2024/08/19/js-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%AD%970%E6%AF%94%E8%BE%83%E8%A6%81%E6%B3%A8%E6%84%8F/" title="js:字符串与数字0比较要注意">
+                        <span class="hidden-mobile">js:字符串与数字0比较要注意</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -399,8 +397,8 @@
     
       <script type="text/javascript">
         var disqus_config = function() {
-          this.page.url = 'https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/08/19/js-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%AD%970%E6%AF%94%E8%BE%83%E8%A6%81%E6%B3%A8%E6%84%8F/';
-          this.page.identifier = '/2024/08/19/js-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%AD%970%E6%AF%94%E8%BE%83%E8%A6%81%E6%B3%A8%E6%84%8F/';
+          this.page.url = 'https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/08/21/js-%E5%A6%82%E4%BD%95%E6%A0%B9%E6%8D%AE%E8%BF%94%E5%9B%9E%E7%9A%84%E7%8A%B6%E6%80%81%E5%8F%AA%E6%8F%90%E7%A4%BA%E6%88%90%E5%8A%9F%E4%B8%80%E6%AC%A1%EF%BC%9F/';
+          this.page.identifier = '/2024/08/21/js-%E5%A6%82%E4%BD%95%E6%A0%B9%E6%8D%AE%E8%BF%94%E5%9B%9E%E7%9A%84%E7%8A%B6%E6%80%81%E5%8F%AA%E6%8F%90%E7%A4%BA%E6%88%90%E5%8A%9F%E4%B8%80%E6%AC%A1%EF%BC%9F/';
         };
         Fluid.utils.loadComments('#disqus_thread', function() {
           var d = document, s = d.createElement('script');

@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>js:如何根据返回的状态只提示成功一次？</title>
+    <link href="/2024/08/21/js-%E5%A6%82%E4%BD%95%E6%A0%B9%E6%8D%AE%E8%BF%94%E5%9B%9E%E7%9A%84%E7%8A%B6%E6%80%81%E5%8F%AA%E6%8F%90%E7%A4%BA%E6%88%90%E5%8A%9F%E4%B8%80%E6%AC%A1%EF%BC%9F/"/>
+    <url>/2024/08/21/js-%E5%A6%82%E4%BD%95%E6%A0%B9%E6%8D%AE%E8%BF%94%E5%9B%9E%E7%9A%84%E7%8A%B6%E6%80%81%E5%8F%AA%E6%8F%90%E7%A4%BA%E6%88%90%E5%8A%9F%E4%B8%80%E6%AC%A1%EF%BC%9F/</url>
+    
+    <content type="html"><![CDATA[<p><strong>前言</strong></p><p>有这样一个场景：用户User1从第三方页面A设置某状态status为1，然后自动跳转到我的页面B时，第一次进入若status为1，则提示“成功”，但是后面都不再提示（也就是说只有从第三方页面第一次跳回到自己的页面若查到status为1才提示，后面就不提示）</p><p><strong>分析</strong></p><p>也就是要满足两个条件</p><ul><li>第一次提示后，后面都不提示 ————-  &gt;用localStorage+当前用户据的flag为true再提示</li><li>要根据具体的用户来 —————————-&gt;存的键名需要带上用户id，保证唯一</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>业务</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>js:字符串与数字0比较要注意</title>
     <link href="/2024/08/19/js-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%AD%970%E6%AF%94%E8%BE%83%E8%A6%81%E6%B3%A8%E6%84%8F/"/>
     <url>/2024/08/19/js-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%AD%970%E6%AF%94%E8%BE%83%E8%A6%81%E6%B3%A8%E6%84%8F/</url>
