@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>git中那些涉及merge的操作</title>
+    <link href="/2024/09/03/git%E4%B8%AD%E9%82%A3%E4%BA%9B%E6%B6%89%E5%8F%8Amerge%E7%9A%84%E6%93%8D%E4%BD%9C/"/>
+    <url>/2024/09/03/git%E4%B8%AD%E9%82%A3%E4%BA%9B%E6%B6%89%E5%8F%8Amerge%E7%9A%84%E6%93%8D%E4%BD%9C/</url>
+    
+    <content type="html"><![CDATA[<p><strong>前言</strong></p><p>总结一些涉及到merge操作的git指令</p><hr><p><strong>pull和commit的顺序的顺序问题</strong></p><ul><li>改相同的一块代码，不管pull和commit的顺序如何，最终都是要merge，因为即使先pull会提示你先commit或者stash</li></ul><p>-&gt;既然先pull如果有同一块代码会有提示你commit再合并，那以后都先pull不就行了：</p><p>–&gt;如果没有共同代码，刚刚好拿到了最新代码</p><p>–&gt;如果有，那git中合并记录，记录一下</p><p><strong>git merge到底是哪个合并到哪</strong></p><ul><li>git merge A—&gt;把A的分支合并到当前分支（本地合并）</li></ul><p><strong>如何将某的分支的commit提交到本分之</strong></p><ul><li>git log A —-&gt;查看A分支的提交记录</li><li>git cherry-pick commitId —-&gt;把某分支的commit合并到当前分支</li></ul><p><strong>如何合并远程其他分支的代码</strong></p><ul><li>git pull —&gt;先把其他分支的内容更新到一下，否则获取不到远程其他分支最新代码</li><li>使用vscode工具合并远程别的分支的代码后，是不需要commit的，因为当前就是在合并，commit已经写好了就是合并，剩下的就是合并后的push（优先使用vscode工具来将主分支合并远程其他各个分支的内容，用命令的话需要先拉到本地并合并，比较麻烦）</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Git</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Git操作</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>js:如何根据返回的状态只提示成功一次？</title>
     <link href="/2024/08/21/js-%E5%A6%82%E4%BD%95%E6%A0%B9%E6%8D%AE%E8%BF%94%E5%9B%9E%E7%9A%84%E7%8A%B6%E6%80%81%E5%8F%AA%E6%8F%90%E7%A4%BA%E6%88%90%E5%8A%9F%E4%B8%80%E6%AC%A1%EF%BC%9F/"/>
     <url>/2024/08/21/js-%E5%A6%82%E4%BD%95%E6%A0%B9%E6%8D%AE%E8%BF%94%E5%9B%9E%E7%9A%84%E7%8A%B6%E6%80%81%E5%8F%AA%E6%8F%90%E7%A4%BA%E6%88%90%E5%8A%9F%E4%B8%80%E6%AC%A1%EF%BC%9F/</url>

@@ -16,22 +16,22 @@
   <meta name="author" content="Zhou Jie">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言 有这样一个场景：用户User1从第三方页面A设置某状态status为1，然后自动跳转到我的页面B时，第一次进入若status为1，则提示“成功”，但是后面都不再提示（也就是说只有从第三方页面第一次跳回到自己的页面若查到status为1才提示，后面就不提示） 分析 也就是要满足两个条件  第一次提示后，后面都不提示 ————-  &gt;用localStorage+当前用户据的flag为tru">
+    <meta name="description" content="前言 总结一些涉及到merge操作的git指令  pull和commit的顺序的顺序问题  改相同的一块代码，不管pull和commit的顺序如何，最终都是要merge，因为即使先pull会提示你先commit或者stash  -&gt;既然先pull如果有同一块代码会有提示你commit再合并，那以后都先pull不就行了： –&gt;如果没有共同代码，刚刚好拿到了最新代码 –&gt;如果有，那g">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js:如何根据返回的状态只提示成功一次？">
-<meta property="og:url" content="https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/08/21/js-%E5%A6%82%E4%BD%95%E6%A0%B9%E6%8D%AE%E8%BF%94%E5%9B%9E%E7%9A%84%E7%8A%B6%E6%80%81%E5%8F%AA%E6%8F%90%E7%A4%BA%E6%88%90%E5%8A%9F%E4%B8%80%E6%AC%A1%EF%BC%9F/index.html">
+<meta property="og:title" content="git中那些涉及merge的操作">
+<meta property="og:url" content="https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/09/03/git%E4%B8%AD%E9%82%A3%E4%BA%9B%E6%B6%89%E5%8F%8Amerge%E7%9A%84%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="Zhou Jie">
-<meta property="og:description" content="前言 有这样一个场景：用户User1从第三方页面A设置某状态status为1，然后自动跳转到我的页面B时，第一次进入若status为1，则提示“成功”，但是后面都不再提示（也就是说只有从第三方页面第一次跳回到自己的页面若查到status为1才提示，后面就不提示） 分析 也就是要满足两个条件  第一次提示后，后面都不提示 ————-  &gt;用localStorage+当前用户据的flag为tru">
+<meta property="og:description" content="前言 总结一些涉及到merge操作的git指令  pull和commit的顺序的顺序问题  改相同的一块代码，不管pull和commit的顺序如何，最终都是要merge，因为即使先pull会提示你先commit或者stash  -&gt;既然先pull如果有同一块代码会有提示你commit再合并，那以后都先pull不就行了： –&gt;如果没有共同代码，刚刚好拿到了最新代码 –&gt;如果有，那g">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-08-21T06:51:51.000Z">
-<meta property="article:modified_time" content="2024-08-24T10:16:52.098Z">
+<meta property="article:published_time" content="2024-09-03T09:09:57.000Z">
+<meta property="article:modified_time" content="2024-09-03T09:27:18.026Z">
 <meta property="article:author" content="Zhou Jie">
-<meta property="article:tag" content="业务">
+<meta property="article:tag" content="Git操作">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>js:如何根据返回的状态只提示成功一次？ - Zhou Jie</title>
+  <title>git中那些涉及merge的操作 - Zhou Jie</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="js:如何根据返回的状态只提示成功一次？"></span>
+            <span id="subtitle" data-typed-text="git中那些涉及merge的操作"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-08-21 14:51" pubdate>
-          2024年8月21日 下午
+        <time datetime="2024-09-03 17:09" pubdate>
+          2024年9月3日 下午
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          236 字
+          524 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          2 分钟
+          5 分钟
         
       </span>
     
@@ -269,18 +269,34 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">js:如何根据返回的状态只提示成功一次？</h1>
+            <h1 style="display: none">git中那些涉及merge的操作</h1>
             
             
               <div class="markdown-body">
                 
                 <p><strong>前言</strong></p>
-<p>有这样一个场景：用户User1从第三方页面A设置某状态status为1，然后自动跳转到我的页面B时，第一次进入若status为1，则提示“成功”，但是后面都不再提示（也就是说只有从第三方页面第一次跳回到自己的页面若查到status为1才提示，后面就不提示）</p>
-<p><strong>分析</strong></p>
-<p>也就是要满足两个条件</p>
+<p>总结一些涉及到merge操作的git指令</p>
+<hr>
+<p><strong>pull和commit的顺序的顺序问题</strong></p>
 <ul>
-<li>第一次提示后，后面都不提示 ————-  &gt;用localStorage+当前用户据的flag为true再提示</li>
-<li>要根据具体的用户来 —————————-&gt;存的键名需要带上用户id，保证唯一</li>
+<li>改相同的一块代码，不管pull和commit的顺序如何，最终都是要merge，因为即使先pull会提示你先commit或者stash</li>
+</ul>
+<p>-&gt;既然先pull如果有同一块代码会有提示你commit再合并，那以后都先pull不就行了：</p>
+<p>–&gt;如果没有共同代码，刚刚好拿到了最新代码</p>
+<p>–&gt;如果有，那git中合并记录，记录一下</p>
+<p><strong>git merge到底是哪个合并到哪</strong></p>
+<ul>
+<li>git merge A—&gt;把A的分支合并到当前分支（本地合并）</li>
+</ul>
+<p><strong>如何将某的分支的commit提交到本分之</strong></p>
+<ul>
+<li>git log A —-&gt;查看A分支的提交记录</li>
+<li>git cherry-pick commitId —-&gt;把某分支的commit合并到当前分支</li>
+</ul>
+<p><strong>如何合并远程其他分支的代码</strong></p>
+<ul>
+<li>git pull —&gt;先把其他分支的内容更新到一下，否则获取不到远程其他分支最新代码</li>
+<li>使用vscode工具合并远程别的分支的代码后，是不需要commit的，因为当前就是在合并，commit已经写好了就是合并，剩下的就是合并后的push（优先使用vscode工具来将主分支合并远程其他各个分支的内容，用命令的话需要先拉到本地并合并，比较麻烦）</li>
 </ul>
 
                 
@@ -300,7 +316,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Js/" class="category-chain-item">Js</a>
+  <a href="/categories/Git/" class="category-chain-item">Git</a>
   
   
 
@@ -315,7 +331,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E4%B8%9A%E5%8A%A1/">#业务</a>
+        <a href="/tags/Git%E6%93%8D%E4%BD%9C/">#Git操作</a>
       
     </div>
   
@@ -327,8 +343,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>js:如何根据返回的状态只提示成功一次？</div>
-      <div>https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/08/21/js-如何根据返回的状态只提示成功一次？/</div>
+      <div>git中那些涉及merge的操作</div>
+      <div>https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/09/03/git中那些涉及merge的操作/</div>
     </div>
     <div class="license-meta">
       
@@ -340,7 +356,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年8月21日</div>
+          <div>2024年9月3日</div>
         </div>
       
       
@@ -372,18 +388,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/09/03/git%E4%B8%AD%E9%82%A3%E4%BA%9B%E6%B6%89%E5%8F%8Amerge%E7%9A%84%E6%93%8D%E4%BD%9C/" title="git中那些涉及merge的操作">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">git中那些涉及merge的操作</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/08/19/js-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%AD%970%E6%AF%94%E8%BE%83%E8%A6%81%E6%B3%A8%E6%84%8F/" title="js:字符串与数字0比较要注意">
-                        <span class="hidden-mobile">js:字符串与数字0比较要注意</span>
+                      <a href="/2024/08/21/js-%E5%A6%82%E4%BD%95%E6%A0%B9%E6%8D%AE%E8%BF%94%E5%9B%9E%E7%9A%84%E7%8A%B6%E6%80%81%E5%8F%AA%E6%8F%90%E7%A4%BA%E6%88%90%E5%8A%9F%E4%B8%80%E6%AC%A1%EF%BC%9F/" title="js:如何根据返回的状态只提示成功一次？">
+                        <span class="hidden-mobile">js:如何根据返回的状态只提示成功一次？</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -403,8 +413,8 @@
     
       <script type="text/javascript">
         var disqus_config = function() {
-          this.page.url = 'https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/08/21/js-%E5%A6%82%E4%BD%95%E6%A0%B9%E6%8D%AE%E8%BF%94%E5%9B%9E%E7%9A%84%E7%8A%B6%E6%80%81%E5%8F%AA%E6%8F%90%E7%A4%BA%E6%88%90%E5%8A%9F%E4%B8%80%E6%AC%A1%EF%BC%9F/';
-          this.page.identifier = '/2024/08/21/js-%E5%A6%82%E4%BD%95%E6%A0%B9%E6%8D%AE%E8%BF%94%E5%9B%9E%E7%9A%84%E7%8A%B6%E6%80%81%E5%8F%AA%E6%8F%90%E7%A4%BA%E6%88%90%E5%8A%9F%E4%B8%80%E6%AC%A1%EF%BC%9F/';
+          this.page.url = 'https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/09/03/git%E4%B8%AD%E9%82%A3%E4%BA%9B%E6%B6%89%E5%8F%8Amerge%E7%9A%84%E6%93%8D%E4%BD%9C/';
+          this.page.identifier = '/2024/09/03/git%E4%B8%AD%E9%82%A3%E4%BA%9B%E6%B6%89%E5%8F%8Amerge%E7%9A%84%E6%93%8D%E4%BD%9C/';
         };
         Fluid.utils.loadComments('#disqus_thread', function() {
           var d = document, s = d.createElement('script');
