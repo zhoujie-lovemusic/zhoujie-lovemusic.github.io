@@ -16,17 +16,17 @@
   <meta name="author" content="Zhou Jie">
   <meta name="keywords" content="">
   
-    <meta name="description" content="CSS1.说一下CSS盒模型 是什么：在HTML上任何一个元素都可以看成一个CSS盒模型 有什么：对于标准盒模型来说，包含四个属性：margin、border、padding、content ​               但是对于IE盒模型来说，只有两个属性：margin、content（已包含border、padding） 对于有什么如何区分：通过属性box-sizing来设置两种模型:con">
+    <meta name="description" content="CSS1.说一下CSS盒模型 是什么：在HTML上任何一个元素都可以看成一个CSS盒模型，包含四个属性属性：margin、border、padding、content 分类以及区别：有两种，标准盒模型和IE盒模型，区别在于计算盒子的宽高 ​                           对于标准盒模型来说，它的width和height和content一致 ​">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端高频面试题-基础">
 <meta property="og:url" content="https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/01/03/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Zhou Jie">
-<meta property="og:description" content="CSS1.说一下CSS盒模型 是什么：在HTML上任何一个元素都可以看成一个CSS盒模型 有什么：对于标准盒模型来说，包含四个属性：margin、border、padding、content ​               但是对于IE盒模型来说，只有两个属性：margin、content（已包含border、padding） 对于有什么如何区分：通过属性box-sizing来设置两种模型:con">
+<meta property="og:description" content="CSS1.说一下CSS盒模型 是什么：在HTML上任何一个元素都可以看成一个CSS盒模型，包含四个属性属性：margin、border、padding、content 分类以及区别：有两种，标准盒模型和IE盒模型，区别在于计算盒子的宽高 ​                           对于标准盒模型来说，它的width和height和content一致 ​">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://github.com/2024/01/03/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9F%BA%E7%A1%80/%E5%8E%9F%E5%9E%8B%E9%93%BE.png">
 <meta property="og:image" content="https://github.com/2024/01/03/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9F%BA%E7%A1%80/%E7%BB%84%E4%BB%B6%E5%AE%9E%E4%BE%8B%E4%B8%8EVue%E5%AE%9E%E4%BE%8B%E5%85%B3%E7%B3%BB.png">
 <meta property="article:published_time" content="2024-01-03T06:21:01.000Z">
-<meta property="article:modified_time" content="2024-08-13T06:50:45.207Z">
+<meta property="article:modified_time" content="2024-09-18T14:07:00.736Z">
 <meta property="article:author" content="Zhou Jie">
 <meta property="article:tag" content="前端综合">
 <meta name="twitter:card" content="summary_large_image">
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          51k 字
+          52k 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          425 分钟
+          430 分钟
         
       </span>
     
@@ -278,16 +278,17 @@
               <div class="markdown-body">
                 
                 <h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h3 id="1-说一下CSS盒模型"><a href="#1-说一下CSS盒模型" class="headerlink" title="1.说一下CSS盒模型"></a><strong>1.说一下CSS盒模型</strong></h3><blockquote>
-<p>是什么：在HTML上任何一个元素都可以看成一个CSS盒模型</p>
-<p>有什么：对于标准盒模型来说，包含四个属性：margin、border、padding、content</p>
-<p>​               但是对于IE盒模型来说，只有两个属性：margin、content（已包含border、padding）</p>
-<p>对于有什么如何区分：通过属性box-sizing来设置两种模型:content-box-&gt;标准盒模型</p>
-<p>​                                                                                                    border-box-&gt;IE盒模型</p>
+<p>是什么：在HTML上任何一个元素都可以看成一个CSS盒模型，包含四个属性属性：margin、border、padding、content</p>
+<p>分类以及区别：有两种，标准盒模型和IE盒模型，区别在于计算盒子的宽高</p>
+<p>​                           对于标准盒模型来说，它的width和height和content一致</p>
+<p>​                           但是对于IE盒模型来说，它的width和height包括border、padding、content</p>
+<p>如何设置：通过属性box-sizing来设置两种模型：content-box-&gt;标准盒模型（只包含content）</p>
+<p>​                                                                                    border-box-&gt;IE盒模型（多了border等一些一些属性）</p>
 </blockquote>
 <h3 id="2-CSS选择器的优先级"><a href="#2-CSS选择器的优先级" class="headerlink" title="2.CSS选择器的优先级"></a>2.CSS选择器的优先级</h3><blockquote>
-<p>是什么：它是CSS三大特性之一，三大特性是：继承性、重叠性（相同优先级选择哪个）、优先级</p>
-<p>（如何记忆三大特性？继承性和优先级都可能涉及重叠性，即后设置的都会覆盖先设置的，继承性不用选择直接拿来用，优先级还要选一下，那就这么记：重叠性-&gt;继承性-&gt;优先级）</p>
-<p>有什么：!important（强制生效，可修改默认样式）&gt; 行内标签 &gt; id选择器 &gt; 类选择器（包括 属性值类选择器：[class=’属性名’]；*[class^=’prefix-‘],=，*是通配符，^=表时匹配前缀） &gt; 标签选择器 &gt; 全局选择器（*{}）</p>
+<p>是什么：它是CSS三大特性之一，三大特性是：继承性、层叠性（相同优先级选择哪个）、优先级</p>
+<p>（如何记忆三大特性？继承性 &gt; 优先级 &gt; 层叠性，首先拿继承过来的 以及 现有的 选择器 按照优先级来排，最后如果有相同优先级的，看层叠性）</p>
+<p>有什么：!important（强制生效，可修改默认样式）&gt; 行内标签 &gt; id选择器 &gt; 类选择器（包括 属性值类选择器：[class=’属性名’]；*[class^=’prefix-‘],=，*是通配符，^=表时匹配前缀，伪类选择器 :hover） &gt; 标签选择器 &gt; 全局选择器（*{}）</p>
 </blockquote>
 <h3 id="3-隐藏元素的方法有哪些？"><a href="#3-隐藏元素的方法有哪些？" class="headerlink" title="3.隐藏元素的方法有哪些？"></a>3.隐藏元素的方法有哪些？</h3><blockquote>
 <ol>
@@ -298,7 +299,7 @@
 </ol>
 </blockquote>
 <h3 id="4-px和rem的区别是什么？"><a href="#4-px和rem的区别是什么？" class="headerlink" title="4.px和rem的区别是什么？"></a>4.px和rem的区别是什么？</h3><blockquote>
-<p>px是指像素，而rem的全称是”root em”，root是指它是以html为参照物的，em是另外一个单位，它是以父元素的字体大小为参照物，如果默认父元素fontsize:1px，1em = 16px，父元素变它就变，综上所述： rem是指以html的font-size为参照物的大小单位，html的font-size大，1rem就大</p>
+<p>px是指像素，而rem的全称是”root em”，root是指它是以html为参照物的，em是另外一个单位，它是以父元素的字体大小为参照物，如果默认父元素fontsize:169px，1em = 16px，父元素变它就变，综上所述： rem是指以html的font-size为参照物的大小单位，html的font-size大，1rem就大</p>
 <p>使用em或rem单位的好处是什么？</p>
 <p>可以用在多个地方需要相同字体大小的场景，而且便于维护：想要一起变，只要改基准的font-size即可</p>
 </blockquote>
@@ -318,10 +319,10 @@
 <ol>
 <li><p>flex或者grid（为什么放在一起，首先是最常用的，而且使用起来几乎一样，grid仅仅是just-content换成了just-item，且都设置为center）</p>
 </li>
-<li><p>绝对定位+transform:tranlate(-50%,-50%)</p>
+<li><p>绝对定位+transform:tranlate(-50%,-50%)–&gt;如果子元素的宽高知道，那么就可以margin-left、margin-top设置一半就可以了</p>
 </li>
 <li><p>绝对定位+margin（使用时）</p>
-<p>父元素相对定位，子元素绝对定位，并且把 上下左右设置为0（别影响margin的使用），margin:auto（可以放开手脚）</p>
+<p>父元素相对定位，子元素绝对定位，并且把 上下左右设置为0（margin:auto就有空间填充了），margin:auto（可以放开手脚）</p>
 </li>
 </ol>
 <p>直接记 无宽高的，这样不管问到有没有宽高的，都回答这个</p>
@@ -342,8 +343,8 @@
 <p>有什么以及区别：有sass、scss、less三种，下面说一下它们的区别，除了上面说的特性以外，sass只支持严格的缩进写法，而scss、less支持大括号；而less相对于scss又更加简单直观，比如去除掉了scss中混入的使用的写法（原来在scss混入需要在前面加@minin，然后再用@include引入，less全部去掉了）</p>
 </blockquote>
 <h3 id="9-精灵图和base64的区别是什么？"><a href="#9-精灵图和base64的区别是什么？" class="headerlink" title="9.精灵图和base64的区别是什么？"></a>9.精灵图和base64的区别是什么？</h3><blockquote>
-<p>精灵图：它可以利用 将多个图片合并成一张图片 的特性，从而减少图片HTTP的请求，达到提高页面加载性能的目的，但是不便于维护（图片的修改需要重新生成精灵图）</p>
-<p>base64：它可以将图片的二进制转化为64位的字符串，随着页面的渲染一同渲染不需要额外的HTTP请求，也提高了页面加载性能，并解决了图片跨域问题，但是增加了文件体积</p>
+<p>精灵图：它可以利用 将多个图片合并成一张图片 的特性，从而减少图片HTTP的请求，达到提高页面加载性能的目的，但是不便于维护（图片的修改需要重新生成精灵图），缺乏灵活性</p>
+<p>base64：它可以将图片的二进制转化为64位的字符串，随着页面的渲染一同渲染不需要额外的HTTP请求，也提高了页面加载性能，但是增加了文件体积（大约增加1/3），如果要和后端交互可以不需要额外设置请求头（multipart/form-data）</p>
 <p>使用场景：</p>
 <p>精灵图：适合图片较多且图片不用修改的场景</p>
 <p>base64：适合图片较少的场景</p>
@@ -361,16 +362,15 @@
 </blockquote>
 <h3 id="11-svg格式了解多少？"><a href="#11-svg格式了解多少？" class="headerlink" title="11.svg格式了解多少？"></a>11.svg格式了解多少？</h3><blockquote>
 <p>优点：它内部是基于数学矢量的计算（内部实现）—-&gt;可缩放还不失真、体积小（不像像素图象还要存储颜色信息，它是渲染时才绘制颜色）、下载速度快</p>
-<p>​           它是基于XML的文本（实际存储形式）—-&gt;可被搜索</p>
+<p>​           它是基于XML的文本（实际存储形式）—-&gt;可修改颜色、半径等，灵活性高</p>
 <p>​           可以转化为base64来引入（如何使用）</p>
 </blockquote>
 <h3 id="12-H5C3（HTML5、CSS3）的语义化的理解"><a href="#12-H5C3（HTML5、CSS3）的语义化的理解" class="headerlink" title="12.H5C3（HTML5、CSS3）的语义化的理解"></a>12.H5C3（HTML5、CSS3）的语义化的理解</h3><blockquote>
 <p>就是在写 HTML标签时，规范使用如下标签：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span><br> ...<br><span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span><br>&lt;footer...<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span><br> ...<br><span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span><br> <span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span><br>&lt;footer...<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span><br></code></pre></td></tr></table></figure>
 <p>有如下好处：</p>
 <p>对于程序员来说：易读、易于理解，开发者一起便于维护，提高开发效率</p>
-<p>对于搜索引擎来说：可以提高搜索引擎优化（SEO）效果</p>
+<p>对于搜索引擎来说：可以提高搜索引擎优化（SEO）效果（层次明确也便于搜索引擎提取关键信息，比如搜索引擎会更关注main标签的内容）</p>
 </blockquote>
 <h3 id="13-H5C3有哪些新特性？"><a href="#13-H5C3有哪些新特性？" class="headerlink" title="13.H5C3有哪些新特性？"></a>13.H5C3有哪些新特性？</h3><blockquote>
 <p>HTML5：思路-&gt;从语义化标签入手，每个语义化里面可能会装什么内容-&gt;header-&gt;aside-&gt;main</p>
@@ -481,6 +481,17 @@
 </li>
 </ol>
 </blockquote>
+<h3 id="20-相对定位、绝对定位和固定定位是什么？该如何使用？"><a href="#20-相对定位、绝对定位和固定定位是什么？该如何使用？" class="headerlink" title="20.相对定位、绝对定位和固定定位是什么？该如何使用？"></a>20.相对定位、绝对定位和固定定位是什么？该如何使用？</h3><blockquote>
+<p>相对定位：相对于元素的原始位置偏移，不脱离文档流，会保留原来位置的空间。</p>
+<p>场景：由于有保留原来空间的特性，这会影响其他元素的布局，因此基本不用它来定位，只用作绝对定位的基准位置（用在父元素上）</p>
+<p>绝对定位：相对于最近的父元素来偏移，脱离文档流，场景：相对父元素定位</p>
+<p>固定定位：相对于浏览器窗口偏移，脱离文档流，场景：悬浮导航栏</p>
+</blockquote>
+<h3 id="21-盒子模型的Content属性是什么？如果父元素不设置宽高会怎么样？"><a href="#21-盒子模型的Content属性是什么？如果父元素不设置宽高会怎么样？" class="headerlink" title="21.盒子模型的Content属性是什么？如果父元素不设置宽高会怎么样？"></a>21.盒子模型的Content属性是什么？如果父元素不设置宽高会怎么样？</h3><blockquote>
+<p>Content是指盒子实际显示的内容，这个内容有width和height两个属性</p>
+<p>如果父元素不设置宽高，那么父元素宽高会根据子元素大小撑开，分析如下：</p>
+<p>因为行内元素是不能设置宽高的，它的大小仅有本身的字体大小或行高决定（名字也可以看出就适合作为子元素），所以肯定是块级元素，而块级元素就是为了容纳其他元素的，如果宽高大于子元素，那么正常容纳，如果不如子元素大，则自动撑开</p>
+</blockquote>
 <h1 id="Js"><a href="#Js" class="headerlink" title="Js"></a>Js</h1><h3 id="1-Js由哪三部分组成？"><a href="#1-Js由哪三部分组成？" class="headerlink" title="1.Js由哪三部分组成？"></a>1.Js由哪三部分组成？</h3><blockquote>
 <ol>
 <li>ECMA script：它是js的核心，描述了js的语法，比如var、数组等</li>
@@ -527,7 +538,7 @@
 </ul>
 </blockquote>
 <h3 id="7-事件委托是什么？"><a href="#7-事件委托是什么？" class="headerlink" title="7.事件委托是什么？"></a>7.事件委托是什么？</h3><blockquote>
-<p>什么是 事件委托？就是利用 事件冒泡 将子元素的事件 绑定到父元素上</p>
+<p>什么是 事件委托？就是利用 事件冒泡 将子元素的事件 绑定到父元素上（事件委托就是事件冒泡的原理）</p>
 <p>事件委托有什么好处？减少绑定的次数，提高性能</p>
 <p>如何阻止事件委托？</p>
 <ol>
