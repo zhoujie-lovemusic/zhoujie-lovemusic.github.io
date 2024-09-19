@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://github.com/2024/01/03/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9F%BA%E7%A1%80/%E5%8E%9F%E5%9E%8B%E9%93%BE.png">
 <meta property="og:image" content="https://github.com/2024/01/03/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9F%BA%E7%A1%80/%E7%BB%84%E4%BB%B6%E5%AE%9E%E4%BE%8B%E4%B8%8EVue%E5%AE%9E%E4%BE%8B%E5%85%B3%E7%B3%BB.png">
 <meta property="article:published_time" content="2024-01-03T06:21:01.000Z">
-<meta property="article:modified_time" content="2024-09-18T14:07:00.736Z">
+<meta property="article:modified_time" content="2024-09-19T12:49:00.496Z">
 <meta property="article:author" content="Zhou Jie">
 <meta property="article:tag" content="前端综合">
 <meta name="twitter:card" content="summary_large_image">
@@ -234,7 +234,7 @@
         
         
         
-          430 分钟
+          433 分钟
         
       </span>
     
@@ -367,7 +367,7 @@
 </blockquote>
 <h3 id="12-H5C3（HTML5、CSS3）的语义化的理解"><a href="#12-H5C3（HTML5、CSS3）的语义化的理解" class="headerlink" title="12.H5C3（HTML5、CSS3）的语义化的理解"></a>12.H5C3（HTML5、CSS3）的语义化的理解</h3><blockquote>
 <p>就是在写 HTML标签时，规范使用如下标签：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span><br> <span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span><br>&lt;footer...<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span><br> <span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span><br></code></pre></td></tr></table></figure>
 <p>有如下好处：</p>
 <p>对于程序员来说：易读、易于理解，开发者一起便于维护，提高开发效率</p>
 <p>对于搜索引擎来说：可以提高搜索引擎优化（SEO）效果（层次明确也便于搜索引擎提取关键信息，比如搜索引擎会更关注main标签的内容）</p>
@@ -398,16 +398,18 @@
 </blockquote>
 <h3 id="14-rem是如何做到适配的？"><a href="#14-rem是如何做到适配的？" class="headerlink" title="14.rem是如何做到适配的？"></a>14.rem是如何做到适配的？</h3><blockquote>
 <p>利用rem根据html的font-size大小作为基准为单位的特性。比如 移动端屏幕宽度（或高度）不一样，那么我就可以 把html的font-size大小设置为 当前屏幕的宽度，这样在 当前屏幕的div大小，就可以用rem表示（0.5rem屏幕的一半），这样不管什么宽度的屏幕，都可以设置成 屏幕的一半宽度（例子）。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;!-- em是针对父元素的适配单位，而rem是只针对<span class="hljs-title function_">html</span>(root即根部)的适配单位<br>    比如html的fontSize为50px，然后body的字体设置为<span class="hljs-number">50</span>%，那么这个1em/1rem就为25px<br>--&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="language-css"><span class="language-xml">  <span class="hljs-selector-id">#box</span>&#123;</span></span><br><span class="language-css"><span class="language-xml">     <span class="hljs-attribute">width</span>: <span class="hljs-number">0.5rem</span>;</span></span><br><span class="language-css"><span class="language-xml">     <span class="hljs-attribute">height</span>: <span class="hljs-number">0.5rem</span>;</span></span><br><span class="language-css"><span class="language-xml">     <span class="hljs-attribute">background-color</span>: red;</span></span><br><span class="language-css"><span class="language-xml">  &#125;</span></span><br><span class="language-css"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br>&lt;/head&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-comment">&lt;!-- 方法就是 html根元素的字体大小 = 屏幕区的宽</span></span><br><span class="hljs-comment"><span class="language-xml">    目的是想把 1rem设置成整个屏幕的宽，那下次某个盒子想要设置成占整个屏幕多大比例，那直接 1rem/x</span></span><br><span class="hljs-comment"><span class="language-xml">    比如 某个盒子想要占屏幕的一半，那设置完之后就可以设置宽高为0.5rem-&gt;特指整个屏幕的一半，这样不管是什么分辨率都可以设置 </span></span><br><span class="hljs-comment"><span class="language-xml">    Ps：这里的字体大小默认是 指的是rem或em的单位</span></span><br><span class="hljs-comment"><span class="language-xml">   --&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;box&quot;</span>&gt;</span></span><br><span class="language-xml">    </span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;text/javascript&#x27;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"> <span class="hljs-variable language_">window</span>.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">     <span class="hljs-comment">// 整个屏幕的宽</span></span></span><br><span class="language-javascript"><span class="language-xml">     <span class="hljs-keyword">var</span> width = <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">clientWidth</span></span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">     <span class="hljs-keyword">var</span> htmlNode = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;html&#x27;</span>)</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">     htmlNode.<span class="hljs-property">style</span>.<span class="hljs-property">fontSize</span> = width + <span class="hljs-string">&#x27;px&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">     <span class="hljs-comment">// 以上三个步骤是为了当前屏幕单位 都为1rem</span></span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"> &#125;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- em是针对父元素的适配单位，而rem是只针对html(root即根部)的适配单位</span><br><span class="hljs-comment">    比如html的fontSize为50px，然后body的字体设置为50%，那么这个1em/1rem就为25px</span><br><span class="hljs-comment">--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css">  <span class="hljs-selector-id">#box</span>&#123;</span><br><span class="language-css">     <span class="hljs-attribute">width</span>: <span class="hljs-number">0.5rem</span>;</span><br><span class="language-css">     <span class="hljs-attribute">height</span>: <span class="hljs-number">0.5rem</span>;</span><br><span class="language-css">     <span class="hljs-attribute">background-color</span>: red;</span><br><span class="language-css">  &#125;</span><br><span class="language-css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-comment">&lt;!-- 方法就是 html根元素的字体大小 = 屏幕区的宽</span><br><span class="hljs-comment">    目的是想把 1rem设置成整个屏幕的宽，那下次某个盒子想要设置成占整个屏幕多大比例，那直接 1rem/x</span><br><span class="hljs-comment">    比如 某个盒子想要占屏幕的一半，那设置完之后就可以设置宽高为0.5rem-&gt;特指整个屏幕的一半，这样不管是什么分辨率都可以设置 </span><br><span class="hljs-comment">    Ps：这里的字体大小默认是 指的是rem或em的单位</span><br><span class="hljs-comment">   --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;box&quot;</span>&gt;</span><br>    <br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;text/javascript&#x27;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript"> <span class="hljs-variable language_">window</span>.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">     <span class="hljs-comment">// 整个屏幕的宽</span></span><br><span class="language-javascript">     <span class="hljs-keyword">var</span> width = <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">clientWidth</span></span><br><span class="language-javascript"></span><br><span class="language-javascript">     <span class="hljs-keyword">var</span> htmlNode = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;html&#x27;</span>)</span><br><span class="language-javascript"></span><br><span class="language-javascript">     htmlNode.<span class="hljs-property">style</span>.<span class="hljs-property">fontSize</span> = width + <span class="hljs-string">&#x27;px&#x27;</span></span><br><span class="language-javascript"></span><br><span class="language-javascript">     <span class="hljs-comment">// 以上三个步骤是为了当前屏幕单位 都为1rem</span></span><br><span class="language-javascript"></span><br><span class="language-javascript"> &#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 </blockquote>
 <h3 id="15-解决了哪些移动端兼容问题？"><a href="#15-解决了哪些移动端兼容问题？" class="headerlink" title="15.解决了哪些移动端兼容问题？"></a>15.解决了哪些移动端兼容问题？</h3><blockquote>
 <ol>
 <li><p>安卓环境input框的placeholder文字设置行高（为了垂直居中）之后会偏上</p>
 <p>解决方法：input框有placeholder属性时不要设置行高，安卓环境可能自己默认样式就是偏高的</p>
+</li>
+<li><p>IOS取消自动输入英文首字母大写</p>
 <p>解决方法：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">autocorrect</span>=<span class="hljs-string">&#x27;off&#x27;</span> <span class="hljs-attr">autocapitalize</span>=<span class="hljs-string">&#x27;off&#x27;</span> /&gt;</span><br></code></pre></td></tr></table></figure></li>
 <li><p>移动端在字体小于12px时，会显示异常（模糊、不清晰）</p>
-<p>解决方法：使用transform先放大一倍，再缩小一倍。这边看似什么也没做，但里面涉及到了字体渲染时会用到的技术：抗锯齿化技术，在字体渲染到页面上之后字体的边缘是会呈现锯齿状的，因此在每次字体渲染时会使用抗锯齿化技术使得字体边缘变得平滑，这里先放大再缩小等于 重新抗锯齿化 一次。</p>
+<p>解决方法：使用transform先放大一倍，再缩小一倍。这边看似什么也没做，但里面涉及到了字体渲染时会用到的技术：抗锯齿化技术，在字体过小时因像素丢失字体的边缘是会呈现锯齿状而变的模糊，因此需要将字体重新渲染时会使用抗锯齿化技术使得字体边缘变得平滑，这里先放大再缩小等于 重新抗锯齿化 一次。</p>
 </li>
 <li><p>IOS在input框设置disabled之后字体显示异常（比较灰暗）</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=button]</span>&#123;<br>  <span class="hljs-attribute">opacity</span>:<span class="hljs-number">1</span>// 把字体显示正常:不透明度=&gt;<span class="hljs-number">1</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
@@ -430,7 +432,7 @@
 <li><p>是否继承</p>
 <p>display:none无法继承（父元素都没了）</p>
 <p>visibility:hidden可以继承（通过设置子元素 visibility:visible 来显示子元素）</p>
-<p>opacity:0可以继承（ <u>但是  不能设置子元素 opacity:0 来先重新显示</u>）</p>
+<p>opacity:0可以继承（ <u>但是  不能设置子元素 opacity:1 来先重新显示</u>）</p>
 </li>
 <li><p>事件绑定</p>
 <p>display:none无法触发</p>
@@ -448,7 +450,7 @@
 </blockquote>
 <h3 id="17-弹性布局flex1-0增加了那些属性？"><a href="#17-弹性布局flex1-0增加了那些属性？" class="headerlink" title="17.弹性布局flex1.0增加了那些属性？"></a>17.弹性布局flex1.0增加了那些属性？</h3><blockquote>
 <p>gap：弹性布局元素之间的间距</p>
-<p>flex-basis：主轴方向各元素的初始大小</p>
+<p>flex-basis：主轴方向各元素的初始大小，主轴方向为水平，那就是指宽度（此时高度由内容决定），主轴方向为垂直，就是指高度（此时宽度由内容决定）</p>
 </blockquote>
 <h3 id="18-数据大屏适配方案有哪些？"><a href="#18-数据大屏适配方案有哪些？" class="headerlink" title="18.数据大屏适配方案有哪些？"></a>18.数据大屏适配方案有哪些？</h3><blockquote>
 <p>常用的是以下两种：</p>
@@ -457,16 +459,18 @@
 <li>是什么：它是只视口的宽高，就是不管屏幕尺寸多少，那么100vh和100vw那就是占满整个屏幕的宽高的</li>
 <li>如何适配：利用实际屏幕和UI稿的大小比例，计算所有元素应当是多少vw和vh</li>
 <li>优点：可以动态针对某个元素进行计算，有针对性；当UI稿和实际屏幕尺寸不一致的时候，不会出现留白情况</li>
+<li>缺点：需要针对每个标签进行计算</li>
 </ul>
 </li>
 <li>scale缩放：<ul>
 <li>是什么：利用transform的scale属性整体按比例进行缩放</li>
 <li>如何适配：<ul>
 <li>按什么比例缩放：按照宽和高较小的缩放比例缩放，比如 实际屏幕宽/UI稿设计宽 = 2.5， 实际屏幕高/UI稿设计高 = 3，为了不让元素顶出去顶出去，最终按照2.5比例缩放</li>
-<li>缩放基点问题：正常缩放是按照原来盒子中心进行缩放，如果直接缩放，也会有元素顶出去顶出去，应该要把基点放到屏幕正中心，如何做到？先利用定位top:50%，left:50%把盒子左上角放到中间，再把缩放基准按照这个左上角缩放，缩放完毕后，再利用translate:(-50%,-50%)把盒子拉回原处</li>
+<li>缩放基点问题：正常缩放是按照原来盒子中心进行缩放，如果直接缩放，也会有元素顶出去顶出去（默认基准在左上角），应该要把基点放到屏幕正中心，如何做到？先利用定位top:50%，left:50%把盒子左上角放到中间，再把缩放基准按照这个左上角缩放，缩放完毕后，再利用translate:(-50%,-50%)把盒子拉回原处</li>
 </ul>
 </li>
 <li>优点：代码少，简单；不用做单独做额外的适配</li>
+<li>缺点：UI稿和实际屏幕比例不同会出现一定的流白（当只适配一个屏幕时，直接把UI设计稿的长宽比设计成和实际屏幕的长宽比，这样 实际屏幕宽/UI稿设计宽 =  实际屏幕高/UI稿设计高，不会出现流白）</li>
 </ul>
 </li>
 </ol>
@@ -475,7 +479,7 @@
 <h3 id="19-移动端屏幕适配的方案有哪些？"><a href="#19-移动端屏幕适配的方案有哪些？" class="headerlink" title="19.移动端屏幕适配的方案有哪些？"></a>19.移动端屏幕适配的方案有哪些？</h3><blockquote>
 <ol>
 <li><p>rem+动态计算html的fontSize（把屏幕宽或高设置为html的fontSize，而得出其他元素的多少rem）</p>
-<p>也可以利用媒体查询计算fontSize，它可以根据屏幕宽高高度动态设置fontSize</p>
+<p>也可以利用媒体查询根据不同设备的宽度给出对应的fontSize值，它可以根据屏幕宽度（大多数都只看宽度的适应性）动态设置fontSize</p>
 </li>
 <li><p>vw和vh</p>
 </li>
@@ -503,8 +507,8 @@
 <p>Boolean、Number、String、Array、Function、Object、Math、Date…</p>
 <p>记忆技巧？数据类型-&gt;最常用的数据处理（Math、Date）</p>
 <p>最常用的几个以及对应方法:</p>
-<p>String：splice（切割）、split（根据特殊符号分成各个数组）、toString</p>
-<p>Array：splice（最强数组方法，可增、删、改）、filter（过滤）、</p>
+<p>String：slice（切割）、split（根据一个分隔符返回一个数组）、toString</p>
+<p>Array：splice（最强数组方法，可增、删、改）、filter（过滤）</p>
 <p>Math：max()、min()、abs()、sqrt()</p>
 <p>Date：getYear()…</p>
 </blockquote>
@@ -519,26 +523,26 @@
 <p>intance of——————-只能针对引用类型</p>
 <p>constructor—————–可以针对基本数据类型、引用类型，但是如果 原型被手动篡改 ，将判断错误（通过找原型名字）</p>
 <p>Object.prototype.toString.call—万能方法，优先使用，可以针对基本数据类型、引用类型，基本不会出错，除非篡改 this指向或重写toString方法（很少会）（toString-&gt;结果是字符，call改变this获取后面的上下文环境的类型）</p>
-<p>如何记忆？前两者都只针对一个，过于局限，后两者都是和原型有关系，且 通用，只是constructor 有可能圆形只想被篡改，推荐用Object.prototype.toString.call，这也是放在Object.prototype上的原因</p>
+<p>如何记忆？前两者都只针对一个，过于局限，后两者都是和原型有关系，且 通用，只是constructor 有可能原型只想被篡改，推荐用Object.prototype.toString.call，这也是放在Object.prototype上的原因</p>
 </blockquote>
 <h3 id="5-请你说说闭包"><a href="#5-请你说说闭包" class="headerlink" title="5.请你说说闭包"></a>5.请你说说闭包</h3><blockquote>
 <p>什么是闭包？是一个对象，key-value形式</p>
 <p>形成条件？1）函数嵌套2）内部函数引用外部函数变量3）外部函数执行时</p>
 <p>优缺点？优点：延长外部函数局部变量的生命周期；缺点：容易造成内存泄露</p>
-<p>如何避免内存泄露？即使销毁。如何销毁？若外部函数执行后没有新的指向会自动成为垃圾对象被销毁，如果有新的指向，需要手动设置为null</p>
-<p>使用场景？函数的防抖与节流、第三方库</p>
+<p>如何避免内存泄露？即使销毁。如何销毁？若外部函数执行后没有新的指向（赋值为一个变量）会自动成为垃圾对象被销毁，如果有新的指向，需要手动设置为null</p>
+<p>使用场景？函数的防抖与节流</p>
 </blockquote>
 <h3 id="6-请你说说内存泄露"><a href="#6-请你说说内存泄露" class="headerlink" title="6.请你说说内存泄露"></a>6.请你说说内存泄露</h3><blockquote>
 <p>什么是内存泄露？指分配了内存，不使用时内存无法被释放的情况。</p>
 <p>有哪些常见的内存泄露？</p>
 <ul>
 <li>不使用的全局变量（声明在函数外的都算，或者函数内部没有用var、let或const定义的，否则局部作用域一结束就会被回收）</li>
-<li>定时器未清除</li>
 <li>闭包的不正确使用（没有手动置空）</li>
+<li>定时器未清除</li>
 </ul>
 </blockquote>
 <h3 id="7-事件委托是什么？"><a href="#7-事件委托是什么？" class="headerlink" title="7.事件委托是什么？"></a>7.事件委托是什么？</h3><blockquote>
-<p>什么是 事件委托？就是利用 事件冒泡 将子元素的事件 绑定到父元素上（事件委托就是事件冒泡的原理）</p>
+<p>什么是 事件委托？就是利用 事件冒泡 将子元素的事件 绑定到父元素上</p>
 <p>事件委托有什么好处？减少绑定的次数，提高性能</p>
 <p>如何阻止事件委托？</p>
 <ol>
@@ -554,7 +558,7 @@
 </blockquote>
 <h3 id="8-基本数据类型和引用数据类型的区别是什么？"><a href="#8-基本数据类型和引用数据类型的区别是什么？" class="headerlink" title="8.基本数据类型和引用数据类型的区别是什么？"></a>8.基本数据类型和引用数据类型的区别是什么？</h3><blockquote>
 <p>各有什么：</p>
-<p>基本数据类型：String、Number、Boolean、null、undefined和Symbol</p>
+<p>基本数据类型：String、Number、Boolean、null、undefined和Symbol（唯一的值，可以用作对象的Key）</p>
 <p>引用数据类型：Array、Function、Object</p>
 <p>区别：存储位置的不同</p>
 <p>基本数据类型的值和引用数据类型的地址 存放在栈内存中，而引用类型的值 存放在 堆内存中</p>
@@ -652,7 +656,7 @@
 <h3 id="16-call、apply和bind有什么区别"><a href="#16-call、apply和bind有什么区别" class="headerlink" title="16.call、apply和bind有什么区别"></a>16.call、apply和bind有什么区别</h3><blockquote>
 <p>都是用于改变this指向和执行函数的，区别如下：</p>
 <ul>
-<li><p>call、apply和bind的区别在于：call、apply会立刻执行函数，而bind不会，bind第一次执行会返回一个改变了this指向的新的函数，再在第二次执行才会执行函数（使用场景例子：添加点击事件时用bind绑定，用户点击时执行）</p>
+<li><p>call、apply和bind的区别在于：call、apply会立刻执行函数（一般都是xxx.call（新的上下文环境对象,…args-&gt;其余简单参数），前面就是当前函数），而bind不会，bind第一次执行会返回一个改变了this指向的新的函数，再在第二次执行才会执行函数（使用场景例子：一些延迟执行的场景，先绑定，后面再执行）</p>
 </li>
 <li><p>call和apply的区别在于：前者参数传递的是对象，后者是数组。又call比apply性能要好，且数组可以用扩展运算符放入对象中，因此call用的比较多</p>
 </li>
@@ -698,7 +702,7 @@
 </blockquote>
 <h3 id="20-什么是防抖和节流"><a href="#20-什么是防抖和节流" class="headerlink" title="20.什么是防抖和节流"></a>20.什么是防抖和节流</h3><blockquote>
 <p>这两者都是避免频繁触发事件来提高性能的。</p>
-<p>防抖：防止不必要的操作（抖动），来节省资源，只在必要的时刻（<u>集中触发的最后一次</u>）触发</p>
+<p>防抖：防止不必要的操作（抖动），来节省资源，只在必要的时刻（<u>集中触发的最后<strong>一次</strong></u>）触发</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">debounce</span>(<span class="hljs-params">fn,delay</span>)&#123;<br> <span class="hljs-keyword">var</span> timer;<br> <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)&#123;<br>     <span class="hljs-comment">// 只要在delay内多次触发，前一次即将到达delay的时间要执行fn时，就会被下一次给clear掉了</span><br>     <span class="hljs-comment">// 只要时间到达了dalay，就被看做是确定要触发了，比如用户输入停下来了，用户停下来之前都不会触发</span><br>     <span class="hljs-built_in">clearTimeout</span>(timer)<br>     timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>     <span class="hljs-title function_">fn</span>()<br>    &#125;,delay)<br> &#125;<br>&#125;<br><br><span class="hljs-comment">// 为了好的效果，delay不能设置太小-&gt;触发仍会频繁，也不能设置太大-&gt;用户输入完了等半天，要预估好 用户操作大致要花多长时间</span><br></code></pre></td></tr></table></figure>
 
 <p>使用场景：用户输入框、搜索框</p>
