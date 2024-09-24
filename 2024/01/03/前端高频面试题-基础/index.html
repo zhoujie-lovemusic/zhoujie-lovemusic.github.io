@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://github.com/2024/01/03/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9F%BA%E7%A1%80/Vue%E4%B8%AD%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0this%E6%8C%87%E5%90%91.png">
 <meta property="og:image" content="https://github.com/2024/01/03/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9F%BA%E7%A1%80/%E7%BB%84%E4%BB%B6%E5%AE%9E%E4%BE%8B%E4%B8%8EVue%E5%AE%9E%E4%BE%8B%E5%85%B3%E7%B3%BB.png">
 <meta property="article:published_time" content="2024-01-03T06:21:01.000Z">
-<meta property="article:modified_time" content="2024-09-23T12:29:54.761Z">
+<meta property="article:modified_time" content="2024-09-24T13:21:41.151Z">
 <meta property="article:author" content="Zhou Jie">
 <meta property="article:tag" content="前端综合">
 <meta name="twitter:card" content="summary_large_image">
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          56k 字
+          59k 字
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          465 分钟
+          488 分钟
         
       </span>
     
@@ -1195,10 +1195,10 @@
 <li>beforeDestory：销毁之前，这里可以销毁定时器等</li>
 <li>destoryed：已销毁</li>
 </ol>
-<p>keep-alive组件缓存专属：</p>
+<p>keep-alive组件缓存专属（通常用在路由组件的缓存）：</p>
 <ul>
 <li>activiated：激活时</li>
-<li>deactiviated：销毁时</li>
+<li>deactiviated：销毁时（处理定时器一些需要销毁的东西）</li>
 </ul>
 </blockquote>
 <h3 id="5-模板编译的原理"><a href="#5-模板编译的原理" class="headerlink" title="5.模板编译的原理"></a>5.模板编译的原理</h3><blockquote>
@@ -1360,12 +1360,27 @@
 <p>单页面应用（SPA）主要是利用前端路由来实现的：通过监听路由的URL变化来加载不同的组件，从而实现动态地更新内容。</p>
 </blockquote>
 <h3 id="17-Vue中的hash模式和history模式有什么区别？"><a href="#17-Vue中的hash模式和history模式有什么区别？" class="headerlink" title="17.Vue中的hash模式和history模式有什么区别？"></a>17.Vue中的hash模式和history模式有什么区别？</h3><blockquote>
-<p><strong>从原理上来看：</strong></p>
-<p>hash模式是通过hashChange事件来监听URL的hash值（#以及后面的，会存储在location.hash中）的变化来匹配路由规则并加载对应组件的（路由规则以及组件资源在浏览器端的缓存中-bundle.js文件，匹配时会自动去掉#），这个过程是在浏览器端进行的，不会向服务器发送HTTP请求</p>
-<p>而history模式是通过popState事件（历史记录栈顶状态的变化）来监听历史记录的变化（最终获取的是pathname）来匹配路由规则并加载对应组件的（后面和hash模式一样，仅仅是监听的东西不一样），其中，在监听之前，是通过H5的API（H5才出的，因此兼容性没有hash模式好）：pushState（）和replaceState来存储并修改历史记录为监听历史记录做准备</p>
-<p><strong>从用途上来看：</strong></p>
-<p>hash模式始终都不会向服务器发送请求（除了请求组件需要的数据） —————–单页面应用也倾向于使用Hash模式</p>
-<p>而history模式是 不刷新页面还好，一刷新页面会把应用打包后的缓存在浏览器中的文件都清除了，导致URL匹配不到路由规则而出现404，只能重新登陆重新加载       —————————-更倾向于URL美观的简单需求</p>
+<p>两者都是单页面应用的实现方式，即路由变化不会导致页面的刷新而是局部内容的更新</p>
+<p><strong>原理上</strong></p>
+<ul>
+<li><p>hash模式：URL有#，利用onhashchange事件去监听URL的hash部分（也就是#后面的部分）的变化，来去匹配路由规则加载对应的组件（前进和后退也是一样的）</p>
+</li>
+<li><p>history模式：利用HTML5的API——–pushState和replaceState来记录浏览器历史记录栈的内容以及修改URL地址，每一次URL跳转新的路由都会利用pushState将路由和对应页面状态信息添加到浏览器历史记录栈，然后再用replaceState修改当前URL地址</p>
+</li>
+</ul>
+<p><strong>是否会像服务器发送请求</strong></p>
+<ul>
+<li><p>hash模式：路由的变化、匹配和加载组件都是在浏览器进行的，不会向服务器发送请求</p>
+</li>
+<li><p>history模式：在刷新页面的时候会把当前URL当作一个资源请求地址，如果后端没有支持相应的请求，会报404错误</p>
+<p>如何解决？</p>
+<p>在服务器配置一个默认的退回页面，比如登陆页面，这样任何匹配不到的请求都退回到登陆页面</p>
+</li>
+</ul>
+<p><strong>补充：</strong></p>
+<p>Vue中还有一个模式：Memory模式</p>
+<p>会把路由信息放在内存当中，浏览器的URL变化不会有任何反应，也无法使用前进后退功能</p>
+<p>适合非浏览器环境，比如SSR服务端渲染</p>
 </blockquote>
 <h3 id="18-路由是怎么拦截的？"><a href="#18-路由是怎么拦截的？" class="headerlink" title="18.路由是怎么拦截的？"></a>18.路由是怎么拦截的？</h3><blockquote>
 <p>在哪拦截：路由守卫中</p>
@@ -1383,18 +1398,36 @@
 <p>先说下所有的钩子函数：全局守卫、路由独享路由、组件守卫。</p>
 <p><strong>完整的导航解析流程</strong></p>
 <ul>
-<li>导航被触发，比如router.push()、router.replace()</li>
-<li>调用失活组件的beforeRouteLeave守卫</li>
-<li>调用全局前置守卫beforeEach，在这可以添加一些登录验证，这是验证是全局的，也就是它针对所有路由</li>
-<li>调用重用组件的beforeRouteUpdate守卫，这个守卫专门在路由 的组件复用时调用，比如两个路由地址不同，但是对应组件是一样的，如果有路由的组件复用，调用完该守卫更新完毕就不会调用后面的守卫了</li>
-<li>调用路由独享的守卫beforeEnter守卫，路由独享的守卫就这一个，专门为跳转当前路由之前做一些逻辑，比如也可以做登录验证，只是这个验证只针对当前路由</li>
-<li>下面到了异步组件（使用import关键字的懒加载组件）的解析阶段</li>
-<li>调用激活组件的beforeRouteEnter守卫，在该守卫中还没有实例化，无法使用this，可准备好异步数据给激活的组件</li>
-<li>调用全局解析守卫beforeResolve，该守卫是解析的最后一步，也可以获取异步数据，只是这个数据一般是可能其他组件也要使用，比如用户的信息放入仓库</li>
-<li>导航被确认。为什么要确认一下？表示要进入 下面路由的信息已经准备好。</li>
-<li>调用全局后置守卫afterEach，目标路由已经跳转结束，可处理一些收尾工作，比如跳转到目标页面的对应位置</li>
-<li>目标组件DOM渲染</li>
-<li>调用全局前置守卫beforeRouteEnter的回调函数next()，调用此函数时已经实例化，并把实例作为参数传递给组件路由的下一阶段使用（意思就是说组件已经渲染好了进入该组件的钩子也该结束了）</li>
+<li><p>导航被触发，比如router.push()、router.replace()</p>
+</li>
+<li><p>调用失活组件（上一个组件）的beforeRouteLeave守卫</p>
+</li>
+<li><p>调用全局前置守卫beforeEach，在这可以添加一些登录验证，这是验证是全局的，也就是它针对所有路由</p>
+</li>
+<li><p>调用重用组件的beforeRouteUpdate守卫，这个守卫专门在路由 的组件复用时（页面的输入以及数据都还是上一次的状态）调用，如果有路由的组件复用，调用完该守卫更新完毕就不会调用后面的守卫了</p>
+<p>如何路由切换时进行组件复用？配合路由的自定义属性meta和keeep-alive组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> routes = [<br>    &#123;<br>        <span class="hljs-comment">// 这种带动态params参数的都建议缓存，因为会多次使用</span><br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/foo/:id&#x27;</span>,<br>        <span class="hljs-attr">component</span>: <span class="hljs-title class_">Foo</span>,<br>        <span class="hljs-attr">meta</span>: &#123; <span class="hljs-attr">keepAlive</span>: <span class="hljs-literal">true</span> &#125; <span class="hljs-comment">// 这个组件会被缓存</span><br>    &#125;,<br>    &#123;<br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/bar&#x27;</span>,<br>        <span class="hljs-attr">component</span>: <span class="hljs-title class_">Bar</span>,<br>        <span class="hljs-attr">meta</span>: &#123; <span class="hljs-attr">keepAlive</span>: <span class="hljs-literal">false</span> &#125; <span class="hljs-comment">// 没有设置 meta.keepAlive 或其值为 false，则组件不会被缓存</span><br>    &#125;<br>    <span class="hljs-comment">// ... 其他路由配置</span><br>];<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;template&gt;<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">keep-alive</span> <span class="hljs-attr">:include</span>=<span class="hljs-string">&quot;cachedViews&quot;</span>&gt;</span></span><br><span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">router-view</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">router-view</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">keep-alive</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;App&#x27;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">            <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">                <span class="hljs-attr">cachedViews</span>: [] <span class="hljs-comment">// 存储需要缓存的组件名</span></span></span><br><span class="language-javascript"><span class="language-xml">            &#125;;</span></span><br><span class="language-javascript"><span class="language-xml">        &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">watch</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">            $route(to, <span class="hljs-keyword">from</span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">            	<span class="hljs-comment">// 过滤出需要缓存的组件，即 meta.keepAlive = true 的组件</span></span></span><br><span class="language-javascript"><span class="language-xml">                <span class="hljs-keyword">const</span> keepAliveComponent = to.<span class="hljs-property">matched</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">record</span> =&gt;</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">                    <span class="hljs-keyword">return</span> record.<span class="hljs-property">meta</span> &amp;&amp; record.<span class="hljs-property">meta</span>.<span class="hljs-property">keepAlive</span>;</span></span><br><span class="language-javascript"><span class="language-xml">                &#125;);</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">                <span class="hljs-keyword">if</span> (keepAliveComponent.<span class="hljs-property">length</span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">                	<span class="hljs-comment">// 把需要缓存的组件的name放到cachedViews集合里，注意要的是组件的name</span></span></span><br><span class="language-javascript"><span class="language-xml">                    <span class="hljs-variable language_">this</span>.<span class="hljs-property">cachedViews</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">cachedViews</span>.<span class="hljs-title function_">concat</span>(keepAliveComponent.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">record</span> =&gt;</span> record.<span class="hljs-property">name</span>));</span></span><br><span class="language-javascript"><span class="language-xml">                &#125; <span class="hljs-keyword">else</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">                    <span class="hljs-keyword">const</span> index = <span class="hljs-variable language_">this</span>.<span class="hljs-property">cachedViews</span>.<span class="hljs-title function_">indexOf</span>(to.<span class="hljs-property">name</span>);</span></span><br><span class="language-javascript"><span class="language-xml">                    <span class="hljs-keyword">if</span> (index &gt; -<span class="hljs-number">1</span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">                        <span class="hljs-variable language_">this</span>.<span class="hljs-property">cachedViews</span>.<span class="hljs-title function_">splice</span>(index, <span class="hljs-number">1</span>);</span></span><br><span class="language-javascript"><span class="language-xml">                    &#125;</span></span><br><span class="language-javascript"><span class="language-xml">                &#125;</span></span><br><span class="language-javascript"><span class="language-xml">            &#125;</span></span><br><span class="language-javascript"><span class="language-xml">        &#125;</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure></li>
+<li><p>调用路由独享的守卫beforeEnter守卫，路由独享的守卫就这一个，专门为跳转当前路由之前做一些逻辑，比如也可以做登录验证，只是这个验证只针对当前路由</p>
+</li>
+<li><p>下面到了异步组件（使用import关键字加载的组件，在需要时才加载，要分为 路由中和组件中 使用两种）的解析阶段</p>
+<p>异步组件返回的是一个Promise，成功后返回的是一个组件对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 组件中(Vue2)，Vue3需要将下面的代码放入defineAsyncComponent在里面的回调函数</span><br>&lt;script&gt;<br><span class="hljs-comment">// 返回Promise</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">AsyncComponent</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> &#123;<br>    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">async</span> () =&gt; &#123;<br>      <span class="hljs-keyword">const</span> <span class="hljs-title class_">MyComp</span> = <span class="hljs-keyword">await</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&quot;./MyComp.vue&quot;</span>);<br>      <span class="hljs-title function_">resolve</span>(<span class="hljs-title class_">MyComp</span>);<br>    &#125;, <span class="hljs-number">3000</span>);<br>  &#125;);<br>&#125;;<br><br><span class="hljs-comment">// 返回Promise</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">AsyncComponent2</span> = (<span class="hljs-params"></span>) =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">&quot;./MyComp.vue&quot;</span>)<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-attr">components</span>: &#123;<br>    <span class="hljs-comment">// Vue会调用该函数，并等待 Promise完成，完成之前该组件位置什么也不渲染</span><br>    <span class="hljs-title class_">AsyncComponent</span>,<br>  &#125;,<br>&#125;;<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 路由中</span><br>&#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Home&quot;</span>,<br>  <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/&quot;</span>,<br>  <span class="hljs-comment">// webpackChunkName 用于分包，注释就是这样的语法，用于给代码分割命名，具体需要看webPack的性能优化补充</span><br>  <span class="hljs-attr">component</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-comment">/* webpackChunkName: &quot;home&quot; */</span> <span class="hljs-string">&quot;@/views/Home&quot;</span>),<br>  <span class="hljs-attr">meta</span>: &#123; <span class="hljs-attr">title</span>: <span class="hljs-string">&quot;首页&quot;</span> &#125;,<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>调用激活（默认使用了keep-alive组件，否则就是指目标组件）组件的beforeRouteEnter守卫，在该守卫中还没有实例化（有点类似beforeCreate），无法使用this，可准备好异步数据给激活的组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>User Profile for &#123;&#123; userId &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">userId</span>: <span class="hljs-literal">null</span>,</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;;</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-title function_">beforeRouteEnter</span>(<span class="hljs-params">to, <span class="hljs-keyword">from</span>, next</span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">// 可以通过 to.params 获取路由参数</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">const</span> userId = to.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>;</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">// 模拟异步数据加载，例如从 API 获取用户数据</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// 在这个回调里面已经实例化了 </span></span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-title function_">next</span>(<span class="hljs-function"><span class="hljs-params">vm</span> =&gt;</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">// vm 是组件实例</span></span></span><br><span class="language-javascript"><span class="language-xml">        vm.<span class="hljs-property">userId</span> = userId; <span class="hljs-comment">// 将 userId 赋值给组件实例</span></span></span><br><span class="language-javascript"><span class="language-xml">      &#125;);</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;, <span class="hljs-number">1000</span>);</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">&#125;;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure></li>
+<li><p>调用全局解析守卫beforeResolve，该守卫是解析的最后一步，也可以获取异步数据，只是这个数据一般是可能其他组件也要使用，比如用户的信息放入仓库</p>
+</li>
+<li><p>导航被确认。为什么要确认一下？表示要进入 下面路由的信息已经准备好</p>
+</li>
+<li><p>调用全局后置守卫afterEach，目标路由已经跳转结束，可处理一些收尾工作，比如跳转到目标页面的对应位置</p>
+</li>
+<li><p>目标组件DOM渲染</p>
+</li>
+<li><p>调用全局前置守卫beforeRouteEnter的回调函数next(()=&gt;{})（调用next里面的回调函数时已经实例化），并把实例作为参数传递给组件路由的下一阶段使用（意思就是说组件已经渲染好了进入该组件的钩子也该结束了，可能要去beforeRouteLeave了）</p>
+</li>
 </ul>
 </blockquote>
 <h3 id="21-说一下Vue的动态路由"><a href="#21-说一下Vue的动态路由" class="headerlink" title="21.说一下Vue的动态路由"></a>21.说一下Vue的动态路由</h3><blockquote>
@@ -1411,10 +1444,10 @@
 <p>使用动态路由做权限管理时通常会出现两个问题：</p>
 <ul>
 <li><p>动态路由添加后刷新 出现404/白屏</p>
-<p><strong>原因：</strong>本来登录后把添加的路由会放入vuex中，然后在跳转首页时在beforeEnter里面会使用router.addRoute配合循环（vue2的addRoutes已经弃用了）动态添加路由，然后next()放行并展示 添加的菜单。但是 刷新后 Vuex数据会丢失，于是再进入新添加的路由，进入beforeEnter钩子时获取不到添加的路由地址，于是会出现404/白屏</p>
+<p><strong>原因：</strong>本来登录后把添加的路由会放入vuex中，然后在跳转首页时在beforeEnter里面会使用router.addRoute配合循环（vue2的addRoutes已经弃用了）动态添加路由，然后next()放行并展示 添加的菜单。但是 刷新后 Vuex数据会丢失（不要用localStorage，因为路由是经常要变动的，放在本地没有意义），于是再进入新添加的路由，进入beforeEnter钩子时获取不到添加的路由地址，于是会出现404/白屏</p>
 </li>
 </ul>
-<p>​       <strong>解决办法：</strong>在beforeEnter中加一个判断，如果vuex的路由为空，则重新生成一下动态路由，再重新添加。但是，要注意的是，由于 <strong>路由是动态添加的，而路由匹配是在beforeEnter之前做的事情</strong>，因此next放行是需要使用next({ …to, replace: true })：循环调用beforeEnter直到动态路由 成功添加后 并 匹配到地址后，再放行，其中replace是指不希望用户后退使用后退操作，因为可能前一个页面也是动态添加的，否则vuex的路由不为空（生成了路由）且to的地址不为空（成功添加了路由），才放行。</p>
+<p>​       <strong>解决办法：</strong>在beforeEnter中加一个判断，如果vuex的路由为空，则重新生成一下动态路由，再重新添加。但是，要注意的是，由于 <strong>路由是动态添加的，而路由匹配是在beforeEnter之前做的事情</strong>（匹配到了才准备进入），因此next放行是需要使用next({ …to（把目标路由地址展开） replace: true })：其实就是让它再走一遍 路由匹配和beforeEnter，再放行，其中replace是指不希望用户后退使用后退操作，因为可能前一个页面也是动态添加的，那回退也是404/白屏啊</p>
 <ul>
 <li>不同用户登录后，动态路由会重复添加</li>
 </ul>
@@ -1450,8 +1483,8 @@
 <p>它包含view、model、view model三个部分，其中最重要的就是view model，使它实现的view和model的关联，双向绑定的原理最主要的就是view model的原理。</p>
 <p>那view model它又包含两个部分，编译器和监听器，编译器实现view的变化影响model的变化，而model的变化影响view的变化是需要 【监听器+编译器】 一起实现的，后者其实就是指的是响应式。</p>
 <p><strong>2、下面说响应式是怎么实现的（要用到监听器和编译器）：</strong></p>
-<p>一开始该组件的的vue实例在初始化时对data数据进行响应式处理，这个过程发生在监听器中，在defineReactive中的Object.defineproperty进行数据劫持时会为每一个data中的属性创建一个Dep实例（订阅器），这个是依赖管理器，依赖是什么？指的是该数据相关的所有数据比如computed计算属性、监听器watch等，为什么要收集？因为要知道哪些数据后面可能要更新。</p>
-<p>然后在编译器里，会开始寻找模版上的动态数据，比如指令、插值语法什么的，并初始化视图，一旦发现模版上有使用data中的动态数据，此时就会调用数据劫持中的getter函数，这时Dep就会开始收集依赖，同时为每一个依赖创建watcher，它是订阅者，来订阅Dep啥时候通知它数据变化了，它会为依赖绑定一个更新函数，为后续的更新做准备。一旦数据发生变化了，就会触发数据劫持的getter函数，此时Dep就会通知相应的watcher叫它执行相应的更新函数来实现响应式。watcher是怎么更新的，更新的策略是什么？一般来说，它会主动要求调度者scheduler将自己放到一个执行队列中，再下一个事件循环统一进行更新。这么做有以下好处：</p>
+<p>一开始该组件的的vue实例在初始化时对data数据进行响应式处理，这个过程发生在监听器中，在defineReactive中的Object.defineproperty进行数据劫持时会为每一个data中的属性创建一个Dep实例（订阅器），这个是依赖管理器，依赖是什么？指的是该数据以及该数据相关的所有数据比如computed计算属性、监听器watch等，为什么要收集？因为要知道哪些数据后面可能要更新。</p>
+<p>然后在编译器里，会开始寻找模版上的动态数据，比如指令、插值语法什么的，并初始化视图，一旦发现模版上有使用data中的动态数据，此时就会调用数据劫持中的getter函数，这时Dep就会开始收集依赖，同时为每一个依赖创建watcher，它是订阅者，来订阅Dep啥时候通知它数据变化了，它会为依赖绑定一个更新函数，为后续的更新做准备。一旦数据发生变化了，就会触发数据劫持的getter函数，此时Dep就会通知相应的watcher叫它执行相应的更新函数来实现响应式。watcher是怎么更新的，更新的策略是什么？一般来说，它会主动要求调度者scheduler将自己放到一个执行队列中，再下一个事件循环统一进行更新（拓展：Vue中的nextTick函数是通过微任务实现的，把当前的页面初始化当作一个宏任务，页面）。这么做有以下好处：</p>
 <ol start="2">
 <li>避免了频繁更新带来的性能问题</li>
 </ol>
@@ -1477,7 +1510,7 @@
 </blockquote>
 <h3 id="29-Vuex的响应式处理是什么？"><a href="#29-Vuex的响应式处理是什么？" class="headerlink" title="29.Vuex的响应式处理是什么？"></a>29.Vuex的响应式处理是什么？</h3><blockquote>
 <p>Vuex是共享数据管理的工具。</p>
-<p>Vuex的响应式处理其实就是 怎么通过修改state的值从而又更新到视图的，也就是把 修改值-&gt;获取值 的过程说一遍：</p>
+<p>Vuex的响应式处理其实就是 怎么通过修改state的值从而又更新到视图的，也就是把 修改值-&gt;获取值 的过程说一遍（非要说响应式就把响应式原理说一遍）：</p>
 <ol>
 <li>使用Vue.use(vuex)，调用install方法，install方法内部又调用applyMixin方法（其实就是利用mixin混入）将vuex实例挂载到Vue实例身上，这样在任意组件内都可以使用this.$store来访问了</li>
 <li>在Vue组件内去触发dispatch来调用actions的方法，可以异步请求数据存入store，也可以调用mutations来修改state数据</li>
