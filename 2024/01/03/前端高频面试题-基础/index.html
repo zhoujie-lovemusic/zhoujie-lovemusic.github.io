@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://github.com/2024/01/03/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9F%BA%E7%A1%80/Vue%E4%B8%AD%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0this%E6%8C%87%E5%90%91.png">
 <meta property="og:image" content="https://github.com/2024/01/03/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9F%BA%E7%A1%80/%E7%BB%84%E4%BB%B6%E5%AE%9E%E4%BE%8B%E4%B8%8EVue%E5%AE%9E%E4%BE%8B%E5%85%B3%E7%B3%BB.png">
 <meta property="article:published_time" content="2024-01-03T06:21:01.000Z">
-<meta property="article:modified_time" content="2024-09-25T13:20:32.346Z">
+<meta property="article:modified_time" content="2024-09-26T12:44:52.697Z">
 <meta property="article:author" content="Zhou Jie">
 <meta property="article:tag" content="前端综合">
 <meta name="twitter:card" content="summary_large_image">
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          59k 字
+          61k 字
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          495 分钟
+          511 分钟
         
       </span>
     
@@ -307,7 +307,8 @@
 </blockquote>
 <h3 id="5-重绘和重排有什么区别？"><a href="#5-重绘和重排有什么区别？" class="headerlink" title="5.重绘和重排有什么区别？"></a>5.重绘和重排有什么区别？</h3><blockquote>
 <p>重排（回流）是指 元素的布局，例如位置和大小，发生变化后元素的重新排列（元素的删除添加、用js改变大小）</p>
-<p>重绘是指 元素的颜色等发生变化的重新绘制</p>
+<p>重绘是指 外观比如元素的颜色等发生变化的重新绘制</p>
+<p>回流必定发生重绘，重绘不一定发生回流</p>
 <p>重绘和重排涉及到浏览器渲染机制，可以说下吗？</p>
 <ul>
 <li>解析HTML生成DOM树</li>
@@ -1484,7 +1485,7 @@
 <p>那view model它又包含两个部分，编译器和监听器，编译器实现view的变化影响model的变化，而model的变化影响view的变化是需要 【监听器+编译器】 一起实现的，后者其实就是指的是响应式。</p>
 <p><strong>2、下面说响应式是怎么实现的（要用到监听器和编译器）：</strong></p>
 <p>一开始该组件的的vue实例在初始化时对data数据进行响应式处理，这个过程发生在监听器中，在defineReactive中的Object.defineproperty进行数据劫持时会为每一个data中的属性创建一个Dep实例（订阅器），这个是依赖管理器，依赖是什么？指的是该数据以及该数据相关的所有数据比如computed计算属性、监听器watch等，为什么要收集？因为要知道哪些数据后面可能要更新。</p>
-<p>然后在编译器里，会开始寻找模版上的动态数据，比如指令、插值语法什么的，并初始化视图，一旦发现模版上有使用data中的动态数据，此时就会调用数据劫持中的getter函数，这时Dep就会开始收集依赖，同时为每一个依赖创建watcher，它是订阅者，来订阅Dep啥时候通知它数据变化了，它会为依赖绑定一个更新函数，为后续的更新做准备。一旦数据发生变化了，就会触发数据劫持的getter函数，此时Dep就会通知相应的watcher叫它执行相应的更新函数来实现响应式。watcher是怎么更新的，更新的策略是什么？一般来说，它会主动要求调度者scheduler将自己放到一个执行队列中（同一个数据值更新一次），在下一个事件（nextTick）循环统一进行更新（DOM修改是微任务，DOM更新是宏任务，下一次事件循环指的是宏任务DOM更新，而DOM修改是微任务是微任务是因为需要提前为DOM更新做准备）。这么做有以下好处：</p>
+<p>然后在编译器里，会开始寻找模版上的动态数据，比如指令、插值语法什么的，并初始化视图，一旦发现模版上有使用data中的动态数据，此时就会调用数据劫持中的getter函数，同时为每一个依赖创建watcher，它是订阅者，来订阅Dep啥时候通知它数据变化了，它会为依赖绑定一个更新函数，为后续的更新做准备，这时Dep就会开始收集响应数据的watcher。一旦数据发生变化了，就会触发数据劫持的getter函数，此时Dep就会通知相应的watcher叫它执行相应的更新函数来实现响应式。watcher是怎么更新的，更新的策略是什么？一般来说，它会主动要求调度者scheduler将自己放到一个执行队列中（同一个数据值更新一次），在下一个事件（nextTick）循环统一进行更新（DOM修改是微任务，DOM更新是宏任务，下一次事件循环指的是宏任务DOM更新，而DOM修改是微任务是微任务是因为需要提前为DOM更新做准备）。这么做有以下好处：</p>
 <ol>
 <li><p>确保更新的顺序（队列先进先出）</p>
 </li>
@@ -1603,7 +1604,7 @@
 </ul>
 <p><strong>模板渲染</strong></p>
 <ul>
-<li>图片懒加载</li>
+<li>图片懒加载（利用滚动条的滚动事件，在图片滚动到屏幕中的时候再加载）</li>
 <li>图片多使用精灵图和SVG格式的（两者区别见上面）</li>
 <li>区分v-if、v-show的使用场景，避免v-if频繁渲染节点</li>
 <li>v-for要使用唯一的id并且不要和v-if一起使用（会先执行v-for先渲染再判断导致重复渲染），避免重复渲染</li>
@@ -1735,13 +1736,14 @@
 <p>它是一个基于Vue的服务端渲染框架，能够简化服务端渲染流程，最终可帮助SEO（主要目的）以及优化首屏加载时间。</p>
 </blockquote>
 <h3 id="43-Vue项目中如何提高SEO？"><a href="#43-Vue项目中如何提高SEO？" class="headerlink" title="43.Vue项目中如何提高SEO？"></a>43.Vue项目中如何提高SEO？</h3><blockquote>
+<p>现在各个前端框架下的页面的内容，大多是根据打包后js来动态生成，这给搜索引擎在抓包时能获取到的信息太少，导致SEO很差，于是就有了服务端渲染和预渲染，他们都能提高首屏加载速度，能让搜索引擎更快地获取到关键信息，从而优化SEO。</p>
 <ul>
-<li>服务端渲染（SSR）</li>
-<li>预渲染：服务端将页面中的静态内容渲染成静态HTML页面返回给客户端，降低客户端渲染负担，但是不太适合频繁更新的页面</li>
+<li>服务端渲染（SSR）：每一次请求后都会在服务端来执行js并渲染当前的页面来生成HTML，直接返回给前端，前端直接展示即可</li>
+<li>预渲染：在请求之前（构建时），就提前把页面生成静态HTML并缓存下来，后续不需要和服务器实时交互数据</li>
 </ul>
 <p>理解：预渲染只针对静态内容，而SSR是针对所有内容，都是服务端来帮助客户端减轻压力的</p>
 </blockquote>
-<h3 id="44-为什么Vue2响应式属性要通过额外的API？"><a href="#44-为什么Vue2响应式属性要通过额外的API？" class="headerlink" title="44.为什么Vue2响应式属性要通过额外的API？"></a>44.为什么Vue2响应式属性要通过额外的API？</h3><blockquote>
+<h3 id="44-为什么Vue2响应式属性要通过额外的API（-set、-delete）？"><a href="#44-为什么Vue2响应式属性要通过额外的API（-set、-delete）？" class="headerlink" title="44.为什么Vue2响应式属性要通过额外的API（$set、$delete）？"></a>44.为什么Vue2响应式属性要通过额外的API（$set、$delete）？</h3><blockquote>
 <p><strong>对象</strong></p>
 <ol>
 <li>Object.defineProperty无法劫持新增的属性以及删除的属性</li>
@@ -1753,16 +1755,22 @@
 </ol>
 </blockquote>
 <h3 id="45-为什么Vue对于数组没有使用defineProperty-实现响应式？"><a href="#45-为什么Vue对于数组没有使用defineProperty-实现响应式？" class="headerlink" title="45.为什么Vue对于数组没有使用defineProperty 实现响应式？"></a>45.为什么Vue对于数组没有使用defineProperty 实现响应式？</h3><blockquote>
-<p>如果对数组每一个元素都是用defineProperty进行数据劫持，性能会很低下，于是重写了7个方法，<strong>在方法内部调用Array原始方法之后再统一notify更新</strong></p>
+<p>如果对数组每一个元素都是用defineProperty进行数据劫持，性能会很低下，于是重写了7个方法，<strong>在方法内部调用Array原始方法之后再统一用Dep的notify通知依赖去更新</strong></p>
 </blockquote>
 <h3 id="46-Vue使用了哪些设计模式？"><a href="#46-Vue使用了哪些设计模式？" class="headerlink" title="46.Vue使用了哪些设计模式？"></a>46.Vue使用了哪些设计模式？</h3><blockquote>
 <ol>
-<li>单例模式：vuex和vue router创建后会判断只有一个实例才会创建</li>
-<li>观察者模式：响应式原理</li>
-<li>发布订阅模式：$emit以及$on，还有promise原理</li>
-<li>装饰器模式：@写在方法上面添加额外功能，一般对于防抖和节流可以封装成装饰器来使用</li>
-<li>策略模式：对于minin混入的代码，有默认的混入策略：用引进来的替换原本的（如果重名的话）</li>
-<li>工厂模式：根据参数生成实例，例如Vue.component(…)</li>
+<li><p>单例模式：vuex和vue router创建后会判断只有一个实例才会创建</p>
+</li>
+<li><p>观察者模式：响应式原理</p>
+</li>
+<li><p>发布订阅模式：$emit以及$on，还有promise原理</p>
+</li>
+<li><p>装饰器模式：@写在方法上面添加额外功能，一般对于防抖和节流可以封装成装饰器来使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;template&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;handleClick&quot;</span>&gt;</span>Click Me<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br>&lt;/template&gt;<br><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">function</span> <span class="hljs-title function_">debounce</span>(<span class="hljs-params">delay</span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">target, key, descriptor</span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-keyword">const</span> originalMethod = descriptor.<span class="hljs-property">value</span>;</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> originalMethod !== <span class="hljs-string">&#x27;function&#x27;</span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`@debounce decorator can only be applied to methods, not <span class="hljs-subst">$&#123;<span class="hljs-keyword">typeof</span> originalMethod&#125;</span>`</span>);</span></span><br><span class="language-javascript"><span class="language-xml">        &#125;</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-keyword">let</span> timer;</span></span><br><span class="language-javascript"><span class="language-xml">        descriptor.<span class="hljs-property">value</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">...args</span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">            <span class="hljs-keyword">if</span> (timer) <span class="hljs-built_in">clearTimeout</span>(timer);</span></span><br><span class="language-javascript"><span class="language-xml">            timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">                originalMethod.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, args);</span></span><br><span class="language-javascript"><span class="language-xml">            &#125;, delay);</span></span><br><span class="language-javascript"><span class="language-xml">        &#125;;</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-keyword">return</span> descriptor;</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;;</span></span><br><span class="language-javascript"><span class="language-xml">&#125;</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-attr">methods</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">        @<span class="hljs-title function_">debounce</span>(<span class="hljs-number">500</span>)</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-title function_">handleClick</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Button clicked!&#x27;</span>);</span></span><br><span class="language-javascript"><span class="language-xml">        &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">&#125;;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure></li>
+<li><p>策略模式：对于minin混入的代码，有默认的混入策略：用引进来的替换原本的（如果重名的话）</p>
+</li>
+<li><p>工厂模式：根据参数生成实例，例如Vue.component(…)</p>
+</li>
 </ol>
 <p><u>思路</u>：组件实例-&gt;引入文件-&gt;数据-&gt;事件-&gt;引入外部-&gt;整个组件</p>
 </blockquote>
@@ -1779,9 +1787,9 @@
 <p><strong>渲染</strong></p>
 <ul>
 <li><p>编译阶段</p>
-<p>v-pre ———不编译</p>
-<p>v-cloak —–编译时显示的内容，避免页面闪动</p>
-</li>
+<p>v-pre ———不编译（针对一些静态标签内容，可以直接加上，提高性能，减轻编译负担）</p>
+<p>v-cloak —–编译时显示的内容，避免页面闪动（网速慢等原因导致编译时出现的情况）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Vue v-cloak Example<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="language-css"><span class="language-xml">        <span class="hljs-selector-attr">[v-cloak]</span> &#123;</span></span><br><span class="language-css"><span class="language-xml">            <span class="hljs-attribute">display</span>: none;</span></span><br><span class="language-css"><span class="language-xml">        &#125;</span></span><br><span class="language-css"><span class="language-xml">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span> <span class="hljs-attr">v-cloak</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/vue@2&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">            <span class="hljs-attr">el</span>: <span class="hljs-string">&#x27;#app&#x27;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">            <span class="hljs-attr">data</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">                <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Hello, Vue!&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">            &#125;</span></span><br><span class="language-javascript"><span class="language-xml">        &#125;);</span></span><br><span class="language-javascript"><span class="language-xml">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span><br></code></pre></td></tr></table></figure></li>
 <li><p>展示阶段</p>
 <p>v-show </p>
 <p>v-for</p>
@@ -1832,9 +1840,9 @@
 </blockquote>
 <h1 id="Echarts"><a href="#Echarts" class="headerlink" title="Echarts"></a>Echarts</h1><h3 id="1-echarts有用过吗？常用的组件有哪些？"><a href="#1-echarts有用过吗？常用的组件有哪些？" class="headerlink" title="1.echarts有用过吗？常用的组件有哪些？"></a>1.echarts有用过吗？常用的组件有哪些？</h3><blockquote>
 <ol>
-<li>legend（图例）</li>
+<li>legend（图例）（指明每个图长啥样）</li>
 <li>title</li>
-<li>toolbox</li>
+<li>toolbox（工具栏，一些操作：缩放、下载等）</li>
 <li>yAxis</li>
 <li>xAxis</li>
 <li>series（name、type、data、markPoint、markLine）</li>
@@ -1843,7 +1851,7 @@
 <p><u>思路</u>（折线图为例）：</p>
 <ul>
 <li>外框：从上往下，从左往右（图例-&gt;标题-&gt;工具栏-&gt;Y轴-&gt;X轴）</li>
-<li>内容：画出来再对比（哪根线-&gt;类型-&gt;数据-&gt;标注-&gt;标线-&gt;提示框）</li>
+<li>内容：画出来再对比（哪根线-&gt;图的类型-&gt;数据-&gt;标注-&gt;标线-&gt;提示框）</li>
 </ul>
 </blockquote>
 <h1 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h1><h3 id="1-前端中产品的性能是指什么？如何衡量？"><a href="#1-前端中产品的性能是指什么？如何衡量？" class="headerlink" title="1.前端中产品的性能是指什么？如何衡量？"></a>1.前端中产品的性能是指什么？如何衡量？</h3><blockquote>
@@ -1859,7 +1867,7 @@
 <ul>
 <li><p>首屏加载速度</p>
 <p>FCP（页面加载到第一个元素渲染成功的时间）</p>
-<p>LCP（页面加载到最大的元素渲染成功的时间）</p>
+<p>LCP（页面加载到最大的元素渲染成功的时间） —————- 优秀 2.5 &lt; 中等（需要优化）&lt; 4 （差）</p>
 </li>
 <li><p>用户操作流畅度</p>
 <p>CLS（累计布局偏移）：如果应用不稳定，页面布局是会慢慢偏移的</p>
@@ -1870,7 +1878,7 @@
 </ul>
 </blockquote>
 <h3 id="3-性能优化分析工具有哪些？"><a href="#3-性能优化分析工具有哪些？" class="headerlink" title="3.性能优化分析工具有哪些？"></a>3.性能优化分析工具有哪些？</h3><blockquote>
-<p>最主流：lighthouse（谷歌插件，要有外网权限）</p>
+<p>最主流：lighthouse（谷歌浏览器已经自带，通过F12便可以查看，点击生成报告，页面会重新加载并被分析，最后可以得出各个指标的值，而且下面还会有针对某个文件的优化建议，很方便）</p>
 <p>webVitals：Edge可以用，可以直接挂在网页上，网页处理完毕，直接打开看所有参数，很方便</p>
 </blockquote>
 <h3 id="4-虚拟表格技术如何实现？"><a href="#4-虚拟表格技术如何实现？" class="headerlink" title="4.虚拟表格技术如何实现？"></a>4.虚拟表格技术如何实现？</h3><blockquote>
@@ -1880,7 +1888,7 @@
 <p>下面是滚动时的事件，替换元素：计算第一个元素新下标和偏移量(滚动时第一个元素有偏移量)</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title function_">strollEvent</span> = (<span class="hljs-params">event</span>)=&gt;&#123;<br>    <span class="hljs-comment">// 利用节流节省性能</span><br>    <span class="hljs-keyword">if</span>(<span class="hljs-title function_">nowTime</span>() - lastTime)&#123;<br>         <span class="hljs-keyword">const</span> &#123;strollTop&#125; = event.<span class="hljs-property">target</span><br>         第一个元素新下标 = strollTop/一个item高度<br>         第一个元素偏移量 = strollTop<br>         更新lastTime<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>渲染个数少、节流 =&gt;双重提高性能</p>
+<p>渲染个数少、节流 =&gt;双重提高性能（其实是渲染数据太多才慢的）</p>
 </blockquote>
 <h1 id="移动端"><a href="#移动端" class="headerlink" title="移动端"></a>移动端</h1><h3 id="1-什么是uni-app？"><a href="#1-什么是uni-app？" class="headerlink" title="1.什么是uni-app？"></a>1.什么是uni-app？</h3><blockquote>
 <p>uni-app（unify）是一个基于Vue.js的跨平台开发框架（支持Web端、移动端（IOS、android）、小程序），它提供了一套统一的代码开发和发布流程，开发者只需开发一份代码，同时将应用发布到多个平台，大大提高了开发效率。</p>
@@ -1900,7 +1908,7 @@
 <p>​      所有的api还有UI一整套都是用的android/ios官方提供的</p>
 <p>​      优点：系统稳定，流畅度高</p>
 <p>​      缺点：无法跨平台</p>
-<p><strong>WebApp：</strong></p>
+<p><strong>WebApp（就是我们用的网站，app-application）：</strong></p>
 <p>​      用的是Web应用开发的技术（html、css、js）开发的移动端应用</p>
 <p>​      优点：可跨平台</p>
 <p>​      缺点：无法调用原生App的接口</p>
@@ -1921,22 +1929,21 @@
 <p>以上是个人项目或小型项目，如果是大型项目，会要建立自己的分支，有效避免pull、commit的使用错误（相当于用merge来代替pull）：</p>
 <p>git clone 远程仓库地址</p>
 <p>-&gt;git checkout -b ‘自己的分支’（创建并切换到自己的分支）</p>
+<p>-&gt;git pull</p>
 <p>-&gt;add、commit</p>
 <p>-&gt;替换到master再pull一下保证只最新的</p>
 <p>-&gt;再切换到自己的分支</p>
-<p>-&gt;git merge develop（将自己分支的内容合并到develop分支上）</p>
+<p>-&gt;git merge develop（把develop分支合并到当前分支上）</p>
 </blockquote>
 <h3 id="2-会什么要有暂存区？"><a href="#2-会什么要有暂存区？" class="headerlink" title="2.会什么要有暂存区？"></a>2.会什么要有暂存区？</h3><blockquote>
 <p>因为暂存区可以帮助你选择性提交，一次提交只包含一个功能，这样可以让提交历史清晰，便于追踪问题。如果你要做一个功能B，但是在做的过程中发现还有bugA，此时可以把修改bugA先提交一版，然后再提交一版功能B</p>
 </blockquote>
 <h3 id="3-为什么是commit-gt-pull-gt-push，而不是pull-gt-commit-gt-push？"><a href="#3-为什么是commit-gt-pull-gt-push，而不是pull-gt-commit-gt-push？" class="headerlink" title="3.为什么是commit-&gt;pull-&gt;push，而不是pull-&gt;commit-&gt;push？"></a>3.为什么是commit-&gt;pull-&gt;push，而不是pull-&gt;commit-&gt;push？</h3><blockquote>
 <p>因为可能 你和别人共同会修改同一个功能，你可能修改好了忘记commit直接pull，会把别人修改的覆盖你的，因为你不commit那么git是不知道你修改了；而先commit再pull，这是如果有冲突，可以和别人商量要哪个，再push</p>
+<hr>
+<p>解释有问题，具体请看：<a target="_blank" rel="noopener" href="https://zhoujie-lovemusic.github.io/2024/09/03/git%E4%B8%AD%E9%82%A3%E4%BA%9B%E6%B6%89%E5%8F%8Amerge%E7%9A%84%E6%93%8D%E4%BD%9C/">https://zhoujie-lovemusic.github.io/2024/09/03/git%E4%B8%AD%E9%82%A3%E4%BA%9B%E6%B6%89%E5%8F%8Amerge%E7%9A%84%E6%93%8D%E4%BD%9C/</a></p>
 </blockquote>
-<h3 id="4-A合并B和B合并A，有什么区别？"><a href="#4-A合并B和B合并A，有什么区别？" class="headerlink" title="4.A合并B和B合并A，有什么区别？"></a>4.A合并B和B合并A，有什么区别？</h3><blockquote>
-<p>A merge B是将A的内容合并到B中，B merge A是将B的内容合并到A中。</p>
-<p>A merge B后会显示merge branch A into B</p>
-</blockquote>
-<h3 id="5-功能写错了并push了，如何回退代码？"><a href="#5-功能写错了并push了，如何回退代码？" class="headerlink" title="5.功能写错了并push了，如何回退代码？"></a>5.功能写错了并push了，如何回退代码？</h3><blockquote>
+<h3 id="4-功能写错了并push了，如何回退代码？"><a href="#4-功能写错了并push了，如何回退代码？" class="headerlink" title="4.功能写错了并push了，如何回退代码？"></a>4.功能写错了并push了，如何回退代码？</h3><blockquote>
 <p>一般来说需要回退到 commit之前，然后重新修改，再次commit。</p>
 <ul>
 <li>git reset –soft HEAD^ ————– 回退到上一次commit之前</li>
