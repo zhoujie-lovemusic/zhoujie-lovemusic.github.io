@@ -16,22 +16,22 @@
   <meta name="author" content="Zhou Jie">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言 总结一些涉及到merge操作的git指令  pull和commit的顺序的顺序问题  改相同的一块代码，不管pull和commit的顺序如何，最终都是要merge，因为即使先pull会提示你先commit或者stash  -&gt;既然先pull如果有同一块代码会有提示你commit再合并，那以后都先pull不就行了： –&gt;如果没有共同代码，刚刚好拿到了最新代码 –&gt;如果有，那g">
+    <meta name="description" content="JstableData的数据结构要和html展示结构要一致 如果数据层数太多的话，会出现无法编辑的情况 1234567891011121314&lt;div  class&#x3D;&quot;setting-ticket-item&quot;  v-for&#x3D;&quot;(item, index) in scope.row.currentTicketTypes.realName&quot;  :key&#x3D;&amp;q">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git中那些涉及merge的操作">
-<meta property="og:url" content="https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/09/03/git%E4%B8%AD%E9%82%A3%E4%BA%9B%E6%B6%89%E5%8F%8Amerge%E7%9A%84%E6%93%8D%E4%BD%9C/index.html">
+<meta property="og:title" content="前端开发宝典(Vue+ElementUI)">
+<meta property="og:url" content="https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/10/20/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AE%9D%E5%85%B8-Vue-ElementUI/index.html">
 <meta property="og:site_name" content="Zhou Jie">
-<meta property="og:description" content="前言 总结一些涉及到merge操作的git指令  pull和commit的顺序的顺序问题  改相同的一块代码，不管pull和commit的顺序如何，最终都是要merge，因为即使先pull会提示你先commit或者stash  -&gt;既然先pull如果有同一块代码会有提示你commit再合并，那以后都先pull不就行了： –&gt;如果没有共同代码，刚刚好拿到了最新代码 –&gt;如果有，那g">
+<meta property="og:description" content="JstableData的数据结构要和html展示结构要一致 如果数据层数太多的话，会出现无法编辑的情况 1234567891011121314&lt;div  class&#x3D;&quot;setting-ticket-item&quot;  v-for&#x3D;&quot;(item, index) in scope.row.currentTicketTypes.realName&quot;  :key&#x3D;&amp;q">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-09-03T09:09:57.000Z">
-<meta property="article:modified_time" content="2024-09-03T09:27:18.026Z">
+<meta property="article:published_time" content="2024-10-20T03:58:35.000Z">
+<meta property="article:modified_time" content="2024-10-20T08:58:54.580Z">
 <meta property="article:author" content="Zhou Jie">
-<meta property="article:tag" content="Git操作">
+<meta property="article:tag" content="技巧总结">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>git中那些涉及merge的操作 - Zhou Jie</title>
+  <title>前端开发宝典(Vue+ElementUI) - Zhou Jie</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="git中那些涉及merge的操作"></span>
+            <span id="subtitle" data-typed-text="前端开发宝典(Vue+ElementUI)"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-09-03 17:09" pubdate>
-          2024年9月3日 下午
+        <time datetime="2024-10-20 11:58" pubdate>
+          2024年10月20日 中午
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          524 字
+          1.5k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          5 分钟
+          13 分钟
         
       </span>
     
@@ -269,34 +269,61 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">git中那些涉及merge的操作</h1>
+            <h1 style="display: none">前端开发宝典(Vue+ElementUI)</h1>
             
             
               <div class="markdown-body">
                 
-                <p><strong>前言</strong></p>
-<p>总结一些涉及到merge操作的git指令</p>
-<hr>
-<p><strong>pull和commit的顺序的顺序问题</strong></p>
-<ul>
-<li>改相同的一块代码，不管pull和commit的顺序如何，最终都是要merge，因为即使先pull会提示你先commit或者stash</li>
+                <h1 id="Js"><a href="#Js" class="headerlink" title="Js"></a>Js</h1><h3 id="tableData的数据结构要和html展示结构要一致"><a href="#tableData的数据结构要和html展示结构要一致" class="headerlink" title="tableData的数据结构要和html展示结构要一致"></a>tableData的数据结构要和html展示结构要一致</h3><ul>
+<li><p>如果数据层数太多的话，会出现无法编辑的情况</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span></span><br><span class="hljs-tag">  <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;setting-ticket-item&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;(item, index) in scope.row.currentTicketTypes.realName&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;index&quot;</span></span><br><span class="hljs-tag">&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>&#123;&#123; item.name + &#x27;：&#x27; &#125;&#125;&lt;/span<br>  &gt;<span class="hljs-tag">&lt;<span class="hljs-name">el-input</span></span><br><span class="hljs-tag">    <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 50px;&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.ticket_value&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span></span><br><span class="hljs-tag">  &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">el-input</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>张<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>  <br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>比如当前el-table-column的字段是currentTicketTypes，那么就不能跳过currentTicketTypes直接用下一层数据realName，结果就是el-input无法输入，卡住了一样</p>
+</li>
 </ul>
-<p>-&gt;既然先pull如果有同一块代码会有提示你commit再合并，那以后都先pull不就行了：</p>
-<p>–&gt;如果没有共同代码，刚刚好拿到了最新代码</p>
-<p>–&gt;如果有，那git中合并记录，记录一下</p>
-<p><strong>git merge到底是哪个合并到哪</strong></p>
-<ul>
-<li>git merge A—&gt;把A的分支合并到当前分支（本地合并）</li>
+<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h3 id="内容过多时出现滚动条"><a href="#内容过多时出现滚动条" class="headerlink" title="内容过多时出现滚动条"></a>内容过多时出现滚动条</h3><ul>
+<li>在父级元素（哪个父级元素看需要滚动条多大范围）上增加 overflow:auto + 固定width</li>
 </ul>
-<p><strong>如何将某的分支的commit提交到本分之</strong></p>
-<ul>
-<li>git log A —-&gt;查看A分支的提交记录</li>
-<li>git cherry-pick commitId —-&gt;把某分支的commit合并到当前分支</li>
+<h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><h3 id="数据中间处理不要在响应式数据中进行"><a href="#数据中间处理不要在响应式数据中进行" class="headerlink" title="数据中间处理不要在响应式数据中进行"></a>数据中间处理不要在响应式数据中进行</h3><ul>
+<li>避免不必要的响应到页面上的情况</li>
+<li>重新用const定义一个变量来给这个响应式数据赋值</li>
 </ul>
-<p><strong>如何合并远程其他分支的代码</strong></p>
+<h1 id="ElementUI"><a href="#ElementUI" class="headerlink" title="ElementUI"></a>ElementUI</h1><h3 id="el-table"><a href="#el-table" class="headerlink" title="el-table"></a>el-table</h3><p><strong>设置el-table每个单元格高度</strong></p>
 <ul>
-<li>git pull —&gt;先把其他分支的内容更新到一下，否则获取不到远程其他分支最新代码</li>
-<li>使用vscode工具合并远程别的分支的代码后，是不需要commit的，因为当前就是在合并，commit已经写好了就是合并，剩下的就是合并后的push（优先使用vscode工具来将主分支合并远程其他各个分支的内容，用命令的话需要先拉到本地并合并，比较麻烦）</li>
+<li><p>去掉padding影响</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">/deep/(vue2版本，vue3用::v-deep) .el-table .el-table__body td &#123;<span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-meta">!important</span>; &#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>通过行高设置具体高度（去掉padding之后此时内部是span高度由行高决定）</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">&lt;el-<span class="hljs-selector-tag">table</span> :cell-style=<span class="hljs-string">&quot;&#123; lineHeight: &#x27;10px&#x27; &#125;&quot;</span>&gt;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>x轴出现滚动条</strong></p>
+<ul>
+<li>可以在每个item加固定width</li>
+</ul>
+<h3 id="el-dialog"><a href="#el-dialog" class="headerlink" title="el-dialog"></a>el-dialog</h3><p><strong>自定义内间距，且内容被子元素高度撑开</strong></p>
+<ul>
+<li>直接设置.el-dialog__body 的padding（使用deep加速器）</li>
+<li>如果内容不想被撑开，想加上滚动条，在子元素外部添加overflow:auto + 固定width</li>
+</ul>
+<h3 id="e-form"><a href="#e-form" class="headerlink" title="e-form"></a>e-form</h3><p><strong>想要校验的“红星”样式，但是不触发任何校验</strong></p>
+<ul>
+<li>直接在el-form-item加上class=”is-required”</li>
+</ul>
+<h3 id="radio-group"><a href="#radio-group" class="headerlink" title="radio-group"></a>radio-group</h3><p><strong>循环radio-group时的注意点</strong></p>
+<ul>
+<li>要保证每个radio-group有自己的v-model值，这样各个radio-group的选中的数据不会相互影响</li>
+</ul>
+<h1 id="业务场景"><a href="#业务场景" class="headerlink" title="业务场景"></a>业务场景</h1><h3 id="无感刷新"><a href="#无感刷新" class="headerlink" title="无感刷新"></a>无感刷新</h3><ul>
+<li>用setInterval每隔一秒调用获取列表的接口（记得组件销毁时clearInterval）———–刷新</li>
+<li>“删除”、“编辑”等修改列表数据的操作时需要clearInterval，操作成功后再开启 —- 保持无感刷新</li>
+<li>把列表加载数据时的loading效果要去掉 ——— 无感</li>
+</ul>
+<h3 id="template-admin框架的下拉框独有的回显方式"><a href="#template-admin框架的下拉框独有的回显方式" class="headerlink" title="template-admin框架的下拉框独有的回显方式"></a>template-admin框架的下拉框独有的回显方式</h3><ul>
+<li>内置有useProxy方法获取某个下拉框数据的（字典值和label）组成的数组</li>
+<li>这个字典值会默认从store中去取，没有还会自动去请求接口并保存在store中</li>
+<li>如果是 修改 模式，则在具体的字典值来之前准备好数组即可；如果是 查看 模式，则还需要另外的方法将字典值转化为对应的label值</li>
+</ul>
+<h3 id="下载切图时一定要用svg格式的，避免分辨率不同带来的模糊"><a href="#下载切图时一定要用svg格式的，避免分辨率不同带来的模糊" class="headerlink" title="下载切图时一定要用svg格式的，避免分辨率不同带来的模糊"></a>下载切图时一定要用svg格式的，避免分辨率不同带来的模糊</h3><ul>
+<li>svg格式的图片能自适应还不失真</li>
 </ul>
 
                 
@@ -316,7 +343,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Git/" class="category-chain-item">Git</a>
+  <a href="/categories/%E5%89%8D%E7%AB%AF/" class="category-chain-item">前端</a>
   
   
 
@@ -331,7 +358,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Git%E6%93%8D%E4%BD%9C/">#Git操作</a>
+        <a href="/tags/%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/">#技巧总结</a>
       
     </div>
   
@@ -343,8 +370,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>git中那些涉及merge的操作</div>
-      <div>https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/09/03/git中那些涉及merge的操作/</div>
+      <div>前端开发宝典(Vue+ElementUI)</div>
+      <div>https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/10/20/前端开发宝典-Vue-ElementUI/</div>
     </div>
     <div class="license-meta">
       
@@ -356,7 +383,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年9月3日</div>
+          <div>2024年10月20日</div>
         </div>
       
       
@@ -388,18 +415,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/10/20/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AE%9D%E5%85%B8-Vue-ElementUI/" title="前端开发宝典(Vue+ElementUI)">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">前端开发宝典(Vue+ElementUI)</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/08/21/js-%E5%A6%82%E4%BD%95%E6%A0%B9%E6%8D%AE%E8%BF%94%E5%9B%9E%E7%9A%84%E7%8A%B6%E6%80%81%E5%8F%AA%E6%8F%90%E7%A4%BA%E6%88%90%E5%8A%9F%E4%B8%80%E6%AC%A1%EF%BC%9F/" title="js:如何根据返回的状态只提示成功一次？">
-                        <span class="hidden-mobile">js:如何根据返回的状态只提示成功一次？</span>
+                      <a href="/2024/09/03/git%E4%B8%AD%E9%82%A3%E4%BA%9B%E6%B6%89%E5%8F%8Amerge%E7%9A%84%E6%93%8D%E4%BD%9C/" title="git中那些涉及merge的操作">
+                        <span class="hidden-mobile">git中那些涉及merge的操作</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -419,8 +440,8 @@
     
       <script type="text/javascript">
         var disqus_config = function() {
-          this.page.url = 'https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/09/03/git%E4%B8%AD%E9%82%A3%E4%BA%9B%E6%B6%89%E5%8F%8Amerge%E7%9A%84%E6%93%8D%E4%BD%9C/';
-          this.page.identifier = '/2024/09/03/git%E4%B8%AD%E9%82%A3%E4%BA%9B%E6%B6%89%E5%8F%8Amerge%E7%9A%84%E6%93%8D%E4%BD%9C/';
+          this.page.url = 'https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/10/20/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AE%9D%E5%85%B8-Vue-ElementUI/';
+          this.page.identifier = '/2024/10/20/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AE%9D%E5%85%B8-Vue-ElementUI/';
         };
         Fluid.utils.loadComments('#disqus_thread', function() {
           var d = document, s = d.createElement('script');
