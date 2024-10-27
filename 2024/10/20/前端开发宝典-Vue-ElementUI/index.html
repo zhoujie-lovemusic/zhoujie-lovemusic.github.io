@@ -16,15 +16,15 @@
   <meta name="author" content="Zhou Jie">
   <meta name="keywords" content="">
   
-    <meta name="description" content="JstableData的数据结构要和html展示结构要一致 如果数据层数太多的话，会出现无法编辑的情况 1234567891011121314&lt;div  class&#x3D;&quot;setting-ticket-item&quot;  v-for&#x3D;&quot;(item, index) in scope.row.currentTicketTypes.realName&quot;  :key&#x3D;&amp;q">
+    <meta name="description" content="Js看到UI稿就要立马在脑里设计好数据结构 相似块不断出现 ———- &gt; 数组 每个块又有各自结构 ———-&gt; 对象  tableData的数据结构要和html展示结构要一致 如果数据层数太多的话，会出现无法编辑的情况 1234567891011121314&lt;div  class&#x3D;&quot;setting-ticket-item&quot;  v-for&#x3D;&quot;(item">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端开发宝典(Vue+ElementUI)">
 <meta property="og:url" content="https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2024/10/20/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AE%9D%E5%85%B8-Vue-ElementUI/index.html">
 <meta property="og:site_name" content="Zhou Jie">
-<meta property="og:description" content="JstableData的数据结构要和html展示结构要一致 如果数据层数太多的话，会出现无法编辑的情况 1234567891011121314&lt;div  class&#x3D;&quot;setting-ticket-item&quot;  v-for&#x3D;&quot;(item, index) in scope.row.currentTicketTypes.realName&quot;  :key&#x3D;&amp;q">
+<meta property="og:description" content="Js看到UI稿就要立马在脑里设计好数据结构 相似块不断出现 ———- &gt; 数组 每个块又有各自结构 ———-&gt; 对象  tableData的数据结构要和html展示结构要一致 如果数据层数太多的话，会出现无法编辑的情况 1234567891011121314&lt;div  class&#x3D;&quot;setting-ticket-item&quot;  v-for&#x3D;&quot;(item">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-10-20T03:58:35.000Z">
-<meta property="article:modified_time" content="2024-10-23T15:14:08.753Z">
+<meta property="article:modified_time" content="2024-10-27T11:48:52.640Z">
 <meta property="article:author" content="Zhou Jie">
 <meta property="article:tag" content="技巧总结">
 <meta name="twitter:card" content="summary_large_image">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.1k 字
+          6.5k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          18 分钟
+          55 分钟
         
       </span>
     
@@ -274,67 +274,127 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Js"><a href="#Js" class="headerlink" title="Js"></a>Js</h1><h3 id="tableData的数据结构要和html展示结构要一致"><a href="#tableData的数据结构要和html展示结构要一致" class="headerlink" title="tableData的数据结构要和html展示结构要一致"></a>tableData的数据结构要和html展示结构要一致</h3><ul>
+                <h1 id="Js"><a href="#Js" class="headerlink" title="Js"></a>Js</h1><h3 id="看到UI稿就要立马在脑里设计好数据结构"><a href="#看到UI稿就要立马在脑里设计好数据结构" class="headerlink" title="看到UI稿就要立马在脑里设计好数据结构"></a>看到UI稿就要立马在脑里设计好数据结构</h3><ul>
+<li>相似块不断出现 ———- &gt; 数组</li>
+<li>每个块又有各自结构 ———-&gt; 对象</li>
+</ul>
+<h3 id="tableData的数据结构要和html展示结构要一致"><a href="#tableData的数据结构要和html展示结构要一致" class="headerlink" title="tableData的数据结构要和html展示结构要一致"></a>tableData的数据结构要和html展示结构要一致</h3><ul>
 <li><p>如果数据层数太多的话，会出现无法编辑的情况</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span></span><br><span class="hljs-tag">  <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;setting-ticket-item&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;(item, index) in scope.row.currentTicketTypes.realName&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;index&quot;</span></span><br><span class="hljs-tag">&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>&#123;&#123; item.name + &#x27;：&#x27; &#125;&#125;&lt;/span<br>  &gt;<span class="hljs-tag">&lt;<span class="hljs-name">el-input</span></span><br><span class="hljs-tag">    <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 50px;&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;item.ticket_value&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span></span><br><span class="hljs-tag">  &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">el-input</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>张<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>  <br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
-<p>比如当前el-table-column的字段是currentTicketTypes，那么就不能跳过currentTicketTypes直接用下一层数据realName，结果就是el-input无法输入，卡住了一样</p>
+<p>比如当前el-table-column的字段是currentTicketTypes，那么就不能跳过currentTicetTypes直接用下一层数据realName，结果就是el-input无法输入，卡住了一样</p>
 </li>
 </ul>
-<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p><strong>方法使用注意点</strong></p>
-<ul>
-<li>一定要先判断 当前数组arr&amp;&amp;arr.length&amp;&amp;arr.map，否则会报map为undefined</li>
+<h3 id="：符号的意思"><a href="#：符号的意思" class="headerlink" title="：符号的意思"></a>：符号的意思</h3><ul>
+<li>不仅仅是能填变量，而是指可以填常量，看你原来是什么数据，就是什么。比如:label=”3”，此时获取到的值就是3，而label:”3”，获取到的是“3”</li>
 </ul>
-<p><strong>方法使用场景</strong></p>
+<h3 id="多用const而不是let"><a href="#多用const而不是let" class="headerlink" title="多用const而不是let"></a>多用const而不是let</h3><ul>
+<li>中间处理的数据都 重新用const定义一个变量，然后再赋值给想要的数据上，这样各司其职很清晰</li>
+</ul>
+<h3 id="Async-Await"><a href="#Async-Await" class="headerlink" title="Async/Await"></a>Async/Await</h3><p><strong>异步数据作为函数的返回值来使用</strong></p>
 <ul>
-<li><p>reduce：对数组每项数据的数据结构进行重组，有点类似map，但是比map功能更强大，比如 </p>
-<p>二维数组 -&gt; 一维数组；</p>
-<p>一维数组 -&gt; 对象（初始值设置为{}即可）</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 将reserveObjectPerson每项reservePeople(数组)全放到一个数组里</span><br><span class="hljs-comment">// 如果用map实现就得遍历两次，因为map双层遍历返回的是二维数组</span><br>surfaceFormData.<span class="hljs-property">reserveObjectPerson</span>.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">acc, item</span>) =&gt;</span> &#123;<br>          <span class="hljs-keyword">const</span> people = item.<span class="hljs-property">reservePeople</span>;<br>          <span class="hljs-keyword">if</span> (people &amp;&amp; people.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>) &#123;<br>            acc.<span class="hljs-title function_">push</span>(...people);<br>          &#125;<br>          <span class="hljs-keyword">return</span> acc;<br>        &#125;, []);<br></code></pre></td></tr></table></figure></li>
+<li>想要获取类似接口这样的异步数据作为函数的返回值在别处使用，必须使用await/async，因为只有await才能把数据返回出去</li>
+<li>而async函数返回的一定是一个Promise，因此在别处使用又要用await</li>
+<li>async一定还要加在离当前await最近的函数上，如果是回调函数要加在回调函数前面</li>
+</ul>
+<p><strong>异步操作的遍历不能用map函数</strong></p>
+<ul>
+<li><p>异步操作的遍历不能用map函数，否则返回的每一个item是一个promise，即使使用了await关键字也无法等待，因为map不回去处理异步操作，比较急躁</p>
+</li>
+<li><p>要用for循环（item的某一个属性值单独用await，然后再赋值上去）或者用Promise.all所有的promise来解决（用了map之后，是一个包含promsie的数组，那么就用Promise.all获取所有结果）</p>
+</li>
+<li><p>```js<br>for (const item of this.reserveTemplateInfo) {</p>
+<pre><code class="hljs">        const reservePeopleAll = (await this.getReservePersonTypeOptions(item.id)) || [];
+        reserveObjectPerson.push(&#123;
+          name: item.name,
+          id: item.id,
+          reservePeopleAll,
+          reservePeople: [],
+          department_type: 0,
+        &#125;);
+      &#125;
+      this.formData.reserveObjectPerson = reserveObjectPerson;
+</code></pre>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs maxima"><br>### 数组<br><br>**方法数据使用前的 注意点**<br><br>- 一定要先判断 当前数组arr&amp;&amp;arr.<span class="hljs-built_in">length</span>&amp;&amp;arr.<span class="hljs-built_in">map</span>，否则会报<span class="hljs-built_in">map</span>为undefined<br><br>**各方法使用场景**<br><br>- reduce：对数组每项数据的数据结构进行重组，有点类似<span class="hljs-built_in">map</span>，但是比<span class="hljs-built_in">map</span>功能更强大，比如 <br><br>  二维数组 -&gt; 一维数组（<span class="hljs-built_in">concat</span>）<br><br>  一维数组 -&gt; 对象（初始值设置为&#123;&#125;即可）<br><br>  ```js<br>  // 将reserveObjectPerson每项reservePeople(数组)全放到一个数组里<br>  // 如果用<span class="hljs-built_in">map</span>实现就得遍历两次，因为<span class="hljs-built_in">map</span>双层遍历返回的是二维数组<br>  surfaceFormData.reserveObjectPerson.reduce((acc, item) =&gt; &#123;<br>            const people = item.reservePeople;<br>            <span class="hljs-keyword">if</span> (people &amp;&amp; people.<span class="hljs-built_in">length</span> &gt; <span class="hljs-number">0</span>) &#123;<br>              acc.<span class="hljs-built_in">push</span>(...people);<br>            &#125;<br>            <span class="hljs-built_in">return</span> acc;<br>          &#125;, []);<br></code></pre></td></tr></table></figure></li>
+<li><p>every：返回值为boolean值，用于判断，数组的每个item都满足条件才返回true（有点类似allSettled）</p>
+</li>
+<li><p>some：返回值为boolean值，有一个满足返回true</p>
+</li>
+<li><p>concat：多个数组连成一个数组，在reduce方法里比较常用</p>
+</li>
+</ul>
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><ul>
+<li>hasOwnProperty：可以用来判断对象是否有传入的属性值</li>
 </ul>
 <h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h3 id="内容过多时出现滚动条"><a href="#内容过多时出现滚动条" class="headerlink" title="内容过多时出现滚动条"></a>内容过多时出现滚动条</h3><ul>
 <li>在父级元素（哪个父级元素看需要滚动条多大范围）上增加 overflow:auto + 固定width</li>
+</ul>
+<h3 id="元素定位不相互挤压"><a href="#元素定位不相互挤压" class="headerlink" title="元素定位不相互挤压"></a>元素定位不相互挤压</h3><ul>
+<li>只要用margin就会在文档流里，就会相互挤压，而绝对定位还能脱离文档流</li>
+</ul>
+<h3 id="渐变的分割线"><a href="#渐变的分割线" class="headerlink" title="渐变的分割线"></a>渐变的分割线</h3><ul>
+<li><p>div加上以下样式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(to left, <span class="hljs-number">#ffffff</span>, <span class="hljs-number">#ddd8d8</span>, <span class="hljs-number">#ffffff</span>);<span class="hljs-attribute">height</span>: <span class="hljs-number">1px</span>;<br></code></pre></td></tr></table></figure></li>
 </ul>
 <h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><h3 id="数据中间处理不要在响应式数据中进行"><a href="#数据中间处理不要在响应式数据中进行" class="headerlink" title="数据中间处理不要在响应式数据中进行"></a>数据中间处理不要在响应式数据中进行</h3><ul>
 <li>避免不必要的响应到页面上的情况</li>
 <li>重新用const定义一个变量来给这个响应式数据赋值</li>
 </ul>
-<h1 id="ElementUI"><a href="#ElementUI" class="headerlink" title="ElementUI"></a>ElementUI</h1><h3 id="el-table"><a href="#el-table" class="headerlink" title="el-table"></a>el-table</h3><p><strong>设置el-table每个单元格高度</strong></p>
-<ul>
-<li><p>去掉padding影响</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">/deep/(vue2版本，vue3用::v-deep) .el-table .el-table__body td &#123;<span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-meta">!important</span>; &#125;<br></code></pre></td></tr></table></figure></li>
+<h3 id="动态修改Html结构-v-html"><a href="#动态修改Html结构-v-html" class="headerlink" title="动态修改Html结构-v-html"></a>动态修改Html结构-v-html</h3><ul>
+<li><p>可以在原本要显示数据的地方使用v-html指令，数据用个计算属性（提供一个计算的平台）</p>
+</li>
+<li><p>本质上是用html字符串的处理，那么就可以用各种字符串处理方法，不好处理用split转成数组处理，最后在拼接（join方法）</p>
+</li>
+<li><p>找到文字内关键词并标绿</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> keywordHighlight = <span class="hljs-title function_">computed</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">originSent, label</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (originSent.<span class="hljs-title function_">includes</span>(label)) &#123;<br>      <span class="hljs-keyword">const</span> highlightedPart = <span class="hljs-string">`&lt;span style=&quot;color: #00BAAD;&quot;&gt;<span class="hljs-subst">$&#123;label&#125;</span>&lt;/span&gt;`</span><br>      <span class="hljs-keyword">return</span> originSent.<span class="hljs-title function_">replace</span>(label, highlightedPart)<br>    &#125;<br>    <span class="hljs-keyword">return</span> originSent<br>  &#125;<br>&#125;)<br>&lt;span<br>                          v-html=<span class="hljs-string">&quot;</span><br><span class="hljs-string">                            keywordHighlight(row.originSent, itemTag.label)</span><br><span class="hljs-string">                          &quot;</span><br>                        &gt;&lt;/span&gt;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="模态框（dialog）作为子组件显示，可见性需要更新回父组件"><a href="#模态框（dialog）作为子组件显示，可见性需要更新回父组件" class="headerlink" title="模态框（dialog）作为子组件显示，可见性需要更新回父组件"></a>模态框（dialog）作为子组件显示，可见性需要更新回父组件</h3><ul>
+<li><p>子组件要使用计算属性接受，顺便利用set来更新回去</p>
+</li>
+<li><p> 不是单向数据流吗？为什么要更新回去？因为父子组件各自都有权力控制显示，不更新回去任一方的更新都将无效，且这样不用</p>
+</li>
+<li><p>```js<br>computed: {</p>
+<pre><code class="hljs">localExportFailVisible: &#123;
+  get() &#123;
+    return this.exportFailVisible;
+  &#125;,
+  set(val) &#123;
+    this.$emit(&#39;update:exportFailVisible&#39;, val);
+  &#125;,
+&#125;,
+</code></pre>
+<p>  },</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs clean"><br>- this.$emit(<span class="hljs-string">&#x27;update:exportFailVisible&#x27;</span>, val);是用于更新用v-model绑定的数据，也就是说子组件是使用v-model绑定可见性的<br><br>### 父组件传数据给子组件而不是子组件每次实例化来请求数据<br><br>- 这样一次请求就行了，而且子组件的展示也不是用v-<span class="hljs-keyword">if</span>，而是用可见性<br><br>### 全局样式要去掉scoped<br><br>- 有时候即使使用了deep穿透样式还是无法生效，就要F12看看是否是全局样式，也就是在body下的第一层，而一个组件内的样式加了scoped是指局部样式，所以要去掉scoped<br><br>### watch和computed<br><br>- 只用重新返回一个值的话用computed，否则有其他复杂逻辑用watch<br><br># ElementUI<br><br>### UI组件如果提供了专门的<span class="hljs-keyword">class</span>自定义类，那肯定是可以用的，不生效是方法不对<br><br>- 比如el-table的:cellStyle<br><br>### el-table<br><br>**设置el-table每个单元格高度**<br><br>- 去掉padding影响<br><br>  ```css<br>  /deep/(vue2版本，vue3用::v-deep) .el-table .el-table__body td &#123;padding: <span class="hljs-number">0</span> !important; &#125;<br></code></pre></td></tr></table></figure></li>
 <li><p>通过行高设置具体高度（去掉padding之后此时内部是span高度由行高决定）</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">&lt;el-<span class="hljs-selector-tag">table</span> :cell-style=<span class="hljs-string">&quot;&#123; lineHeight: &#x27;10px&#x27; &#125;&quot;</span>&gt;<br></code></pre></td></tr></table></figure></li>
 </ul>
-<p><strong>x轴出现滚动条</strong></p>
+<p><strong>设置单元格（行、列）样式</strong></p>
 <ul>
-<li>可以在每个item加固定width</li>
-</ul>
-<h3 id="el-dialog"><a href="#el-dialog" class="headerlink" title="el-dialog"></a>el-dialog</h3><p><strong>自定义内间距，且内容被子元素高度撑开</strong></p>
-<ul>
-<li>直接设置.el-dialog__body 的padding（使用deep加速器）</li>
-<li>如果内容不想被撑开，想加上滚动条，在子元素外部添加overflow:auto + 固定width</li>
-</ul>
-<h3 id="e-form"><a href="#e-form" class="headerlink" title="e-form"></a>e-form</h3><p><strong>想要校验的“红星”样式，但是不触发任何校验</strong></p>
-<ul>
-<li>直接在el-form-item加上class=”is-required”</li>
-</ul>
-<h3 id="radio-group"><a href="#radio-group" class="headerlink" title="radio-group"></a>radio-group</h3><p><strong>循环radio-group时的注意点</strong></p>
-<ul>
-<li>要保证每个radio-group有自己的v-model值，这样各个radio-group的选中的数据不会相互影响</li>
-</ul>
-<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><h1 id="业务场景"><a href="#业务场景" class="headerlink" title="业务场景"></a>业务场景</h1><h3 id="无感刷新"><a href="#无感刷新" class="headerlink" title="无感刷新"></a>无感刷新</h3><ul>
-<li>用setInterval每隔一秒调用获取列表的接口（记得组件销毁时clearInterval）———–刷新</li>
-<li>“删除”、“编辑”等修改列表数据的操作时需要clearInterval，操作成功后再开启 —- 保持无感刷新</li>
-<li>把列表加载数据时的loading效果要去掉 ——— 无感</li>
-</ul>
-<h3 id="template-admin框架的下拉框独有的回显方式"><a href="#template-admin框架的下拉框独有的回显方式" class="headerlink" title="template-admin框架的下拉框独有的回显方式"></a>template-admin框架的下拉框独有的回显方式</h3><ul>
-<li>内置有useProxy方法获取某个下拉框数据的（字典值和label）组成的数组</li>
-<li>这个字典值会默认从store中去取，没有还会自动去请求接口并保存在store中</li>
-<li>如果是 修改 模式，则在具体的字典值来之前准备好数组即可；如果是 查看 模式，则还需要另外的方法将字典值转化为对应的label值</li>
-</ul>
-<h3 id="下载切图时一定要用svg格式的，避免分辨率不同带来的模糊"><a href="#下载切图时一定要用svg格式的，避免分辨率不同带来的模糊" class="headerlink" title="下载切图时一定要用svg格式的，避免分辨率不同带来的模糊"></a>下载切图时一定要用svg格式的，避免分辨率不同带来的模糊</h3><ul>
-<li>svg格式的图片能自适应还不失真</li>
+<li><p>使用:cellStyle，这个计算属性里，有点v-html的感觉</p>
+</li>
+<li><p>参数里有行、列的对象和索引，可以用，很方便</p>
+</li>
+<li><p>```js<br>cellStyle({ columnIndex }) {</p>
+<pre><code class="hljs">  let str = &#39;line-height:10px;&#39;;
+  if (this.errorColumn === &#39;code&#39;) &#123;
+    if (columnIndex === 1) &#123;
+      str += &#39;color: red;&#39;;
+    &#125;
+  &#125; else if (this.errorColumn === &#39;encode&#39;) &#123;
+    if (columnIndex === 2) &#123;
+      str += &#39;color: red;&#39;;
+    &#125;
+  &#125; else if (this.errorColumn === &#39;address&#39;) &#123;
+    if (columnIndex === 4) &#123;
+      str += &#39;color: red;&#39;;
+    &#125;
+  &#125; else &#123;
+    // 其他情况
+  &#125;
+  return str;
+&#125;
+</code></pre>
+<figure class="highlight ldif"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><code class="hljs ldif"><br>  <br><br>**x轴出现滚动条**<br><br><span class="hljs-literal">-</span> 可以在每个item加固定width<br><br><span class="hljs-comment">### el-dialog</span><br><br>**自定义内间距，且内容被子元素高度撑开**<br><br><span class="hljs-literal">-</span> 直接设置.el-dialog__body 的padding（使用deep加速器）<br><span class="hljs-literal">-</span> 如果内容不想被撑开，想加上滚动条，在子元素外部添加overflow:auto + 固定width<br><br><span class="hljs-comment">### e-form</span><br><br>**想要校验的“红星”样式，但是不触发任何校验**<br><br><span class="hljs-literal">-</span> 直接在el-form-item加上class=&quot;is-required&quot;<br><br><span class="hljs-comment">### radio-group</span><br><br>**循环radio-group时，各个group的值不会相互影响**<br><br><span class="hljs-literal">-</span> 要保证每个radio-group有自己的v-model值，这样各个radio-group的选中的数据不会相互影响<br><br><span class="hljs-comment">### el-upload</span><br><br>**:beforfe-upload和:on-change的区别**<br><br><span class="hljs-literal">-</span> beforfe-upload在上传之前就触发了，后面就都不会再触发了<br><span class="hljs-literal">-</span> on-change在文件上传、上传失败、上传成功都会触发<br><span class="hljs-literal">-</span> 如果只想在文件上传之前触发一次----&gt;beforfe-upload；想阶段分的再细点----&gt;on-change（用的更多一点）<br><br>**手动触发action，而不是自动触发**<br><br><span class="hljs-literal">-</span> :auto-upload:“false”<br><span class="hljs-literal">-</span> 注意在触发之前，千万不能this.refs.upload.clearFiles()，没有文件是不会触发action的<br><span class="hljs-literal">-</span> 利用ref手动触发：this.refs.upload.submit()<br><br><span class="hljs-comment"># Git</span><br><br>**删除分支（保持分支整洁）**<br><br><span class="hljs-literal">-</span> 删除远程分支 ------ git branch -D xxx<br><span class="hljs-literal">-</span> 删除本地分支 ------ git branch -d xxx<br><br>**新建远程分支**<br><br><span class="hljs-literal">-</span> 只能用git push origin 分支名（没有会自动创建）<br><br>**git add -A而不是git add .**<br><br><span class="hljs-literal">-</span> git add -A还能提交文件删除的记录，而git add .不能<br><br>**git pull --rebase而不是git pull**<br><br><span class="hljs-literal">-</span> rebase可以在合并操作后不会留下commit记录，保证提交记录线性化，更清晰<br><span class="hljs-literal">-</span> 如果合并碰到冲突，使用git add+git rebase --continue完成剩余的合并操作<br><br><span class="hljs-comment"># 第三方库/插件</span><br><br><span class="hljs-comment">### lodash</span><br><br><span class="hljs-literal">-</span> 有一些封装好的复杂一些的函数，比如 deepClone、groupBy（很方便，能将一个数组里某个字段进行分组（这个字段变为一个对象的key），每个组作为当前key的value）、sortBy(自定义排序规则)<br><br><span class="hljs-comment">### md编辑器</span><br><br><span class="hljs-literal">-</span> Vue3 md编辑器的使用 https://imzbf.github.io/md-editor-v3/en-US/index<br><br><span class="hljs-comment"># 业务场景</span><br><br><span class="hljs-comment">### 无感刷新</span><br><br><span class="hljs-literal">-</span> 用setInterval每隔一秒调用获取列表的接口（记得组件销毁时clearInterval）-----------刷新<br><span class="hljs-literal">-</span> “删除”、“编辑”等修改列表数据的操作时需要clearInterval，操作成功后再开启 ---- 保持无感刷新<br><span class="hljs-literal">-</span> 把列表加载数据时的loading效果要去掉 --------- 无感<br><br><span class="hljs-comment">### template-admin框架的下拉框独有的回显方式</span><br><br><span class="hljs-literal">-</span> 内置有useProxy方法获取某个下拉框数据的（字典值和label）组成的数组<br><span class="hljs-literal">-</span> 这个字典值会默认从store中去取，没有还会自动去请求接口并保存在store中<br><span class="hljs-literal">-</span> 如果是 修改 模式，则在具体的字典值来之前准备好数组即可；如果是 查看 模式，则还需要另外的方法将字典值转化为对应的label值<br><br><span class="hljs-comment">### 下载切图时一定要用svg格式的，避免分辨率不同带来的模糊</span><br><br><span class="hljs-literal">-</span> svg格式的图片能自适应还不失真<br><br><span class="hljs-comment">### 多个数据同时开定时器实现数据变化</span><br><br><span class="hljs-literal">-</span> 就是每一个定时器 用完就关，再检查一下，直到检查到最后一个定时器全部完成再提示<br><br>  ```js<br>  selected.forEach(row =&gt; &#123;<br>  const interval = setInterval(() =&gt; &#123;<br>  if (row.unaggregatedField &gt; 0) &#123;<br>  row.unaggregatedField--;<br>  &#125; else &#123;<br>  clearInterval(interval);<br>  const allCompleted = selected.every(item =&gt; item.unaggregatedField === 0);<br>  if (allCompleted) &#123;<br>  this.$message.success(&#x27;汇总完毕&#x27;);<br>  &#125;<br>  &#125;<br>  &#125;, 100);<br>  &#125;);<br></code></pre></td></tr></table></figure></li>
 </ul>
 <h1 id="工作经验"><a href="#工作经验" class="headerlink" title="工作经验"></a>工作经验</h1><h3 id="效率相关"><a href="#效率相关" class="headerlink" title="效率相关"></a>效率相关</h3><ul>
 <li>和后端联调时，直接先设计好数据结构然后对应的参数传上，后面通知后端按照这个来就行。这样就不会被后端该接口影响进度</li>
