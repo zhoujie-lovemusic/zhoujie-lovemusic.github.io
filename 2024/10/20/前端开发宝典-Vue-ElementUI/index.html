@@ -24,7 +24,7 @@
 <meta property="og:description" content="Js使用任何数据&#x2F;方法之前都要判断是否存在（?或者&amp;&amp;） 只检验能否能拿得到数据用?，更复杂的判断用&amp;&amp;  数据（从父组件传过来的） 1const aaa &#x3D; computed(()&#x3D;&gt;props?.xxx)  数组 1res&amp;&amp;res.data&amp;&amp;Array.isArray(res.data) ? res.data:[] &#x2F;&#x2F;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-10-20T03:58:35.000Z">
-<meta property="article:modified_time" content="2024-11-18T16:15:32.361Z">
+<meta property="article:modified_time" content="2024-11-18T16:28:24.811Z">
 <meta property="article:author" content="Zhou Jie">
 <meta property="article:tag" content="技巧总结">
 <meta name="twitter:card" content="summary_large_image">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          12k 字
+          13k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          103 分钟
+          108 分钟
         
       </span>
     
@@ -274,7 +274,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Js"><a href="#Js" class="headerlink" title="Js"></a>Js</h1><h3 id="使用任何数据-方法之前都要判断是否存在（-或者-amp-amp-）"><a href="#使用任何数据-方法之前都要判断是否存在（-或者-amp-amp-）" class="headerlink" title="使用任何数据/方法之前都要判断是否存在（?或者&amp;&amp;）"></a>使用任何数据/方法之前都要判断是否存在（?或者&amp;&amp;）</h3><p> <strong>只检验能否能拿得到数据用?，更复杂的判断用&amp;&amp;</strong></p>
+                <h1 id="Js"><a href="#Js" class="headerlink" title="Js"></a>Js</h1><h3 id="使用任何数据-方法之前都要判断是否存在（-或者-amp-amp-）"><a href="#使用任何数据-方法之前都要判断是否存在（-或者-amp-amp-）" class="headerlink" title="使用任何数据/方法之前都要判断是否存在（?或者&amp;&amp;）"></a>使用任何数据/方法之前都要判断是否存在（?或者&amp;&amp;）</h3><p> 只检验能否能拿得到数据用?，更复杂的判断用&amp;&amp;</p>
 <ul>
 <li><p>数据（从父组件传过来的）</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> aaa = <span class="hljs-title function_">computed</span>(<span class="hljs-function">()=&gt;</span>props?.<span class="hljs-property">xxx</span>)<br></code></pre></td></tr></table></figure>
@@ -299,13 +299,17 @@
 <h3 id="多用const而不是let"><a href="#多用const而不是let" class="headerlink" title="多用const而不是let"></a>多用const而不是let</h3><ul>
 <li>中间处理的数据都 重新用const定义一个变量，然后再赋值给想要的数据上，这样各司其职很清晰</li>
 </ul>
-<h3 id="const对于引用类型，限制的只是地址，因此内部的value可以修改"><a href="#const对于引用类型，限制的只是地址，因此内部的value可以修改" class="headerlink" title="const对于引用类型，限制的只是地址，因此内部的value可以修改"></a>const对于引用类型，限制的只是地址，因此内部的value可以修改</h3><h3 id="只有分别暴露才能边声明边暴露，默认暴露必须先声明好，再export-default-xxx"><a href="#只有分别暴露才能边声明边暴露，默认暴露必须先声明好，再export-default-xxx" class="headerlink" title="只有分别暴露才能边声明边暴露，默认暴露必须先声明好，再export default xxx"></a>只有分别暴露才能边声明边暴露，默认暴露必须先声明好，再export default xxx</h3><h3 id="Async-Await"><a href="#Async-Await" class="headerlink" title="Async/Await"></a>Async/Await</h3><p>异步数据作为函数的返回值来使用</p>
+<h3 id="const对于引用类型，限制的只是地址，因此内部的value可以修改"><a href="#const对于引用类型，限制的只是地址，因此内部的value可以修改" class="headerlink" title="const对于引用类型，限制的只是地址，因此内部的value可以修改"></a>const对于引用类型，限制的只是地址，因此内部的value可以修改</h3><h3 id="只有分别暴露才能边声明边暴露，默认暴露必须先声明好，再export-default-xxx"><a href="#只有分别暴露才能边声明边暴露，默认暴露必须先声明好，再export-default-xxx" class="headerlink" title="只有分别暴露才能边声明边暴露，默认暴露必须先声明好，再export default xxx"></a>只有分别暴露才能边声明边暴露，默认暴露必须先声明好，再export default xxx</h3><h3 id="Async-Await"><a href="#Async-Await" class="headerlink" title="Async/Await"></a>Async/Await</h3><p><strong>异步数据作为函数的返回值来使用</strong></p>
 <ul>
 <li>想要获取类似接口这样的异步数据作为函数的返回值在别处使用，必须使用await/async，因为只有await才能把数据返回出去</li>
 <li>而async函数返回的一定是一个Promise，因此在别处使用又要用await</li>
 <li>async一定还要加在离当前await最近的函数上，如果是回调函数要加在回调函数前面</li>
 </ul>
-<p>异步操作的遍历不能用map函数</p>
+<p><strong>想要一直保持同步，必须要一直连续await</strong></p>
+<ul>
+<li>原来内部有await，然后调用外部函数，仍然需要再await才能保证这个函数 同步执行，并不是函数内部有await就行了</li>
+</ul>
+<p><strong>异步操作的遍历不能用map函数</strong></p>
 <ul>
 <li><p>异步操作的遍历不能用map函数，否则返回的每一个item是一个promise，即使使用了await关键字也无法等待，因为map不回去处理异步操作，比较急躁</p>
 </li>
@@ -333,21 +337,23 @@
 <li>hasOwnProperty：可以用来判断对象是否有传入的属性值</li>
 </ul>
 <h3 id="数据处理（复杂的交给chatgpt，简单的自己算，每次把复杂的积累下来）"><a href="#数据处理（复杂的交给chatgpt，简单的自己算，每次把复杂的积累下来）" class="headerlink" title="数据处理（复杂的交给chatgpt，简单的自己算，每次把复杂的积累下来）"></a>数据处理（复杂的交给chatgpt，简单的自己算，每次把复杂的积累下来）</h3><ul>
-<li><p><strong>在原来数据基础上加新数据项</strong>（新数据想需要另外遍历计算）</p>
+<li><p>在原来数据基础上加新数据项（新数据想需要另外遍历计算）</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js">  <span class="hljs-keyword">let</span> newItem = &#123;     <br>      <span class="hljs-comment">// 先把原来的数据项中的属性都复制过来     </span><br>      ...item,    <br>  &#125;<br>    <span class="hljs-comment">// 到regionData查找匹配的地区    </span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; regionData.<span class="hljs-property">length</span>; i++) &#123;     <br>      <span class="hljs-keyword">if</span> (item.<span class="hljs-property">label</span>.<span class="hljs-title function_">includes</span>(regionData[i])) &#123;      <br>          newItem.<span class="hljs-property">region</span> = regionData[i] + <span class="hljs-string">&#x27;市&#x27;</span>      <span class="hljs-keyword">break</span>     <br>      &#125;   <br>  &#125;    <br><span class="hljs-keyword">return</span> newItem<br></code></pre></td></tr></table></figure></li>
-<li><p>如果需要计算的<strong>每一项 都比较的复杂</strong>，那么就干脆<strong>不全放在一个map</strong>里面（慢一点）</p>
+<li><p>如果需要计算的每一项 都比较的复杂，那么就干脆不全放在一个map里面（慢一点）</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> uniquePositions = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>()<br>tableDataAddRegions.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">tableItem</span> =&gt;</span> &#123;<br>    regionDots.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">regionDotItem</span> =&gt;</span> &#123;<br>       <span class="hljs-keyword">if</span> (tableItem.<span class="hljs-property">region</span> === regionDotItem.<span class="hljs-property">region</span>) &#123;<br>         <span class="hljs-keyword">const</span> position = regionDotItem.<span class="hljs-property">position</span><br>        uniquePositions.<span class="hljs-title function_">add</span>(position)<br>      &#125;<br>    &#125;)<br> &#125;)<br> <span class="hljs-comment">// 组装数据</span><br> mapChartData.<span class="hljs-property">value</span> = &#123;<br>    <span class="hljs-attr">renderData</span>: tableDataAddRegions.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item),<br>    <span class="hljs-attr">dotsData</span>: <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(uniquePositions),<br> &#125;<br></code></pre></td></tr></table></figure>
 
 <p>去重的处理，就用 new Set()，保证内容不重复，熟悉下api，add–等于数组的push</p>
 </li>
-<li><p>把一样的某个值放在一起，这种叫<strong>分组</strong>，一开始故意用一个空数据（空对象）</p>
+<li><p>把一样的某个值放在一起，这种叫分组，一开始故意用一个空数据（空对象）</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> groupedData = &#123;&#125;<br>   <span class="hljs-comment">// 先遍历原始数据，将相同region的item.val进行累加分组</span><br>   props.<span class="hljs-property">mapChartData</span>.<span class="hljs-property">renderData</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> &#123;<br>     <span class="hljs-keyword">const</span> region = item.<span class="hljs-property">region</span><br>     <span class="hljs-keyword">const</span> val = <span class="hljs-built_in">parseFloat</span>(item.<span class="hljs-property">val</span>) <span class="hljs-comment">// 将字符串形式的数字转换为数字类型以便累加</span><br><br>     <span class="hljs-comment">// 如果不存在该region，则创建该region，并设置val值，否则进行累加</span><br>     <span class="hljs-keyword">if</span> (!groupedData[region]) &#123;<br>       groupedData[region] = &#123; region, val &#125;<br>     &#125; <span class="hljs-keyword">else</span> &#123;<br>       groupedData[region].<span class="hljs-property">val</span> += val<br>     &#125;<br>   &#125;)<br><br>   <span class="hljs-comment">// 将分组后的数据转换为数组形式返回</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">values</span>(groupedData)<br></code></pre></td></tr></table></figure>
 
 <p>获取某个数组内所有对象的某个值，用Object.values</p>
 <p>groupedData[region]是当前组名，{ region, val }才是Object.values要获取的值</p>
 </li>
 <li><p>递归给每一层加level字段</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/** 给树形部门名称的每一层加一个level字段表示当前层数 */</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">addLevelToObjects</span>(<span class="hljs-params">deptList</span>) &#123;<br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">addLevelRecursive</span>(<span class="hljs-params">arr, level</span>) &#123;<br>    <span class="hljs-keyword">return</span> arr.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">obj</span>) =&gt;</span> &#123;<br>      obj.<span class="hljs-property">level</span> = level;<br>      <span class="hljs-keyword">if</span> (obj.<span class="hljs-property">children</span>) &#123;<br>        obj.<span class="hljs-property">children</span> = <span class="hljs-title function_">addLevelRecursive</span>(obj.<span class="hljs-property">children</span>, level + <span class="hljs-number">1</span>);<br>      &#125;<br>      <span class="hljs-keyword">return</span> obj;<br>    &#125;);<br>  &#125;<br>   <br>  <span class="hljs-keyword">return</span> <span class="hljs-title function_">addLevelRecursive</span>(deptList, <span class="hljs-number">1</span>);<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js">/ 给树形部门名称的每一层加一个level字段表示当前层数 /<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">addLevelToObjects</span>(<span class="hljs-params">deptList</span>) &#123;<br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">addLevelRecursive</span>(<span class="hljs-params">arr, level</span>) &#123;<br>    <span class="hljs-keyword">return</span> arr.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">obj</span>) =&gt;</span> &#123;<br>      obj.<span class="hljs-property">level</span> = level;<br>      <span class="hljs-keyword">if</span> (obj.<span class="hljs-property">children</span>) &#123;<br>        obj.<span class="hljs-property">children</span> = <span class="hljs-title function_">addLevelRecursive</span>(obj.<span class="hljs-property">children</span>, level + <span class="hljs-number">1</span>);<br>      &#125;<br>      <span class="hljs-keyword">return</span> obj;<br>    &#125;);<br>  &#125;<br>   <br>  <span class="hljs-keyword">return</span> <span class="hljs-title function_">addLevelRecursive</span>(deptList, <span class="hljs-number">1</span>);<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>把数组数据按照某个顺序分组 不如就遍历一下然后分多个类型数组分别push</p>
+</li>
 </ul>
 <h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h3 id="看到UI稿就要立马在脑里设计好数据结构"><a href="#看到UI稿就要立马在脑里设计好数据结构" class="headerlink" title="看到UI稿就要立马在脑里设计好数据结构"></a>看到UI稿就要立马在脑里设计好数据结构</h3><ul>
 <li>相似块不断出现 ———- &gt; 数组</li>
@@ -373,7 +379,7 @@
 <li>把当前svg文件内的fill改成current</li>
 <li>这个图标的颜色就跟随 使用到的位置的父元素给它设置的颜色了，即可以通过父元素给他设置颜色</li>
 </ul>
-<h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><p><strong>经验</strong></p>
+<h3 id="span外面不要加div，字体一大就换行了（一般的div都设置了宽度），不能自己随字体增大而撑大"><a href="#span外面不要加div，字体一大就换行了（一般的div都设置了宽度），不能自己随字体增大而撑大" class="headerlink" title="span外面不要加div，字体一大就换行了（一般的div都设置了宽度），不能自己随字体增大而撑大"></a>span外面不要加div，字体一大就换行了（一般的div都设置了宽度），不能自己随字体增大而撑大</h3><h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><p><strong>经验</strong></p>
 <ul>
 <li>父元素来控制边距 和 子元素间距，子元素就直接full就行</li>
 </ul>
@@ -381,7 +387,7 @@
 <ul>
 <li>flex-wrap ———— 自动换行，只要是遍历某个元素，父元素都加</li>
 <li>flex-1 ————– flex-grow（占比）、flex-shrink（收缩比例）、flex-basis（基础大小），如果只是单纯的剩余空间随父元素自适应，那么直接flex:1，如果各个子元素有相应占比需求，还是用flex-grow，因为直接写flex:1、flex:2在纵轴方向有时候占比会反着来</li>
-<li>只要想内容不会挤出来，想要自动撑开父元素 直接flex布局即可（不要加高度）</li>
+<li>只要想内容不会挤出来，想要自动撑开父元素 直接flex布局即可（不要加高度）—-&gt; 子元素多大就占多大，不像div默认占一行</li>
 <li>flex布局需要两边都设置宽度才不会相互挤压（只设置一边，另一边仍然会把这边给挤压变小、下次一边设置宽度，另一边直接用flex-1填充剩余（也是加了宽度））</li>
 </ul>
 <p>————-上面两点用一句话总结：父元素加了flex子元素会’野蛮生长-&gt;弹性’，得加一点其他限制，才能更好控制：gap、flex-1、grow-1</p>
@@ -408,7 +414,11 @@
 <li>优先使用 flex，flex布局无法解决，然后再使用 绝对定位（如果有一些子元素有特殊的 距离控制，用padding更好）</li>
 <li>所以 flex-&gt;padding-&gt;绝对定位</li>
 </ul>
-<h3 id="类名一定要有区分度，不能写Container这种，很可能会被覆盖"><a href="#类名一定要有区分度，不能写Container这种，很可能会被覆盖" class="headerlink" title="类名一定要有区分度，不能写Container这种，很可能会被覆盖"></a>类名一定要有区分度，不能写Container这种，很可能会被覆盖</h3><h3 id="使用-amp-hover就可以实现父元素hover的时候处理一些东西，因为一般某个图标太小，在图标上面Hover没有意义"><a href="#使用-amp-hover就可以实现父元素hover的时候处理一些东西，因为一般某个图标太小，在图标上面Hover没有意义" class="headerlink" title="使用&amp;:hover就可以实现父元素hover的时候处理一些东西，因为一般某个图标太小，在图标上面Hover没有意义"></a>使用&amp;:hover就可以实现父元素hover的时候处理一些东西，因为一般某个图标太小，在图标上面Hover没有意义</h3><h3 id="那种颜色渐变很丰富的-直接切图不要自己调，水印都可以是图片"><a href="#那种颜色渐变很丰富的-直接切图不要自己调，水印都可以是图片" class="headerlink" title="那种颜色渐变很丰富的 直接切图不要自己调，水印都可以是图片"></a>那种颜色渐变很丰富的 直接切图不要自己调，水印都可以是图片</h3><h1 id="Echarts"><a href="#Echarts" class="headerlink" title="Echarts"></a>Echarts</h1><h3 id="echarts实例，不要使用ref、reactive响应式变量（使用shallowRef或者普通变量），会和echarts的交互造成冲突，比如tooltip的显示会有问题"><a href="#echarts实例，不要使用ref、reactive响应式变量（使用shallowRef或者普通变量），会和echarts的交互造成冲突，比如tooltip的显示会有问题" class="headerlink" title="echarts实例，不要使用ref、reactive响应式变量（使用shallowRef或者普通变量），会和echarts的交互造成冲突，比如tooltip的显示会有问题"></a>echarts实例，不要使用ref、reactive响应式变量（使用shallowRef或者普通变量），会和echarts的交互造成冲突，比如tooltip的显示会有问题</h3><h3 id="柱状图"><a href="#柱状图" class="headerlink" title="柱状图"></a>柱状图</h3><p>取值</p>
+<h3 id="类名一定要有区分度，不能写Container这种，很可能会被覆盖"><a href="#类名一定要有区分度，不能写Container这种，很可能会被覆盖" class="headerlink" title="类名一定要有区分度，不能写Container这种，很可能会被覆盖"></a>类名一定要有区分度，不能写Container这种，很可能会被覆盖</h3><h3 id="使用-amp-hover就可以实现父元素hover的时候处理一些东西，因为一般某个图标太小，在图标上面Hover没有意义"><a href="#使用-amp-hover就可以实现父元素hover的时候处理一些东西，因为一般某个图标太小，在图标上面Hover没有意义" class="headerlink" title="使用&amp;:hover就可以实现父元素hover的时候处理一些东西，因为一般某个图标太小，在图标上面Hover没有意义"></a>使用&amp;:hover就可以实现父元素hover的时候处理一些东西，因为一般某个图标太小，在图标上面Hover没有意义</h3><h3 id="那种颜色渐变很丰富的-直接切图不要自己调，水印都可以是图片"><a href="#那种颜色渐变很丰富的-直接切图不要自己调，水印都可以是图片" class="headerlink" title="那种颜色渐变很丰富的 直接切图不要自己调，水印都可以是图片"></a>那种颜色渐变很丰富的 直接切图不要自己调，水印都可以是图片</h3><h1 id="Echarts"><a href="#Echarts" class="headerlink" title="Echarts"></a>Echarts</h1><h3 id="echarts实例，不要使用ref、reactive响应式变量（使用shallowRef或者普通变量），会和echarts的交互造成冲突，比如tooltip的显示会有问题"><a href="#echarts实例，不要使用ref、reactive响应式变量（使用shallowRef或者普通变量），会和echarts的交互造成冲突，比如tooltip的显示会有问题" class="headerlink" title="echarts实例，不要使用ref、reactive响应式变量（使用shallowRef或者普通变量），会和echarts的交互造成冲突，比如tooltip的显示会有问题"></a>echarts实例，不要使用ref、reactive响应式变量（使用shallowRef或者普通变量），会和echarts的交互造成冲突，比如tooltip的显示会有问题</h3><h3 id="超级实用的例子大全"><a href="#超级实用的例子大全" class="headerlink" title="超级实用的例子大全"></a>超级实用的例子大全</h3><ul>
+<li>做项目直接到里面去找就行了</li>
+<li><a target="_blank" rel="noopener" href="https://www.isqqw.com/?t=pie&s=%E6%B8%90%E5%8F%98">https://www.isqqw.com/?t=pie&amp;s=%E6%B8%90%E5%8F%98</a></li>
+</ul>
+<h3 id="柱状图"><a href="#柱状图" class="headerlink" title="柱状图"></a>柱状图</h3><p>取值</p>
 <ul>
 <li><p>通过回调函数来自定义数据</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-attr">formatter</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">params</span>) &#123;<br>   <span class="hljs-comment">// params是个数组，表示柱状图系列种类，如果只有一种，那就[0]来取值</span><br>   <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;新增人数: &#x27;</span> + params[<span class="hljs-number">0</span>].<span class="hljs-property">value</span><br>&#125;,<br></code></pre></td></tr></table></figure></li>
@@ -512,10 +522,17 @@
 <ul>
 <li>可以在每个item加固定width</li>
 </ul>
-<h3 id="el-dialog"><a href="#el-dialog" class="headerlink" title="el-dialog"></a>el-dialog</h3><p>自定义内间距，且内容被子元素高度撑开</p>
+<h3 id="el-dialog"><a href="#el-dialog" class="headerlink" title="el-dialog"></a>el-dialog</h3><p><strong>自定义内间距，且内容被子元素高度撑开</strong></p>
 <ul>
 <li>直接设置.el-dialog__body 的padding（使用deep加速器）</li>
 <li>如果内容不想被撑开，想加上滚动条，在子元素外部添加overflow:auto + 固定width</li>
+</ul>
+<p><strong>如果无法穿透，那么很可能就是放到全局元素去了，不需要穿透</strong></p>
+<ul>
+<li><p>把style的scoped去掉</p>
+</li>
+<li><p>el-dialog加个自定义类名</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.custom-dialog</span> &#123;<br>  <span class="hljs-selector-class">.el-dialog__header</span> &#123;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">15px</span> <span class="hljs-number">0</span> <span class="hljs-number">15px</span> <span class="hljs-number">20px</span>;<br>  &#125;<br>  <span class="hljs-selector-class">.el-dialog__title</span> &#123;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;<br>    <span class="hljs-attribute">font-weight</span>: bold;<br>  &#125;   &#125;<br>  <br>  <span class="hljs-selector-class">.el-dialog__body</span> &#123;<br>    <span class="hljs-attribute">border-top</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#ccc</span>;<br>    <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#ccc</span>;<br>  &#125;<br>  <span class="hljs-selector-class">.el-dialog__footer</span> &#123;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">15px</span> <span class="hljs-number">0px</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="e-form"><a href="#e-form" class="headerlink" title="e-form"></a>e-form</h3><p>想要校验的“红星”样式，但是不触发任何校验</p>
 <ul>
@@ -588,15 +605,15 @@
 <li>父组件来控制大小和位置</li>
 </ul>
 <h3 id="涉及到列表的循环展示的，最外面要加el-scrollbar滚动条"><a href="#涉及到列表的循环展示的，最外面要加el-scrollbar滚动条" class="headerlink" title="涉及到列表的循环展示的，最外面要加el-scrollbar滚动条"></a>涉及到列表的循环展示的，最外面要加el-scrollbar滚动条</h3><h3 id="文件导出（下载）一定要在接口返回值加上返回值类型，比如responseType-‘blob’，一般都是-blob对象"><a href="#文件导出（下载）一定要在接口返回值加上返回值类型，比如responseType-‘blob’，一般都是-blob对象" class="headerlink" title="文件导出（下载）一定要在接口返回值加上返回值类型，比如responseType: ‘blob’，一般都是 blob对象"></a>文件导出（下载）一定要在接口返回值加上返回值类型，比如responseType: ‘blob’，一般都是 blob对象</h3><h3 id="复杂业务（包括技术难点）"><a href="#复杂业务（包括技术难点）" class="headerlink" title="复杂业务（包括技术难点）"></a>复杂业务（包括技术难点）</h3><h1 id="工作经验"><a href="#工作经验" class="headerlink" title="工作经验"></a>工作经验</h1><h3 id="效率相关"><a href="#效率相关" class="headerlink" title="效率相关"></a>效率相关</h3><ul>
-<li><p><strong>和后端联调时</strong>，直接先设计好数据结构然后对应的参数传上，后面通知后端按照这个来就行。这样就不会被后端该接口影响进度</p>
+<li><p>和后端联调时，直接先设计好数据结构然后对应的参数传上，后面通知后端按照这个来就行。这样就不会被后端该接口影响进度</p>
 </li>
-<li><p><strong>改Bug时</strong>，原有的东西能不动则不动，我没有必要花时间熟悉原来其他的逻辑</p>
+<li><p>改Bug时，原有的东西能不动则不动，我没有必要花时间熟悉原来其他的逻辑</p>
 </li>
-<li><p><strong>找组件时</strong>，右键转到定义就可以直接去对应组件内部，不用自己去找 或者 control+单击</p>
+<li><p>找组件时，右键转到定义就可以直接去对应组件内部，不用自己去找 或者 control+单击</p>
 </li>
-<li><p><strong>debug时</strong>，打印语句到当前模块开发完毕再统一删掉，因为可能整个过程都要用到</p>
+<li><p>debug时，打印语句到当前模块开发完毕再统一删掉，因为可能整个过程都要用到</p>
 </li>
-<li><p><strong>解决问题时</strong>，非常偏没有实际案例的问题优先找AI（chatgpt）</p>
+<li><p>解决问题时，非常偏没有实际案例的问题优先找AI（chatgpt）</p>
 </li>
 </ul>
 
