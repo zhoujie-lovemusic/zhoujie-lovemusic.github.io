@@ -24,7 +24,7 @@
 <meta property="og:description" content="Js使用任何数据&#x2F;方法之前都要判断是否存在（?或者&amp;&amp;） 只检验能否能拿得到数据用?，更复杂的判断用&amp;&amp;  数据（从父组件传过来的） 1const aaa &#x3D; computed(()&#x3D;&gt;props?.xxx)  数组 1res&amp;&amp;res.data&amp;&amp;Array.isArray(res.data) ? res.data:[] &#x2F;&#x2F;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-10-20T03:58:35.000Z">
-<meta property="article:modified_time" content="2024-11-18T16:28:24.811Z">
+<meta property="article:modified_time" content="2024-11-19T15:10:38.104Z">
 <meta property="article:author" content="Zhou Jie">
 <meta property="article:tag" content="技巧总结">
 <meta name="twitter:card" content="summary_large_image">
@@ -231,7 +231,7 @@
         
         
         
-          108 分钟
+          109 分钟
         
       </span>
     
@@ -307,7 +307,7 @@
 </ul>
 <p><strong>想要一直保持同步，必须要一直连续await</strong></p>
 <ul>
-<li>原来内部有await，然后调用外部函数，仍然需要再await才能保证这个函数 同步执行，并不是函数内部有await就行了</li>
+<li>一个包含await的函数想要仍然保持 函数里的同步顺序，外部在使用时必须再await，外部await是内部await的保障</li>
 </ul>
 <p><strong>异步操作的遍历不能用map函数</strong></p>
 <ul>
@@ -423,14 +423,17 @@
 <li><p>通过回调函数来自定义数据</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-attr">formatter</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">params</span>) &#123;<br>   <span class="hljs-comment">// params是个数组，表示柱状图系列种类，如果只有一种，那就[0]来取值</span><br>   <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;新增人数: &#x27;</span> + params[<span class="hljs-number">0</span>].<span class="hljs-property">value</span><br>&#125;,<br></code></pre></td></tr></table></figure></li>
 </ul>
-<h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><h3 id="引入组件一定要在setup函数里，因为这里面才可以默认注册"><a href="#引入组件一定要在setup函数里，因为这里面才可以默认注册" class="headerlink" title="引入组件一定要在setup函数里，因为这里面才可以默认注册"></a>引入组件一定要在setup函数里，因为这里面才可以默认注册</h3><h3 id="从外部引入的数据都要在当前组件重新赋一个变量来使用（解耦）"><a href="#从外部引入的数据都要在当前组件重新赋一个变量来使用（解耦）" class="headerlink" title="从外部引入的数据都要在当前组件重新赋一个变量来使用（解耦）"></a>从外部引入的数据都要在当前组件重新赋一个变量来使用（解耦）</h3><ul>
+<h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><h3 id="Store"><a href="#Store" class="headerlink" title="Store"></a>Store</h3><ul>
+<li><strong>尽量不要在组件外使用store，很可能那个时候 仓库实例 还没有完全创建完毕，比如 layout组件就不能引入用store的utils的函数</strong></li>
+<li><strong>从store拿过来的数据（ref）不需要 .value（Vue3）,类似模板使用数据，特殊处理过了</strong></li>
+<li><strong>在使用store的时候 不要使用computed（接父元素数据），而是usexxStore()—调用函数，计算属性只是获取某个变量而已和函数调用没关系</strong> </li>
+</ul>
+<h3 id="引入组件一定要在setup函数里，因为这里面才可以默认注册"><a href="#引入组件一定要在setup函数里，因为这里面才可以默认注册" class="headerlink" title="引入组件一定要在setup函数里，因为这里面才可以默认注册"></a>引入组件一定要在setup函数里，因为这里面才可以默认注册</h3><h3 id="从外部引入的数据都要在当前组件重新赋一个变量来使用（解耦）"><a href="#从外部引入的数据都要在当前组件重新赋一个变量来使用（解耦）" class="headerlink" title="从外部引入的数据都要在当前组件重新赋一个变量来使用（解耦）"></a>从外部引入的数据都要在当前组件重新赋一个变量来使用（解耦）</h3><ul>
 <li>ref变量</li>
 <li>从父组件</li>
 <li>从store中</li>
 </ul>
-<h3 id="从store拿过来的数据（ref）不需要-value（Vue3）-类似模板使用数据，特殊处理过了"><a href="#从store拿过来的数据（ref）不需要-value（Vue3）-类似模板使用数据，特殊处理过了" class="headerlink" title="从store拿过来的数据（ref）不需要 .value（Vue3）,类似模板使用数据，特殊处理过了"></a>从store拿过来的数据（ref）不需要 .value（Vue3）,类似模板使用数据，特殊处理过了</h3><h3 id="在使用store的时候-不要使用computed（接父元素数据），而是usexxStore-—调用函数，计算属性只是获取某个变量而已和函数调用没关系"><a href="#在使用store的时候-不要使用computed（接父元素数据），而是usexxStore-—调用函数，计算属性只是获取某个变量而已和函数调用没关系" class="headerlink" title="在使用store的时候 不要使用computed（接父元素数据），而是usexxStore()—调用函数，计算属性只是获取某个变量而已和函数调用没关系"></a>在使用store的时候 不要使用computed（接父元素数据），而是usexxStore()—调用函数，计算属性只是获取某个变量而已和函数调用没关系</h3><h3 id="数据很复杂时，不知道什么时候-value，就记住一点：必须先-value之后才能正常取数据"><a href="#数据很复杂时，不知道什么时候-value，就记住一点：必须先-value之后才能正常取数据" class="headerlink" title="数据很复杂时，不知道什么时候.value，就记住一点：必须先.value之后才能正常取数据"></a>数据很复杂时，不知道什么时候.value，就记住一点：必须先.value之后才能正常取数据</h3><h3 id="defineProps没有用变量接受是不能在setup里面用的，只能在模板上用来展示"><a href="#defineProps没有用变量接受是不能在setup里面用的，只能在模板上用来展示" class="headerlink" title="defineProps没有用变量接受是不能在setup里面用的，只能在模板上用来展示"></a>defineProps没有用变量接受是不能在setup里面用的，只能在模板上用来展示</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> props = <span class="hljs-title function_">defineProps</span>(&#123;...&#125;)<br></code></pre></td></tr></table></figure>
-
-
+<h3 id="数据很复杂时，不知道什么时候-value，就记住一点：必须先-value之后才能正常取数据"><a href="#数据很复杂时，不知道什么时候-value，就记住一点：必须先-value之后才能正常取数据" class="headerlink" title="数据很复杂时，不知道什么时候.value，就记住一点：必须先.value之后才能正常取数据"></a>数据很复杂时，不知道什么时候.value，就记住一点：必须先.value之后才能正常取数据</h3><h3 id="defineProps没有用变量接受是不能在setup里面用的，只能在模板上用来展示"><a href="#defineProps没有用变量接受是不能在setup里面用的，只能在模板上用来展示" class="headerlink" title="defineProps没有用变量接受是不能在setup里面用的，只能在模板上用来展示"></a>defineProps没有用变量接受是不能在setup里面用的，只能在模板上用来展示</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> props = <span class="hljs-title function_">defineProps</span>(&#123;...&#125;)<br></code></pre></td></tr></table></figure>
 
 <h3 id="封装组件-用插槽可以-帮助你-传递自己的结构进来，就是这样来应用个性化场景的"><a href="#封装组件-用插槽可以-帮助你-传递自己的结构进来，就是这样来应用个性化场景的" class="headerlink" title="封装组件 用插槽可以 帮助你 传递自己的结构进来，就是这样来应用个性化场景的"></a>封装组件 用插槽可以 帮助你 传递自己的结构进来，就是这样来应用个性化场景的</h3><ul>
 <li>写slot不写名字，会默认有个名字 #default，其实就是默认插槽和具名插槽</li>
@@ -465,9 +468,7 @@
 </ul>
 <h3 id="计算属性传参计算需要返回一个回调函数在里面return才可以"><a href="#计算属性传参计算需要返回一个回调函数在里面return才可以" class="headerlink" title="计算属性传参计算需要返回一个回调函数在里面return才可以"></a>计算属性传参计算需要返回一个回调函数在里面return才可以</h3><ul>
 <li><p>computed设计初衷是根据实例已有的数据进行计算，而形参并不属于已有的数据，所以无法在computed回调函数里面去获得</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> tendencyTransfer = <span class="hljs-title function_">computed</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">tendency</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">return</span> tendency === <span class="hljs-string">&#x27;1&#x27;</span> ? <span class="hljs-string">&#x27;优点&#x27;</span> : <span class="hljs-string">&#x27;缺点&#x27;</span><br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-</li>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> tendencyTransfer = <span class="hljs-title function_">computed</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">tendency</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">return</span> tendency === <span class="hljs-string">&#x27;1&#x27;</span> ? <span class="hljs-string">&#x27;优点&#x27;</span> : <span class="hljs-string">&#x27;缺点&#x27;</span><br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="计算属性写get个set的时候不需要写回调函数，里面只是要一个对象即可，因为get和set是键值类型的键"><a href="#计算属性写get个set的时候不需要写回调函数，里面只是要一个对象即可，因为get和set是键值类型的键" class="headerlink" title="计算属性写get个set的时候不需要写回调函数，里面只是要一个对象即可，因为get和set是键值类型的键"></a>计算属性写get个set的时候不需要写回调函数，里面只是要一个对象即可，因为get和set是键值类型的键</h3><h3 id="封装的组件拿来用一定要首字母大写，否则不算做一个组件，显示不出来"><a href="#封装的组件拿来用一定要首字母大写，否则不算做一个组件，显示不出来" class="headerlink" title="封装的组件拿来用一定要首字母大写，否则不算做一个组件，显示不出来"></a>封装的组件拿来用一定要首字母大写，否则不算做一个组件，显示不出来</h3><h3 id="v-for和v-if不能一起用，那么就提前用计算属性把list筛选好"><a href="#v-for和v-if不能一起用，那么就提前用计算属性把list筛选好" class="headerlink" title="v-for和v-if不能一起用，那么就提前用计算属性把list筛选好"></a>v-for和v-if不能一起用，那么就提前用计算属性把list筛选好</h3><h3 id="添加二级路由并部署（Vue2版）"><a href="#添加二级路由并部署（Vue2版）" class="headerlink" title="添加二级路由并部署（Vue2版）"></a>添加二级路由并部署（Vue2版）</h3><ul>
 <li><p>路由router对象添加配置项：</p>
@@ -570,6 +571,10 @@
 <h3 id="git-pull-–rebase而不是git-pull"><a href="#git-pull-–rebase而不是git-pull" class="headerlink" title="git pull –rebase而不是git pull"></a>git pull –rebase而不是git pull</h3><ul>
 <li>rebase可以在合并操作后不会留下commit记录，保证提交记录线性化，更清晰</li>
 <li>如果合并碰到冲突，使用git add+git rebase –continue完成剩余的合并操作</li>
+</ul>
+<h3 id="分支合并"><a href="#分支合并" class="headerlink" title="分支合并"></a>分支合并</h3><p><strong>不要让不同分支合并，否则全都认为是新的改动</strong></p>
+<ul>
+<li>本地aaa分支和远程develop合并的话，此时只要有不一样的代码都会认为是 即将新的commit的部分</li>
 </ul>
 <h3 id="本地没有合并成功，后面手动在gitlab上合并也可以，只要私仓是最新的就行"><a href="#本地没有合并成功，后面手动在gitlab上合并也可以，只要私仓是最新的就行" class="headerlink" title="本地没有合并成功，后面手动在gitlab上合并也可以，只要私仓是最新的就行"></a>本地没有合并成功，后面手动在gitlab上合并也可以，只要私仓是最新的就行</h3><h3 id="fix-提交第一个字符为字母的话不能为大写"><a href="#fix-提交第一个字符为字母的话不能为大写" class="headerlink" title="fix: 提交第一个字符为字母的话不能为大写"></a>fix: 提交第一个字符为字母的话不能为大写</h3><h3 id="更改项目文件首字母大小写后，会无法commit-解决方法就是把文件删了重新新建（当然要拍备份）"><a href="#更改项目文件首字母大小写后，会无法commit-解决方法就是把文件删了重新新建（当然要拍备份）" class="headerlink" title="更改项目文件首字母大小写后，会无法commit,解决方法就是把文件删了重新新建（当然要拍备份）"></a>更改项目文件首字母大小写后，会无法commit,解决方法就是把文件删了重新新建（当然要拍备份）</h3><h1 id="第三方库-插件"><a href="#第三方库-插件" class="headerlink" title="第三方库/插件"></a>第三方库/插件</h1><h3 id="lodash"><a href="#lodash" class="headerlink" title="lodash"></a>lodash</h3><ul>
 <li>有一些封装好的复杂一些的函数，比如 deepClone、groupBy（很方便，能将一个数组里某个字段进行分组（这个字段变为一个对象的key），每个组作为当前key的value）、sortBy(自定义排序规则)</li>
