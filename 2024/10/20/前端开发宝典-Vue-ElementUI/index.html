@@ -24,7 +24,7 @@
 <meta property="og:description" content="Js看到UI稿就要立马在脑里设计好数据结构 相似块不断出现 ———- &gt; 数组 每个块又有各自结构 ———-&gt; 对象  使用任何 内部 数据&#x2F;方法之前都要判断是否存在（?或者&amp;&amp;） 只检验能否能拿得到数据用?，更复杂的判断用&amp;&amp;  数据（从父组件传过来的） 1const aaa &#x3D; computed(()&#x3D;&gt;props?.xxx)  数组 1res">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-10-20T03:58:35.000Z">
-<meta property="article:modified_time" content="2024-11-23T14:49:10.290Z">
+<meta property="article:modified_time" content="2024-12-01T09:16:36.144Z">
 <meta property="article:author" content="Zhou Jie">
 <meta property="article:tag" content="技巧总结">
 <meta name="twitter:card" content="summary_large_image">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          25k 字
+          26k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          209 分钟
+          216 分钟
         
       </span>
     
@@ -361,7 +361,7 @@
 <li><p>把数组数据按照某个顺序分组 不如就遍历一下然后分多个类型数组分别push</p>
 </li>
 </ul>
-<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h3 id="页面布局由外向内-的顺序来写，外部是内部的准备工作"><a href="#页面布局由外向内-的顺序来写，外部是内部的准备工作" class="headerlink" title="页面布局由外向内 的顺序来写，外部是内部的准备工作"></a>页面布局由外向内 的顺序来写，外部是内部的准备工作</h3><h3 id="内容溢出-gt-肯定哪里设置了固定宽-高"><a href="#内容溢出-gt-肯定哪里设置了固定宽-高" class="headerlink" title="内容溢出-&gt;肯定哪里设置了固定宽/高"></a>内容溢出-&gt;肯定哪里设置了固定宽/高</h3><ul>
+<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h3 id="设置固定的px时一定要考虑不同电脑分辨率（尤其是宽度）的一定要有所冗余，不能刚刚好我电脑可以显示，很可能在其它电脑-会挤开"><a href="#设置固定的px时一定要考虑不同电脑分辨率（尤其是宽度）的一定要有所冗余，不能刚刚好我电脑可以显示，很可能在其它电脑-会挤开" class="headerlink" title="设置固定的px时一定要考虑不同电脑分辨率（尤其是宽度）的一定要有所冗余，不能刚刚好我电脑可以显示，很可能在其它电脑 会挤开"></a>设置固定的px时一定要考虑不同电脑分辨率（尤其是宽度）的一定要有所冗余，不能刚刚好我电脑可以显示，很可能在其它电脑 会挤开</h3><h3 id="在组件内部某个标签的样式-搜索出来只有一个不能代表没有用-有可能有全局设置样式"><a href="#在组件内部某个标签的样式-搜索出来只有一个不能代表没有用-有可能有全局设置样式" class="headerlink" title="在组件内部某个标签的样式 搜索出来只有一个不能代表没有用 有可能有全局设置样式"></a>在组件内部某个标签的样式 搜索出来只有一个不能代表没有用 有可能有全局设置样式</h3><h3 id="页面布局由外向内-的顺序来写，外部是内部的准备工作"><a href="#页面布局由外向内-的顺序来写，外部是内部的准备工作" class="headerlink" title="页面布局由外向内 的顺序来写，外部是内部的准备工作"></a>页面布局由外向内 的顺序来写，外部是内部的准备工作</h3><h3 id="内容溢出-gt-肯定哪里设置了固定宽-高"><a href="#内容溢出-gt-肯定哪里设置了固定宽-高" class="headerlink" title="内容溢出-&gt;肯定哪里设置了固定宽/高"></a>内容溢出-&gt;肯定哪里设置了固定宽/高</h3><ul>
 <li>父元素设置太小</li>
 <li>子元素设置太大</li>
 </ul>
@@ -544,62 +544,74 @@
 <h1 id="ElementUI"><a href="#ElementUI" class="headerlink" title="ElementUI"></a>ElementUI</h1><h3 id="UI组件-弹框-也是promise返回值，因此想要让这种对话框同步操作，只要在前面加个await，并且点确定才会完成await操作，否则会阻塞代码"><a href="#UI组件-弹框-也是promise返回值，因此想要让这种对话框同步操作，只要在前面加个await，并且点确定才会完成await操作，否则会阻塞代码" class="headerlink" title="UI组件(弹框)也是promise返回值，因此想要让这种对话框同步操作，只要在前面加个await，并且点确定才会完成await操作，否则会阻塞代码"></a>UI组件(弹框)也是promise返回值，因此想要让这种对话框同步操作，只要在前面加个await，并且点确定才会完成await操作，否则会阻塞代码</h3><ul>
 <li>想要控制弹框和其他操作的顺序只能用 ElMessageBox.confirm，因为这个可以用js代码控制异步顺序</li>
 </ul>
+<h3 id="el-tab"><a href="#el-tab" class="headerlink" title="el-tab"></a>el-tab</h3><p><strong>想要在el-tab切换和按钮放在一行是不行的，因为tab切换是会占一整行的，会相互挤压</strong></p>
 <h3 id="UI组件如果提供了专门的class自定义类，那肯定是可以用的，不生效是方法不对"><a href="#UI组件如果提供了专门的class自定义类，那肯定是可以用的，不生效是方法不对" class="headerlink" title="UI组件如果提供了专门的class自定义类，那肯定是可以用的，不生效是方法不对"></a>UI组件如果提供了专门的class自定义类，那肯定是可以用的，不生效是方法不对</h3><ul>
 <li>比如el-table的:cellStyle</li>
 </ul>
-<h3 id="el-table"><a href="#el-table" class="headerlink" title="el-table"></a>el-table</h3><p>设置el-table每个单元格高度</p>
+<h3 id="el-table"><a href="#el-table" class="headerlink" title="el-table"></a>el-table</h3><p><strong>设置el-table每个单元格高度</strong></p>
 <ul>
 <li><p>去掉padding影响</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">/deep/(vue2版本，vue3用::v-deep) .el-table .el-table__body td &#123;<span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-meta">!important</span>; &#125;<br></code></pre></td></tr></table></figure></li>
 <li><p>通过行高设置具体高度（去掉padding之后此时内部是span高度由行高决定）</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">&lt;el-<span class="hljs-selector-tag">table</span> :cell-style=<span class="hljs-string">&quot;&#123; lineHeight: &#x27;10px&#x27; &#125;&quot;</span>&gt;<br></code></pre></td></tr></table></figure></li>
 </ul>
-<p>设置单元格（行、列）样式</p>
+<p><strong>设置单元格（行、列）样式</strong></p>
 <ul>
 <li><p>使用:cellStyle，这个计算属性里，有点v-html的感觉</p>
 </li>
 <li><p>参数里有行、列的对象和索引，可以用，很方便</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">cellStyle</span>(<span class="hljs-params">&#123; columnIndex &#125;</span>) &#123;<br>      <span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;line-height:10px;&#x27;</span>;<br>      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">errorColumn</span> === <span class="hljs-string">&#x27;code&#x27;</span>) &#123;<br>        <span class="hljs-keyword">if</span> (columnIndex === <span class="hljs-number">1</span>) &#123;<br>          str += <span class="hljs-string">&#x27;color: red;&#x27;</span>;<br>        &#125;<br>      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">errorColumn</span> === <span class="hljs-string">&#x27;encode&#x27;</span>) &#123;<br>        <span class="hljs-keyword">if</span> (columnIndex === <span class="hljs-number">2</span>) &#123;<br>          str += <span class="hljs-string">&#x27;color: red;&#x27;</span>;<br>        &#125;<br>      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">errorColumn</span> === <span class="hljs-string">&#x27;address&#x27;</span>) &#123;<br>        <span class="hljs-keyword">if</span> (columnIndex === <span class="hljs-number">4</span>) &#123;<br>          str += <span class="hljs-string">&#x27;color: red;&#x27;</span>;<br>        &#125;<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-comment">// 其他情况</span><br>      &#125;<br>      <span class="hljs-keyword">return</span> str;<br>    &#125;<br></code></pre></td></tr></table></figure></li>
 </ul>
-<p>x轴出现滚动条</p>
+<p><strong>x轴出现滚动条</strong></p>
 <ul>
 <li>可以在每个item加固定width</li>
 </ul>
-<h3 id="el-dialog"><a href="#el-dialog" class="headerlink" title="el-dialog"></a>el-dialog</h3><p>自定义内间距，且内容被子元素高度撑开</p>
+<h3 id="el-dialog"><a href="#el-dialog" class="headerlink" title="el-dialog"></a>el-dialog</h3><p><strong>自定义内间距，且内容被子元素高度撑开</strong></p>
 <ul>
 <li>直接设置.el-dialog__body 的padding（使用deep加速器）</li>
 <li>如果内容不想被撑开，想加上滚动条，在子元素外部添加overflow:auto + 固定width</li>
 </ul>
-<p>如果无法穿透，那么很可能就是放到全局元素去了，不需要穿透</p>
+<p><strong>如果无法穿透，那么很可能就是放到全局元素去了，不需要穿透</strong></p>
 <ul>
 <li><p>把style的scoped去掉</p>
 </li>
 <li><p>el-dialog加个自定义类名</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.custom-dialog</span> &#123;<br>  <span class="hljs-selector-class">.el-dialog__header</span> &#123;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">15px</span> <span class="hljs-number">0</span> <span class="hljs-number">15px</span> <span class="hljs-number">20px</span>;<br>  &#125;<br>  <span class="hljs-selector-class">.el-dialog__title</span> &#123;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;<br>    <span class="hljs-attribute">font-weight</span>: bold;<br>  &#125;   &#125;<br>  <br>  <span class="hljs-selector-class">.el-dialog__body</span> &#123;<br>    <span class="hljs-attribute">border-top</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#ccc</span>;<br>    <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#ccc</span>;<br>  &#125;<br>  <span class="hljs-selector-class">.el-dialog__footer</span> &#123;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">15px</span> <span class="hljs-number">0px</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="e-form"><a href="#e-form" class="headerlink" title="e-form"></a>e-form</h3><p>想要校验的“红星”样式，但是不触发任何校验</p>
+<p><strong>设置基于页面的水平垂直居中</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs css">::v-deep .el-dialog&#123;<br>       <span class="hljs-attribute">display</span>: flex;<br>       <span class="hljs-attribute">flex-direction</span>: column;<br>       <span class="hljs-attribute">margin</span>:<span class="hljs-number">0</span> <span class="hljs-meta">!important</span>;<br>       <span class="hljs-attribute">position</span>:absolute;<br>       <span class="hljs-attribute">top</span>:<span class="hljs-number">50%</span>;<br>       <span class="hljs-attribute">left</span>:<span class="hljs-number">50%</span>;<br>       <span class="hljs-attribute">transform</span>:<span class="hljs-built_in">translate</span>(-<span class="hljs-number">50%</span>,-<span class="hljs-number">50%</span>);<br>       <span class="hljs-attribute">max-height</span>:<span class="hljs-built_in">calc</span>(<span class="hljs-number">100%</span> - <span class="hljs-number">30px</span>);<br>       <span class="hljs-attribute">max-width</span>:<span class="hljs-built_in">calc</span>(<span class="hljs-number">100%</span> - <span class="hljs-number">30px</span>);<br>   &#125;<br>  ::v-deep  .el-dialog .el-dialog__body&#123;<br>       <span class="hljs-attribute">flex</span>:<span class="hljs-number">1</span>;<br>       <span class="hljs-attribute">overflow</span>: auto;<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+<h3 id="e-form"><a href="#e-form" class="headerlink" title="e-form"></a>e-form</h3><p><strong>想要校验的“红星”样式，但是不触发任何校验</strong></p>
 <ul>
 <li>直接在el-form-item加上class=”is-required”</li>
 </ul>
-<h3 id="radio-group"><a href="#radio-group" class="headerlink" title="radio-group"></a>radio-group</h3><p>循环radio-group时，各个group的值不会相互影响</p>
+<h3 id="radio-group"><a href="#radio-group" class="headerlink" title="radio-group"></a>radio-group</h3><p><strong>循环radio-group时，各个group的值不会相互影响</strong></p>
 <ul>
 <li>要保证每个radio-group有自己的v-model值，这样各个radio-group的选中的数据不会相互影响</li>
 </ul>
-<p>el-radio-group的el-radio一定要有label，否则选中无效果</p>
-<p>el-radio-group的change事件获取的值是label而不是value，value是v-model获取的</p>
-<p>el-radio-group的change事件如果每次拿的是上一次的值，那就换成input事件试试</p>
-<h3 id="el-upload"><a href="#el-upload" class="headerlink" title="el-upload"></a>el-upload</h3><p>:beforfe-upload和:on-change的区别</p>
+<p><strong>el-radio-group的el-radio一定要有label，否则选中无效果</strong></p>
+<p><strong>el-radio-group的change事件获取的值是label而不是value，value是v-model获取的</strong></p>
+<p><strong>el-radio-group的change事件如果每次拿的是上一次的值，那就换成input事件试试</strong></p>
+<h3 id="el-upload"><a href="#el-upload" class="headerlink" title="el-upload"></a>el-upload</h3><p><strong>:beforfe-upload和:on-change的区别</strong></p>
 <ul>
 <li>beforfe-upload在上传之前就触发了，后面就都不会再触发了</li>
 <li>on-change在文件上传、上传失败、上传成功都会触发</li>
 <li>如果只想在文件上传之前触发一次—-&gt;beforfe-upload；想阶段分的再细点—-&gt;on-change（用的更多一点）</li>
 </ul>
-<p>手动触发action，而不是自动触发</p>
+<p><strong>手动触发action，而不是自动触发</strong></p>
 <ul>
 <li>:auto-upload:“false”</li>
 <li>注意在触发之前，千万不能this.refs.upload.clearFiles()，没有文件是不会触发action的</li>
 <li>利用ref手动触发：this.refs.upload.submit()</li>
 </ul>
+<p><strong>需要在onchange事件里面手动校验 是否已有文件</strong></p>
+<ul>
+<li>一开始没上传提示 ‘请上传’，然后手动上传了以后 并不会自动校验，而是需要在onchange里面手动触发（就像submit按钮做的那样）</li>
+</ul>
+<h3 id="el-select"><a href="#el-select" class="headerlink" title="el-select"></a>el-select</h3><p>支持手动输入（添加选项：allow-create），回显时 能匹配到options的id就显示对应label，否则就认为是手动输入的值</p>
 <h3 id="穿透的东西不只有类名，标签名也可以-deep-gt-div"><a href="#穿透的东西不只有类名，标签名也可以-deep-gt-div" class="headerlink" title="穿透的东西不只有类名，标签名也可以:deep(&gt; div) {"></a>穿透的东西不只有类名，标签名也可以:deep(&gt; div) {</h3><h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><h3 id="删除分支（保持分支整洁）"><a href="#删除分支（保持分支整洁）" class="headerlink" title="删除分支（保持分支整洁）"></a>删除分支（保持分支整洁）</h3><ul>
 <li>删除远程分支 —— git branch -D xxx</li>
 <li>删除本地分支 —— git branch -d xxx</li>
@@ -619,7 +631,8 @@
 <li>本地aaa分支和远程develop合并的话，此时只要有不一样的代码都会认为是 即将新的commit的部分</li>
 </ul>
 <h3 id="本地没有合并成功，后面手动在gitlab上合并也可以，只要私仓是最新的就行"><a href="#本地没有合并成功，后面手动在gitlab上合并也可以，只要私仓是最新的就行" class="headerlink" title="本地没有合并成功，后面手动在gitlab上合并也可以，只要私仓是最新的就行"></a>本地没有合并成功，后面手动在gitlab上合并也可以，只要私仓是最新的就行</h3><h3 id="fix-提交第一个字符为字母的话不能为大写"><a href="#fix-提交第一个字符为字母的话不能为大写" class="headerlink" title="fix: 提交第一个字符为字母的话不能为大写"></a>fix: 提交第一个字符为字母的话不能为大写</h3><h3 id="更改项目文件首字母大小写后，会无法commit-解决方法就是把文件删了重新新建（当然要拍备份）"><a href="#更改项目文件首字母大小写后，会无法commit-解决方法就是把文件删了重新新建（当然要拍备份）" class="headerlink" title="更改项目文件首字母大小写后，会无法commit,解决方法就是把文件删了重新新建（当然要拍备份）"></a>更改项目文件首字母大小写后，会无法commit,解决方法就是把文件删了重新新建（当然要拍备份）</h3><h1 id="第三方库-插件"><a href="#第三方库-插件" class="headerlink" title="第三方库/插件"></a>第三方库/插件</h1><h3 id="lodash"><a href="#lodash" class="headerlink" title="lodash"></a>lodash</h3><ul>
-<li>有一些封装好的复杂一些的函数，比如 deepClone、groupBy（很方便，能将一个数组里某个字段进行分组（这个字段变为一个对象的key），每个组作为当前key的value）、sortBy(自定义排序规则)</li>
+<li>有一些封装好的复杂一些的函数，比如 debounce、deepClone、groupBy（很方便，能将一个数组里某个字段进行分组（这个字段变为一个对象的key），每个组作为当前key的value）、sortBy(自定义排序规则)</li>
+<li>细说 debouce 的使用：在原来的函数外面再包一层就行了，然后调用 包防抖的函数（参数一：事件名，参数二：时间）</li>
 </ul>
 <h3 id="md编辑器"><a href="#md编辑器" class="headerlink" title="md编辑器"></a>md编辑器</h3><ul>
 <li>Vue3 md编辑器的使用 <a target="_blank" rel="noopener" href="https://imzbf.github.io/md-editor-v3/en-US/index">https://imzbf.github.io/md-editor-v3/en-US/index</a></li>
@@ -670,6 +683,11 @@
 </li>
 <li><p><strong>解决问题时</strong>，非常偏没有实际案例的问题优先找AI（chatgpt）</p>
 </li>
+</ul>
+<h3 id="规范意识"><a href="#规范意识" class="headerlink" title="规范意识"></a>规范意识</h3><ul>
+<li><strong>需求调整后</strong>，自己检查一下还有没有关联的地方没有修改</li>
+<li><strong>弹框提示要居中</strong></li>
+<li><strong>一行太长除了显示省略号还要加tooltip给别人看</strong></li>
 </ul>
 
                 
