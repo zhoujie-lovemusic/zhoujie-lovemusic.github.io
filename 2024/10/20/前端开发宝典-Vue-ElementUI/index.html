@@ -24,7 +24,7 @@
 <meta property="og:description" content="Js使用任何 内部 数据&#x2F;方法之前都要判断是否存在（?或者&amp;&amp;） 只检验能否能拿得到数据用?，更复杂的判断用&amp;&amp;  数据（从父组件传过来的） 1const aaa &#x3D; computed(()&#x3D;&gt;props?.xxx)  数组 1res&amp;&amp;res.data&amp;&amp;Array.isArray(res.data) ? res.data:[">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-10-20T03:58:35.000Z">
-<meta property="article:modified_time" content="2024-12-08T02:49:10.364Z">
+<meta property="article:modified_time" content="2024-12-09T16:09:37.635Z">
 <meta property="article:author" content="Zhou Jie">
 <meta property="article:tag" content="技巧总结">
 <meta name="twitter:card" content="summary_large_image">
@@ -231,7 +231,7 @@
         
         
         
-          222 分钟
+          223 分钟
         
       </span>
     
@@ -428,18 +428,21 @@
 </ul>
 <h3 id="柱状图"><a href="#柱状图" class="headerlink" title="柱状图"></a>柱状图</h3><p>取值</p>
 <ul>
-<li><p>通过回调函数来自定义数据</p>
+<li><p>通过回调函数来自定义数据（柱状图有系列概念，有的图表没有，比如饼图）</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-attr">formatter</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">params</span>) &#123;<br>   <span class="hljs-comment">// params是个数组，表示柱状图系列种类，如果只有一种，那就[0]来取值</span><br>   <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;新增人数: &#x27;</span> + params[<span class="hljs-number">0</span>].<span class="hljs-property">value</span><br>&#125;,<br></code></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="图表经验总结"><a href="#图表经验总结" class="headerlink" title="图表经验总结"></a>图表经验总结</h3><p><strong>图表显示不出啦？</strong> 没有设置宽高，和图片一样</p>
 <p><strong>tooltip的显示不出来？</strong>echarts实例，不要使用ref、reactive响应式变量（使用shallowRef或者普通变量），会和echarts的交互造成冲突，比如tooltip的显示会有问题</p>
-<p><strong>如何布局最方便？</strong>用w-1/4 w-3/4</p>
+<p><strong>如何布局最方便？</strong>用w-1/4 w-3/4（仍然遵循用父元素来控制位置的原则，因为echarts默认渲染在空间的正中间位置，而echarts内部基本上就调个垂直位置）</p>
 <p><strong>如何增加自定义文本图形图片等？</strong>用graphic属性，例如：加两个文本</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-attr">graphic</span>: [<br>      &#123;<br>        <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;text&#x27;</span>,<br>        <span class="hljs-attr">left</span>: <span class="hljs-string">&#x27;center&#x27;</span>,<br>        <span class="hljs-attr">top</span>: <span class="hljs-string">&#x27;35%&#x27;</span>,<br>        <span class="hljs-attr">z</span>: <span class="hljs-number">10</span>,<br>        <span class="hljs-attr">style</span>: &#123;<br>          <span class="hljs-attr">fill</span>: <span class="hljs-string">&#x27;#1a1a1a&#x27;</span>,<br>          <span class="hljs-attr">text</span>: props.<span class="hljs-property">renderData</span>.<span class="hljs-property">count</span>,<br>          <span class="hljs-attr">textAlign</span>: <span class="hljs-string">&#x27;center&#x27;</span>,<br>          <span class="hljs-attr">fontWeight</span>: <span class="hljs-string">&#x27;bold&#x27;</span>,<br>          <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;#000&#x27;</span>,<br>          <span class="hljs-attr">fontSize</span>: <span class="hljs-number">18</span>,<br>        &#125;,<br>      &#125;,<br>      &#123;<br>        <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;text&#x27;</span>,<br>        <span class="hljs-attr">left</span>: <span class="hljs-string">&#x27;center&#x27;</span>,<br>        <span class="hljs-attr">top</span>: <span class="hljs-string">&#x27;83%&#x27;</span>,<br>        <span class="hljs-attr">z</span>: <span class="hljs-number">10</span>,<br>        <span class="hljs-attr">style</span>: &#123;<br>          <span class="hljs-attr">fill</span>: <span class="hljs-string">&#x27;#1a1a1a&#x27;</span>,<br>          <span class="hljs-attr">text</span>: props.<span class="hljs-property">renderData</span>.<span class="hljs-property">label</span>,<br>          <span class="hljs-attr">textAlign</span>: <span class="hljs-string">&#x27;center&#x27;</span>,<br>          <span class="hljs-attr">fontSize</span>: <span class="hljs-number">14</span>,<br>          <span class="hljs-attr">fontWeight</span>: <span class="hljs-string">&#x27;normal&#x27;</span>,<br>          <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;#444&#x27;</span>,<br>        &#125;,<br>      &#125;,<br>    ],<br></code></pre></td></tr></table></figure>
 
 <p><strong>如何控制图表大小？</strong>用grid</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-attr">grid</span>: &#123;<br>       <span class="hljs-comment">// 通过各方向的margin来改变图表大小</span><br>       <span class="hljs-attr">left</span>: <span class="hljs-string">&#x27;3%&#x27;</span>,<br>       <span class="hljs-attr">right</span>: <span class="hljs-string">&#x27;5%&#x27;</span>,<br>       <span class="hljs-attr">bottom</span>: props.<span class="hljs-property">renderData</span>?.<span class="hljs-property">title</span> ? <span class="hljs-string">&#x27;7%&#x27;</span> : <span class="hljs-string">&#x27;0%&#x27;</span>, <span class="hljs-comment">// 标题存在时，y轴距离底部腾出位置来显示，否则不偏移距离</span><br>       <span class="hljs-attr">containLabel</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">//保证不会超出父元素</span><br>     &#125;,<br></code></pre></td></tr></table></figure>
 
+<blockquote>
+<p>特殊情况：饼图是通过（两个）半径来控制大小的，不用grid</p>
+</blockquote>
 <p><strong>做一个图表总共需要做以下三件事</strong></p>
 <p><strong>1.绘表图表</strong> </p>
 <ul>
@@ -787,6 +790,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/12/08/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/" title="前端开发规范">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">前端开发规范</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
