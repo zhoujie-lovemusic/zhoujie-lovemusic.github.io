@@ -24,7 +24,7 @@
 <meta property="og:description" content="Js使用任何 内部 数据&#x2F;方法之前都要判断是否存在（?或者&amp;&amp;） 只检验能否能拿得到数据用?，更复杂的判断用&amp;&amp;  数据（从父组件传过来的） 1const aaa &#x3D; computed(()&#x3D;&gt;props?.xxx)  数组 1res&amp;&amp;res.data&amp;&amp;Array.isArray(res.data) ? res.data:[">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-10-20T03:58:35.000Z">
-<meta property="article:modified_time" content="2024-12-09T16:09:37.635Z">
+<meta property="article:modified_time" content="2024-12-15T03:27:50.997Z">
 <meta property="article:author" content="Zhou Jie">
 <meta property="article:tag" content="技巧总结">
 <meta name="twitter:card" content="summary_large_image">
@@ -231,7 +231,7 @@
         
         
         
-          223 分钟
+          225 分钟
         
       </span>
     
@@ -476,6 +476,9 @@
 <h3 id="封装组件-用插槽可以-帮助你-传递自己的结构进来，就是这样来应用个性化场景的"><a href="#封装组件-用插槽可以-帮助你-传递自己的结构进来，就是这样来应用个性化场景的" class="headerlink" title="封装组件 用插槽可以 帮助你 传递自己的结构进来，就是这样来应用个性化场景的"></a>封装组件 用插槽可以 帮助你 传递自己的结构进来，就是这样来应用个性化场景的</h3><ul>
 <li>写slot不写名字，会默认有个名字 #default，其实就是默认插槽和具名插槽</li>
 </ul>
+<h3 id="封装原则"><a href="#封装原则" class="headerlink" title="封装原则"></a>封装原则</h3><ul>
+<li>多个页面长得类似，但是里面细节不同，此时要做的不是 一个组件多次复用，而是 将这个页面拆分为多个组件，然后多个页面就可以随意组装了，这样也相互独立了，代码不会全在一个组件里堆积</li>
+</ul>
 <h3 id="涉及到响应式对象内部数据的修改（计算），要先深克隆到一个变量再处理"><a href="#涉及到响应式对象内部数据的修改（计算），要先深克隆到一个变量再处理" class="headerlink" title="涉及到响应式对象内部数据的修改（计算），要先深克隆到一个变量再处理"></a>涉及到响应式对象内部数据的修改（计算），要先深克隆到一个变量再处理</h3><ul>
 <li>因为类似直接赋值的浅拷贝本质山地址一样—-&gt;响应式更新还保留着，并且内部深层都有响应式</li>
 </ul>
@@ -594,6 +597,9 @@
 <ul>
 <li>直接在el-form-item加上class=”is-required”</li>
 </ul>
+<p><strong>某个表单元素穿透样式？</strong> 自定义个类名 一起写在:deep里，和被穿透的类名 连起来（没有空格）或者不连起来</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css">:<span class="hljs-built_in">deep</span>(.custom-date-picker .el-form-item) &#123;<br>    <span class="hljs-attribute">margin-right</span>: -<span class="hljs-number">1px</span> <span class="hljs-meta">!important</span>;<br>  &#125;<br></code></pre></td></tr></table></figure>
+
 <h3 id="radio-group"><a href="#radio-group" class="headerlink" title="radio-group"></a>radio-group</h3><p><strong>循环radio-group时，各个group的值不会相互影响</strong></p>
 <ul>
 <li>要保证每个radio-group有自己的v-model值，这样各个radio-group的选中的数据不会相互影响</li>
