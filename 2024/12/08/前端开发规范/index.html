@@ -24,7 +24,7 @@
 <meta property="og:description" content="通用规范注释 避免让团队其他成员去猜，提高整体团队开发效率  公共组件 函数 接口说明 变量名  调试 console.log()、debugger使用完要及时删除，减少打包体积 命名规范项目命名 小写+中线分隔：例如web-abs 目录、文件名  小写+中线分隔（比小驼峰更加易理解），有复数要加复数，例如：scripts &#x2F; styles &#x2F; demo-styles  JS、CSS、SCSS、H">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-08T03:00:59.000Z">
-<meta property="article:modified_time" content="2024-12-09T16:19:52.640Z">
+<meta property="article:modified_time" content="2024-12-15T03:59:58.046Z">
 <meta property="article:author" content="Zhou Jie">
 <meta property="article:tag" content="规范">
 <meta name="twitter:card" content="summary_large_image">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          977 字
+          1.1k 字
         
       </span>
     
@@ -310,12 +310,23 @@
 <blockquote>
 <p>总结：文件以及以上级别的都用kebab-case（短横线连接式），特殊地：组件用大驼峰</p>
 </blockquote>
+<p><strong>路由名</strong></p>
+<p> kebab-case</p>
 <p><strong>组件名（name）</strong></p>
 <p>始终保持大驼峰（PascalCase），这么做为了和现有的HTML标签（都是一个单词且小写的）做区分</p>
 <p><strong>prop名</strong></p>
 <p>在在 HTML 中始终保持 kebab-case（短横线连接式），而子组件的prop名字保持大驼峰（PascalCase），这是HTML和Js这两种语言的自然约定</p>
+<blockquote>
+<p>事件名：遵循on-xxx的规范</p>
+</blockquote>
 <p><strong>函数、变量</strong></p>
 <p>大驼峰命名</p>
+<blockquote>
+<p>方法名规范：动词或动词+名词</p>
+<p>事件方法名（绑定事件的方法）：handle+名词（可选）+动词</p>
+</blockquote>
+<p><strong>常量</strong></p>
+<p>大写+下划线</p>
 <h3 id="HTML规范"><a href="#HTML规范" class="headerlink" title="HTML规范"></a>HTML规范</h3><p><strong>样式</strong></p>
 <p>避免使用style样式，而是多用class</p>
 <p><strong>img</strong></p>
@@ -325,6 +336,8 @@
 <li>class类名 ———&gt;就用tailwind原子化写法</li>
 <li>id选择器 ——-&gt; 小驼峰</li>
 </ul>
+<p><strong>样式顺序</strong></p>
+<p>位置-大小-文字-背景</p>
 <h3 id="Js规范"><a href="#Js规范" class="headerlink" title="Js规范"></a>Js规范</h3><h3 id="Vue规范"><a href="#Vue规范" class="headerlink" title="Vue规范"></a>Vue规范</h3>
                 
               </div>
