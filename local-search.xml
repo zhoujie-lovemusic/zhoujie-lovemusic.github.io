@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Vue:关于父子传值以及computed和监听的总结</title>
+    <link href="/2025/02/27/Vue-%E5%85%B3%E4%BA%8E%E7%88%B6%E5%AD%90%E4%BC%A0%E5%80%BC%E4%BB%A5%E5%8F%8Acomputed%E5%92%8C%E7%9B%91%E5%90%AC%E7%9A%84%E6%80%BB%E7%BB%93/"/>
+    <url>/2025/02/27/Vue-%E5%85%B3%E4%BA%8E%E7%88%B6%E5%AD%90%E4%BC%A0%E5%80%BC%E4%BB%A5%E5%8F%8Acomputed%E5%92%8C%E7%9B%91%E5%90%AC%E7%9A%84%E6%80%BB%E7%BB%93/</url>
+    
+    <content type="html"><![CDATA[<p><strong>前言</strong></p><p>这段时间写了很多弹框涉及到父子传值，中间用到了计算属性和监听，遇到了一些问题，引发了一些思考。</p><p><strong>内容</strong></p><p>我们在父子传值的时候，我看有的人直接拿 props的数据进行展示，有的人另外用ref数据来接受，有的人用watch监听来保持数据一致，到底每种到底怎么用？先说结论：</p><ul><li>不用父组件的数据，自给自足 ————直接用自己数据 ——–&gt; 新增操作</li><li>用父组件的数据，但不写回去 ———– 直接用props数据，用于 展示、整合数据调用接口—-&gt; 编辑操作 都可</li><li>用父组件的数据，但是需要额外处理 ———-&gt; 计算属性computed</li><li>用父组件的数据，但是需要触发一系列除了简单赋值以外的操作 ——&gt; watch监听–监听父传子数据调用函数</li></ul><p>如果是弹框再次总结：</p><ul><li>新增操作—-&gt;父组件用v-model打开弹框，子组件赋值给:model-value</li><li>编辑、查看操作 ———-&gt;父组件直接传递detailInfo，子组件直接拿props.detailInfo来用，数据能保持一致</li><li>新增、编辑、查看等—&gt;父组件用ref打开弹框，子组件暴露一个opeDialog函数，可传递type（编辑/新增/查看）和 row（编辑、查看的数据）</li></ul><p>​       如果使用传递detailInfo来处理，可以使用计算属性 直接return detailInfo（编辑、详情）||{}（新增）—不推荐，可读性差</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Vue</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>使用场景</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>前端开发规范</title>
     <link href="/2024/12/08/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/"/>
     <url>/2024/12/08/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</url>
