@@ -224,6 +224,189 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2023/09/07/Reactive%E5%AF%B9%E6%AF%94Ref/" target="_self">
+          Reactive对比Ref
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/07/Reactive%E5%AF%B9%E6%AF%94Ref/" target="_self">
+        <div>
+          从定义数据的角度： ref用来定义：基本数据类型 reactive用来定义：引用数据类型（包括数组） ref也可以定义引用数据类型，只是它的内部使用的就是reactive的proxy   从实现原理的角度 ref通过Object.defineproperty的get和set实现响应式 reactive通过proxy实现响应式，通过reflect操作原对象的数据   从使用的角度 ref定义过的数
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-09-07 09:32" pubdate>
+              2023-09-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Vue3/">#Vue3</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/09/05/Vue2%E4%B8%AD%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86%E5%92%8C%E6%95%B0%E6%8D%AE%E5%8A%AB%E6%8C%81%E7%9A%84%E5%85%B3%E7%B3%BB/" target="_self">
+          Vue2中数据代理和数据劫持的关系
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/05/Vue2%E4%B8%AD%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86%E5%92%8C%E6%95%B0%E6%8D%AE%E5%8A%AB%E6%8C%81%E7%9A%84%E5%85%B3%E7%B3%BB/" target="_self">
+        <div>
+          数据代理 指的是将data中的属性代理到Vue实例中，方便通过Vue实例来访问data中的属性 数据劫持 通过Object.defineproperty对即将访问或更新的数据添加getter和setter函数来实现数据的响应 关系 先 数据代理，方便访问后，再进行 数据劫持，触发响应式更新。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-09-05 09:41" pubdate>
+              2023-09-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Vue2/">#Vue2</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/09/04/vue2%E5%92%8Cvue3%E5%93%8D%E5%BA%94%E5%BC%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E5%A4%84%E7%90%86%E7%9A%84%E4%B8%8D%E5%90%8C/" target="_self">
+          Vue2和Vue3响应式数据的处理的不同
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/04/vue2%E5%92%8Cvue3%E5%93%8D%E5%BA%94%E5%BC%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E5%A4%84%E7%90%86%E7%9A%84%E4%B8%8D%E5%90%8C/" target="_self">
+        <div>
+          Vue2 经过Object.defineproperty添加getter和setter来实现 1234567891011121314151617let person = &#123;    name:&#x27;周杰&#x27;&#125;// 添加age属性Object.defineproperty(person,&#x27;age&#x27;,&#123;      configurable:
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-09-04 15:13" pubdate>
+              2023-09-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%A8%AA%E5%90%91%E6%AF%94%E8%BE%83/">#横向比较</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2023/08/31/kafka%E5%92%8Cnifi%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
           Kafka和Nifi的使用
         </a>
@@ -638,189 +821,6 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E8%AF%AD%E6%B3%95/">#语法</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/30/Angular%E6%9B%B4%E6%96%B0%E7%89%88%E6%9C%AC%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/" target="_self">
-          Angular更新版本的注意点
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/30/Angular%E6%9B%B4%E6%96%B0%E7%89%88%E6%9C%AC%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/" target="_self">
-        <div>
-          1.自Angular V5起，不赞成使用@angular/http中的HttpModule和Http，而应改用@angular/common/http中的HttpClientModule和HttpClient 2.”@angular/platform-browser”: “^14.1.0”,   “@angular/platform-browser-dynamic”: “^14.1.0”, ​
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-30 16:55" pubdate>
-              2023-08-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Angular/">#Angular</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/30/Angular/" target="_self">
-          Angular知识点
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/30/Angular/" target="_self">
-        <div>
-          以下是我学习Angular的记录，虽然有些杂，但是是针对的遗漏的知识点进行的查漏补缺 1.管道对于一些数据的格式化显示很方便2.类或接口可以直接写在ts中，用export导出即可3.在声明属性时，如果不初始化，可以在变量名后面加一个可选符号?，这样便可以去除异常了4.如果数据的显示刚开始为空，后面不为空，则可以使用*ngIf来控制显示5.要是动态属性都是加[]，[class.selected]=”
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-30 16:46" pubdate>
-              2023-08-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Angular/">#Angular</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/08/30/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/" target="_self">
-          前端面试题(持续更新)
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/30/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/" target="_self">
-        <div>
-          1px物理像素的实现12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364&lt;title&gt;1px物理像素的实现&lt;/title&gt;  &lt;style&gt;      *&#123;Lcroun
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-30 16:17" pubdate>
-              2023-08-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" class="category-chain-item">面试题</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%89%8D%E7%AB%AF%E7%BB%BC%E5%90%88/">#前端综合</a>
             
           </div>
         

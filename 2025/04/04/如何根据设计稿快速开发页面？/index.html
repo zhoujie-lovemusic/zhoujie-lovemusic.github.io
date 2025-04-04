@@ -16,22 +16,22 @@
   <meta name="author" content="Zhou Jie">
   <meta name="keywords" content="">
   
-    <meta name="description" content="查漏补缺：技术部分URL和路由的区别 URL是整个地址，而路由只是端口号后面的部分 日期的比较 需要先将字符串转化为日期对象才可以直接用 &gt;&lt;比较 path参数和query参数的区别 123data &#x3D;&gt; get(&#96;&#x2F;coupon&#x2F;detail&#x2F;$&amp;#123;data.couponId&amp;#125;&#96;) data &#x3D;&gt; get(&#96;&#x2F;coupon&#x2F;detail&#x2F;&#96;,data)">
+    <meta name="description" content="化繁为简你要做的就是思考布局，剩下的直接复制 设计稿的样式即可（保证一比一还原设计稿）  注意： 页面层级要清楚，使用BEM类名命名法划清从属关系，这样一眼就知道页面结构，例如： 1234567891011&lt;!-- 块：block-name --&gt;&lt;div class&#x3D;&quot;product-card&quot;&gt;  &lt;!-- 元素：block-name__ele">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端开发经验(持续更新)">
-<meta property="og:url" content="https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2023/08/25/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/index.html">
+<meta property="og:title" content="如何根据设计稿快速开发页面？">
+<meta property="og:url" content="https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2025/04/04/%E5%A6%82%E4%BD%95%E6%A0%B9%E6%8D%AE%E8%AE%BE%E8%AE%A1%E7%A8%BF%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91%E9%A1%B5%E9%9D%A2%EF%BC%9F/index.html">
 <meta property="og:site_name" content="Zhou Jie">
-<meta property="og:description" content="查漏补缺：技术部分URL和路由的区别 URL是整个地址，而路由只是端口号后面的部分 日期的比较 需要先将字符串转化为日期对象才可以直接用 &gt;&lt;比较 path参数和query参数的区别 123data &#x3D;&gt; get(&#96;&#x2F;coupon&#x2F;detail&#x2F;$&amp;#123;data.couponId&amp;#125;&#96;) data &#x3D;&gt; get(&#96;&#x2F;coupon&#x2F;detail&#x2F;&#96;,data)">
+<meta property="og:description" content="化繁为简你要做的就是思考布局，剩下的直接复制 设计稿的样式即可（保证一比一还原设计稿）  注意： 页面层级要清楚，使用BEM类名命名法划清从属关系，这样一眼就知道页面结构，例如： 1234567891011&lt;!-- 块：block-name --&gt;&lt;div class&#x3D;&quot;product-card&quot;&gt;  &lt;!-- 元素：block-name__ele">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-08-25T01:59:36.000Z">
-<meta property="article:modified_time" content="2025-04-04T11:15:21.014Z">
+<meta property="article:published_time" content="2025-04-04T08:33:20.000Z">
+<meta property="article:modified_time" content="2025-04-04T08:51:18.837Z">
 <meta property="article:author" content="Zhou Jie">
-<meta property="article:tag" content="前端">
+<meta property="article:tag" content="技巧总结">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>前端开发经验(持续更新) - Zhou Jie</title>
+  <title>如何根据设计稿快速开发页面？ - Zhou Jie</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="前端开发经验(持续更新)"></span>
+            <span id="subtitle" data-typed-text="如何根据设计稿快速开发页面？"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-25 09:59" pubdate>
-          2023年8月25日 上午
+        <time datetime="2025-04-04 16:33" pubdate>
+          2025年4月4日 下午
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          713 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          10 分钟
+          6 分钟
         
       </span>
     
@@ -269,47 +269,18 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">前端开发经验(持续更新)</h1>
+            <h1 style="display: none">如何根据设计稿快速开发页面？</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="查漏补缺："><a href="#查漏补缺：" class="headerlink" title="查漏补缺："></a>查漏补缺：</h1><h3 id="技术部分"><a href="#技术部分" class="headerlink" title="技术部分"></a>技术部分</h3><p><strong>URL和路由的区别</strong></p>
-<p>URL是整个地址，而路由只是端口号后面的部分</p>
-<p><strong>日期的比较</strong></p>
-<p>需要先将字符串转化为日期对象才可以直接用 &gt;&lt;比较</p>
-<p><strong>path参数和query参数的区别</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">data =&gt; <span class="hljs-title function_">get</span>(<span class="hljs-string">`/coupon/detail/<span class="hljs-subst">$&#123;data.couponId&#125;</span>`</span>) <br><br>data =&gt; <span class="hljs-title function_">get</span>(<span class="hljs-string">`/coupon/detail/`</span>,data) <br></code></pre></td></tr></table></figure>
-
-<p>两者的区别：前者没有传递参数，仅仅是一个URL，后者会传递query参数，比如?couponId=5</p>
-<p><strong>post请求也可以有查询参数</strong></p>
-<p>get请求 =  post请求在URL后面直接拼接参数（post(<code>/sourceadmin/manager/new/updateVipPurviewByVipId.action?vipId=$&#123;data.vipId&#125;</code>,data)），因为get请求默认就是query参数</p>
-<p><strong>打包相关</strong></p>
-<p>NODE_OPTIONS 报不是内部命令时，执行 npm install -g win-node-env 再尝试</p>
-<p><strong>git</strong></p>
-<p>git如果改的东西不多还是建议，先pull再commit，还是想清晰地显示下 commit的内容</p>
-<h1 id="开发经验"><a href="#开发经验" class="headerlink" title="开发经验"></a>开发经验</h1><p>后端 数据的 问题，前端 提醒一下就行了，我该干嘛干嘛，不用等他，我前端逻辑又没错</p>
-<p><strong>h5和vue目录的关系</strong></p>
-<p>纯H5项目的文件就是Vue项目build之后的文件，只保存用到的css、js、html</p>
-<p><strong>前后端不同环境的区别</strong></p>
-<p>前端不同环境（看网址URL）决定了页面不同，而后端不同环境（看接口URL）决定了数据的不同</p>
-<p><strong>Bug修改</strong></p>
-<p>若接口有数据且也能正确获取到，但就是 不显示 ——-&gt; 看看控制台有没有错误，只要有某行代码有问题 阻塞下面 代码的执行</p>
-<p><strong>vue项目目录结构</strong></p>
+                <h3 id="化繁为简"><a href="#化繁为简" class="headerlink" title="化繁为简"></a>化繁为简</h3><p>你要做的就是思考布局，剩下的直接复制 设计稿的样式即可（保证一比一还原设计稿）</p>
 <blockquote>
-<p>–src</p>
-<p>assets：静态文件——–图片、图标</p>
-<p>api：api.js，注意要按模块分：common.js、xxx.js…；config.js，为api.js配置api环境、请求拦截、封装请求方法…</p>
-<p>components：公共组件，即封装的 可复用的组件</p>
-<p>plugins：第三方插件，按需Vue.use</p>
-<p>layout：布局组件，主页面的  轮廓组件：SideBar、Navbar</p>
-<p>router：路由文件，注意也要 按模块分，子菜单注意要用children，避免单个路由写的过长</p>
-<p>store：仓库，注意要 按模块分</p>
-<p>utils：自己封装的js工具，登陆加密、数据格式转换</p>
-<p>–root</p>
-<p>main：入口文件，注册插件、组件、原型上添加方法等</p>
-<p>.env.debug/development/production：设置Api调用环境的地址</p>
-<p>vue.config.js：打包的配置、优化等</p>
+<p>注意：</p>
+<p>页面层级要清楚，使用BEM类名命名法划清从属关系，这样一眼就知道页面结构，例如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 块：block-name --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-card&quot;</span>&gt;</span><br>  <span class="hljs-comment">&lt;!-- 元素：block-name__element --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-card_image&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;image.jpg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Product Image&quot;</span> /&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-card_content&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-card_title&quot;</span>&gt;</span>Product Title<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-card_description&quot;</span>&gt;</span>Description of the product<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- 修饰符：block-name_element--modifier --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-card_button--active&quot;</span>&gt;</span>Add to Cart<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>通常最后一层  修饰符，用的比较少，不可能每个状态都写一遍，除非这个带状态的样式多个地方要用，那你单独写一下，多个地方使用</p>
 </blockquote>
 
                 
@@ -329,7 +300,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%BB%8F%E9%AA%8C/" class="category-chain-item">经验</a>
+  <a href="/categories/%E5%89%8D%E7%AB%AF/" class="category-chain-item">前端</a>
   
   
 
@@ -344,7 +315,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%89%8D%E7%AB%AF/">#前端</a>
+        <a href="/tags/%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/">#技巧总结</a>
       
     </div>
   
@@ -356,8 +327,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>前端开发经验(持续更新)</div>
-      <div>https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2023/08/25/前端开发经验-持续更新/</div>
+      <div>如何根据设计稿快速开发页面？</div>
+      <div>https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2025/04/04/如何根据设计稿快速开发页面？/</div>
     </div>
     <div class="license-meta">
       
@@ -369,7 +340,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年8月25日</div>
+          <div>2025年4月4日</div>
         </div>
       
       
@@ -401,9 +372,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/08/25/CSS%E6%A0%B7%E5%BC%8F%E8%B0%83%E6%95%B4%E7%BB%8F%E9%AA%8C-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/" title="CSS样式调整经验(持续更新)">
+                      <a href="/2025/04/04/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%92%8C%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%E7%9A%84%E6%80%9D%E8%B7%AF%EF%BC%9A%E9%80%86%E5%90%91%E6%80%9D%E7%BB%B4/" title="前端开发和解决问题的思路：逆向思维">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CSS样式调整经验(持续更新)</span>
+                        <span class="hidden-mobile">前端开发和解决问题的思路：逆向思维</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -411,8 +382,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/08/14/ionic%EF%BC%9Acordova-not-available/" title="cordova_not_available">
-                        <span class="hidden-mobile">cordova_not_available</span>
+                      <a href="/2025/02/27/Vue-%E5%85%B3%E4%BA%8E%E7%88%B6%E5%AD%90%E4%BC%A0%E5%80%BC%E4%BB%A5%E5%8F%8Acomputed%E5%92%8C%E7%9B%91%E5%90%AC%E7%9A%84%E6%80%BB%E7%BB%93/" title="Vue:关于父子传值以及computed和监听的总结">
+                        <span class="hidden-mobile">Vue:关于父子传值以及computed和监听的总结</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -432,8 +403,8 @@
     
       <script type="text/javascript">
         var disqus_config = function() {
-          this.page.url = 'https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2023/08/25/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/';
-          this.page.identifier = '/2023/08/25/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/';
+          this.page.url = 'https://github.com/zhoujie-lovemusic/zhoujie-lovemusic.github.io/2025/04/04/%E5%A6%82%E4%BD%95%E6%A0%B9%E6%8D%AE%E8%AE%BE%E8%AE%A1%E7%A8%BF%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91%E9%A1%B5%E9%9D%A2%EF%BC%9F/';
+          this.page.identifier = '/2025/04/04/%E5%A6%82%E4%BD%95%E6%A0%B9%E6%8D%AE%E8%AE%BE%E8%AE%A1%E7%A8%BF%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91%E9%A1%B5%E9%9D%A2%EF%BC%9F/';
         };
         Fluid.utils.loadComments('#disqus_thread', function() {
           var d = document, s = d.createElement('script');
