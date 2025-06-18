@@ -224,6 +224,311 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2023/08/29/flex%E5%B8%83%E5%B1%80%E5%BD%B1%E5%93%8D%E6%BB%9A%E5%8A%A8%E6%9D%A1%E7%9A%84%E6%98%BE%E7%A4%BA/" target="_self">
+          flex布局影响滚动条的显示
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/29/flex%E5%B8%83%E5%B1%80%E5%BD%B1%E5%93%8D%E6%BB%9A%E5%8A%A8%E6%9D%A1%E7%9A%84%E6%98%BE%E7%A4%BA/" target="_self">
+        <div>
+          前言 在设置子标签的滚动条时，发现父元素设置了固定高度、overflow:auto了，并且子标签高度已经大于这个高度，但是滚动条就是不显示。 发现问题 在调试时发现把flex布局去掉后，滚动条显示了 原因 flex布局下的子元素自带弹性伸缩属性，即 即使父元素设置了固定高度，但是子标签始终会按照flex对应的排列方式排列，即使元素非常多，也会缩小自己以排列在父元素内部。这样就不会有溢出的空间并触发
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-29 14:46" pubdate>
+              2023-08-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CSS/" class="category-chain-item">CSS</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%BB%9A%E5%8A%A8%E6%9D%A1%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/">#滚动条显示问题</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/29/%E5%8F%98%E9%87%8F%E6%A0%B7%E5%BC%8Fvar-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
+          变量样式var()的使用
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/29/%E5%8F%98%E9%87%8F%E6%A0%B7%E5%BC%8Fvar-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
+        <div>
+          前言 在调整UI组件的内置样式时，发现组件内置的样式通常值都不是具体值，而是一个类似  1属性名:var(--属性名)  这样的格式，于是我去查询了用法。 发现新大陆 定义 原来这是一种变量样式的写法，也就是说 样式值是一个变量，它被定义在引入的样式文件根部中，如下：  使用 1--background: var(--ion-color-buttonRed);  好处 如果变更需求，只要在样式文件
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-29 14:29" pubdate>
+              2023-08-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CSS/" class="category-chain-item">CSS</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8F%98%E9%87%8F%E6%A0%B7%E5%BC%8Fvar/">#变量样式var()</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/28/%E5%83%8F%E7%B4%A0%E5%AF%B9%E9%BD%90%E9%97%AE%E9%A2%98/" target="_self">
+          像素对齐问题
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/28/%E5%83%8F%E7%B4%A0%E5%AF%B9%E9%BD%90%E9%97%AE%E9%A2%98/" target="_self">
+        <div>
+          前言 在调整item和label标签距离时，随着距离越来越近，发现下面label的文字竟然模糊了。效果如下：   原因 当两个标签的位置非常接近时，可能会出现像素对齐问题，导致字体模糊。这是因为浏览器在渲染字体时，会将字体的位置对齐到像素网格上，如果两个标签的位置不是像素网格的整数倍，就会出现模糊。 解决方法 调整标签的位置，使其与像素网格对齐，通常距离要调大一点。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-28 15:40" pubdate>
+              2023-08-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CSS/" class="category-chain-item">CSS</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AD%97%E4%BD%93%E6%98%BE%E7%A4%BA%E4%B8%8D%E6%AD%A3%E5%B8%B8/">#字体显示不正常</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/25/CSS%E6%A0%B7%E5%BC%8F%E8%B0%83%E6%95%B4%E7%BB%8F%E9%AA%8C-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/" target="_self">
+          CSS样式调整经验(持续更新)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/25/CSS%E6%A0%B7%E5%BC%8F%E8%B0%83%E6%95%B4%E7%BB%8F%E9%AA%8C-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/" target="_self">
+        <div>
+          父元素高度跟着子元素高度走 原因 是父元素没有设置固定高度导致子元素没有活动空间 尽量使用flex布局，其中just-content指的是flex-direction的排列方式，而align-items指的是just-content另外一个方向的排列方式，比如flex-direction:row;just-content:center是水平居中，那么align-items:center就是垂直居
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-25 11:10" pubdate>
+              2023-08-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CSS/" class="category-chain-item">CSS</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BB%8F%E9%AA%8C/">#经验</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/08/25/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/" target="_self">
+          前端开发经验(持续更新)
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/25/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/" target="_self">
+        <div>
+          查漏补缺：技术部分URL和路由的区别 URL是整个地址，而路由只是端口号后面的部分 日期的比较 需要先将字符串转化为日期对象才可以直接用 &gt;&lt;比较 path参数和query参数的区别 123data =&gt; get(`/coupon/detail/$&#123;data.couponId&#125;`) data =&gt; get(`/coupon/detail/`,data)
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-25 09:59" pubdate>
+              2023-08-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BB%8F%E9%AA%8C/" class="category-chain-item">经验</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%8D%E7%AB%AF/">#前端</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2023/08/14/ionic%EF%BC%9Acordova-not-available/" target="_self">
           cordova_not_available
         </a>
@@ -516,311 +821,6 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/Git%E6%93%8D%E4%BD%9C/">#Git操作</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/04/02/git%E4%B9%8B%E9%97%AE%E9%A2%98-%E6%B2%A1%E6%9C%89%E5%BD%93%E5%89%8D%E5%88%86%E6%94%AF%E7%9A%84%E8%B7%9F%E8%B8%AA%E4%BF%A1%E6%81%AF/" target="_self">
-          git之问题-没有当前分支的跟踪信息
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/04/02/git%E4%B9%8B%E9%97%AE%E9%A2%98-%E6%B2%A1%E6%9C%89%E5%BD%93%E5%89%8D%E5%88%86%E6%94%AF%E7%9A%84%E8%B7%9F%E8%B8%AA%E4%BF%A1%E6%81%AF/" target="_self">
-        <div>
-          前言 在git pull 的时候出现 There is no tracking information for the current branch. 直接原因 原因是 本地分支没有与远程分支 关联 发生场景 通常新建一个本地分支之后，git不清楚这个新分支要准备推送到哪个分支 解决方法 输入以下命令可实现关联： 1git branch --set-upstream-to=origin/远程分支的
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-04-02 15:32" pubdate>
-              2023-04-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Git/" class="category-chain-item">Git</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Git%E6%93%8D%E4%BD%9C/">#Git操作</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/04/02/slice%E5%87%BD%E6%95%B0&amp;splice%E5%87%BD%E6%95%B0&amp;split%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB/" target="_self">
-          slice函数&amp;splice函数&amp;split函数的区别
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/04/02/slice%E5%87%BD%E6%95%B0&amp;splice%E5%87%BD%E6%95%B0&amp;split%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB/" target="_self">
-        <div>
-          这三个函数长得非常相似，将它们区分开来很有必要。 slice（切割）作用：可将 字符串或数组 切割成 其部分的 新的 字符串或数组 （不改变原字符串、数组） 方法：  str.slice(start,end) ———— 区间 左闭右开—–切割[start,end)区间的 字符串或数组   说到获取部分字符串，便可想到 substr方法和substring方法（也是不改变原字符串、数组）  str.
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-04-02 15:02" pubdate>
-              2023-04-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Js/" class="category-chain-item">Js</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%87%BD%E6%95%B0/">#函数</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/03/12/git%E4%B9%8B%E9%97%AE%E9%A2%98-push%E4%B9%8B%E5%90%8E%E6%9F%90%E6%96%87%E4%BB%B6%E5%A4%B9%E5%87%BA%E7%8E%B0-%E4%B8%80%E4%B8%B2%E6%95%B0%E5%AD%97/" target="_self">
-          git之问题:push之后某文件夹出现@+一串数字
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/12/git%E4%B9%8B%E9%97%AE%E9%A2%98-push%E4%B9%8B%E5%90%8E%E6%9F%90%E6%96%87%E4%BB%B6%E5%A4%B9%E5%87%BA%E7%8E%B0-%E4%B8%80%E4%B8%B2%E6%95%B0%E5%AD%97/" target="_self">
-        <div>
-          问题： 今天在拉取之前代码时，发现项目突然运行不起来了，找了半天发现缺少文件，再在gitee代码中发现有个子文件夹前面有个@，后面还有一串数字，点进去一看，该文件夹是空的！ 原因： 在网上找了answer，说是该文件夹的子文件夹中还有.git文件，似乎git只能按照一个git仓库上传，内部文件夹的git仓库默认不上传（又来一个git仓库不知道怎么处理直接不处理） 解决方法： 删除内部文件夹的.gi
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-03-12 21:52" pubdate>
-              2023-03-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Git/" class="category-chain-item">Git</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Git%E6%93%8D%E4%BD%9C/">#Git操作</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/03/11/%E5%90%B8%E5%BC%95%E5%8A%9B%E6%B3%95%E5%88%99%E5%92%8C%E8%87%AA%E6%88%91%E5%82%AC%E7%9C%A0%E6%B3%95%E5%88%99%E7%9A%84%E5%85%B3%E7%B3%BB/" target="_self">
-          吸引力法则和自我催眠法则的关系
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/11/%E5%90%B8%E5%BC%95%E5%8A%9B%E6%B3%95%E5%88%99%E5%92%8C%E8%87%AA%E6%88%91%E5%82%AC%E7%9C%A0%E6%B3%95%E5%88%99%E7%9A%84%E5%85%B3%E7%B3%BB/" target="_self">
-        <div>
-          分享两个有关心理学（原本是物理学，后来引申到心理学）的知识，吸引力法则与自我催眠法则的关系（信不信看个人）。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-03-11 18:35" pubdate>
-              2023-03-11
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%94%9F%E6%B4%BB/" class="category-chain-item">生活</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%BF%83%E7%90%86%E5%AD%A6/">#心理学</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/03/11/vue%E9%A1%B9%E7%9B%AE%E8%AF%A5%E6%9C%89%E7%9A%84%E6%84%8F%E8%AF%86%EF%BC%88%E7%BB%8F%E9%AA%8C%EF%BC%89/" target="_self">
-          Vue项目该有的意识（更新中）
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/11/vue%E9%A1%B9%E7%9B%AE%E8%AF%A5%E6%9C%89%E7%9A%84%E6%84%8F%E8%AF%86%EF%BC%88%E7%BB%8F%E9%AA%8C%EF%BC%89/" target="_self">
-        <div>
-          用父组件发请求子组件接数据以减少多次请求api  1）组件如果需要重复多次，那么不建议在组件内部发送api请求，因为那样就请求了多次，性能不高，直接在父组件请求好，这样只用请求一次，这是一方面；然后把数据传给子组件，那么子组件就只要对这一份数据进行动态展示就行，这样相当于增加了内聚性，减少了耦合性  标签决定页面格式  2）循环的格式不对，看看v-for写的标签位置是不是不对，因为标签决定了页面格
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-03-11 16:26" pubdate>
-              2023-03-11
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Vue2/">#Vue2</a>
             
           </div>
         

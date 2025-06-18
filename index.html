@@ -224,6 +224,311 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2025/06/18/%E6%9C%89%E5%85%B3%E5%BC%B9%E6%A1%86%E7%9A%84%E5%A4%84%E7%90%86%E6%80%BB%E7%BB%93/" target="_self">
+          有关弹框的处理总结
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/06/18/%E6%9C%89%E5%85%B3%E5%BC%B9%E6%A1%86%E7%9A%84%E5%A4%84%E7%90%86%E6%80%BB%E7%BB%93/" target="_self">
+        <div>
+          打开弹框时哪种方式最好？ 弹框传递数据还得使用ref拿到实例调用内部的opendialog的方式更好一点，因为它总是保证 在打开弹框的时候才传递数据，而如果说是 父子传值，会存在一个 时机先后的问题，只有用监听 弹框打开的时机才行。 弹框的操作写在父组件还是子组件更好？ 写在父组件事件的方式会更好，因为这样弹框组件更方便复用，但是如果写死在弹框组件内（子组件），那么其他地方结构相同但是事件不同就不
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-06-18 23:37" pubdate>
+              2025-06-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF/" class="category-chain-item">前端</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/">#技巧总结</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2025/06/01/%E8%A1%A8%E6%A0%BC%E5%B0%81%E8%A3%85%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/" target="_self">
+          表格封装的注意点
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/06/01/%E8%A1%A8%E6%A0%BC%E5%B0%81%E8%A3%85%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/" target="_self">
+        <div>
+          越怎么一步到位越怎么封装（传递个api和params就行）？ 事实是 只传tableData的表格组件最好用，每个组建的功能要独立且原子化一点，不要那种传 api，碰到那种 api和params变化的需要在里面写监听比较麻烦，不如我在外面计算好，然后把数据传过去即可
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-06-01 23:57" pubdate>
+              2025-06-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF/" class="category-chain-item">前端</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/">#技巧总结</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2025/05/20/echarts%E5%B0%A4%E5%85%B6%E6%98%AF%E9%A5%BC%E5%9B%BE%E7%9A%84%E7%9B%B8%E5%85%B3%E6%B3%A8%E6%84%8F%E7%82%B9/" target="_self">
+          echarts尤其是饼图的相关注意点
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/05/20/echarts%E5%B0%A4%E5%85%B6%E6%98%AF%E9%A5%BC%E5%9B%BE%E7%9A%84%E7%9B%B8%E5%85%B3%E6%B3%A8%E6%84%8F%E7%82%B9/" target="_self">
+        <div>
+          item太多导致图例太多了显示不下去怎么办？ 一方面可以加分页（legend的type换成scroll）又或者美观一点图例部分手写（如果是大屏，手写还有一个好处：可以写成自动滚动的形式，唯一的缺点就是不能联动） 如果要计算百分比，如何避免显示NaN？ 其实就是避免分母为0，在计算百分比的最后，判断如果total为0，那么百分比最后值也为0 如何定时刷新显示图例的内容、百分数或者高亮tooltip？
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-05-20 23:47" pubdate>
+              2025-05-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF/" class="category-chain-item">前端</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/">#技巧总结</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2025/05/03/watch%E5%92%8CwatchEffect%E7%9A%84%E5%8C%BA%E5%88%86/" target="_self">
+          watch和watchEffect的区分
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/05/03/watch%E5%92%8CwatchEffect%E7%9A%84%E5%8C%BA%E5%88%86/" target="_self">
+        <div>
+          都适合什么场景？ watchEffect适合监听某一个组件生命周期时的数据（监听生命周期的数据必定要有判断是否存在的逻辑，这个逻辑相关的所有 数据就是监听对象），需要 在监听里做判断，如果这个数据不存在要return（这里说明了 监听它就是一个不断调用的函数），关闭监听用 unwatch() 区别 上面说了watchEffect只要所有逻辑用到的变量有变化就调用，而watch一般明确知道要监听什么
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-05-03 23:28" pubdate>
+              2025-05-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF/" class="category-chain-item">前端</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8C%BA%E5%88%86/">#区分</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2025/04/18/%E5%A4%A7%E5%B1%8F%E9%A1%B5%E9%9D%A2%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%80%E5%B7%A7%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9/" target="_self">
+          大屏页面的一些技巧与注意点
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/18/%E5%A4%A7%E5%B1%8F%E9%A1%B5%E9%9D%A2%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%80%E5%B7%A7%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9/" target="_self">
+        <div>
+          自适应如何解决？ 整体自适应—–&gt;scale缩放方案，见我上一篇文章 布局自适应—–&gt;flex弹性布局即可，间距用gap（注意如果换行flex-gap包含行和列），比justify-content: sapce-between好用，因为不同分辨率宽会不一样，间距也不一样，不好看，而且如果第二行只有两个中间会空开，很丑 盒子自适应——-&gt;宽高用百分比/vw、vh 文字子使用——-&
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-04-18 23:05" pubdate>
+              2025-04-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF/" class="category-chain-item">前端</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/">#技巧总结</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2025/04/04/Vue%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85%EF%BC%8C%E7%9B%B4%E6%8E%A5%E5%A4%8D%E5%88%B6%E4%BD%BF%E7%94%A8/" target="_self">
           Vue常用组件封装+工具函数，直接复制使用
         </a>
@@ -516,311 +821,6 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E8%A7%84%E8%8C%83/">#规范</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2024/11/20/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AE%9D%E5%85%B8-Vue-ElementUI/" target="_self">
-          前端开发宝典(Vue项目)
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/20/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AE%9D%E5%85%B8-Vue-ElementUI/" target="_self">
-        <div>
-          Js使用任何 内部 数据/方法之前都要判断是否存在（?或者&amp;&amp;） 只检验能否能拿得到数据用?，更复杂的判断用&amp;&amp;  数据（从父组件传过来的） 1const aaa = computed(()=&gt;props?.xxx)  数组 1res&amp;&amp;res.data&amp;&amp;Array.isArray(res.data) ? res.data:[
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-11-20 11:58" pubdate>
-              2024-11-20
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E7%AB%AF/" class="category-chain-item">前端</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/">#技巧总结</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2024/09/03/git%E4%B8%AD%E9%82%A3%E4%BA%9B%E6%B6%89%E5%8F%8Amerge%E7%9A%84%E6%93%8D%E4%BD%9C/" target="_self">
-          git中那些涉及merge的操作
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/03/git%E4%B8%AD%E9%82%A3%E4%BA%9B%E6%B6%89%E5%8F%8Amerge%E7%9A%84%E6%93%8D%E4%BD%9C/" target="_self">
-        <div>
-          前言 总结一些涉及到merge操作的git指令  pull和commit的顺序的顺序问题  改相同的一块代码，不管pull和commit的顺序如何，最终都是要merge，因为即使先pull会提示你先commit或者stash  -&gt;既然先pull如果有同一块代码会有提示你commit再合并，那以后都先pull不就行了： –&gt;如果没有共同代码，刚刚好拿到了最新代码 –&gt;如果有，那g
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-03 17:09" pubdate>
-              2024-09-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Git/" class="category-chain-item">Git</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Git%E6%93%8D%E4%BD%9C/">#Git操作</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2024/08/21/js-%E5%A6%82%E4%BD%95%E6%A0%B9%E6%8D%AE%E8%BF%94%E5%9B%9E%E7%9A%84%E7%8A%B6%E6%80%81%E5%8F%AA%E6%8F%90%E7%A4%BA%E6%88%90%E5%8A%9F%E4%B8%80%E6%AC%A1%EF%BC%9F/" target="_self">
-          js:如何根据返回的状态只提示成功一次？
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/21/js-%E5%A6%82%E4%BD%95%E6%A0%B9%E6%8D%AE%E8%BF%94%E5%9B%9E%E7%9A%84%E7%8A%B6%E6%80%81%E5%8F%AA%E6%8F%90%E7%A4%BA%E6%88%90%E5%8A%9F%E4%B8%80%E6%AC%A1%EF%BC%9F/" target="_self">
-        <div>
-          前言 有这样一个场景：用户User1从第三方页面A设置某状态status为1，然后自动跳转到我的页面B时，第一次进入若status为1，则提示“成功”，但是后面都不再提示（也就是说只有从第三方页面第一次跳回到自己的页面若查到status为1才提示，后面就不提示） 分析 也就是要满足两个条件  第一次提示后，后面都不提示 ————-  &gt;用localStorage+当前用户据的flag为tru
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-21 14:51" pubdate>
-              2024-08-21
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Js/" class="category-chain-item">Js</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E4%B8%9A%E5%8A%A1/">#业务</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2024/08/19/js-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%AD%970%E6%AF%94%E8%BE%83%E8%A6%81%E6%B3%A8%E6%84%8F/" target="_self">
-          js:字符串与数字0比较要注意
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/19/js-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%AD%970%E6%AF%94%E8%BE%83%E8%A6%81%E6%B3%A8%E6%84%8F/" target="_self">
-        <div>
-          前言 本来以为 == 会因为隐式转换可以 将 “0”==0 结果为true，结果却不一样 结论 字母开头的字符串 与 数字0 用 == 模糊比较总是true因此以后要注意不要用 == 偷懒 隐式转换来比较，要用===类型相同的数据来比
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-19 16:59" pubdate>
-              2024-08-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Js/" class="category-chain-item">Js</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E4%B8%8D%E5%90%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83/">#不同数据类型比较</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2024/07/30/uniapp%E5%AD%A6%E4%B9%A0/" target="_self">
-          uniapp学习
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/30/uniapp%E5%AD%A6%E4%B9%A0/" target="_self">
-        <div>
-          1.view标签和div标签比有什么区别（优点）？ 他们都可以容纳其他标签的容器，除此以外有以下区别：  view标签具有平台兼容性，而div没有  主要体现在样式和事件两个方面。view的默认样式会遵循各个平台（微信小程序、h5、app，主要是移动端）的设计规范，能保持风格一致。view能方便绑定各个平台特定的时间，就拿点击事件举例，可以使用web端的click事件，也可以使用原生app的tou
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-30 17:27" pubdate>
-              2024-07-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="category-chain-item">前端框架</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/uniapp/">#uniapp</a>
             
           </div>
         

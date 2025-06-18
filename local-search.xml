@@ -4,6 +4,131 @@
   
   
   <entry>
+    <title>有关弹框的处理总结</title>
+    <link href="/2025/06/18/%E6%9C%89%E5%85%B3%E5%BC%B9%E6%A1%86%E7%9A%84%E5%A4%84%E7%90%86%E6%80%BB%E7%BB%93/"/>
+    <url>/2025/06/18/%E6%9C%89%E5%85%B3%E5%BC%B9%E6%A1%86%E7%9A%84%E5%A4%84%E7%90%86%E6%80%BB%E7%BB%93/</url>
+    
+    <content type="html"><![CDATA[<p><strong>打开弹框时哪种方式最好？</strong></p><p>弹框传递数据还得使用ref拿到实例调用内部的opendialog的方式更好一点，因为它总是保证 在打开弹框的时候才传递数据，而如果说是 父子传值，会存在一个 时机先后的问题，只有用监听 弹框打开的时机才行。</p><p><strong>弹框的操作写在父组件还是子组件更好？</strong></p><p>写在父组件事件的方式会更好，因为这样弹框组件更方便复用，但是如果写死在弹框组件内（子组件），那么其他地方结构相同但是事件不同就不好复用</p><p><strong>如何避免多次调用接口？</strong></p><p>所有的操作，都要加 disabled、loading、节流处理，且前面两个放到try-catch-的finally里面，避免多次调用接口。</p><p><strong>弹框表单如何针对单个表单元素校验？</strong></p><p>表单实例的resetFields是可以单独针对某个表单元素校验的，传入表单元素prop即可</p><p><strong>有时候表单校验最底下的校验提示挡住看不见怎么办？（出现滚动条）</strong></p><p>弹框要设置最小高度（防止最底下校验看不到）和最大高度（vh单位，适应不同分辨率）</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>技巧总结</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>表格封装的注意点</title>
+    <link href="/2025/06/01/%E8%A1%A8%E6%A0%BC%E5%B0%81%E8%A3%85%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/"/>
+    <url>/2025/06/01/%E8%A1%A8%E6%A0%BC%E5%B0%81%E8%A3%85%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/</url>
+    
+    <content type="html"><![CDATA[<p><strong>越怎么一步到位越怎么封装（传递个api和params就行）？</strong></p><p>事实是 只传tableData的表格组件最好用，每个组建的功能要独立且原子化一点，不要那种传 api，碰到那种 api和params变化的需要在里面写监听比较麻烦，不如我在外面计算好，然后把数据传过去即可</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>技巧总结</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>echarts尤其是饼图的相关注意点</title>
+    <link href="/2025/05/20/echarts%E5%B0%A4%E5%85%B6%E6%98%AF%E9%A5%BC%E5%9B%BE%E7%9A%84%E7%9B%B8%E5%85%B3%E6%B3%A8%E6%84%8F%E7%82%B9/"/>
+    <url>/2025/05/20/echarts%E5%B0%A4%E5%85%B6%E6%98%AF%E9%A5%BC%E5%9B%BE%E7%9A%84%E7%9B%B8%E5%85%B3%E6%B3%A8%E6%84%8F%E7%82%B9/</url>
+    
+    <content type="html"><![CDATA[<p><strong>item太多导致图例太多了显示不下去怎么办？</strong></p><p>一方面可以加分页（legend的type换成scroll）又或者美观一点图例部分手写（如果是大屏，手写还有一个好处：可以写成自动滚动的形式，唯一的缺点就是不能联动）</p><p><strong>如果要计算百分比，如何避免显示NaN？</strong></p><p>其实就是避免分母为0，在计算百分比的最后，判断如果total为0，那么百分比最后值也为0</p><p><strong>如何定时刷新显示图例的内容、百分数或者高亮tooltip？</strong></p><p>利用定时器设置个currentIndex再在数据length取余循环展示，高亮利用实例的dispatchAction方法，如下：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">setChartInterval</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">if</span> (timer) &#123;<br>    <span class="hljs-built_in">clearInterval</span>(timer);<br>  &#125;<br>  <span class="hljs-keyword">let</span> currentIndex = <span class="hljs-number">1</span>; <span class="hljs-comment">// 从第二个数据项开始（因为第一个已经在初始化时设置了）</span><br>  timer = <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> currentData = props.<span class="hljs-property">renderData</span>[currentIndex];<br>    <span class="hljs-keyword">let</span> percentage;<br>    <span class="hljs-keyword">if</span> (totalValue === <span class="hljs-number">0</span>) &#123;<br>      percentage = <span class="hljs-number">0</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      percentage = ((currentData?.<span class="hljs-property">value</span> / totalValue.<span class="hljs-property">value</span>) * <span class="hljs-number">100</span>).<span class="hljs-title function_">toFixed</span>(<span class="hljs-number">1</span>);<br>    &#125;<br><br>    options.<span class="hljs-property">value</span>.<span class="hljs-property">title</span>[<span class="hljs-number">0</span>].<span class="hljs-property">text</span> = <span class="hljs-title function_">truncate</span>(currentData?.<span class="hljs-property">name</span>);<br>    options.<span class="hljs-property">value</span>.<span class="hljs-property">title</span>[<span class="hljs-number">1</span>].<span class="hljs-property">text</span> = percentage + <span class="hljs-string">&quot;%&quot;</span>;<br><br>    <span class="hljs-comment">// 创建临时变量，避免直接修改 options.value</span><br>    <span class="hljs-keyword">const</span> tempOptions = <span class="hljs-title function_">deepClone</span>(options.<span class="hljs-property">value</span>);<br><br>    <span class="hljs-comment">// 取消上一个扇形的高亮和提示</span><br>    chartInstance.<span class="hljs-property">value</span>.<span class="hljs-title function_">dispatchAction</span>(&#123;<br>      <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;downplay&quot;</span>, <span class="hljs-comment">// 取消高亮</span><br>      <span class="hljs-attr">seriesIndex</span>: <span class="hljs-number">0</span>,<br>      <span class="hljs-attr">dataIndex</span>:<br>        (currentIndex - <span class="hljs-number">1</span> + props.<span class="hljs-property">renderData</span>.<span class="hljs-property">length</span>) % props.<span class="hljs-property">renderData</span>.<span class="hljs-property">length</span>, <span class="hljs-comment">// 上一个索引</span><br>    &#125;);<br>    <span class="hljs-comment">// 触发高亮和提示框效果</span><br>    chartInstance.<span class="hljs-property">value</span>.<span class="hljs-title function_">dispatchAction</span>(&#123;<br>      <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;downplay&quot;</span>, <span class="hljs-comment">// 先取消所有高亮</span><br>      <span class="hljs-attr">seriesIndex</span>: <span class="hljs-number">0</span>,<br>    &#125;);<br>    <span class="hljs-comment">// chartInstance.value.dispatchAction(&#123;</span><br>    <span class="hljs-comment">//   type: &quot;highlight&quot;,</span><br>    <span class="hljs-comment">//   seriesIndex: 0,</span><br>    <span class="hljs-comment">//   dataIndex: currentIndex,</span><br>    <span class="hljs-comment">// &#125;);</span><br>    <span class="hljs-comment">// chartInstance.value.dispatchAction(&#123;</span><br>    <span class="hljs-comment">//   type: &quot;showTip&quot;,</span><br>    <span class="hljs-comment">//   seriesIndex: 0,</span><br>    <span class="hljs-comment">//   dataIndex: currentIndex,</span><br>    <span class="hljs-comment">// &#125;);</span><br><br>    <span class="hljs-comment">// 切换到下一个数据项</span><br>    currentIndex = (currentIndex + <span class="hljs-number">1</span>) % props.<span class="hljs-property">renderData</span>.<span class="hljs-property">length</span>;<br><br>    <span class="hljs-comment">// 手动更新图表</span><br>    chartInstance.<span class="hljs-property">value</span>.<span class="hljs-title function_">setOption</span>(tempOptions);<br>  &#125;, <span class="hljs-number">3000</span>);<br>&#125;<br><br></code></pre></td></tr></table></figure><p><strong>如何将图例点击的变化同步显隐中间的百分比显示？</strong></p><p>方法就是监听图例点击事件legendselectchanged， 预设一个隐藏的index数组。置灰就–，点开就++，要注意的是 边界值全部置灰的时候 还要加一个是否全部置灰的判断， 如果全部置灰就百分比清空，注意要setOption，否则不会更新</p><p><strong>如何避免tooltip溢出屏幕？</strong></p><p>tooltip的属性confine为true可避免tooltip溢出页面</p><p><strong>折线图的区域渐变色怎么设置？</strong></p><p>折线图带区域的其实就是 在itemStyle这里加一个areaStyle</p><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">areaStyle:</span> <span class="hljs-punctuation">&#123;</span><br>              <span class="hljs-comment">//新版渐变色实现</span><br><span class="hljs-symbol">              color:</span> <span class="hljs-punctuation">&#123;</span><br><span class="hljs-symbol">                type:</span> <span class="hljs-string">&quot;linear&quot;</span>,<br><span class="hljs-symbol">                x:</span> <span class="hljs-number">0</span>,<br><span class="hljs-symbol">                y:</span> <span class="hljs-number">0</span>,<br><span class="hljs-symbol">                x2:</span> <span class="hljs-number">0</span>,<br><span class="hljs-symbol">                y2:</span> <span class="hljs-number">1</span>,<br><span class="hljs-symbol">                colorStops:</span> [<br>                  <span class="hljs-punctuation">&#123;</span><br><span class="hljs-symbol">                    offset:</span> <span class="hljs-number">0</span>,<br><span class="hljs-symbol">                    color:</span> <span class="hljs-string">&quot;#3DACF1&quot;</span>,<br>                  <span class="hljs-punctuation">&#125;</span>,<br>                  <span class="hljs-punctuation">&#123;</span><br><span class="hljs-symbol">                    offset:</span> <span class="hljs-number">1</span>,<br><span class="hljs-symbol">                    color:</span> <span class="hljs-string">&quot;rgba(77,135,244,0)&quot;</span>,<br>                  <span class="hljs-punctuation">&#125;</span>,<br>                ],<br>              <span class="hljs-punctuation">&#125;</span>,<br>            <span class="hljs-punctuation">&#125;</span>,<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>技巧总结</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>watch和watchEffect的区分</title>
+    <link href="/2025/05/03/watch%E5%92%8CwatchEffect%E7%9A%84%E5%8C%BA%E5%88%86/"/>
+    <url>/2025/05/03/watch%E5%92%8CwatchEffect%E7%9A%84%E5%8C%BA%E5%88%86/</url>
+    
+    <content type="html"><![CDATA[<p><strong>都适合什么场景？</strong></p><p>watchEffect适合监听某一个组件生命周期时的数据（监听生命周期的数据必定要有判断是否存在的逻辑，这个逻辑相关的所有 数据就是监听对象），需要 在监听里做判断，如果这个数据不存在要return（这里说明了 监听它就是一个不断调用的函数），关闭监听用 unwatch()</p><p><strong>区别</strong></p><p>上面说了watchEffect只要所有逻辑用到的变量有变化就调用，而watch一般明确知道要监听什么值而触发回调</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>区分</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>大屏页面的一些技巧与注意点</title>
+    <link href="/2025/04/18/%E5%A4%A7%E5%B1%8F%E9%A1%B5%E9%9D%A2%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%80%E5%B7%A7%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9/"/>
+    <url>/2025/04/18/%E5%A4%A7%E5%B1%8F%E9%A1%B5%E9%9D%A2%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%80%E5%B7%A7%E4%B8%8E%E6%B3%A8%E6%84%8F%E7%82%B9/</url>
+    
+    <content type="html"><![CDATA[<p><strong>自适应如何解决？</strong></p><p>整体自适应—–&gt;scale缩放方案，见我上一篇文章</p><p>布局自适应—–&gt;flex弹性布局即可，间距用gap（注意如果换行flex-gap包含行和列），比justify-content: sapce-between好用，因为不同分辨率宽会不一样，间距也不一样，不好看，而且如果第二行只有两个中间会空开，很丑</p><p>盒子自适应——-&gt;宽高用百分比/vw、vh</p><p>文字子使用——-&gt;用vw/vh计算，可以写成一个css函数然后导入，如下：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;sass:math&quot;</span>; // 导入 math 模块<br><br>// px-vw<br><span class="hljs-keyword">@function</span> px2vw($px) &#123;<br>  // 计算 vw 值<br>  <span class="hljs-keyword">@return</span> math.div($px, <span class="hljs-number">1920</span>) * <span class="hljs-number">100vw</span>;<br>&#125;<br></code></pre></td></tr></table></figure><p><strong>多个背景/图标如何更方便的设置？</strong></p><p>可以全部写在一个background属性里，如下：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">background</span>:<br>   <span class="hljs-built_in">url</span>(<span class="hljs-string">&quot;@/assets/images/home/topBorder.png&quot;</span>) no-repeat top/<span class="hljs-number">100%</span> <span class="hljs-built_in">px2vw</span>(<span class="hljs-number">119</span>),<br>   <span class="hljs-built_in">url</span>(<span class="hljs-string">&quot;@/assets/images/home/leftBorder.png&quot;</span>) no-repeat left center/<span class="hljs-built_in">px2vw</span>(<span class="hljs-number">52</span>) <span class="hljs-number">100%</span>,<br>   <span class="hljs-built_in">url</span>(<span class="hljs-string">&quot;@/assets/images/home/rightBorder.png&quot;</span>) no-repeat right center/<span class="hljs-built_in">px2vw</span>(<span class="hljs-number">52</span>) <span class="hljs-number">100%</span>,<br>   <span class="hljs-built_in">url</span>(<span class="hljs-string">&quot;@/assets/images/home/bottomBorder.png&quot;</span>) no-repeat bottom/<span class="hljs-number">100%</span> <span class="hljs-built_in">px2vw</span>(<span class="hljs-number">51</span>),<br>   <span class="hljs-built_in">url</span>(<span class="hljs-string">&quot;@/assets/images/home/homeBg.png&quot;</span>) no-repeat center/<span class="hljs-number">100%</span> <span class="hljs-number">98%</span>;<br></code></pre></td></tr></table></figure><p>图标可以利用伪元素before、after</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs css">&amp;<span class="hljs-selector-pseudo">::before</span> &#123;<br>    <span class="hljs-attribute">top</span>: <span class="hljs-built_in">v-bind</span>(leftArrowTop);// v-bind绑定的是变量<br>    <span class="hljs-attribute">left</span>: <span class="hljs-built_in">px2vw</span>(<span class="hljs-number">18</span>);<br>  &#125;<br><br>  &amp;<span class="hljs-selector-pseudo">::after</span> &#123;<br>    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(<span class="hljs-number">180deg</span>);<br>    <span class="hljs-attribute">top</span>: <span class="hljs-built_in">v-bind</span>(rightArrowTop);<br>    <span class="hljs-attribute">right</span>: <span class="hljs-built_in">px2vw</span>(<span class="hljs-number">18</span>);<br>  &#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>技巧总结</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Vue常用组件封装+工具函数，直接复制使用</title>
     <link href="/2025/04/04/Vue%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85%EF%BC%8C%E7%9B%B4%E6%8E%A5%E5%A4%8D%E5%88%B6%E4%BD%BF%E7%94%A8/"/>
     <url>/2025/04/04/Vue%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85%EF%BC%8C%E7%9B%B4%E6%8E%A5%E5%A4%8D%E5%88%B6%E4%BD%BF%E7%94%A8/</url>
