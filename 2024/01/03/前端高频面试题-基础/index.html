@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://github.com/2024/01/03/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9F%BA%E7%A1%80/Vue%E4%B8%AD%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0this%E6%8C%87%E5%90%91.png">
 <meta property="og:image" content="https://github.com/2024/01/03/%E5%89%8D%E7%AB%AF%E9%AB%98%E9%A2%91%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9F%BA%E7%A1%80/%E7%BB%84%E4%BB%B6%E5%AE%9E%E4%BE%8B%E4%B8%8EVue%E5%AE%9E%E4%BE%8B%E5%85%B3%E7%B3%BB.png">
 <meta property="article:published_time" content="2024-01-03T06:21:01.000Z">
-<meta property="article:modified_time" content="2024-09-26T12:44:52.697Z">
+<meta property="article:modified_time" content="2025-08-10T14:37:45.589Z">
 <meta property="article:author" content="Zhou Jie">
 <meta property="article:tag" content="前端综合">
 <meta name="twitter:card" content="summary_large_image">
@@ -404,26 +404,53 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- em是针对父元素的适配单位，而rem是只针对html(root即根部)的适配单位</span><br><span class="hljs-comment">    比如html的fontSize为50px，然后body的字体设置为50%，那么这个1em/1rem就为25px</span><br><span class="hljs-comment">--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css">  <span class="hljs-selector-id">#box</span>&#123;</span><br><span class="language-css">     <span class="hljs-attribute">width</span>: <span class="hljs-number">0.5rem</span>;</span><br><span class="language-css">     <span class="hljs-attribute">height</span>: <span class="hljs-number">0.5rem</span>;</span><br><span class="language-css">     <span class="hljs-attribute">background-color</span>: red;</span><br><span class="language-css">  &#125;</span><br><span class="language-css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-comment">&lt;!-- 方法就是 html根元素的字体大小 = 屏幕区的宽</span><br><span class="hljs-comment">    目的是想把 1rem设置成整个屏幕的宽，那下次某个盒子想要设置成占整个屏幕多大比例，那直接 1rem/x</span><br><span class="hljs-comment">    比如 某个盒子想要占屏幕的一半，那设置完之后就可以设置宽高为0.5rem-&gt;特指整个屏幕的一半，这样不管是什么分辨率都可以设置 </span><br><span class="hljs-comment">    Ps：这里的字体大小默认是 指的是rem或em的单位</span><br><span class="hljs-comment">   --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;box&quot;</span>&gt;</span><br>    <br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;text/javascript&#x27;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript"> <span class="hljs-variable language_">window</span>.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">     <span class="hljs-comment">// 整个屏幕的宽</span></span><br><span class="language-javascript">     <span class="hljs-keyword">var</span> width = <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">clientWidth</span></span><br><span class="language-javascript"></span><br><span class="language-javascript">     <span class="hljs-keyword">var</span> htmlNode = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;html&#x27;</span>)</span><br><span class="language-javascript"></span><br><span class="language-javascript">     htmlNode.<span class="hljs-property">style</span>.<span class="hljs-property">fontSize</span> = width + <span class="hljs-string">&#x27;px&#x27;</span></span><br><span class="language-javascript"></span><br><span class="language-javascript">     <span class="hljs-comment">// 以上三个步骤是为了当前屏幕单位 都为1rem</span></span><br><span class="language-javascript"></span><br><span class="language-javascript"> &#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 </blockquote>
 <h3 id="15-解决了哪些移动端兼容问题？"><a href="#15-解决了哪些移动端兼容问题？" class="headerlink" title="15.解决了哪些移动端兼容问题？"></a>15.解决了哪些移动端兼容问题？</h3><blockquote>
-<ol>
-<li><p>安卓环境input框的placeholder文字设置行高（为了垂直居中）之后会偏上</p>
-<p>解决方法：input框有placeholder属性时不要设置行高，安卓环境可能自己默认样式就是偏高的</p>
-</li>
-<li><p>IOS取消自动输入英文首字母大写</p>
-<p>解决方法：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">autocorrect</span>=<span class="hljs-string">&#x27;off&#x27;</span> <span class="hljs-attr">autocapitalize</span>=<span class="hljs-string">&#x27;off&#x27;</span> /&gt;</span><br></code></pre></td></tr></table></figure></li>
-<li><p>移动端在字体小于12px时，会显示异常（模糊、不清晰）</p>
-<p>解决方法：使用transform先放大一倍，再缩小一倍。这边看似什么也没做，但里面涉及到了字体渲染时会用到的技术：抗锯齿化技术，在字体过小时因像素丢失字体的边缘是会呈现锯齿状而变的模糊，因此需要将字体重新渲染时会使用抗锯齿化技术使得字体边缘变得平滑，这里先放大再缩小等于 重新抗锯齿化 一次。</p>
-</li>
-<li><p>IOS在input框设置disabled之后字体显示异常（比较灰暗）</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=button]</span>&#123;<br>  <span class="hljs-attribute">opacity</span>:<span class="hljs-number">1</span>// 把字体显示正常:不透明度=&gt;<span class="hljs-number">1</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
-<li><p>IOS在设置 overflow:auto/scroll 添加滚动条滑动时，会卡顿，就是 屏幕跟不上手动滑动的频率。</p>
-<p>-webkit-overflow-scrolling: touch —————— 内置滚动改为触摸事件</p>
-</li>
-<li><p>IOS在填写文本时，碰到数字会自动识别成电话号码</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#x27;format-detection&#x27;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&#x27;telephone=no&#x27;</span> /&gt;</span><br></code></pre></td></tr></table></figure></li>
-</ol>
-<p>​          meta：元标签，用来全局设置一些东西的，name设置什么，content内容是什么</p>
-<p><u>思路</u>：登陆页面填写input（前-中【异常用小字体检验】-后）-&gt;登陆后划到最底端进行评论</p>
+<h2 id="移动端兼容问题口诀"><a href="#移动端兼容问题口诀" class="headerlink" title="移动端兼容问题口诀"></a>移动端兼容问题口诀</h2><blockquote>
+<p><strong>屏触视适字网样</strong><br> （屏幕、触摸、视口、适配、字体、网络、样式）</p>
+</blockquote>
+<hr>
+<h3 id="1-屏-—-屏幕分辨率差异"><a href="#1-屏-—-屏幕分辨率差异" class="headerlink" title="1. 屏 — 屏幕分辨率差异"></a>1. <strong>屏</strong> — 屏幕分辨率差异</h3><ul>
+<li>不同手机的屏幕宽高、像素密度差别大（iPhone 2x、3x，安卓各种 DPI）</li>
+<li>解决：<code>meta viewport</code>、媒体查询、<code>rem</code>/<code>vw</code>、响应式布局。</li>
+</ul>
+<hr>
+<h3 id="2-触-—-触摸事件兼容"><a href="#2-触-—-触摸事件兼容" class="headerlink" title="2. 触 — 触摸事件兼容"></a>2. <strong>触</strong> — 触摸事件兼容</h3><ul>
+<li>移动端是 <code>touchstart</code>、<code>touchmove</code>、<code>touchend</code>，PC 是 <code>click</code>、<code>mousedown</code>、<code>mousemove</code>。</li>
+<li>300ms 点击延迟问题（iOS 老版本、安卓老浏览器）。</li>
+<li>解决：<code>fastclick</code> 或用 <code>touch</code> 事件代替。</li>
+</ul>
+<hr>
+<h3 id="3-视-—-视口（Viewport）问题"><a href="#3-视-—-视口（Viewport）问题" class="headerlink" title="3. 视 — 视口（Viewport）问题"></a>3. <strong>视</strong> — 视口（Viewport）问题</h3><ul>
+<li>不加 <code>meta viewport</code> 会被当成 980px 宽的 PC 页面缩放。</li>
+<li>解决：</li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs routeros">html<br><br><br>复制编辑<br>&lt;meta <span class="hljs-attribute">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attribute">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="4-适-—-适配各种机型"><a href="#4-适-—-适配各种机型" class="headerlink" title="4. 适 — 适配各种机型"></a>4. <strong>适</strong> — 适配各种机型</h3><ul>
+<li>Android、iOS、折叠屏、刘海屏（安全区域 <code>safe-area-inset</code>）</li>
+<li>解决：<code>env(safe-area-inset-top)</code>、<code>@supports</code> 检测。</li>
+</ul>
+<hr>
+<h3 id="5-字-—-字体渲染差异"><a href="#5-字-—-字体渲染差异" class="headerlink" title="5. 字 — 字体渲染差异"></a>5. <strong>字</strong> — 字体渲染差异</h3><ul>
+<li>中文字体跨平台差异大，行高/字间距会变化。</li>
+<li>解决：用 <code>webfont</code>、指定安全字体、避免固定高度容器。</li>
+</ul>
+<hr>
+<h3 id="6-网-—-网络环境不稳定"><a href="#6-网-—-网络环境不稳定" class="headerlink" title="6. 网 — 网络环境不稳定"></a>6. <strong>网</strong> — 网络环境不稳定</h3><ul>
+<li>2G/3G/WiFi 延迟、弱网、断网。</li>
+<li>解决：图片懒加载、本地缓存、PWA 离线模式。</li>
+</ul>
+<hr>
+<h3 id="7-样-—-样式兼容性"><a href="#7-样-—-样式兼容性" class="headerlink" title="7. 样 — 样式兼容性"></a>7. <strong>样</strong> — 样式兼容性</h3><ul>
+<li>不同浏览器 CSS 前缀问题（<code>-webkit-</code>、<code>-moz-</code>）。</li>
+<li>某些 CSS3 属性（如 <code>flex-gap</code>）在旧机型不支持。</li>
+<li>解决：加前缀、<code>postcss</code>、<code>can i use</code> 检查。</li>
+</ul>
+<hr>
+<p>💡 <strong>快速记忆法</strong>：</p>
+<ul>
+<li><strong>屏触视适字网样</strong> → 从硬件（屏幕、触摸）到软件（视口、适配）再到内容（字体）、网络、样式，一条链下来就全记住了。</li>
+</ul>
 </blockquote>
 <h3 id="16-display-none-、-visibility-hidden-和-opacity-0-之间的区别？"><a href="#16-display-none-、-visibility-hidden-和-opacity-0-之间的区别？" class="headerlink" title="16.display:none 、 visibility:hidden 和 opacity:0 之间的区别？"></a>16.display:none 、 visibility:hidden 和 opacity:0 之间的区别？</h3><blockquote>
 <ul>
